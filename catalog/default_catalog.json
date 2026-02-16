@@ -1,0 +1,35 @@
+{
+    "student_profile": {
+        "student_background": "Graduate-level students with diverse disciplinary and international backgrounds.",
+        "aggregate_academic_performance": "Generally strong academic readiness with varied prior exposure to ML and assessment styles.",
+        "anticipated_learner_needs_and_barriers": "Familiar with Python; uneven experience with tools like Colab; some gaps in math background; benefits from simplified language and visuals."
+    },
+    "instructor_preferences": {
+        "instructor_emphasis_intent": "Prioritizes real-world application of data science and analytics.",
+        "instructor_style_preferences": "Structured instructional scripts, minimal slide clutter, and a professional but supportive tone.",
+        "instructor_focus_for_assessment": "Project-driven assessment with open-ended tasks; traditional exams are not emphasized."
+    },
+    "course_structure": {
+        "course_learning_outcomes": "Ability to apply core ML methods (e.g., classification, clustering, dimensionality reduction) to real datasets with standard evaluation metrics.",
+        "total_number_of_weeks": "Semester-length offering",
+        "weekly_schedule_outline": "Early weeks focus on data prep; middle on supervised and unsupervised learning; final weeks on applications and project presentations."
+    },
+    "assessment_design": {
+        "assessment_format_preferences": "Multi-stage project structure, minimal use of quizzes, open-ended problem-solving emphasized.",
+        "assessment_delivery_constraints": "Submissions via learning management system in standard file formats (e.g., PDF, notebook)."
+    },
+    "teaching_constraints": {
+        "platform_policy_constraints": "Hosted on institution-approved LMS; materials must meet accessibility and compliance standards.",
+        "ta_support_availability": "Part-time teaching assistant available for grading and support.",
+        "instructional_delivery_context": "In-person sessions with live walkthroughs and laptop-based activities.",
+        "max_slide_count": "50"
+    },
+    "institutional_requirements": {
+        "program_learning_outcomes": "Aligns with learning goals related to modeling, evaluation, and practical data analysis.",
+        "academic_policies_and_institutional_standards": "Adheres to university-wide policies on integrity, accessibility, and digital content use.",
+        "department_syllabus_requirements": "Required components include outcomes, grading policy, and institutional statements."
+    },
+    "prior_feedback": {
+        "historical_course_evaluation_results": "Historical Evaluation Results & Feedback highlights preference for hands-on learning; pacing adjustments recommended in early weeks."
+    }
+}
