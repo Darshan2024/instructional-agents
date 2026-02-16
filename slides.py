@@ -8,14 +8,16 @@ from agents import (
     Agent,
 )
 
+
 class SlidesDeliberation:
     """
     SlidesDeliberation class for organizing agents to collaboratively create slides
     """
-    def __init__(self, 
+
+    def __init__(self,
                  id: str,
                  name: str,
-                 agents: Dict[str, Agent], 
+                 agents: Dict[str, Agent],
                  llm: LLM,
                  max_rounds: int = 1,
                  output_dir: str = "./outputs/",
@@ -24,7 +26,7 @@ class SlidesDeliberation:
                  ):
         """
         Initialize SlidesDeliberation
-        
+
         Args:
             id: Unique identifier for this deliberation
             name: Human-readable name for this deliberation
@@ -42,23 +44,22 @@ class SlidesDeliberation:
         self.output_dir = output_dir
         self.catalog = catalog
         self.catalog_dict = catalog_dict if catalog_dict else {}
-        
+
         # Initialize containers for results
         self.slides_outline = []
         self.latex_dict = {}  # Now stores list of frames per slide
         self.slides_script = {}
         self.assessment_template = {}  # New: assessment template
         self.assessment_content = {}   # New: assessment content
-    
-   
+
     def run(self, chapter: Dict[str, str], user_feedback: Dict[str, Any]):
         """
         Run the slides deliberation process
-        
+
         Args:
             chapter: Dictionary containing chapter information
             context: Dictionary containing context information
-            
+
         Returns:
             Tuple of (latex_source, slides_script_md, assessment_md)
         """
@@ -73,66 +74,76 @@ class SlidesDeliberation:
 
         # Step 0: Get templates
         self._get_templates()
-        
+
         # Step 1: Generate slides outline
         self._generate_slides_outline(chapter)
-        
+
         # Step 2: Generate initial LaTeX template
         self._generate_initial_latex(chapter)
-        
+
         # Step 3: Generate slides script template
         self._generate_slides_script_template()
-        
+
         # Step 4: Generate assessment template
         self._generate_assessment_template(chapter)
-        
+
         # Step 5: For each slide, generate content, LaTeX, script, and assessment
         for slide_idx, slide in enumerate(self.slides_outline):
-            print(f"\n{'-'*50}\nProcessing Slide {slide_idx + 1}/{len(self.slides_outline)}: {slide['title']}\n{'-'*50}\n")
-            
+            print(
+                f"\n{'-'*50}\nProcessing Slide {slide_idx + 1}/{len(self.slides_outline)}: {slide['title']}\n{'-'*50}\n")
+
             # Get context window (current slide plus adjacent slides for context)
             context_slides = self._get_context_slides(slide_idx)
-            
+
             # Step 5.1: Generate slide draft content
-            slide_draft = self._generate_slide_draft(slide, context_slides, chapter)
-            
+            slide_draft = self._generate_slide_draft(
+                slide, context_slides, chapter)
+
             # Step 5.2: Generate slide LaTeX code (potentially multiple frames)
             self._generate_slide_latex(slide_idx, slide, slide_draft)
-            
+
             # Step 5.3: Generate slide script
             self._generate_slide_script(slide_idx, slide, slide_draft)
-            
+
             # Step 5.4: Generate slide assessment
             self._generate_slide_assessment(slide_idx, slide, slide_draft)
-        
+
         # Step 6: Compile final LaTeX source
         latex_source = self._compile_latex_source()
-        
+
         # Step 7: Compile final slides script
         slides_script_md = self._compile_slides_script()
-        
+
         # Step 8: Compile final assessment
         assessment_md = self._compile_assessment()
-        
+
         # Save the results
         latex_path = os.path.join(self.output_dir, f"slides.tex")
         script_path = os.path.join(self.output_dir, f"script.md")
         assessment_path = os.path.join(self.output_dir, f"assessment.md")
 
+        # os.makedirs(self.output_dir, exist_ok=True)
+        # with open(latex_path, "w") as f:
+        #     f.write(latex_source)
+        # with open(script_path, "w") as f:
+        #     f.write(slides_script_md)
+        # with open(assessment_path, "w") as f:
+        #     f.write(assessment_md)
+
         os.makedirs(self.output_dir, exist_ok=True)
-        with open(latex_path, "w") as f:
+        with open(latex_path, "w", encoding="utf-8") as f:
             f.write(latex_source)
-        with open(script_path, "w") as f:
+        with open(script_path, "w", encoding="utf-8") as f:
             f.write(slides_script_md)
-        with open(assessment_path, "w") as f:
+        with open(assessment_path, "w", encoding="utf-8") as f:
             f.write(assessment_md)
-        
+
         print(f"\n{'='*50}\nSlides Deliberation Complete\n{'='*50}\n")
         print(f"LaTeX slides saved to: {latex_path}")
         print(f"Slides script saved to: {script_path}")
         print(f"Assessment saved to: {assessment_path}")
 
-        with open(os.path.join(self.output_dir, "statistics_{}.json").format(self.id), "w") as f:
+        with open(os.path.join(self.output_dir, f"statistics_{self.id}.json"), "w", encoding="utf-8") as f:
             json.dump({
                 "time_slides": self.time_slides,
                 "token_slides": self.token_slides,
@@ -141,7 +152,7 @@ class SlidesDeliberation:
                 "time_assessment": self.time_assessment,
                 "token_assessment": self.token_assessment
             }, f, indent=2)
-    
+
     def _get_templates(self):
         self.latex_template = r"""
         \documentclass{beamer}
@@ -202,16 +213,17 @@ class SlidesDeliberation:
 
         if self.catalog:
             template_dir = "catalog/references"
-            latex_template_path = os.path.join(template_dir, "latex_template.tex")
+            latex_template_path = os.path.join(
+                template_dir, "latex_template.tex")
             with open(latex_template_path, "r", encoding="utf-8") as f:
                 self.latex_template = f.read()
-    
+
     def _generate_slides_outline(self, chapter: Dict[str, str]):
         """Generate slides outline using Instructional Designer agent"""
         instructional_designer = self.agents.get("instructional_designer")
         if not instructional_designer:
             raise ValueError("Instructional Designer agent not found")
-        
+
         # Create a simple outline template example
         outline_template = """[
             {
@@ -225,7 +237,7 @@ class SlidesDeliberation:
                 "description": "Explanation of key concepts"
             }
             ]"""
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following chapter information, create a detailed slides outline in JSON format.
@@ -244,10 +256,10 @@ class SlidesDeliberation:
         Please try to use the simple and common latex grammer to guarantee the LaTeX code can be compiled successfully.
         Your response must be valid JSON that can be parsed programmatically.
         """
-        
+
         # Reset agent history to ensure clean context
         instructional_designer.reset_history()
-        
+
         # Get the response from the agent
         print("Generating slides outline...")
         response, elapsed_time, token_usage = instructional_designer.generate_response(
@@ -257,7 +269,7 @@ class SlidesDeliberation:
         )
         self.time_slides += elapsed_time
         self.token_slides += token_usage
-        
+
         # Parse the JSON response
         try:
             # Try to extract JSON from the response
@@ -268,25 +280,29 @@ class SlidesDeliberation:
             else:
                 # If no JSON array pattern is found, try direct parsing
                 self.slides_outline = json.loads(response)
-            
-            print(f"Successfully generated outline with {len(self.slides_outline)} slides")
-            
+
+            print(
+                f"Successfully generated outline with {len(self.slides_outline)} slides")
+
         except (json.JSONDecodeError, ValueError) as e:
             print(f"Error: Could not parse JSON response from agent: {e}")
             print("Response:", response)
             # Create a minimal outline as fallback
             self.slides_outline = [
-                {"slide_id": 1, "title": "Introduction", "description": "Introduction to " + chapter['title']},
-                {"slide_id": 2, "title": "Overview", "description": "Overview of key concepts"},
-                {"slide_id": 3, "title": "Conclusion", "description": "Summary and conclusion"}
+                {"slide_id": 1, "title": "Introduction",
+                    "description": "Introduction to " + chapter['title']},
+                {"slide_id": 2, "title": "Overview",
+                    "description": "Overview of key concepts"},
+                {"slide_id": 3, "title": "Conclusion",
+                    "description": "Summary and conclusion"}
             ]
-    
+
     def _generate_initial_latex(self, chapter: Dict[str, str]):
         """Generate initial LaTeX template using Teaching Assistant agent"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following slides outline and LaTeX template, generate initial LaTeX code for a presentation.
@@ -324,10 +340,10 @@ class SlidesDeliberation:
 
         Your response should be LaTeX code that can be compiled directly.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print("Generating initial LaTeX template...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -337,39 +353,41 @@ class SlidesDeliberation:
         )
         self.time_slides += elapsed_time
         self.token_slides += token_usage
-        
+
         # Store the full LaTeX source
         self.full_latex_source = response
-        
+
         # Parse frames to build the LaTeX dictionary
         self._parse_latex_frames(response)
-        
+
         print(f"Successfully generated initial LaTeX template")
-    
+
     def _parse_latex_frames(self, latex_source: str):
         """Parse LaTeX frames into a dictionary, grouping by slide"""
         # Find all frames with their content
-        frame_pattern = re.compile(r'\\begin{frame}(.*?)\\end{frame}', re.DOTALL)
+        frame_pattern = re.compile(
+            r'\\begin{frame}(.*?)\\end{frame}', re.DOTALL)
         frametitle_pattern = re.compile(r'\\frametitle{(.*?)}', re.DOTALL)
-        
+
         matches = frame_pattern.finditer(latex_source)
-        
+
         self.latex_dict = {}
         current_slide_idx = 0
-        
+
         for i, match in enumerate(matches):
             frame_content = match.group(1)
             title_match = frametitle_pattern.search(frame_content)
-            
-            title = title_match.group(1).strip() if title_match else f"Frame {i+1}"
-            
+
+            title = title_match.group(1).strip(
+            ) if title_match else f"Frame {i+1}"
+
             # Initialize slide entry if it doesn't exist
             if current_slide_idx not in self.latex_dict:
                 self.latex_dict[current_slide_idx] = {
                     "frames": [],
                     "slide_title": title.split(" - ")[0] if " - " in title else title
                 }
-            
+
             # Add frame to current slide
             self.latex_dict[current_slide_idx]["frames"].append({
                 "full_frame": match.group(0),
@@ -377,7 +395,7 @@ class SlidesDeliberation:
                 "title": title,
                 "frame_index": len(self.latex_dict[current_slide_idx]["frames"])
             })
-            
+
             # Simple heuristic: if we have processed enough frames for expected slides
             if len(self.latex_dict[current_slide_idx]["frames"]) >= 1 and current_slide_idx < len(self.slides_outline) - 1:
                 # Check if next frame title suggests a new slide
@@ -385,39 +403,41 @@ class SlidesDeliberation:
                 for next_match in frame_pattern.finditer(latex_source):
                     if next_match.start() > match.end():
                         break
-                
+
                 if next_match:
                     next_content = next_match.group(1)
                     next_title_match = frametitle_pattern.search(next_content)
-                    next_title = next_title_match.group(1).strip() if next_title_match else ""
-                    
+                    next_title = next_title_match.group(
+                        1).strip() if next_title_match else ""
+
                     # If title doesn't contain current slide title, it's likely a new slide
                     current_base_title = self.latex_dict[current_slide_idx]["slide_title"]
                     if current_base_title not in next_title and not next_title.startswith(current_base_title):
                         current_slide_idx += 1
-        
+
         # Store the parts before and after the frames
         all_frames = ''.join([
-            frame["full_frame"] 
-            for slide_data in self.latex_dict.values() 
+            frame["full_frame"]
+            for slide_data in self.latex_dict.values()
             for frame in slide_data["frames"]
         ])
         parts = latex_source.split(all_frames)
-        
+
         if len(parts) >= 2:
             self.latex_prefix = parts[0]
             self.latex_suffix = parts[1]
         else:
             # Fallback if splitting didn't work as expected
-            self.latex_prefix = latex_source.split('\\begin{document}')[0] + '\\begin{document}\n\n\\frame{\\titlepage}\n\n'
+            self.latex_prefix = latex_source.split('\\begin{document}')[
+                0] + '\\begin{document}\n\n\\frame{\\titlepage}\n\n'
             self.latex_suffix = '\n\\end{document}'
-    
+
     def _generate_slides_script_template(self):
         """Generate slides script template using Teaching Assistant agent"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Create a simple script template example
         script_template = """[
             {
@@ -431,7 +451,7 @@ class SlidesDeliberation:
                 "script": "The key concepts we need to understand are..."
             }
             ]"""
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following slides outline, create a template for slides scripts in JSON format.
@@ -451,10 +471,10 @@ class SlidesDeliberation:
         Each script entry should include a brief placeholder description of what would be said when presenting that slide.
         Your response must be valid JSON that can be parsed programmatically.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print("Generating slides script template...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -464,7 +484,7 @@ class SlidesDeliberation:
         )
         self.time_script += elapsed_time
         self.token_script += token_usage
-        
+
         # Parse the JSON response
         try:
             # Try to extract JSON from the response
@@ -473,14 +493,17 @@ class SlidesDeliberation:
                 json_str = json_match.group(0)
                 self.slides_script = json.loads(json_str)
                 # Convert to dictionary for easier access
-                self.slides_script = {item["slide_id"]-1: item for item in self.slides_script}
+                self.slides_script = {
+                    item["slide_id"]-1: item for item in self.slides_script}
             else:
                 # If no JSON array pattern is found, try direct parsing
                 script_list = json.loads(response)
-                self.slides_script = {item["slide_id"]-1: item for item in script_list}
-            
-            print(f"Successfully generated script template for {len(self.slides_script)} slides")
-            
+                self.slides_script = {
+                    item["slide_id"]-1: item for item in script_list}
+
+            print(
+                f"Successfully generated script template for {len(self.slides_script)} slides")
+
         except (json.JSONDecodeError, ValueError) as e:
             print(f"Error: Could not parse JSON response from agent: {e}")
             print("Response:", response)
@@ -492,13 +515,13 @@ class SlidesDeliberation:
                     "title": slide["title"],
                     "script": f"Placeholder script for {slide['title']}"
                 }
-    
+
     def _generate_assessment_template(self, chapter: Dict[str, str]):
         """Generate assessment template using Teaching Assistant agent"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Create a simple assessment template example
         assessment_template = """[
             {
@@ -519,7 +542,7 @@ class SlidesDeliberation:
                 }
             }
             ]"""
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following chapter information and slides outline, create an assessment template in JSON format.
@@ -550,10 +573,10 @@ class SlidesDeliberation:
         
         Your response must be valid JSON that can be parsed programmatically.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print("Generating assessment template...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -563,7 +586,7 @@ class SlidesDeliberation:
         )
         self.time_assessment += elapsed_time
         self.token_assessment += token_usage
-        
+
         # Parse the JSON response
         try:
             # Try to extract JSON from the response
@@ -572,14 +595,17 @@ class SlidesDeliberation:
                 json_str = json_match.group(0)
                 assessment_list = json.loads(json_str)
                 # Convert to dictionary for easier access
-                self.assessment_template = {item["slide_id"]-1: item for item in assessment_list}
+                self.assessment_template = {
+                    item["slide_id"]-1: item for item in assessment_list}
             else:
                 # If no JSON array pattern is found, try direct parsing
                 assessment_list = json.loads(response)
-                self.assessment_template = {item["slide_id"]-1: item for item in assessment_list}
-            
-            print(f"Successfully generated assessment template for {len(self.assessment_template)} slides")
-            
+                self.assessment_template = {
+                    item["slide_id"]-1: item for item in assessment_list}
+
+            print(
+                f"Successfully generated assessment template for {len(self.assessment_template)} slides")
+
         except (json.JSONDecodeError, ValueError) as e:
             print(f"Error: Could not parse JSON response from agent: {e}")
             print("Response:", response)
@@ -595,11 +621,11 @@ class SlidesDeliberation:
                         "learning_objectives": []
                     }
                 }
-    
+
     def _get_context_slides(self, current_idx: int, context_size: int = 1):
         """Get adjacent slides for context"""
         context_slides = []
-        
+
         # Add previous slides if available
         start_idx = max(0, current_idx - context_size)
         for i in range(start_idx, current_idx):
@@ -608,14 +634,14 @@ class SlidesDeliberation:
                 "slide_id": i+1,
                 "info": self.slides_outline[i]
             })
-        
+
         # Add current slide
         context_slides.append({
             "position": "current",
             "slide_id": current_idx+1,
             "info": self.slides_outline[current_idx]
         })
-        
+
         # Add next slides if available
         end_idx = min(len(self.slides_outline), current_idx + context_size + 1)
         for i in range(current_idx + 1, end_idx):
@@ -624,15 +650,15 @@ class SlidesDeliberation:
                 "slide_id": i+1,
                 "info": self.slides_outline[i]
             })
-        
+
         return context_slides
-    
+
     def _generate_slide_draft(self, slide: Dict[str, str], context_slides: List[Dict[str, Any]], chapter: Dict[str, str]):
         """Generate detailed slide draft using Teaching Faculty agent"""
         teaching_faculty = self.agents.get("teaching_faculty")
         if not teaching_faculty:
             raise ValueError("Teaching Faculty agent not found")
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Please create detailed educational content for the following slide:
@@ -658,10 +684,10 @@ class SlidesDeliberation:
         Focus on making the content educational, engaging, and aligned with the chapter's learning objectives.
         Note: Your output length needs to be kept within a reasonable range so that it can fit on a single PPT slide.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_faculty.reset_history()
-        
+
         # Get the response from the agent
         print(f"Generating detailed content for slide: {slide['title']}...")
         response, elapsed_time, token_usage = teaching_faculty.generate_response(
@@ -671,19 +697,20 @@ class SlidesDeliberation:
         )
         self.time_slides += elapsed_time
         self.token_slides += token_usage
-        
+
         return response
-    
+
     def _generate_slide_latex(self, slide_idx: int, slide: Dict[str, str], slide_draft: str):
         """Generate LaTeX code for a slide using Teaching Assistant agent - can generate multiple frames"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Get the current LaTeX frames if they exist
         current_frames = self.latex_dict.get(slide_idx, {}).get("frames", [])
-        current_frames_text = "\n\n".join([frame["full_frame"] for frame in current_frames])
-        
+        current_frames_text = "\n\n".join(
+            [frame["full_frame"] for frame in current_frames])
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following slide content, generate LaTeX code for a presentation slide.
@@ -736,10 +763,10 @@ class SlidesDeliberation:
         Your response should contain all the frames for this slide, each from \\begin{{frame}}[fragile] to \\end{{frame}}.
         Separate multiple frames with blank lines.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print(f"Generating LaTeX code for slide: {slide['title']}...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -749,11 +776,11 @@ class SlidesDeliberation:
         )
         self.time_slides += elapsed_time
         self.token_slides += token_usage
-        
+
         # Extract all frame codes from the response
         frame_pattern = re.compile(r'\\begin{frame}.*?\\end{frame}', re.DOTALL)
         frame_matches = frame_pattern.findall(response)
-        
+
         if frame_matches:
             # Initialize slide entry if it doesn't exist
             if slide_idx not in self.latex_dict:
@@ -765,7 +792,7 @@ class SlidesDeliberation:
                 # Clear existing frames for this slide
                 self.latex_dict[slide_idx]["frames"] = []
                 self.latex_dict[slide_idx]["slide_title"] = slide['title']
-            
+
             # Add all frames for this slide
             for i, frame_code in enumerate(frame_matches):
                 self.latex_dict[slide_idx]["frames"].append({
@@ -774,15 +801,16 @@ class SlidesDeliberation:
                     "title": slide['title'] + (f" - Part {i+1}" if len(frame_matches) > 1 else ""),
                     "frame_index": i
                 })
-            
-            print(f"Generated {len(frame_matches)} frame(s) for slide: {slide['title']}")
+
+            print(
+                f"Generated {len(frame_matches)} frame(s) for slide: {slide['title']}")
         else:
             # Fallback if no frames were found
             fallback_frame = f"""\\begin{{frame}}[fragile]
                 \\frametitle{{{slide['title']}}}
                 {slide['description']}
             \\end{{frame}}"""
-            
+
             self.latex_dict[slide_idx] = {
                 "frames": [{
                     "full_frame": fallback_frame,
@@ -793,24 +821,27 @@ class SlidesDeliberation:
                 "slide_title": slide['title']
             }
             print(f"Generated fallback frame for slide: {slide['title']}")
-    
+
     def _generate_slide_script(self, slide_idx: int, slide: Dict[str, str], slide_draft: str):
         """Generate script for a slide using Teaching Assistant agent"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Get adjacent slide scripts for context
-        prev_script = self.slides_script.get(slide_idx-1, {}).get("script", "") if slide_idx > 0 else ""
-        current_script = self.slides_script.get(slide_idx, {}).get("script", "")
-        next_script = self.slides_script.get(slide_idx+1, {}).get("script", "") if slide_idx < len(self.slides_outline)-1 else ""
-        
+        prev_script = self.slides_script.get(
+            slide_idx-1, {}).get("script", "") if slide_idx > 0 else ""
+        current_script = self.slides_script.get(
+            slide_idx, {}).get("script", "")
+        next_script = self.slides_script.get(
+            slide_idx+1, {}).get("script", "") if slide_idx < len(self.slides_outline)-1 else ""
+
         # Get all frames for this slide
         frames_info = ""
         if slide_idx in self.latex_dict:
             for i, frame in enumerate(self.latex_dict[slide_idx]["frames"]):
                 frames_info += f"Frame {i+1}:\n```latex\n{frame['full_frame']}\n```\n\n"
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following slide content, generate a detailed speaking script for presenting this slide.
@@ -845,10 +876,10 @@ class SlidesDeliberation:
         The script should be detailed enough for someone else to present effectively from it.
         If there are multiple frames, clearly indicate when to advance to the next frame.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print(f"Generating speaking script for slide: {slide['title']}...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -858,7 +889,7 @@ class SlidesDeliberation:
         )
         self.time_script += elapsed_time
         self.token_script += token_usage
-        
+
         # Update the slides script dictionary
         self.slides_script[slide_idx] = {
             "slide_id": slide_idx + 1,
@@ -866,16 +897,16 @@ class SlidesDeliberation:
             "script": response,
             "frame_count": len(self.latex_dict.get(slide_idx, {}).get("frames", []))
         }
-    
+
     def _generate_slide_assessment(self, slide_idx: int, slide: Dict[str, str], slide_draft: str):
         """Generate assessment for a slide using Teaching Assistant agent"""
         teaching_assistant = self.agents.get("teaching_assistant")
         if not teaching_assistant:
             raise ValueError("Teaching Assistant agent not found")
-        
+
         # Get the current assessment template for this slide
         template = self.assessment_template.get(slide_idx, {})
-        
+
         # Create the prompt for the agent
         prompt = f"""
         Based on the following slide content and assessment template, generate detailed assessment content for this slide.
@@ -923,10 +954,10 @@ class SlidesDeliberation:
         
         Your response must be valid JSON that can be parsed programmatically.
         """
-        
+
         # Reset agent history to ensure clean context
         teaching_assistant.reset_history()
-        
+
         # Get the response from the agent
         print(f"Generating assessment for slide: {slide['title']}...")
         response, elapsed_time, token_usage = teaching_assistant.generate_response(
@@ -936,7 +967,7 @@ class SlidesDeliberation:
         )
         self.time_assessment += elapsed_time
         self.token_assessment += token_usage
-        
+
         # Parse the JSON response
         try:
             # Try to extract JSON from the response
@@ -948,9 +979,10 @@ class SlidesDeliberation:
             else:
                 # If no JSON pattern is found, try direct parsing
                 self.assessment_content[slide_idx] = json.loads(response)
-            
-            print(f"Successfully generated assessment for slide: {slide['title']}")
-            
+
+            print(
+                f"Successfully generated assessment for slide: {slide['title']}")
+
         except (json.JSONDecodeError, ValueError) as e:
             print(f"Error: Could not parse JSON response from agent: {e}")
             print("Response:", response)
@@ -965,32 +997,36 @@ class SlidesDeliberation:
                     "discussion_questions": [f"Discuss the implications of {slide['title']}"]
                 }
             }
-    
+
     def _compile_latex_source(self) -> str:
         """Compile all LaTeX frames into a complete source document"""
         # Start with the prefix
-        latex_source = self.latex_prefix if hasattr(self, 'latex_prefix') else ""
-        
+        latex_source = self.latex_prefix if hasattr(
+            self, 'latex_prefix') else ""
+
         # Add each frame in order
         for i in range(len(self.slides_outline)):
             if i in self.latex_dict:
                 for frame in self.latex_dict[i]["frames"]:
                     latex_source += frame["full_frame"] + "\n\n"
-        
-        # Add the suffix
-        latex_source += self.latex_suffix if hasattr(self, 'latex_suffix') else "\n\\end{document}"
 
-        match = re.search(r"\\documentclass.*?\\begin\{document\}.*?\\end\{document\}", latex_source, re.DOTALL)
+        # Add the suffix
+        latex_source += self.latex_suffix if hasattr(
+            self, 'latex_suffix') else "\n\\end{document}"
+
+        match = re.search(
+            r"\\documentclass.*?\\begin\{document\}.*?\\end\{document\}", latex_source, re.DOTALL)
         if match:
             latex_source = match.group()
             return latex_source
         else:
-            raise ValueError("LaTeX source does not contain a valid document structure")
-    
+            raise ValueError(
+                "LaTeX source does not contain a valid document structure")
+
     def _compile_slides_script(self) -> str:
         """Compile all slide scripts into a markdown document"""
         script_md = f"# Slides Script: {self.name}\n\n"
-        
+
         for i in range(len(self.slides_outline)):
             if i in self.slides_script:
                 script = self.slides_script[i]
@@ -1002,25 +1038,25 @@ class SlidesDeliberation:
                     script_md += "\n"
                 script_md += f"{script['script']}\n\n"
                 script_md += "---\n\n"
-        
+
         return script_md
-    
+
     def _compile_assessment(self) -> str:
         """Compile all assessments into a markdown document"""
         assessment_md = f"# Assessment: {self.name}\n\n"
-        
+
         for i in range(len(self.slides_outline)):
             if i in self.assessment_content:
                 assessment = self.assessment_content[i]
                 assessment_md += f"## Section {assessment['slide_id']}: {assessment['title']}\n\n"
-                
+
                 # Learning Objectives
                 if assessment['assessment'].get('learning_objectives'):
                     assessment_md += "### Learning Objectives\n"
                     for obj in assessment['assessment']['learning_objectives']:
                         assessment_md += f"- {obj}\n"
                     assessment_md += "\n"
-                
+
                 # Questions
                 if assessment['assessment'].get('questions'):
                     assessment_md += "### Assessment Questions\n\n"
@@ -1030,22 +1066,21 @@ class SlidesDeliberation:
                             assessment_md += f"  {option}\n"
                         assessment_md += f"\n**Correct Answer:** {q['correct_answer']}\n"
                         assessment_md += f"**Explanation:** {q['explanation']}\n\n"
-                
+
                 # Activities
                 if assessment['assessment'].get('activities'):
                     assessment_md += "### Activities\n"
                     for activity in assessment['assessment']['activities']:
                         assessment_md += f"- {activity}\n"
                     assessment_md += "\n"
-                
+
                 # Discussion Questions
                 if assessment['assessment'].get('discussion_questions'):
                     assessment_md += "### Discussion Questions\n"
                     for question in assessment['assessment']['discussion_questions']:
                         assessment_md += f"- {question}\n"
                     assessment_md += "\n"
-                
+
                 assessment_md += "---\n\n"
-        
+
         return assessment_md
-    

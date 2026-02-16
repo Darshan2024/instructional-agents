@@ -1,0 +1,390 @@
+{
+  "learning_objectives": {
+    "files": [
+      {
+        "filename": "result_instructional_goals.md",
+        "scores": {
+          "clarity": 3.0,
+          "measurability": 3.0,
+          "appropriateness": 3.0
+        },
+        "average": 3.0
+      }
+    ],
+    "summary": {
+      "total_files": 1,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  },
+  "syllabus": {
+    "files": [
+      {
+        "filename": "result_syllabus_design.md",
+        "scores": {
+          "coherence": 3.0,
+          "coverage": 3.0,
+          "organization": 3.0,
+          "accessibility": 3.0,
+          "transparency_of_policies": 3.0
+        },
+        "average": 3.0
+      }
+    ],
+    "summary": {
+      "total_files": 1,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  },
+  "assessment": {
+    "files": [
+      {
+        "filename": "chapter_1_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_10_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_2_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_3_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_4_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_5_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_6_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_7_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_8_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_9_assessment.md",
+        "scores": {
+          "alignment": 3.0,
+          "clarity": 3.0,
+          "availability": 3.0,
+          "formative_feedback": 3.0,
+          "variety": 3.0
+        },
+        "average": 3.0
+      }
+    ],
+    "summary": {
+      "total_files": 10,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  },
+  "slide_content": {
+    "files": [
+      {
+        "filename": "chapter_1_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_10_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_2_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_3_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_4_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_5_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_6_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_7_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_8_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_9_slides.tex",
+        "scores": {
+          "alignment": 3.0,
+          "appropriateness": 3.0,
+          "accuracy": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      }
+    ],
+    "summary": {
+      "total_files": 10,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  },
+  "slide_scripts": {
+    "files": [
+      {
+        "filename": "chapter_1_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_10_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_2_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_3_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_4_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_5_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_6_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_7_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_8_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      },
+      {
+        "filename": "chapter_9_script.md",
+        "scores": {
+          "alignment": 3.0,
+          "coherence": 3.0,
+          "engagement": 3.0,
+          "attribution": 3.0
+        },
+        "average": 3.0
+      }
+    ],
+    "summary": {
+      "total_files": 10,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  },
+  "overall_summary": {
+    "summary": {
+      "total_files": 32,
+      "average_score": 3.0,
+      "max_score": 3.0,
+      "min_score": 3.0
+    }
+  }
+}

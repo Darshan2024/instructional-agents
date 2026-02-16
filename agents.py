@@ -5,31 +5,119 @@ import time
 
 
 class LLM:
-    def __init__(self, model_name: str = "gpt-4o-mini"):
-        self.model_name = "gpt-4o-mini"
-        self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    def __init__(self, model_name: str = "gpt-4o-mini", provider: str = "openai"):
+        """
+        Lightweight LLM wrapper that can call OpenAI (default) or Gemini.
 
-    def generate_response(self, messages: List[Dict[str, str]], stream = False) -> str:
+        Args:
+            model_name: model identifier for the chosen provider
+            provider: 'openai' or 'gemini'
+        """
+        self.model_name = model_name
+        self.provider = provider
+        self.client = None
+        self.genai = None
+        self.model = None
+
+        if provider == "openai":
+            self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        elif provider == "gemini":
+            try:
+                import google.generativeai as genai
+            except ImportError as e:
+                raise ImportError("google-generativeai is required for provider='gemini'") from e
+
+            api_key = os.environ.get("GOOGLE_API_KEY")
+            if not api_key:
+                raise ValueError("GOOGLE_API_KEY is required for provider='gemini'")
+
+            genai.configure(api_key=api_key)
+            self.genai = genai
+            self.model = genai.GenerativeModel(model_name=model_name)
+        else:
+            raise ValueError(f"Unsupported provider: {provider}")
+
+    def _messages_to_prompt(self, messages: List[Dict[str, str]]) -> str:
+        """Flatten OpenAI-style messages into a single prompt string for Gemini."""
+        system_parts = []
+        convo_parts = []
+        for msg in messages:
+            role = msg.get("role", "")
+            content = msg.get("content", "")
+            if role == "system":
+                system_parts.append(content)
+            elif role == "user":
+                convo_parts.append(f"User: {content}")
+            elif role == "assistant":
+                convo_parts.append(f"Assistant: {content}")
+            else:
+                convo_parts.append(content)
+
+        prompt_sections = []
+        if system_parts:
+            prompt_sections.append("\n\n".join(system_parts))
+        if convo_parts:
+            prompt_sections.append("\n\n".join(convo_parts))
+        return "\n\n".join(prompt_sections)
+
+    def generate_response(self, messages: List[Dict[str, str]], stream: bool = False) -> str:
         start_time = time.time()
 
         try:
-            chat_completion = self.client.chat.completions.create(
-                messages=messages,
-                model=self.model_name
-            )
-            response = chat_completion.choices[0].message.content
-            print(f"[Response from {self.model_name}]: {response}")
+            if self.provider == "openai":
+                chat_completion = self.client.chat.completions.create(
+                    messages=messages,
+                    model=self.model_name,
+                    stream=stream
+                )
+
+                if stream:
+                    response = ""
+                    for chunk in chat_completion:
+                        delta = chunk.choices[0].delta
+                        if delta.content is not None:
+                            response += delta.content
+                            print(delta.content, end="", flush=True)
+                    print()
+                    # token usage is only available on non-stream responses in this simple wrapper
+                    token_usage = 0
+                else:
+                    response = chat_completion.choices[0].message.content
+                    token_usage = chat_completion.usage.total_tokens if chat_completion.usage else 0
+
+            elif self.provider == "gemini":
+                prompt = self._messages_to_prompt(messages)
+                if stream:
+                    gen_response = self.model.generate_content(prompt, stream=True)
+                    response_parts = []
+                    for chunk in gen_response:
+                        if getattr(chunk, "text", None):
+                            response_parts.append(chunk.text)
+                            print(chunk.text, end="", flush=True)
+                    print()
+                    response = "".join(response_parts)
+                    usage = getattr(gen_response, "usage_metadata", None)
+                else:
+                    gen_response = self.model.generate_content(prompt)
+                    response = getattr(gen_response, "text", "") or ""
+                    usage = getattr(gen_response, "usage_metadata", None)
+
+                token_usage = getattr(usage, "total_tokens", 0) if usage else 0
+
+            else:
+                raise ValueError(f"Unsupported provider: {self.provider}")
 
             elapsed_time = time.time() - start_time
-            token_usage = chat_completion.usage.total_tokens
-
+            print(f"[Response from {self.model_name}]: {response}")
             print(f"[Response Time: {elapsed_time:.2f}s]")
-            print(f"[Total Tokens: {token_usage}]")
+            if token_usage is not None:
+                print(f"[Total Tokens: {token_usage}]")
+
             return response, elapsed_time, token_usage
 
         except Exception as e:
             print(f"Error generating response: {e}")
-            return f"Error: {e}"
+            return f"Error: {e}", 0, 0
 
 class LLM_stream:
     """
@@ -261,7 +349,7 @@ class Deliberation:
                 self.add_to_discussion(agent.name, response)
 
                 elapsed_time += et
-                token_usage += tu
+                token_usage += (tu or 0)
         
         # Generate results of this discussion          
         summary, et, tu = self.summary_agent.generate_response(
@@ -269,8 +357,7 @@ class Deliberation:
             save_to_history=False
         )
         elapsed_time += et
-        token_usage += tu
+        token_usage += (tu or 0)
         
         print(f"\n{'='*50}\nDeliberation Complete\n{'='*50}\n")
         return summary, elapsed_time, token_usage
-

@@ -4,6 +4,7 @@ import argparse
 import json
 
 from ADDIE import ADDIE
+from agents import LLM
 
 
 def load_catalog(catalog_dir: str = "catalog", catalog_name: str = "merged_catalog") -> dict:
@@ -36,7 +37,7 @@ def load_catalog(catalog_dir: str = "catalog", catalog_name: str = "merged_catal
     return data_catalog
 
 
-def run_instructional_design(course_name: str, copilot = None, catalog = None, model_name: str = "gpt-4o-mini", exp_name: str = "test"):
+def run_instructional_design(course_name: str, copilot = None, catalog = None, model_name: str = "gpt-4o-mini", exp_name: str = "test", provider: str = "openai"):
     """
     Main function to run the instructional design workflow by sequentially
     executing the six deliberation processes
@@ -49,13 +50,24 @@ def run_instructional_design(course_name: str, copilot = None, catalog = None, m
     Returns:
         List of results from each process
     """
-    # Ensure the OPENAI_API_KEY is set
-    if not os.environ.get("OPENAI_API_KEY"):
-        api_key = input("Please enter your OpenAI API key: ").strip()
-        if not api_key:
-            print("Error: OpenAI API key is required to run this workflow.")
-            return
-        os.environ["OPENAI_API_KEY"] = api_key
+    # Ensure the API key is set for the chosen provider
+    if provider == "openai":
+        if not os.environ.get("OPENAI_API_KEY"):
+            api_key = input("Please enter your OpenAI API key: ").strip()
+            if not api_key:
+                print("Error: OpenAI API key is required to run this workflow.")
+                return
+            os.environ["OPENAI_API_KEY"] = api_key
+    elif provider == "gemini":
+        if not os.environ.get("GOOGLE_API_KEY"):
+            api_key = input("Please enter your Google (Gemini) API key: ").strip()
+            if not api_key:
+                print("Error: GOOGLE_API_KEY is required to run this workflow with Gemini.")
+                return
+            os.environ["GOOGLE_API_KEY"] = api_key
+    else:
+        print(f"Unsupported provider: {provider}")
+        return
     
     # Determine catalog flag and catalog source name
     use_catalog = catalog is not None
@@ -93,7 +105,8 @@ def run_instructional_design(course_name: str, copilot = None, catalog = None, m
     print("Using catalog data for the workflow.")
 
 
-    addie = ADDIE(course_name, model_name=model_name, copilot=use_copilot, catalog=use_catalog, data_catalog=data_catalog, data_copilot=data_copilot)
+    llm = LLM(model_name=model_name, provider=provider)
+    addie = ADDIE(course_name, model_name=model_name, copilot=use_copilot, catalog=use_catalog, data_catalog=data_catalog, data_copilot=data_copilot, llm=llm, provider=provider)
 
     # Run the workflow
     output_dir = f"./exp/{exp_name}/"
@@ -114,7 +127,10 @@ def run_instructional_design(course_name: str, copilot = None, catalog = None, m
 if __name__ == "__main__":
     with open("config.json", "r") as f:
         config = json.load(f)
-    os.environ["OPENAI_API_KEY"] = config.get("OPENAI_API_KEY", "")
+    if config.get("OPENAI_API_KEY"):
+        os.environ.setdefault("OPENAI_API_KEY", config.get("OPENAI_API_KEY", ""))
+    if config.get("GOOGLE_API_KEY"):
+        os.environ.setdefault("GOOGLE_API_KEY", config.get("GOOGLE_API_KEY", ""))
 
     # Set up command line arguments
     parser = argparse.ArgumentParser(description="Run instructional design workflow")
@@ -145,6 +161,14 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--provider",
+        type=str,
+        choices=["openai", "gemini"],
+        default="openai",
+        help="LLM provider to use (default: openai)"
+    )
+
+    parser.add_argument(
         "--exp", 
         type=str,
         default="test",
@@ -160,4 +184,5 @@ if __name__ == "__main__":
         catalog=args.catalog,
         model_name=args.model,
         exp_name=args.exp,
+        provider=args.provider,
     )

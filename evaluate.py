@@ -260,8 +260,8 @@ class CourseEvaluationSystem:
     """
     Main system for evaluating course materials
     """
-    def __init__(self, model_name: str, exp_name: str):
-        self.llm = LLM(model_name=model_name)
+    def __init__(self, model_name: str, exp_name: str, provider: str = "openai"):
+        self.llm = LLM(model_name=model_name, provider=provider)
         self.program_chair = ValidationAgent("Program Chair", self.llm)
         self.test_student = ValidationAgent("Test Student", self.llm)
         self.evaluator = EvaluationAgent(self.llm)
@@ -322,14 +322,25 @@ class CourseEvaluationSystem:
         json_path = output_dir / "evaluation_scores_overall.json"
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(results['overall_summary'], f, indent=2, ensure_ascii=False)
-        
+
         # Save markdown summary
         md_path = output_dir / "evaluation_summary.md"
         with open(md_path, 'w', encoding='utf-8') as f:
             f.write("# Course Material Evaluation Summary\n\n")
             f.write(f"**Evaluation Date:** {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
+
+            # Overall summary (if present)
+            overall = results.get("overall_summary")
+            if overall and "summary" in overall:
+                f.write("## Overall Summary\n\n")
+                f.write(f"- **Total Files:** {overall['summary'].get('total_files', 0)}\n")
+                f.write(f"- **Average Score:** {overall['summary'].get('average_score', 0):.2f}\n")
+                f.write(f"- **Score Range:** {overall['summary'].get('min_score', 0)} - {overall['summary'].get('max_score', 0)}\n\n")
+
             for file_type, data in results.items():
+                if file_type == "overall_summary":
+                    continue  # already handled above
+
                 f.write(f"## {file_type}\n\n")
                 f.write(f"- **Total Files:** {data['summary']['total_files']}\n")
                 f.write(f"- **Average Score:** {data['summary']['average_score']:.2f}\n")
@@ -344,13 +355,13 @@ class CourseEvaluationSystem:
         
         print(f"Saved evaluation results: {json_path}")
 
-def main(model_name, exp_name):
+def main(model_name, exp_name, provider):
     """
     Main function to process course materials
     """
     print("Starting Course Material Evaluation System...")
 
-    system = CourseEvaluationSystem(model_name, exp_name)
+    system = CourseEvaluationSystem(model_name, exp_name, provider=provider)
     root_dir = Path(f"exp/{exp_name}")
 
     # Collect all files to process
@@ -439,23 +450,34 @@ def main(model_name, exp_name):
 if __name__ == "__main__":
     with open("config.json", "r") as f:
         config = json.load(f)
-    os.environ["OPENAI_API_KEY"] = config.get("OPENAI_API_KEY", "")
+    if config.get("OPENAI_API_KEY"):
+        os.environ.setdefault("OPENAI_API_KEY", config.get("OPENAI_API_KEY", ""))
+    if config.get("GOOGLE_API_KEY"):
+        os.environ.setdefault("GOOGLE_API_KEY", config.get("GOOGLE_API_KEY", ""))
 
     # Set up command line arguments
     parser = argparse.ArgumentParser(description="Run evaluation ......")
     parser.add_argument(
-        "--model", 
+        "--model",
         type=str,
         default="gpt-4o-mini",
         help="Model name to use for evaluation"
     )
 
     parser.add_argument(
-        "--exp", 
+        "--exp",
         type=str,
         default="test",
         help="Experiment name for logging"
     )
-    
+
+    parser.add_argument(
+        "--provider",
+        type=str,
+        choices=["openai", "gemini"],
+        default="openai",
+        help="LLM provider to use (default: openai)"
+    )
+
     args = parser.parse_args()
-    main(model_name=args.model, exp_name=args.exp)
+    main(model_name=args.model, exp_name=args.exp, provider=args.provider)

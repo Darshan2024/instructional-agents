@@ -207,7 +207,7 @@ class ADDIERunner:
     def _save_chapters(self):
         """Save the processed chapters to a file"""
         chapters_path = os.path.join(self.output_dir, "processed_chapters.json")
-        with open(chapters_path, "w") as f:
+        with open(chapters_path, "w", encoding="utf-8") as f:
             json.dump(self.chapters, f, indent=2)
         print(f"\nProcessed chapters saved to: '{chapters_path}'")
     
@@ -383,15 +383,15 @@ class ADDIERunner:
     def _save_result(self, deliberation, result):
         """Save deliberation result to file"""
         file_path = os.path.join(self.output_dir, f"result_{deliberation.id}.{deliberation.output_format}")
-        with open(file_path, "w") as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             f.write(f"{deliberation.name}\n{'='*len(deliberation.name)}\n\n{result}")
         print(f"\nResult saved to: '{file_path}' ({deliberation.name} result)")
-    
+
     def _save_chapter_result(self, deliberation, result, chapter_idx, chapter_dir):
         """Save chapter-specific deliberation result to file"""
         # Save result to chapter directory
         file_path = os.path.join(chapter_dir, f"result_{deliberation.id}.{deliberation.output_format}")
-        with open(file_path, "w") as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             f.write(f"{deliberation.name}\n{'='*len(deliberation.name)}\n\n{result}")
         print(f"\nResult saved to: '{file_path}' ({deliberation.name} result)")
     
@@ -510,19 +510,20 @@ class ADDIE:
     ADDIE (Analyze, Design, Develop, Implement, Evaluate) class for instructional design
     This class coordinates a series of deliberations to create a complete course design
     """
-    def __init__(self, course_name, model_name: str = "gpt-4o-mini", copilot: bool = False, catalog: bool = False, data_catalog: dict = {}, data_copilot: dict = {}):
+    def __init__(self, course_name, model_name: str = "gpt-4o-mini", copilot: bool = False, catalog: bool = False, data_catalog: dict = {}, data_copilot: dict = {}, llm: LLM = None, provider: str = "openai"):
         """
         Initialize ADDIE workflow
-        
+
         Args:
             model_name: Name of the LLM model to use
             copilot: Whether to enable copilot mode with user feedback
         """
         self.course_name = course_name
         self.model_name = model_name
+        self.provider = provider
         self.copilot = copilot
         self.catalog = catalog
-        self.llm = LLM(model_name=model_name)
+        self.llm = llm if llm else LLM(model_name=model_name, provider=provider)
         self.deliberations = []
         self.results = []
         

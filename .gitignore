@@ -3,3 +3,5 @@ exp/
 assets/
 __pycache__/
 move_to_cache.py
+
+config.json
