@@ -9,7 +9,7 @@ from agents import (
     Deliberation,
 )
 
-from slides import SlidesDeliberation
+from slides import SlidesDeliberation, CHAPTER_AGENT_PROMPT
 from compile import LaTeXCompiler
 
 class SyllabusProcessor(Agent):
@@ -362,10 +362,10 @@ class ADDIERunner:
                 system_prompt="You are an Instructional Designer responsible for organizing course content into a logical slide structure. Your goal is to create an outline that covers all key topics with appropriate depth and flow."
             ),
             "teaching_assistant": Agent(
-                name="Teaching Assistant",
-                role="TA creating LaTeX slides and scripts",
+                name="Chapter Agent",
+                role="Generates slides, script, and assessments",
                 llm=self.addie.llm,
-                system_prompt="You are a Teaching Assistant responsible for creating LaTeX slides and detailed speaker notes. Your goal is to create well-formatted slides and comprehensive speaking notes that explain all key points clearly."
+                system_prompt=CHAPTER_AGENT_PROMPT or "You are a Teaching Assistant responsible for creating LaTeX slides and detailed speaker notes. Your goal is to create well-formatted slides and comprehensive speaking notes that explain all key points clearly."
             )
         }
         

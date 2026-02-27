@@ -1,12 +1,32 @@
 import os
 import json
 import re
+from pathlib import Path
 from typing import List, Dict, Any, Tuple
 
 from agents import (
     LLM,
     Agent,
 )
+
+
+# Load persona (if provided) and define an output contract so artifacts stay evaluate.py-compatible
+def _load_chapter_persona() -> str:
+    persona_path = Path("chapter_agent_persona.md")
+    if persona_path.exists():
+        return persona_path.read_text(encoding="utf-8")
+    return ""
+
+
+PERSONA_CORE = _load_chapter_persona()
+OUTPUT_CONTRACT = """
+You must emit THREE artifacts for this chapter:
+1) slides.tex - concise Beamer-ready bullets; include brief source attributions for any external ideas/examples.
+2) script.md - full speaker notes aligned to slide order; include source attributions.
+3) assessment.md - 5-10 items (mix recall, application, critical thinking); give clear instructions and a brief criterion/rubric where relevant.
+Save them with exactly these filenames in chapter_<n>/.
+"""
+CHAPTER_AGENT_PROMPT = (PERSONA_CORE + "\n\n" + OUTPUT_CONTRACT).strip()
 
 
 class SlidesDeliberation:
