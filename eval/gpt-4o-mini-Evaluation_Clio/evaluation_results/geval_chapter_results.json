@@ -1,0 +1,1638 @@
+{
+  "evaluator_name": "g-eval",
+  "artifact_type": "chapter",
+  "model_name": "gpt-4o-mini",
+  "artifacts": [
+    {
+      "artifact_id": "chapter_1",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for correct definitions and explanations of domain concepts, ensuring that all claims are accurate and backed by reliable sources.",
+          "Cross-reference the chapter's content with reputable textbooks or peer-reviewed articles to confirm the validity of technical explanations and avoid factual errors.",
+          "Check for the absence of misleading claims or ambiguous language that could confuse learners about core principles in software engineering.",
+          "Evaluate examples and illustrations used in the chapter for relevance and accuracy, ensuring they effectively support the concepts presented without introducing misconceptions.",
+          "Seek feedback from peers or subject matter experts who have expertise in software engineering to gather additional insights regarding the chapter's conceptual accuracy."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter for the appropriate language level and clarity for the target audience, ensuring that explanations are accessible and free from unnecessary jargon.",
+          "Identify whether the instructional intent of the chapter is clearly articulated and easy to follow, checking that key concepts are introduced sequentially and logically.",
+          "Examine examples and explanations provided in the chapter to ensure they support the instructional intent and help learners grasp the material effectively.",
+          "Evaluate the organization of the chapter to confirm that main ideas and supporting information are structurally sound, enhancing the pedagogical clarity of the content.",
+          "Solicit feedback from a sample of target learners to assess their understanding and determine if the chapter effectively meets their educational needs."
+        ],
+        "logical_flow": [
+          "Review the chapter's table of contents to ensure a logical progression of topics, confirming that units build on each other.",
+          "Examine the introductory section to verify it clearly outlines the purpose and goals of the chapter, creating a roadmap for readers.",
+          "Evaluate each section transition for clarity, checking that the end of one section naturally leads into the next, with appropriate linking phrases.",
+          "Look for summaries or conclusions at the end of key sections to ensure they effectively encapsulate the main points before proceeding.",
+          "Cross-check examples and practical applications used within the chapter to confirm they are relevant and reinforce the preceding content."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter to identify and extract all stated learning objectives.",
+          "Cross-reference each learning objective with the chapter content to ensure comprehensive coverage.",
+          "Evaluate the examples provided in the chapter to verify that they directly support the learning objectives.",
+          "Examine the assessments included in the chapter to ensure they measure the achievement of the learning objectives.",
+          "Compile a summary of findings, highlighting any gaps in alignment, and prepare recommendations for improvement."
+        ],
+        "quality_of_examples": [
+          "1. Review the examples provided in the chapter to verify their relevance to the learning objectives of the course.",
+          "2. Evaluate the correctness of each example, ensuring that they accurately represent the concepts being taught without misinformation.",
+          "3. Assess the level of detail in the examples to determine if they are concrete enough to aid student understanding, avoiding vague or abstract explanations.",
+          "4. Consider the helpfulness of the examples in providing clarity and context for the concepts being discussed; check if they include practical applications or relate to real-world scenarios.",
+          "5. Collect feedback from sample audiences (students or educators) on the examples' effectiveness in enhancing comprehension of the material."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter to determine if it clearly defines and describes fundamental software engineering principles, including methodologies and real-world applications.",
+          "Step 2: Assess the chapter's structure and organization to ensure it facilitates logical flow of information that supports learning outcomes.",
+          "Step 3: Analyze supplemental materials (e.g., examples, diagrams) to verify they enhance understanding of key concepts related to software engineering.",
+          "Step 4: Gather feedback from prospective users (instructors and students) regarding the chapter's practical usefulness as a teaching and learning aid.",
+          "Step 5: Compare the chapter's content against relevant academic and professional standards in software engineering education to evaluate its adequacy."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.985182683105204,
+        "pedagogical_clarity": 4.938238892207789,
+        "logical_flow": 4.98180053368951,
+        "alignment_with_learning_objectives": 4.922031079013084,
+        "quality_of_examples": 4.999692852855107,
+        "instructional_usefulness": 4.993203970701309
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter provides correct definitions and explanations of software engineering principles, such as the Software Development Lifecycle (SDLC) and methodologies like Agile and Waterfall. It accurately describes the role of programming, problem-solving techniques, software design patterns, and ethical considerations, supported by clear examples and structured learning objectives. The content aligns well with industry standards and best practices.",
+        "pedagogical_clarity": "The chapter provides clear definitions and structured explanations of complex concepts, making the content accessible to learners. Key ideas are introduced sequentially, ensuring that students can follow the instructional intent without confusion. Additionally, examples and real-world applications reinforce understanding, showcasing the relevance of software engineering principles to students.",
+        "logical_flow": "The chapter on Software Engineering presents a well-structured and coherent sequence where each section builds on the previous one. The introduction effectively establishes the goals of the chapter, serving as a roadmap for the reader. Each section transitions smoothly into the next, starting from foundational principles to more advanced topics. Additionally, key points are consistently reinforced through summaries, ensuring clarity and retention of core concepts.",
+        "alignment_with_learning_objectives": "The chapter content effectively supports the learning objectives by covering fundamental software engineering principles, methodologies, and practices, including in-depth discussions on software development life cycles and ethical considerations. Examples and assessments throughout the chapter reinforce these learning objectives, ensuring learners can demonstrate and apply the concepts presented.",
+        "quality_of_examples": "The chapter provides relevant examples that accurately represent the concepts of software engineering, such as the Software Development Lifecycle (SDLC) stages and methodologies like Agile and Waterfall. Each example is concrete, illustrating practical applications and enhancing understanding of complex topics. The use of coding examples and case studies further grounds the material in real-world scenarios, making it exceptionally helpful for learners.",
+        "instructional_usefulness": "The chapter provides well-defined learning objectives, addresses fundamental software engineering principles, includes comprehensive instruction on methodologies, and emphasizes practical applications. It is structured to facilitate logical learning flow, supported by examples and activities to enhance understanding."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.985182683105204,
+          "token_probabilities": {
+            "5": 0.9855638069569342,
+            "4": 0.014058310475083246,
+            "3": 0.00037464128423519934,
+            "2": 3.2412837472727906e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.938238892207789,
+          "token_probabilities": {
+            "5": 0.9391042320299219,
+            "4": 0.0600349218727753,
+            "3": 0.0008563523724720541,
+            "2": 4.493724830729734e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.98180053368951,
+          "token_probabilities": {
+            "5": 0.9819083461834383,
+            "4": 0.01798427835554675,
+            "3": 0.00010693842810137752,
+            "2": 4.370329136389528e-07
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.922031079013084,
+          "token_probabilities": {
+            "5": 0.9231331500595957,
+            "4": 0.07577537544832927,
+            "3": 0.0010808779376385595,
+            "2": 1.0596554436438975e-05
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.999692852855107,
+          "token_probabilities": {
+            "5": 0.9996985363167359,
+            "4": 0.00029595545390723144,
+            "3": 5.420613220916265e-06,
+            "1": 8.761613601803922e-08
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.993203970701309,
+          "token_probabilities": {
+            "5": 0.9932559527672556,
+            "4": 0.006692507250245699,
+            "3": 5.109789905064652e-05,
+            "2": 4.4208344810602096e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.970025001928668,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_10",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter to identify factual claims and verify them against reliable academic and industry sources to ensure conceptual accuracy.",
+          "Identify any technical concepts presented in the chapter and evaluate whether they are explained correctly and without ambiguity to avoid misleading claims.",
+          "Assess the clarity of explanations provided in the chapter to ensure that all employees and students, regardless of their expertise level, can grasp the concepts easily.",
+          "Check for the inclusion of examples and analogies that clarify complex concepts. Ensure that these examples accurately represent the domain standards.",
+          "Gather feedback from subject matter experts or peers to identify any potential gaps or inaccuracies in the chapter before assigning a score."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter to identify the target learner's language level, ensuring that the terminology and examples used are appropriate for their understanding.",
+          "Step 2: Evaluate the organization of the chapter, checking if the instructional intent is clearly outlined and each section logically flows to support the overall learning objectives.",
+          "Step 3: Assess the presence of explicit definitions or explanations for any complex terms or concepts, ensuring they are adequately explained to prevent confusion.",
+          "Step 4: Look for the inclusion of examples or scenarios applicable to the target learners, as these should reinforce the instructional intent and clarify how to apply the concepts discussed.",
+          "Step 5: Collect feedback from a sample of target learners regarding their comprehension of the chapter, paying close attention to areas that may be unclear, and use this data to assess pedagogical clarity."
+        ],
+        "logical_flow": [
+          "Review the chapter's overall structure to identify the logical sequence of topics and subtopics.",
+          "Check if each section naturally flows into the next, ensuring concepts introduced are built upon in subsequent sections.",
+          "Assess whether transitions between sections are clear and guide the reader through the material without confusion.",
+          "Verify that the chapter includes summaries or conclusions that reinforce the logical progression of the content.",
+          "Evaluate any illustrations or examples to ensure they complement the text and maintain the coherence of the chapter's flow."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the stated learning objectives of the chapter to ensure content directly addresses each objective.",
+          "Analyze the alignment of chapter content and real-world examples with the defined learning objectives, identifying any areas that may lack support.",
+          "Evaluate the assessments included in the chapter to confirm they measure understanding of the learning objectives effectively.",
+          "Check for consistency in terminology and explanations throughout the chapter to avoid confusion for the learners.",
+          "Gather feedback from a sample group of potential users on their comprehension of the chapter to determine if the content aligns with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Review the examples provided in the chapter for relevance to the learning objectives, ensuring they directly relate to fundamental software engineering principles and methodologies.",
+          "Check the accuracy of the examples used against credible resources or established standards in software engineering to confirm they are correct.",
+          "Evaluate the concreteness of the examples, ensuring they include specific details and context that aid in understanding the concepts, rather than remaining abstract or overly general.",
+          "Assess how helpful the examples are in aiding comprehension of the subject matter, considering whether they clarify or illuminate complex concepts for the intended audience.",
+          "Gather feedback from a small group of prospective users or peers on the examples presented, to determine if they find them relevant, understandable, and useful."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter's learning objectives to ensure they align with relevant instructional goals and expectations for both instructors and students.",
+          "Step 2: Assess the clarity and organization of the chapter's content, checking for logical structure, headings, and subheadings that facilitate ease of navigation.",
+          "Step 3: Evaluate the practical examples provided within the chapter, ensuring they effectively illustrate concepts and apply to real-world scenarios that users may encounter.",
+          "Step 4: Check for the inclusion of visual aids (such as diagrams, charts, or screenshots) that enhance understanding and support the instructional material.",
+          "Step 5: Solicit feedback from potential users (instructors or students) regarding their experiences with the chapter, focusing on usability and instructional effectiveness."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.950596847512484,
+        "pedagogical_clarity": 4.938893752487174,
+        "logical_flow": 4.893955230599831,
+        "alignment_with_learning_objectives": 4.92269728237259,
+        "quality_of_examples": 4.939013494485364,
+        "instructional_usefulness": 4.999080081842049
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately defines technical documentation, its purpose, and the types of documentation relevant to software engineering. It presents clear explanations of crucial concepts, such as the roles of user manuals, API documentation, and system architecture documents while avoiding any misleading claims or ambiguities. The examples provided reflect established practices in the field, supporting both technical and non-technical audiences effectively.",
+        "pedagogical_clarity": "The chapter effectively targets learners by using appropriate language and terminology for those new to software engineering, while providing clear definitions and examples throughout. The organization is logical, with each section building on the last to reinforce learning objectives. Additionally, the inclusion of real-world examples and scenarios aids in understanding.",
+        "logical_flow": "The chapter is well-organized with a clear sequence of topics and subtopics that build logically on one another, starting from an introduction to technical documentation, progressing to definitions, types, best practices, tools, and collaboration. Each section flows naturally into the next, with clear transitions that guide the reader through comprehensive examples and principles, reinforcing the overall learning objectives.",
+        "alignment_with_learning_objectives": "The chapter effectively aligns with the defined learning objectives by providing clear definitions, examples, and assessments that reinforce the essential principles of technical documentation. It covers various aspects, such as tools for creating documentation and common pitfalls, ensuring learners can demonstrate their understanding of technical writing concepts. Additionally, it emphasizes the importance of clarity and audience considerations, which are crucial for effective communication.",
+        "quality_of_examples": "The chapter showcases examples that are relevant to the learning objectives, such as user guides, API documentation, and system architecture documents. These examples provide contextual clarity and align with the fundamental principles outlined. Additionally, the use cases and best practices highlighted demonstrate how documentation can be tailored to both technical and non-technical audiences, enhancing comprehension. Overall, these examples effectively illuminate complex concepts for readers, ensuring a comprehensive understanding of effective technical documentation.",
+        "instructional_usefulness": "The chapter provides comprehensive learning objectives that align with instructional goals, ensuring it is relevant for both instructors and students. It includes structured content with clear headings and logical organization, which enhances ease of navigation. Additionally, it offers practical examples that illustrate complex concepts effectively and integrates visual aids, such as diagrams and charts, to enhance understanding."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.950596847512484,
+          "token_probabilities": {
+            "5": 0.9516202624181774,
+            "4": 0.047378385889230205,
+            "3": 0.0009833070286556118,
+            "2": 1.4026114772932377e-05,
+            "1": 4.018549163756702e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.938893752487174,
+          "token_probabilities": {
+            "5": 0.9394212657414852,
+            "4": 0.06005518804021388,
+            "3": 0.0005195791822900262,
+            "2": 3.967036010942565e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.893955230599831,
+          "token_probabilities": {
+            "5": 0.8996645891179503,
+            "4": 0.09482395359126775,
+            "3": 0.00534960139410467,
+            "2": 0.00012581056601750564,
+            "1": 3.6045330659710995e-05
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.92269728237259,
+          "token_probabilities": {
+            "5": 0.9234504278375767,
+            "4": 0.07580143387546223,
+            "3": 0.0007431311089356907,
+            "2": 5.007178025380293e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.939013494485364,
+          "token_probabilities": {
+            "5": 0.9394790520037654,
+            "4": 0.060058891589052234,
+            "3": 0.0004585552959627099,
+            "2": 3.5011112197721827e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.999080081842049,
+          "token_probabilities": {
+            "5": 0.9990845895585471,
+            "4": 0.0009110470906843096,
+            "3": 4.218985039380931e-06,
+            "2": 1.4436572923268567e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.940706114883248,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_11",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for accurate representation of key domain concepts, ensuring all definitions align with established standards in software engineering.",
+          "Check for the correct use of terminology related to the software development lifecycle and methodologies to avoid misleading claims.",
+          "Identify any factual errors or inconsistencies regarding programming languages and techniques that are mentioned in the chapter.",
+          "Evaluate the explanations of technical concepts to ensure they are valid and do not mislead the reader.",
+          "Cross-reference the chapter's content with credible educational resources or expert opinions to assess the overall conceptual accuracy."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter to identify the clarity of language used and whether it matches the comprehension level of target learners.",
+          "Analyze the instructional intent of the chapter to determine if the sequence of ideas flows logically and supports learning objectives.",
+          "Seek feedback from a sample of target learners to evaluate their understanding of key concepts presented in the chapter.",
+          "Compare the chapter against established pedagogical frameworks to assess its alignment with best practices in instructional design.",
+          "Check for the use of visual aids, examples, or analogies that enhance the clarity of complex ideas and support learner engagement."
+        ],
+        "logical_flow": [
+          "Review the overall structure of the chapter to ensure each section progresses logically from the introduction to the conclusion.",
+          "Check for clear transitions between sections to verify that ideas build upon one another in a coherent manner.",
+          "Identify any redundancies or gaps in content that might disrupt logical flow and suggest edits to enhance clarity.",
+          "Examine the use of headings and subheadings to determine if they appropriately signify the relationships between different parts of the chapter.",
+          "Assess whether the examples provided effectively illustrate the concepts discussed, ensuring they enhance comprehension and support logical connections."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the chapter's introduction and learning objectives to ensure they directly reflect the stated course learning objectives related to software engineering principles.",
+          "Step 2: Analyze chapter content for examples and explanations that illustrate each software engineering principle, verifying that they align with the specific learning objectives.",
+          "Step 3: Examine any assessments or questions provided within the chapter to ensure they effectively evaluate understanding of the learning objectives and concepts discussed.",
+          "Step 4: Cross-check the sequence of topics presented in the chapter against the syllabus to confirm that the flow of information gradually builds on previously established concepts.",
+          "Step 5: Solicit feedback from a peer or expert in instructional design to evaluate the chapter's effectiveness in meeting the alignment criterion before assigning a score."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples provided in the chapter to assess their relevance to the learning objectives outlined in the syllabus.",
+          "Step 2: Check the correctness of the examples by ensuring they accurately represent the concepts they aim to elucidate.",
+          "Step 3: Evaluate the concreteness of the examples by determining if they include sufficient detail and context to facilitate understanding.",
+          "Step 4: Analyze the helpfulness of the examples in terms of aiding comprehension of the chapter's main concepts.",
+          "Step 5: Compare the examples against best practices in instructional design to ensure they meet educational standards for quality."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter's content to ensure it covers all learning objectives outlined in the course syllabus relevant to the criterion of instructional usefulness.",
+          "Assess the clarity and organization of the chapter to determine if the material is presented in a logical manner that facilitates understanding for both instructors and students.",
+          "Examine the practical applications included in the chapter to confirm they provide meaningful examples that instructors can implement in teaching scenarios.",
+          "Evaluate the accompanying assessments or activities in the chapter to ensure they effectively measure learning outcomes and promote engagement with the subject matter.",
+          "Solicit feedback from a sample of instructors and students who have used the chapter to gather real-world insights on its effectiveness as a teaching and learning resource."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.993867824675382,
+        "pedagogical_clarity": 4.923267375271094,
+        "logical_flow": 4.969948709825593,
+        "alignment_with_learning_objectives": 4.969304449835724,
+        "quality_of_examples": 4.952191386215624,
+        "instructional_usefulness": 4.99235956291054
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately defines and presents the fundamental principles of software engineering, including the software development lifecycle and methodologies such as Agile and Waterfall. It also correctly outlines the significance of design patterns, such as Singleton and Observer, while illustrating their use with relevant examples and code snippets, thereby avoiding misleading claims or technical inaccuracies.",
+        "pedagogical_clarity": "The chapter explains core software engineering concepts using clear and accessible language suitable for learners at different levels. Each section logically flows into the next, effectively supporting the instructional intent. The use of examples, such as logging and configuration management, further solidifies understanding and engagement with the material.",
+        "logical_flow": "The chapter is organized coherently with a clear progression from the introduction to the conclusion. Each section builds upon the previous one, starting with foundational definitions and moving toward specific examples of design patterns. Transitions are smooth, and the content flows logically, making complex ideas easier to comprehend. The use of headings and subheadings effectively indicates the relationships between different parts of the chapter.",
+        "alignment_with_learning_objectives": "The chapter presents a comprehensive overview of design patterns, highlighting their definitions, purposes, and examples, all of which align with the stated course learning objectives. It emphasizes real-world applications of both the Singleton and Observer patterns, allowing students to see how these patterns fit into their programming practice. The structured methodology adhered to in both the exposition and the assessments effectively evaluates students' understanding of these design concepts.",
+        "quality_of_examples": "The examples provided in the chapter, such as the Singleton pattern and Observer pattern implementations, are relevant and correctly demonstrate key software engineering principles. For instance, the Singleton pattern example effectively illustrates how to ensure a class has only one instance, allowing for global access. Additionally, the Observer pattern example highlights how an object can notify multiple observers of state changes, reinforcing the concept of loose coupling in system design. Overall, the examples are concrete and helpful in understanding the concepts.",
+        "instructional_usefulness": "The chapter comprehensively addresses the course learning objectives, outlining fundamental software engineering principles, various programming methodologies, and hands-on coding techniques. It is well-organized, with clear explanations and practical applications that facilitate understanding for both instructors and students, alongside relevant assessments to measure learning outcomes."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.993867824675382,
+          "token_probabilities": {
+            "5": 0.993979577288285,
+            "4": 0.0059104198474599304,
+            "3": 0.00010825311560688346,
+            "2": 1.7497486482639556e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.923267375271094,
+          "token_probabilities": {
+            "5": 0.9237229720010529,
+            "4": 0.07582379719077618,
+            "3": 0.0004508648863839661,
+            "2": 2.365921786844687e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.969948709825593,
+          "token_probabilities": {
+            "5": 0.9703257537493052,
+            "4": 0.02930129986749851,
+            "3": 0.00036884884267985625,
+            "2": 4.097540516465204e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.969304449835724,
+          "token_probabilities": {
+            "5": 0.9700106700310536,
+            "4": 0.029291781453218143,
+            "3": 0.0006888768361275622,
+            "2": 8.671679600691649e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.952191386215624,
+          "token_probabilities": {
+            "5": 0.9523881261474754,
+            "4": 0.04741661345580878,
+            "3": 0.0001937808615798903,
+            "2": 1.4795351359743228e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.99235956291054,
+          "token_probabilities": {
+            "5": 0.9923915294174013,
+            "4": 0.007577004586202411,
+            "3": 3.096548593200327e-05,
+            "2": 5.005104642818612e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.966823218122326,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_12",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Examine the chapter for factual accuracy, ensuring that all presented concepts are correctly defined and elaborated upon without errors or misleading claims.",
+          "Verify the inclusion of examples or real-world applications that accurately illustrate the domain concepts discussed in the chapter, ensuring they are relevant and technically sound.",
+          "Assess the explanations for clarity and technical validity, ensuring that complex ideas are conveyed appropriately for the target audience without oversimplification or unnecessary jargon.",
+          "Evaluate the consistency of terminology used throughout the chapter, checking for adherence to standard definitions and proper contextual usage of technical terms within the domain.",
+          "Cross-reference the chapter content with authoritative sources or textbooks in the field to validate claims and ensure that the presented conceptual framework aligns with accepted knowledge."
+        ],
+        "pedagogical_clarity": [
+          "Review the language used in the chapter to determine if it is appropriate for the target learners, taking into account their age, educational background, and experience level.",
+          "Assess whether the instructional intent of the chapter is clearly stated and logically sequenced, ensuring that each idea builds upon the previous one.",
+          "Check for the inclusion of examples or analogies that relate the content to real-world scenarios relevant to the learners, enhancing comprehension and engagement.",
+          "Evaluate the clarity of any instructional materials, diagrams, or visuals included in the chapter to ensure they support understanding rather than create confusion.",
+          "Solicit feedback from a sample of target learners on their understanding of the chapter's content and instructional intent to gauge its effectiveness."
+        ],
+        "logical_flow": [
+          "Read through the chapter in its entirety to get a holistic understanding of its structure and flow.",
+          "Identify the introductory section and assess if it clearly outlines the purpose and direction of the chapter.",
+          "Examine each section and subsection to ensure they logically connect to the topics that precede and follow them, checking for clear transitions.",
+          "Check for redundancy or irrelevant information that could disrupt the logical flow of ideas being presented.",
+          "Evaluate the conclusion to determine if it effectively summarizes the main points and reinforces the connections between different sections of the chapter."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the learning objectives of the course and verify that the chapter content explicitly supports each objective, including key concepts, examples, and assessments.",
+          "Examine the examples and case studies provided in the chapter to ensure they are relevant and directly align with the stated learning objectives, thereby facilitating practical application.",
+          "Evaluate the assessments included in the chapter to confirm that they effectively measure the understanding of the learning objectives, ensuring they cover all desired learning outcomes.",
+          "Assess the coherence and flow of the chapter content to determine if it logically leads the learner through the material in a way that builds understanding of the learning objectives.",
+          "Gather feedback from a sample of students who have engaged with the chapter, to gain insights on their perception of alignment with the learning objectives and clarity of the material."
+        ],
+        "quality_of_examples": [
+          "Review each example in the chapter to determine its relevance to the learning objectives of the course. Are they aligned with the principles of software engineering being taught?",
+          "Assess the correctness of the examples. Check if the examples accurately illustrate the concepts without factual errors or misleading representations.",
+          "Evaluate the concreteness of the examples. Consider whether the examples are detailed enough for readers to understand the concepts clearly and whether they provide enough context.",
+          "Determine the helpfulness of the examples for learners. Ask whether the examples facilitate comprehension of complex concepts or if they complicate the topic further.",
+          "Solicit feedback from a sample of students who have engaged with the chapter. Gather their perspectives on the effectiveness and clarity of the examples provided."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter's learning objectives to ensure they are clear, measurable, and relevant to software engineering principles.",
+          "Step 2: Analyze the instructional strategies employed in the chapter, ensuring they promote engagement and facilitate the practical application of concepts.",
+          "Step 3: Assess the support materials provided (e.g., examples, exercise prompts) for their role in enhancing understanding and aiding instructors/students in real-world applications.",
+          "Step 4: Gather feedback from potential users (instructors or students) on the chapter's perceived usefulness and applicability in a real educational setting.",
+          "Step 5: Compare the chapter with established benchmarks or best practices in instructional design to evaluate its alignment with effective educational practices."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.994645198649875,
+        "pedagogical_clarity": 4.998658797864202,
+        "logical_flow": 4.991399623808898,
+        "alignment_with_learning_objectives": 4.996770572438146,
+        "quality_of_examples": 4.99780469905535,
+        "instructional_usefulness": 4.997809714073097
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents software engineering principles, methodologies (Agile and Waterfall), and various collaborative tools in an accurate and detailed manner, ensuring alignment with recognized standards in the field. Moreover, ethical dilemmas are discussed thoughtfully, reflecting professional responsibilities. Real-world examples support the theoretical concepts, enhancing understanding while maintaining technical clarity throughout the content.",
+        "pedagogical_clarity": "The chapter employs clear and accessible language suitable for learners, effectively outlining software engineering principles and methodologies. It presents a structured logical progression of content, with each concept building on previous ones. The inclusion of practical examples and relatable case studies enhances comprehension, while support materials like diagrams and flowcharts are integrated to clarify complex ideas without inducing confusion. Feedback mechanisms are also established to gauge learner comprehension, ensuring the instructional intent is thoroughly understood.",
+        "logical_flow": "The chapter is organized into distinct sections that build on one another, starting with course objectives, following through course structure, syllabus context, and gradually leading into specific methodologies and collaborative techniques. Each section logically progresses to the next, forming a coherent narrative regarding software engineering education, with clear transitions that guide the reader through the content without redundancy or irrelevant information.",
+        "alignment_with_learning_objectives": "The chapter extensively covers software engineering principles, methodologies like Agile and Waterfall, and fosters collaboration through various examples and case studies, directly aligning with the course objectives. It emphasizes the application of learned principles through practical assignments, reinforcing students' understanding of coding and quality assurance practices. Additionally, the inclusion of discussions on ethical dilemmas supports professional responsibilities, tying back to the course's ethical considerations learning objective.",
+        "quality_of_examples": "The examples provided throughout the chapter are relevant to the learning objectives, particularly in demonstrating the application of software engineering principles such as Agile and Waterfall methodologies. They are correct and align with industry practices, illustrating concepts without any factual inaccuracies. The examples also maintain a concrete level of detail, presenting clear applications like coding practices and project management strategies, thereby enhancing comprehension for learners. Additionally, feedback mechanisms such as peer reviews and technical documentation emphasize the importance of these practices in real-world scenarios, further supporting the learning objectives regarding collaboration and effective communication.",
+        "instructional_usefulness": "The chapter provides clear and measurable learning objectives that align with foundational software engineering principles, promoting practical knowledge application. It emphasizes collaborative strategies and includes structured approaches for presentations, enhancing engagement and understanding among students. Support materials like examples, exercises, and a well-defined feedback mechanism further strengthen the instructional value of this chapter."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.994645198649875,
+          "token_probabilities": {
+            "5": 0.9947133128790957,
+            "4": 0.005219776362630768,
+            "3": 6.570728732649086e-05,
+            "2": 1.2034709470303064e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.998658797864202,
+          "token_probabilities": {
+            "5": 0.9986669652858249,
+            "4": 0.0013250115980045609,
+            "3": 7.878810718490363e-06,
+            "2": 1.443054519925578e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.991399623808898,
+          "token_probabilities": {
+            "5": 0.9914111574814777,
+            "4": 0.008577385525886817,
+            "3": 1.1380312691675458e-05,
+            "2": 7.66799437495289e-08
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.996770572438146,
+          "token_probabilities": {
+            "5": 0.996799311789247,
+            "4": 0.003172594381949072,
+            "3": 2.744830650738067e-05,
+            "2": 6.455222966184196e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.99780469905535,
+          "token_probabilities": {
+            "5": 0.997811054395479,
+            "4": 0.0021827025533261725,
+            "3": 6.130762260158566e-06,
+            "2": 1.1228893475676613e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.997809714073097,
+          "token_probabilities": {
+            "5": 0.9978135261966371,
+            "4": 0.0021827084888980087,
+            "3": 3.7185053901529707e-06,
+            "2": 4.6809074780503124e-08
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.996181434314928,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_2",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for accurate definitions and descriptions of key software engineering principles and methodologies, ensuring that claims align with well-established literature.",
+          "Cross-reference the chapter's content against authoritative sources or textbooks in software engineering to identify any factual inaccuracies or misleading statements.",
+          "Evaluate the explanations of software development concepts (such as Agile and Waterfall) in the context of the course syllabus to confirm they are technically valid and appropriate for student understanding.",
+          "Assess the chapter for clarity and coherence in presenting concepts to ensure the explanations are easily understandable to the intended audience, providing rationale for any complex topics.",
+          "Solicit feedback from peers or domain experts on the technical content of the chapter to identify any potential misunderstandings or inaccuracies that may need revision before scoring."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter to assess whether concepts are presented in a manner that aligns with the learners' prior knowledge and language proficiency.",
+          "Examine the instructional goals and ensure each is clearly articulated with logical progression and accessible terminology for the target audience.",
+          "Evaluate the use of examples and real-world applications to ascertain that they are relevant and effectively clarify complex ideas.",
+          "Analyze the structure and flow of the chapter, confirming that there are coherent transitions between ideas and sections that enhance understanding.",
+          "Collect feedback from a small group of prospective learners regarding their comprehension of the material to determine if the instructional intent is achievable."
+        ],
+        "logical_flow": [
+          "Review the chapter's structure to identify if it follows a coherent progression of topics, ensuring that each section logically leads to the next.",
+          "Assess the clarity of the chapter's objectives and whether they are met through the content; check if each section reinforces the main goals.",
+          "Analyze the transitions between sections to see if they provide adequate context and connections, facilitating a smooth flow of ideas.",
+          "Evaluate the completeness of the content by verifying if all necessary concepts are thoroughly covered before introducing new topics, ensuring there are no gaps in understanding.",
+          "Gather feedback from peers or potential learners on the perceived logical flow of the chapter, confirming that the organization resonates with their expectations and learning process."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the stated learning objectives for the course and ensure that the chapter covers all the relevant concepts associated with each objective.",
+          "Verify that the chapter includes examples and case studies that illustrate the application of the learning objectives in real-world scenarios.",
+          "Check the assessments and exercises provided in the chapter for alignment with the learning objectives, ensuring they evaluate students' understanding of the key concepts.",
+          "Assess the clarity and accessibility of the chapter content, ensuring that students can easily relate the information back to the learning objectives.",
+          "Gather feedback from pilot testing with a sample group of learners on whether they found the chapter supportive in achieving the learning objectives, making annotations for future revisions."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review each example provided in the chapter for relevance to the core concepts being taught, ensuring they align with the learning objectives.",
+          "Step 2: Evaluate the accuracy of the examples by cross-referencing them with reputable sources or industry standards to verify correctness.",
+          "Step 3: Assess the concreteness of each example, ensuring they provide tangible context or real-world application that aids in understanding the concept.",
+          "Step 4: Determine how helpful the examples are in facilitating comprehension by considering if they clarify complex concepts or simplify learning.",
+          "Step 5: Compile feedback and observations to assign a score from 1 to 5 based on the overall quality of the examples, focusing on their relevance, correctness, concreteness, and helpfulness."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter's alignment with instructional goals and course learning objectives, ensuring that all relevant content is covered.",
+          "Assess the practicality and applicability of provided examples within the chapter to determine their relevance for instructors and students.",
+          "Evaluate the clarity and organization of the chapter, focusing on the flow of information and ease of understanding for the target audience.",
+          "Gather feedback from potential users (instructors/students) regarding the chapter's usefulness with specific emphasis on teaching and learning enhancements.",
+          "Check for the inclusion of supportive resources, such as exercises or further reading recommendations, that can augment the instructional usefulness of the chapter."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.998029869968163,
+        "pedagogical_clarity": 4.939583970105883,
+        "logical_flow": 4.962110473043216,
+        "alignment_with_learning_objectives": 4.969746158623883,
+        "quality_of_examples": 4.950383527203201,
+        "instructional_usefulness": 4.9858664409115105
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter comprehensively covers key software engineering principles, accurately presenting the Software Development Lifecycle (SDLC) and methodologies like Agile and Waterfall. Definitions and concepts align with authoritative sources, providing clear explanations that support student understanding. Additionally, the chapter addresses challenges and benefits relevant to these methodologies, ensuring conceptual integrity.",
+        "pedagogical_clarity": "The chapter effectively defines and explains the essential concepts of software development methodologies in clear, accessible language suitable for learners. The instructional intent is communicated through logically structured sections, real-world examples, and illustrative scenarios that enhance understanding. The material also invites engagement through questions and discussions, further solidifying the comprehension of key ideas.",
+        "logical_flow": "The chapter is structured logically, with clear progression from foundational concepts of software engineering to specific methodologies such as Waterfall and Agile. Each section builds on the previous one, establishing a coherent flow that supports learner comprehension. Transitions between main topics also provide necessary context and facilitate a smooth transition of ideas.",
+        "alignment_with_learning_objectives": "The chapter thoroughly addresses the course learning objectives by defining fundamental software engineering principles, exemplifying Agile and Waterfall methodologies, and applying them to real-world scenarios. It presents clear examples of programming concepts with relevant assessments to gauge understanding. Additionally, the content emphasizes team collaboration and effective communication, which are crucial aspects of the learning objectives.",
+        "quality_of_examples": "The examples provided in this chapter effectively illustrate core software engineering concepts. The real-world applications of Agile and Waterfall methodologies, such as the examples of Spotify and NASA's Mars Rover project, offer concrete evidence of how these approaches can be adopted in practice. They clarify the advantages and pitfalls associated with each methodology, which aids in understanding. Additionally, the integration of user stories and feedback mechanisms demonstrates the relevance of Agile practices in creating adaptive development processes.",
+        "instructional_usefulness": "The chapter provides comprehensive coverage of both Agile and Waterfall methodologies, detailing their principles, benefits, and challenges. It aligns well with course learning objectives by promoting understanding of software development processes, encourages practical application through case studies, and incorporates diverse instructional resources like discussion questions and assessments for deeper engagement."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.998029869968163,
+          "token_probabilities": {
+            "5": 0.9980516932646469,
+            "4": 0.001926693272662671,
+            "3": 2.140362889626435e-05,
+            "2": 2.098337942137236e-07
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.939583970105883,
+          "token_probabilities": {
+            "5": 0.9397540917063493,
+            "4": 0.06007647630471267,
+            "3": 0.00016874237740957158,
+            "2": 6.896115284559613e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.962110473043216,
+          "token_probabilities": {
+            "5": 0.9623977146236674,
+            "4": 0.03731620816951011,
+            "3": 0.00028491283319330625,
+            "2": 1.164373629146281e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.969746158623883,
+          "token_probabilities": {
+            "5": 0.9702253528437842,
+            "4": 0.029298268841335413,
+            "3": 0.00047356240985955376,
+            "2": 2.81590502087963e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.950383527203201,
+          "token_probabilities": {
+            "5": 0.9515079468616474,
+            "4": 0.047372792791263316,
+            "3": 0.0011141010357318935,
+            "2": 5.159311357419617e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.9858664409115105,
+          "token_probabilities": {
+            "5": 0.9859017696812872,
+            "4": 0.014063136427120704,
+            "3": 3.485901340740455e-05,
+            "2": 2.3487818477950152e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.967620073309309,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_3",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for specific instances of domain concepts and ensure they are presented correctly with accurate definitions.",
+          "Cross-reference any claims or explanations with authoritative sources to verify their validity and ensure there are no misleading statements.",
+          "Examine examples and case studies within the chapter to assess if they accurately represent the concepts in question and are devoid of factual errors.",
+          "Analyze the explanations of technical concepts for clarity and correctness, ensuring they adhere to accepted standards within the software engineering domain.",
+          "Solicit feedback from subject matter experts to identify any overlooked inaccuracies or misconceptions before final scoring is assigned."
+        ],
+        "pedagogical_clarity": [
+          "Read the chapter thoroughly and assess if the language used matches the understanding level of the target learners.",
+          "Identify specific sections of the chapter where concepts are explained and evaluate if the instructional intent is conveyed clearly.",
+          "Analyze examples provided in the chapter for their relevance and ability to clarify complex ideas.",
+          "Check if there are summaries or reviews at the end of sections that encapsulate key ideas for reinforcing learning.",
+          "Gather feedback from a sample of target learners to understand if they find the chapter's content accessible and easy to follow."
+        ],
+        "logical_flow": [
+          "Review the chapter's organization to ensure that the sections are arranged in a logical sequence, with a clear progression from one topic to the next.",
+          "Check for coherence between sections to confirm that each part builds on the previous one, reinforcing concepts and providing clear connections.",
+          "Evaluate the use of transitions and summaries to determine if they effectively guide the reader through the logical flow of the chapter.",
+          "Assess whether complex ideas are broken down into smaller, manageable segments that contribute to a deeper understanding of the chapter's topic.",
+          "Gather feedback from potential readers about their experience navigating through the chapter to identify any areas where the logical flow may be unclear."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter content to ensure it fully addresses each of the stated learning objectives, providing relevant examples where applicable.",
+          "Analyze the assessments included in the chapter to confirm they align with and effectively measure the stated learning objectives.",
+          "Identify any missing content or areas where the chapter deviates from the learning objectives, and provide specific feedback on these discrepancies.",
+          "Cross-reference the examples and applications provided in the chapter with real-world scenarios to check for relevance and practicality related to the learning objectives.",
+          "Solicit peer feedback or expert opinion on the chapter's content alignment with learning objectives to gain additional perspectives on its effectiveness."
+        ],
+        "quality_of_examples": [
+          "Review each example provided in the chapter and assess their relevance to the learning objectives outlined in the syllabus.",
+          "Verify the correctness of the information presented in the examples by cross-referencing with reputable sources or established standards in software engineering.",
+          "Evaluate the concreteness of each example by checking if it includes specific details, such as real-world applications, code snippets, or case studies that facilitate understanding.",
+          "Assess the helpfulness of the examples in terms of clarity and how effectively they illustrate the concepts being taught, aiming for a connection between the example and the learner's ability to grasp the material.",
+          "Compile feedback on the examples focusing on any gaps or areas for improvement, ensuring clarity for any introductory audience who may engage with the chapter."
+        ],
+        "instructional_usefulness": [
+          "1. Review the chapter's structure and organization to ensure it has a logical flow and is easy to navigate for users.",
+          "2. Assess the clarity and thoroughness of explanations, ensuring that concepts are well-defined and applicable to real-world scenarios.",
+          "3. Verify the inclusion of relevant examples, exercises, or case studies that enhance understanding of the material and facilitate practical application.",
+          "4. Evaluate the accessibility of the content for different audiences, ensuring it's tailored for both instructors and students with varying levels of expertise.",
+          "5. Check for comprehensive supplemental materials, such as quizzes or discussion questions, that promote engagement and reinforce learning objectives."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.984818907507698,
+        "pedagogical_clarity": 4.962372126356631,
+        "logical_flow": 4.904251851398604,
+        "alignment_with_learning_objectives": 4.9701816115485515,
+        "quality_of_examples": 4.317154386300651,
+        "instructional_usefulness": 4.970244110385187
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents key concepts of software engineering, including Object-Oriented Programming (OOP) principles like encapsulation, inheritance, polymorphism, and abstraction. Each concept is defined clearly with relevant examples, such as showing how a Car class inherits from a Vehicle class. The explanations adhere strictly to accepted standards within the software engineering domain, with no misleading claims or factual errors present.",
+        "pedagogical_clarity": "The chapter provides a clear and structured explanation of Object-Oriented Programming (OOP) principles, utilizing language that is accessible for beginner learners. Examples, such as the use of a 'Car' class, illustrate complex ideas and help reinforce learning. The use of clear headings, bullet points, and summaries enhances comprehension, making instructional intent easy to follow.",
+        "logical_flow": "The chapter is organized in a coherent sequence, starting with foundational concepts such as Object-Oriented Programming principles, followed by an introduction to the Software Development Lifecycle, and culminating in methodologies and practices related to software engineering. Each section builds upon the last, reinforcing understanding through examples and applications, which create clear connections among topics.",
+        "alignment_with_learning_objectives": "The chapter content effectively addresses the stated learning objectives by providing a comprehensive overview of software engineering principles, including key concepts such as object-oriented programming, software development methodologies, and quality assurance practices. Each section includes practical examples and scenarios that align with real-world applications, enhancing the learning experience. Furthermore, assessments and activities within the chapter are directly linked to the learning objectives, ensuring that students can demonstrate their understanding and application of the material.",
+        "quality_of_examples": "The examples provided in the chapter are relevant to the learning objectives outlined in the syllabus. They illustrate key concepts of Object-Oriented Programming (OOP), such as encapsulation and inheritance, using concrete examples like a 'Car' class and its interaction with a 'Vehicle' class. These examples are helpful for understanding the principles of OOP and illustrate their importance in modern programming, enhancing clarity and engagement for learners.",
+        "instructional_usefulness": "The chapter is well-structured with a logical flow, allowing easy navigation through critical topics. It provides thorough explanations of essential concepts like OOP principles, SDLC phases, and quality assurance practices, making it relevant and useful for both instructors and students. The inclusion of practical examples, exercises, and real-world applications further enhances its applicability, catering to various learning styles."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.984818907507698,
+          "token_probabilities": {
+            "5": 0.9853886483762616,
+            "4": 0.01405581572948085,
+            "3": 0.0005450031203392778,
+            "2": 6.860573530024037e-06,
+            "1": 3.6722003881402376e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.962372126356631,
+          "token_probabilities": {
+            "5": 0.9625257496823114,
+            "4": 0.03732117707640349,
+            "3": 0.00015252315689005566,
+            "2": 5.500843950284185e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.904251851398604,
+          "token_probabilities": {
+            "5": 0.9044614177556506,
+            "4": 0.09532953278783038,
+            "3": 0.00020853255599193287,
+            "2": 5.169005270708028e-07
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.9701816115485515,
+          "token_probabilities": {
+            "5": 0.97043953422406,
+            "4": 0.02930473661359145,
+            "3": 0.00025353564918852275,
+            "2": 2.1935131599044184e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.317154386300651,
+          "token_probabilities": {
+            "4": 0.6772955621129201,
+            "5": 0.3199317698620679,
+            "3": 0.002767952488607177,
+            "2": 4.715536404888671e-06
+          },
+          "raw_response": "4"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.970244110385187,
+          "token_probabilities": {
+            "5": 0.9704696906298403,
+            "4": 0.029305643546349562,
+            "3": 0.0002237514029671895,
+            "2": 9.144208429625742e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.851503832249554,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_4",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review each concept presented in the chapter to ensure it aligns with established knowledge in software engineering and programming.",
+          "Cross-reference claims made in the chapter with credible sources to identify any potential misleading statements or factual inaccuracies.",
+          "Check for the presence of examples that illustrate the proper use of concepts, ensuring they effectively demonstrate the application of the theories discussed.",
+          "Assess the clarity of explanations provided for each concept to ensure there are no technically invalid explanations or ambiguities that could mislead learners.",
+          "Evaluate the overall coherence and logical flow of the chapter to ensure that all concepts are presented systematically without contradictions."
+        ],
+        "pedagogical_clarity": [
+          "Read through the chapter and identify specific sections that define pedagogical clarity, focusing on how concepts are introduced and explained.",
+          "Evaluate the language used in the chapter for suitability to the target learners, ensuring that terminology is appropriate and accessible.",
+          "Assess the overall structure of the chapter to determine if the instructional intent is clearly outlined and logically sequenced.",
+          "Look for examples and illustrations within the chapter that enhance understanding and clarify complex ideas, noting their effectiveness.",
+          "Gather feedback from a sample of target learners on their comprehension and engagement with the chapter, and analyze this data for trends."
+        ],
+        "logical_flow": [
+          "Read through the chapter to obtain a general understanding of its content and structure.",
+          "Identify the main sections of the chapter and outline their key points to analyze the coherence and sequencing.",
+          "Evaluate the transitions between sections to determine if they facilitate a logical progression of ideas.",
+          "Assess if the connections between sections build upon each other naturally and if prior sections support the understanding of subsequent ones.",
+          "Provide feedback on any areas where the logical flow could be improved before assigning a score from 1 to 5."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter content to ensure all key points related to the learning objectives are included.",
+          "Examine examples within the chapter to confirm they illustrate and reinforce the corresponding learning objectives.",
+          "Evaluate assessments and quizzes in the chapter to check that they align with and test for understanding of the learning objectives.",
+          "Check for any gaps in content where learning objectives may not be adequately addressed or supported.",
+          "Seek feedback from peers or colleagues to gain insights on the clarity and effectiveness of the alignment with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples provided in the chapter for relevance to the learning objectives. Ensure they align with the concepts being taught.",
+          "Step 2: Verify the correctness of each example, ensuring they accurately illustrate the concept without any errors or misconceptions.",
+          "Step 3: Assess the sufficiency of concreteness in the examples by evaluating whether they provide enough detail for understanding.",
+          "Step 4: Evaluate how helpful the examples are for understanding the concept, considering whether they engage the learner and facilitate deeper comprehension.",
+          "Step 5: Gather feedback from learners (if possible) to gauge the usefulness of the examples in their learning process and make adjustments as needed."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter to identify clear definitions and explanations of software engineering principles, ensuring instructional clarity.",
+          "Assess the chapter's use of examples and case studies that demonstrate real-world applications of the principles discussed, enhancing practical understanding.",
+          "Evaluate the inclusion of interactive elements, such as quizzes or discussions, that encourage student or instructor engagement with the material.",
+          "Determine if the chapter provides multiple perspectives on ethical dilemmas in software engineering and encourages critical thinking through reflection questions.",
+          "Check for a clear structure and organization in the chapter that supports logical progression of topics, making it easy for instructors and students to follow."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.998599445078479,
+        "pedagogical_clarity": 4.707887844168041,
+        "logical_flow": 4.090006680637262,
+        "alignment_with_learning_objectives": 4.807521077136172,
+        "quality_of_examples": 4.935905072836916,
+        "instructional_usefulness": 4.79888699028629
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents fundamental software engineering principles and problem-solving techniques, adhering to established practices without any misleading information or factual errors. It provides clear examples and articulates the relationship between algorithms and data structures effectively, ensuring clarity throughout the discussion.",
+        "pedagogical_clarity": "The chapter effectively introduces problem-solving and algorithm concepts using accessible language suited for learners. It explains complex ideas with clear examples, such as the find_max function and algorithmic processes, making the instructional intent logical and easy to follow. Additionally, the structured approach through sections and key points reinforces understanding and retention.",
+        "logical_flow": "The chapter presents a clear organization from problem-solving introductions to detailed explanations of algorithms and their applications, facilitating a smooth progression of ideas. Each section builds logically upon the previous content, creating a coherent narrative for the reader that enhances understanding. However, transitions between some technical definitions and practical examples could be improved for even greater clarity.",
+        "alignment_with_learning_objectives": "The chapter effectively defines and describes fundamental software engineering principles while aligning examples and exercises with the specified learning objectives. Each section, such as problem-solving techniques and algorithm design, supports the overall instructional goals, ensuring that students not only learn theoretical concepts but also apply them in practical coding scenarios, as evidenced by both the programming assignments and discussions throughout the syllabus.",
+        "quality_of_examples": "The examples provided in the chapter are relevant as they align with core programming and software engineering concepts, such as finding the maximum number and sorting algorithms. They accurately demonstrate the associated techniques, like the use of iterative processes and algorithmic structure, thereby facilitating understanding. Moreover, the examples include clear pseudocode and practical implementations in Python, which are concrete and applicable for learners looking to grasp fundamental coding principles.",
+        "instructional_usefulness": "The chapter provides clear definitions and explanations of software engineering principles, enhancing instructional clarity. It utilizes real-world examples, such as recommendation systems and healthcare diagnostics, to demonstrate the application of these principles, thereby enhancing practical understanding. Additionally, it encourages interaction through hands-on coding exercises that solidify learning."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.998599445078479,
+          "token_probabilities": {
+            "5": 0.9987241878774646,
+            "4": 0.0011693858558256677,
+            "3": 9.598899059512825e-05,
+            "1": 7.879256160910538e-06,
+            "2": 2.558019953588084e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.707887844168041,
+          "token_probabilities": {
+            "5": 0.7213237951215836,
+            "4": 0.2653602104696927,
+            "3": 0.013211506940765358,
+            "2": 8.901839109764e-05,
+            "1": 1.54690768606509e-05
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.090006680637262,
+          "token_probabilities": {
+            "4": 0.8578986070012694,
+            "5": 0.11610395442697971,
+            "3": 0.02590629394515798,
+            "2": 8.245403521880722e-05,
+            "1": 8.690591374058933e-06
+          },
+          "raw_response": "4"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.807521077136172,
+          "token_probabilities": {
+            "5": 0.8130694793356877,
+            "4": 0.18142031772922557,
+            "3": 0.005478418241989886,
+            "2": 2.537012176437512e-05,
+            "1": 6.4145713324218065e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.935905072836916,
+          "token_probabilities": {
+            "5": 0.9379758903705214,
+            "4": 0.05996279387511752,
+            "3": 0.0020518139751168145,
+            "2": 9.501779244291282e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.79888699028629,
+          "token_probabilities": {
+            "5": 0.8091992261273415,
+            "4": 0.18055676098929518,
+            "3": 0.010186315416322261,
+            "2": 4.7171976393768733e-05,
+            "1": 1.052549064725957e-05
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.723134518357193,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_5",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter thoroughly, noting definitions of fundamental software engineering principles to ensure they are accurate and aligned with current knowledge.",
+          "Cross-reference key concepts presented in the chapter with reputable sources or textbooks to confirm correctness and relevance within the field.",
+          "Check for common misconceptions or errors related to software engineering principles that may be misrepresented in the chapter, ensuring explanations are clear and valid.",
+          "Evaluate the chapter for technical validity by ensuring that all examples and applications relate accurately to the concepts being discussed, and that they do not mislead the reader.",
+          "Solicit feedback from peers or domain experts on the chapter's content to gain insights on its clarity and conceptual accuracy before assigning a final score."
+        ],
+        "pedagogical_clarity": [
+          "Read through the chapter thoroughly to identify the instructional goals and clarity of explanations.",
+          "Assess the use of language to determine if it is appropriate for the target audience, ensuring terminology is learner-friendly.",
+          "Evaluate the logical flow of the content to confirm that ideas are presented in a clear and cohesive manner.",
+          "Examine examples and visuals to see if they effectively illustrate the key concepts, enhancing understanding.",
+          "Check for summaries or key takeaway sections at the end of the chapter that reinforce the instructional intent and major points."
+        ],
+        "logical_flow": [
+          "Review the chapter's overall structure to determine if there is a clear introduction, body, and conclusion that logically organizes the content.",
+          "Examine section transitions to ensure they effectively guide the reader from one topic to the next, maintaining coherence and providing context.",
+          "Analyze the flow of concepts to verify that each section builds on the previous one seamlessly, reinforcing the logical progression of ideas.",
+          "Check for redundancy or unnecessary complexity that might disrupt the logical flow; ensure each point is necessary and contributes to the overall narrative.",
+          "Solicit feedback from peers or test readers on clarity and coherence to identify any areas where the logical flow may not be as strong as intended."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter content to identify whether each section, example, and assessment directly supports one or more of the stated learning objectives.",
+          "Cross-reference the examples provided in the chapter with real-world applications of the learning objectives to ensure relevant and practical context is provided.",
+          "Evaluate the assessments included in the chapter to determine if they effectively measure students' understanding of the learning objectives and if they align with the content covered.",
+          "Check for clarity and coherence in the presentation of the information, ensuring that learners can easily connect the content to the learning objectives.",
+          "Seek feedback from peers or subject matter experts to gain insights into the alignment and effectiveness of the chapter's content with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the chapter for clarity and relevance of examples related to the core concepts being taught.",
+          "Step 2: Check each example for correctness, ensuring that it accurately represents the software engineering principle being discussed.",
+          "Step 3: Analyze whether the examples are concrete and relatable, looking for their applicability in real-world scenarios.",
+          "Step 4: Assess if the examples effectively facilitate understanding of the concept, considering if they simplify complex ideas or help clarify points.",
+          "Step 5: Gather feedback from peers or test readers to evaluate the overall helpfulness of the examples in enhancing comprehension."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter's alignment with stated learning objectives to ensure content consistency.",
+          "Step 2: Analyze the chapter for practical examples or applications that illustrate how the concepts can be applied in real teaching and learning contexts.",
+          "Step 3: Assess the clarity and organization of the material, looking for logical progression and ease of understanding for both instructors and students.",
+          "Step 4: Solicit feedback from instructors or students who have used the chapter as a resource in their teaching or learning to gauge its instructional usefulness.",
+          "Step 5: Compare the chapter with similar instructional resources to evaluate its uniqueness and effectiveness in enhancing teaching and learning."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.806128439088988,
+        "pedagogical_clarity": 4.614151349582875,
+        "logical_flow": 4.598214651888312,
+        "alignment_with_learning_objectives": 4.877575465617696,
+        "quality_of_examples": 4.875485049396173,
+        "instructional_usefulness": 4.960121943457654
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents clear definitions of various software engineering principles, particularly focusing on data structures like arrays, linked lists, stacks, queues, trees, and graphs. Each data structure is accurately described along with relevant examples, ensuring that the explanations are grounded in current software engineering practices. Furthermore, real-world applications are effectively linked to the appropriate data structures, illustrating their practical significance.",
+        "pedagogical_clarity": "The chapter clearly explains data structures using accessible language and provides well-structured definitions and examples for each type. Terminology like 'LIFO' and 'FIFO' is appropriately introduced and explained, enhancing comprehension for learners. Additionally, the use of relatable examples, such as music playlists for linked lists and web browser functionalities for stacks, helps demystify complex concepts, making them easier to understand.",
+        "logical_flow": "The chapter follows a clear structure with a logical progression from defining data structures to providing examples and hands-on exercises. It builds on previous concepts, such as arrays and linked lists, leading to more complex structures like trees. Each section flows into the next seamlessly, with thorough explanations of concepts and practical applications that add context and clarity.",
+        "alignment_with_learning_objectives": "The chapter thoroughly covers various data structures, including arrays, linked lists, stacks, queues, and trees, providing definitions, properties, and practical applications. Each type is connected to a specific learning objective, emphasizing their efficiency, implementation, and use cases, thereby supporting the course's stated learning objectives effectively.",
+        "quality_of_examples": "The chapter provides numerous examples of data structures, such as arrays, linked lists, stacks, and queues, along with their specific real-world applications, such as a web browser's back button and music playlists. These examples are relevant, correct, and sufficiently concrete, illustrating the operational context of each structure, thereby enhancing understanding of their practical significance in software engineering.",
+        "instructional_usefulness": "The chapter provides essential learning objectives aligned with real-world applications, exemplifying various data structures like arrays, linked lists, stacks, and trees. It features hands-on coding exercises that enhance understanding and practical skills, making the content highly relevant for students and instructors in software engineering."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.806128439088988,
+          "token_probabilities": {
+            "5": 0.8124532228960889,
+            "4": 0.18128280693261464,
+            "3": 0.00620315653549112,
+            "2": 6.081363580535296e-05
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.614151349582875,
+          "token_probabilities": {
+            "5": 0.6829273601449078,
+            "4": 0.25123493561079707,
+            "3": 0.06352214714429501,
+            "2": 0.0016928078822626134,
+            "1": 0.0006227492177373829
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.598214651888312,
+          "token_probabilities": {
+            "5": 0.6468245876197813,
+            "4": 0.30553828247058323,
+            "3": 0.04685581317813268,
+            "2": 0.0005898276411712476,
+            "1": 0.00019148909033149276
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.877575465617696,
+          "token_probabilities": {
+            "5": 0.8792930872968293,
+            "4": 0.11899938433699891,
+            "3": 0.0016974350532098547,
+            "2": 1.0093312962012754e-05
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.875485049396173,
+          "token_probabilities": {
+            "5": 0.8783182151257994,
+            "4": 0.11886745504350436,
+            "3": 0.002795493931765953,
+            "2": 1.8835898930158414e-05
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.960121943457654,
+          "token_probabilities": {
+            "5": 0.9614296647777127,
+            "4": 0.03727867141569183,
+            "3": 0.0012756062931320693,
+            "2": 1.6057513463290446e-05
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.788612816505283,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_6",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for correctness in presenting key software engineering principles, including methodologies and concepts relevant to the course.",
+          "Cross-reference the chapter's content with authoritative sources to ensure there are no factual errors or misleading claims.",
+          "Assess whether all domain concepts presented in the chapter adhere to the latest industry standards and practices without introducing technical inaccuracies.",
+          "Evaluate the clarity and detail of technical explanations to determine if they are understandable and logically structured for the target audience.",
+          "Solicit feedback from peers or subject matter experts in software engineering to identify any potential ambiguities or areas of improvement in the chapter's content."
+        ],
+        "pedagogical_clarity": [
+          "Read the chapter thoroughly to assess if the language used is age-appropriate and comprehensible for the target learners.",
+          "Check for clear explanations of key concepts and ideas to ensure the instructional intent is easily understood by the target audience.",
+          "Look for structured organization within the chapter to confirm that the flow of information facilitates learning and comprehension.",
+          "Identify the presence and clarity of examples or analogies used to illustrate complex ideas, ensuring they enhance understanding.",
+          "Evaluate the chapter for any potential ambiguities or jargon that might confuse learners, and determine if these are sufficiently defined or simplified."
+        ],
+        "logical_flow": [
+          "Review the chapter structure and identify if sections logically lead to one another, creating a coherent narrative.",
+          "Assess individual sections for clarity and coherence, ensuring that each paragraph supports the main idea of the chapter.",
+          "Evaluate transitions between sections to ensure they guide the reader seamlessly from one concept to the next.",
+          "Look for redundancy and ensure that concepts are presented without repetition while maintaining logical flow.",
+          "Conduct a peer review or a reading session with a focus group to gather feedback on the perceived logical flow of the chapter."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter and list all stated learning objectives from the syllabus.",
+          "Identify key content areas, examples, and assessments within the chapter that correspond to each learning objective.",
+          "Evaluate the congruence between the learning objectives and the presented content, checking for direct support of each objective.",
+          "Assess whether the assessments within the chapter adequately measure the achievement of the learning objectives.",
+          "Compile findings into a cohesive summary that indicates how well the chapter aligns with the learning objectives, providing specific evidence for scoring."
+        ],
+        "quality_of_examples": [
+          "Review the examples provided in the chapter for relevance to the learning objectives outlined in the syllabus.",
+          "Check the correctness of the examples by cross-referencing them with authoritative sources or established industry practices.",
+          "Evaluate the concreteness of the examples by assessing whether they offer clear, specific details rather than abstract or vague explanations.",
+          "Assess the helpfulness of the examples in terms of their ability to enhance understanding of the concepts, considering how well they illustrate key principles or practices.",
+          "Consider the variety of examples provided; ensure that they cover different aspects of the criterion to support diverse learning styles."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter to determine if it aligns with the course learning objectives and effectively conveys the fundamental software engineering concepts.",
+          "Assess the clarity and organization of the chapter, ensuring that concepts are presented logically and that key terms are well-defined for ease of understanding.",
+          "Evaluate the inclusion of examples and practical applications that instructors or students can use to enhance their understanding, specifically looking for real-world scenarios related to software engineering principles.",
+          "Check the accessibility of the content, ensuring that it caters to diverse learning styles by incorporating visual aids, examples, and supplementary resources.",
+          "Solicit feedback from potential users, such as instructors or students, to gauge perceived instructional usefulness and gather insights on areas for improvement before assigning a final score."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.990044256776385,
+        "pedagogical_clarity": 4.846160281086825,
+        "logical_flow": 4.77085824425172,
+        "alignment_with_learning_objectives": 4.900332251215323,
+        "quality_of_examples": 4.878296034656014,
+        "instructional_usefulness": 4.921401504148773
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents key software engineering principles and methodologies, including version control concepts, branching, merging, and Git commands. It aligns with current practices in the industry, ensuring technical correctness and clarity in explanations for the target audience of software engineering students.",
+        "pedagogical_clarity": "The chapter effectively explains software engineering concepts using language that is age-appropriate and accessible for learners. It provides clear definitions and examples of essential terms like 'branching' and 'merging,' making the instructional intent easy to follow. The structured organization of content, along with practical activities, enhances comprehension for the target audience.",
+        "logical_flow": "The chapter presents a logical progression from an introduction to software engineering concepts, then moves into the specifics of Git and its functionalities. Each section builds on the previous one, detailing essential commands and branching strategies before discussing best practices. The transitions are clear, guiding the reader through complex concepts without redundancy.",
+        "alignment_with_learning_objectives": "The chapter effectively addresses the stated learning objectives by providing comprehensive coverage of fundamental software engineering principles, including version control systems, branching, and merging strategies. Examples from Git demonstrate real-world applications, while assessments encourage both individual and collaborative coding practices, directly measuring students' understanding of the material.",
+        "quality_of_examples": "The chapter provides relevant examples of software engineering principles, emphasizing the importance of version control systems like Git. It includes concrete illustrations of branching and merging processes in Git, which help to clarify these concepts for learners. Additionally, the use of real-world scenarios, such as the collaboration and conflict resolution between developers, makes the examples both correct and helpful for understanding how to apply Git in practice.",
+        "instructional_usefulness": "The chapter provides a comprehensive overview of version control systems, focusing on Git, which is essential for collaborative software development. It includes clear explanations of key concepts like branching and merging, practical commands, and best practices that are directly applicable to real-world scenarios, making it highly useful for instructors and students in understanding how to manage code efficiently."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.990044256776385,
+          "token_probabilities": {
+            "5": 0.9901691682725007,
+            "4": 0.00970727771226116,
+            "3": 0.00012219653436089072,
+            "2": 1.3574808772003418e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.846160281086825,
+          "token_probabilities": {
+            "5": 0.8493091630667983,
+            "4": 0.14758780907240374,
+            "3": 0.0030630868903793215,
+            "2": 3.402782166155927e-05,
+            "1": 5.913148757157633e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.77085824425172,
+          "token_probabilities": {
+            "5": 0.7744931914750848,
+            "4": 0.22189602771920303,
+            "3": 0.0035866143880592346,
+            "2": 2.4166417652900483e-05
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.900332251215323,
+          "token_probabilities": {
+            "5": 0.9026098387002695,
+            "4": 0.09513437637211151,
+            "3": 0.0022373460856892364,
+            "2": 1.5075126532364187e-05,
+            "1": 3.3637153974242643e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.878296034656014,
+          "token_probabilities": {
+            "5": 0.879628040872691,
+            "4": 0.1190447224717039,
+            "3": 0.0013224670945334116,
+            "2": 4.7695610717380325e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.921401504148773,
+          "token_probabilities": {
+            "5": 0.9228388784512493,
+            "4": 0.0757512201662827,
+            "3": 0.0013874323247362362,
+            "2": 1.7465195455530622e-05,
+            "1": 5.003862276110316e-06
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.884515428689173,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_7",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for factual accuracy, ensuring all domain concepts related to software engineering are correctly defined and explained.",
+          "Cross-reference the claims made in the chapter with reliable source materials, such as textbooks or research papers, to identify any misleading claims or factual inaccuracies.",
+          "Examine the use of terminology and technical explanations to assess if they are valid and adhere to industry standards, ensuring no technically invalid explanations are present.",
+          "Evaluate the clarity and coherence of explanations provided for each domain concept, ensuring that the information is presented without ambiguity.",
+          "Seek feedback from subject matter experts in software engineering to identify any potentially misleading statements or areas that require further clarification."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter for the use of language and terminology to ensure it is appropriate for the target learners' level of understanding.",
+          "Assess the organization and coherence of the chapter to confirm that instructional intent is clearly articulated and easy to follow.",
+          "Evaluate the presence and clarity of examples that illustrate key concepts, ensuring that they are relevant and help to clarify complex ideas.",
+          "Examine the chapter's engagement strategies, such as questions or prompts, to determine if they effectively encourage learner interaction and reflection.",
+          "Solicit feedback from a sample of target learners to gather insights on their comprehension and any confusion experienced while reading the chapter."
+        ],
+        "logical_flow": [
+          "Review the chapter structure to ensure that each section logically follows the previous one, with smooth transitions between topics.",
+          "Identify the main ideas and arguments presented in each section, checking if they build upon previously established concepts to enhance understanding.",
+          "Evaluate the use of headings and subheadings to confirm they indicate a clear progression of thought throughout the chapter.",
+          "Observe the flow of information, looking for any gaps or abrupt shifts in topics that may disrupt the reader's understanding of the material.",
+          "Gather feedback from peers or other instructors to assess their perceptions of the logical flow and coherence of the chapter."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the stated learning objectives of the chapter to ensure clarity and comprehensiveness in supporting them throughout the content.",
+          "Step 2: Analyze the instructional content, including examples and assessments, to verify that each element aligns with the respective learning objectives, ensuring coherence.",
+          "Step 3: Assess the integration of practical examples within the chapter, confirming they demonstrate the application of software engineering principles as outlined in the objectives.",
+          "Step 4: Evaluate the assessments included in the chapter for effectiveness in measuring understanding of the learning objectives, ensuring they cover all necessary areas.",
+          "Step 5: Gather qualitative feedback from subject matter experts or instructional designers to identify any gaps in alignment between the chapter content and learning objectives."
+        ],
+        "quality_of_examples": [
+          "Review each example provided within the chapter for relevance to the concepts being taught, verifying that they are applicable to real-world scenarios.",
+          "Assess the accuracy of the examples by checking their correctness against established industry standards or practices to ensure they communicate the concept effectively.",
+          "Evaluate the concreteness of the examples by determining whether they offer practical, clear illustrations that can help learners visualize and understand the concept being discussed.",
+          "Consider the helpfulness of each example in enhancing learners' understanding of the concept, determining if they clarify complex ideas or introduce additional confusion.",
+          "Gather feedback from potential users or stakeholders regarding the examples presented to ensure they resonate and effectively serve the intended educational purpose."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter for clarity and comprehensibility, ensuring that concepts are well-articulated and definitions of key terms are accurate.",
+          "Assess the relevance of the content to the course learning objectives, determining whether the instructional material aligns with the expected outcomes.",
+          "Examine the practical applicability of the chapter’s concepts through real-world examples, evaluating whether scenarios presented are relatable and grounded.",
+          "Evaluate the chapter’s organization and structure, ensuring that the flow of information is logical and enhances understanding of the material.",
+          "Solicit feedback from a subset of potential users (instructors and students), gathering insights on how useful they find the content for their teaching and learning needs."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.997094135469088,
+        "pedagogical_clarity": 4.995880645284758,
+        "logical_flow": 4.922866348610021,
+        "alignment_with_learning_objectives": 4.96973607772932,
+        "quality_of_examples": 4.981771180480431,
+        "instructional_usefulness": 4.988950880412785
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents various software engineering concepts such as testing types, methodologies, and practices without misleading claims or factual inaccuracies. It clearly distinguishes between unit testing, integration testing, and other relevant practices, and provides valid examples and explanations grounded in standard software engineering principles. Overall, the terminologies and technical explanations are aligned with industry standards and clearly communicated.",
+        "pedagogical_clarity": "The chapter explains concepts of software engineering and testing clearly, utilizing terminology that aligns well with the learners' understanding level. Each section is well-organized, facilitating easy navigation and comprehension of the material. Examples of testing types and their significance are relevant and effectively illustrate the complex ideas presented. Feedback from target learners suggests that they found the chapter engaging and easy to follow, reinforcing the instructional intent.",
+        "logical_flow": "The chapter presents a well-structured flow where each section builds upon the previous one. Starting with the introduction and gradually delving into testing types, methodologies, and best practices, it maintains coherence. Clear transitions connect diverse topics like unit testing and collaboration, ensuring concepts are easily understood and relevant to practical software development.",
+        "alignment_with_learning_objectives": "The chapter effectively aligns with the stated learning objectives by providing clear definitions of software engineering principles, methodologies, and practices. It includes practical examples and assessments that correspond to the objectives, such as unit testing, integration testing, and quality assurance. This coherence ensures that students can directly relate the content to the skills they are expected to demonstrate.",
+        "quality_of_examples": "The chapter provides relevant and accurate examples of testing types, including unit, integration, system, and acceptance testing, which help clarify these concepts to learners. The examples are concrete, such as 'Testing a function like checking if calculateSum(a, b) returns a + b', making it easy for learners to visualize the application of each testing type. Overall, these examples effectively enhance understanding without introducing confusion, fulfilling their educational purpose.",
+        "instructional_usefulness": "The chapter provides a comprehensive overview of software engineering principles and testing practices, ensuring clarity and relevance to instructional goals. It incorporates real-world examples and structured learning objectives that align well with course outcomes. The organization enhances comprehension by breaking down complex topics into manageable sections, which is vital for both students and instructors."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.997094135469088,
+          "token_probabilities": {
+            "5": 0.997147091873118,
+            "4": 0.0028007808792714357,
+            "3": 5.129809119120703e-05,
+            "2": 8.291564193523143e-07
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.995880645284758,
+          "token_probabilities": {
+            "5": 0.9959054559155691,
+            "4": 0.004070038103419164,
+            "3": 2.42013312120538e-05,
+            "2": 3.0464979975359084e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.922866348610021,
+          "token_probabilities": {
+            "5": 0.9235317111988973,
+            "4": 0.07580810827991857,
+            "3": 0.0006558686467630211,
+            "2": 3.441681150213299e-06,
+            "1": 8.701932709087455e-07
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.96973607772932,
+          "token_probabilities": {
+            "5": 0.9702224455402401,
+            "4": 0.029298176955461677,
+            "3": 0.0004735610375684672,
+            "2": 4.642626836949598e-06,
+            "1": 1.1738398929266049e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.981771180480431,
+          "token_probabilities": {
+            "5": 0.9818939887383765,
+            "4": 0.01798401947650936,
+            "3": 0.00012117531228233552,
+            "2": 8.164728317560069e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.988950880412785,
+          "token_probabilities": {
+            "5": 0.9889822734793583,
+            "4": 0.010986600437591747,
+            "3": 3.085909952667916e-05,
+            "2": 2.6698352334759225e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.976049877997734,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_8",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Step 1: Review the chapter for factual accuracy, ensuring all domain concepts are presented correctly without misleading claims.",
+          "Step 2: Cross-reference the content with authoritative sources such as industry standards or academic literature to identify any factual errors and validate claims.",
+          "Step 3: Evaluate technical explanations for validity and clarity, ensuring that they are appropriate for the targeted audience's understanding level.",
+          "Step 4: Analyze any real-world examples provided in the chapter to confirm their relevance and technical correctness in illustrating concepts.",
+          "Step 5: Gather peer feedback or expert reviews of the chapter to gain a diverse perspective on its conceptual accuracy before scoring."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter to identify the target learners' age and proficiency levels. Assess whether the language used is appropriate for these learners.",
+          "Step 2: Analyze whether key instructional goals and objectives are clearly articulated in the chapter. Check for clear definitions and examples that align with the learning objectives.",
+          "Step 3: Evaluate the coherence and structure of the chapter. Ensure that ideas are presented in a logical order, making it easy for learners to follow the instructional intent.",
+          "Step 4: Look for the presence of visual aids or examples that help clarify complex concepts. Determine if these elements enhance understanding and engagement for learners.",
+          "Step 5: Gather feedback from a small group of representative learners regarding their comprehension and engagement with the chapter. Use this feedback to assess the pedagogical clarity of the instructional content."
+        ],
+        "logical_flow": [
+          "Review the chapter's table of contents to ensure it logically organizes topics in a coherent sequence.",
+          "Analyze the transitions between sections to confirm they clearly connect ideas and build on previous knowledge.",
+          "Assess the clarity of section objectives to ensure they effectively prepare the learner for the content covered.",
+          "Identify any redundancies in content presentation to ensure clarity and avoid confusion for the learner.",
+          "Evaluate the conclusion to verify it summarizes the key points and reinforces the logical flow of the chapter."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter content to determine if it explicitly addresses each of the learning objectives outlined for the course.",
+          "Check the examples provided in the chapter; they should reflect real-world applications that align closely with the defined software engineering principles and methodologies.",
+          "Evaluate the assessments included in the chapter to ensure they effectively measure students' understanding of the learning objectives.",
+          "Cross-reference each section of the chapter against the learning objectives to confirm that all necessary topics have been covered without significant omissions.",
+          "Solicit feedback from a peer evaluator or instructional designer to identify any areas of misalignment that may not have been initially considered."
+        ],
+        "quality_of_examples": [
+          "Review the examples provided in the chapter to determine if they are relevant to the learning objectives outlined in the course.",
+          "Check for the correctness of the examples by verifying them against established principles and practices within the field of software engineering.",
+          "Assess the concreteness of each example by analyzing if they are detailed enough to provide clear guidance or understanding of the concepts being taught.",
+          "Evaluate the helpfulness of the examples by considering if they enhance the learner's ability to grasp the concepts and apply them in practical situations.",
+          "Consider the overall balance of examples provided. Ensure there is a mix of theoretical and practical examples to cater to diverse learning preferences."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter's alignment with course learning objectives to ensure it meets the defined instructional goals.",
+          "Assess the clarity and organization of content, evaluating if the material is presented in a logical manner conducive to teaching and learning.",
+          "Examine the practical applicability of examples and exercises provided in the chapter, ensuring they facilitate hands-on learning for students.",
+          "Evaluate the chapter's ability to engage students through interactive elements such as discussion prompts and activities, assessing their effectiveness in reinforcing key concepts.",
+          "Gather feedback from instructors or educators who have utilized the chapter in teaching to gain insights on its instructional usefulness and areas for improvement."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.93671989856403,
+        "pedagogical_clarity": 4.849562075734583,
+        "logical_flow": 4.9768756376971535,
+        "alignment_with_learning_objectives": 4.988817164023017,
+        "quality_of_examples": 4.988970540528951,
+        "instructional_usefulness": 4.98194350066027
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents core principles of automated testing, defining its significance in improving software quality, efficiency, and consistency. It identifies JUnit and pytest as pivotal frameworks for unit testing in Java and Python, respectively, and discusses their advantages and features without presenting misleading claims or technical inaccuracies. Examples, such as the integration of testing in CI/CD pipelines, effectively illustrate the practical applications of the discussed concepts.",
+        "pedagogical_clarity": "The chapter provides clear definitions and examples of key concepts related to automated testing, using language suitable for learners with varying levels of expertise. The logical structure progresses from the basics of automated testing to specific tools and practices, effectively guiding the reader through the material. Additionally, the chapter includes visual aids and practical exercises that reinforce understanding and engagement.",
+        "logical_flow": "The chapter is well-organized, with topics sequenced logically from an introduction to automated testing to specific tools like JUnit and pytest, followed by best practices and integration into CI pipelines. Transitions between sections smoothly build upon previously covered concepts, contributing to a coherent narrative. Each section has clear objectives that prepare the learner for the next, reinforcing understanding and retention of the material.",
+        "alignment_with_learning_objectives": "The chapter content comprehensively aligns with the learning objectives by defining software engineering principles, demonstrating programming proficiency through examples such as unit tests, and discussing problem-solving techniques in the context of automated testing. Each section, including unit testing and integration with CI/CD pipelines, ties back to the stated objectives, showcasing applicable real-world scenarios and assessments that validate student understanding.",
+        "quality_of_examples": "The chapter provides relevant examples of automated testing tools such as JUnit and pytest that align with course learning objectives. Each example is correctly explained and concrete enough to help students understand the practical application of concepts covered. Additionally, the inclusion of real-world scenarios enhances comprehension and relatability, catering to diverse learning preferences.",
+        "instructional_usefulness": "The chapter aligns well with the course learning objectives, providing practical insights into automated testing through structured content that is logically organized. It offers clear explanations, practical examples, and actionable insights for applying unit tests using JUnit and pytest, making it highly applicable for both instructors and students. Additionally, the inclusion of best practices and CI integration enhances its overall effectiveness as a teaching and learning artifact."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.93671989856403,
+          "token_probabilities": {
+            "5": 0.9383839628363945,
+            "4": 0.05998887481833365,
+            "3": 0.0015986493641322178,
+            "2": 2.0124035187358485e-05,
+            "1": 8.388945952283627e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.849562075734583,
+          "token_probabilities": {
+            "5": 0.8508564997665324,
+            "4": 0.14785668266516414,
+            "3": 0.0012792111046573682,
+            "2": 7.606463646060111e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.9768756376971535,
+          "token_probabilities": {
+            "5": 0.9769503889499861,
+            "4": 0.022975672159529673,
+            "3": 7.312652813625283e-05,
+            "2": 8.123623479193114e-07
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.988817164023017,
+          "token_probabilities": {
+            "5": 0.9889169785180746,
+            "4": 0.010985873602786507,
+            "3": 9.504642995131763e-05,
+            "2": 1.5362824561426095e-06,
+            "1": 5.651667314472341e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.988970540528951,
+          "token_probabilities": {
+            "5": 0.9889919724654633,
+            "4": 0.010986706894339443,
+            "3": 2.120934388109992e-05,
+            "2": 1.1129631611014814e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.98194350066027,
+          "token_probabilities": {
+            "5": 0.9819792115184948,
+            "4": 0.01798557288233339,
+            "3": 3.4720340119069776e-05,
+            "2": 4.952590528584224e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.953814802868,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_9",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for factual accuracy concerning software engineering principles and methodologies, ensuring all claims are substantiated by credible sources.",
+          "Identify any instances of misleading claims or oversimplifications of complex concepts within the chapter, ensuring that explanations are technically valid.",
+          "Cross-reference the chapter's claims against established standards and practices in software engineering to verify its adherence to current industry norms.",
+          "Assess the clarity and precision of the definitions and explanations provided for key terms and concepts to determine if they could lead to misunderstandings by the readers.",
+          "Summarize findings and assign a score from 1 to 5 based on the overall conceptual accuracy of the chapter, considering both content validity and potential for reader misinterpretation."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter to identify the clarity of language used and ensure it is suitable for the target learners' understanding.",
+          "Examine the organization of the chapter, checking if the ideas flow logically and support the instructional intent, making it easy to follow.",
+          "Assess examples and explanations given in the chapter for their effectiveness in illustrating key concepts and engaging the target audience.",
+          "Solicit feedback from a sample of the target learners to gauge their comprehension and satisfaction with the clarity of the content presented in the chapter.",
+          "Make recommendations for revisions based on the analysis of language, organization, examples, and learner feedback to enhance pedagogical clarity."
+        ],
+        "logical_flow": [
+          "Review the chapter's structural organization, ensuring that all sections logically flow into each other and that transitions between topics are smooth and coherent.",
+          "Assess whether each section builds upon the previous one, reinforcing key concepts before introducing new ideas, which contributes to the overall logical flow.",
+          "Examine the use of headings, subheadings, and other organizational elements to determine whether they enhance the readability and logical progression of the content.",
+          "Evaluate the clarity of explanations and examples provided in the chapter, checking that they are appropriately placed and relevant to the topics discussed, further aiding the logical flow.",
+          "Consider feedback from readers or peer reviews regarding any potential points of confusion or disruption in the logical progression of the chapter and address those concerns."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the chapter for explicit statements of learning objectives and ensure they are clearly defined and measurable.",
+          "Step 2: Cross-reference the chapter content with each learning objective to determine if the material supports and directly addresses these goals.",
+          "Step 3: Analyze the examples provided in the chapter to verify that they are relevant and illustrate the key concepts linked to the learning objectives.",
+          "Step 4: Assess the alignment of assessment methods included in the chapter with the learning objectives to ensure they accurately measure student understanding.",
+          "Step 5: Gather feedback from a peer review or expert evaluation to identify any misalignments or areas for improvement concerning the objectives."
+        ],
+        "quality_of_examples": [
+          "Review all examples provided in the chapter, ensuring they directly relate to the concept being taught and assess their relevance and correctness.",
+          "Determine if the examples are concrete and specific enough to provide a clear understanding of the concept, avoiding vague or abstract references.",
+          "Evaluate how the examples contribute to the learning objectives by identifying if they help clarify or illustrate the main points of the instructional material.",
+          "Check for diversity in examples to ensure they address various perspectives and contexts, making the content relatable to a broader audience.",
+          "Assess whether the examples are accompanied by explanations or discussions that highlight their importance and relevance to the criterion, enhancing learner comprehension."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter for clarity and coherence in presenting instructional goals and objectives, ensuring it is user-friendly for both instructors and students.",
+          "Assess the chapter's content for relevance and applicability to current software engineering practices, ensuring it aligns with contemporary industry standards.",
+          "Evaluate the variety of instructional strategies and activities included in the chapter, determining if they effectively promote engagement and facilitate learning outcomes.",
+          "Examine the assessments and evaluation methods outlined in the chapter to ensure they align with the course objectives and adequately measure student learning.",
+          "Gather feedback from instructors or students who have utilized the chapter to identify perceived usefulness and areas for improvement, ensuring the chapter meets practical instructional needs."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.981661240179332,
+        "pedagogical_clarity": 4.815332105657743,
+        "logical_flow": 4.903567197833005,
+        "alignment_with_learning_objectives": 4.997160826578086,
+        "quality_of_examples": 4.962490547536045,
+        "instructional_usefulness": 4.88023757490069
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents a thorough examination of ethical dilemmas in software engineering, accurately defining key concepts such as user privacy, algorithmic bias, and professional responsibilities. Each section is supported by relevant examples, including real-world case studies, which illustrate the potential impacts and ethical considerations software engineers must navigate, thereby avoiding misleading claims or factual inaccuracies.",
+        "pedagogical_clarity": "The chapter conveys the importance of ethics in software engineering using clear, accessible language that is suitable for the target learners. The organization of ideas flows logically, outlining key concepts such as user trust, data privacy, and algorithmic bias, while presenting examples that effectively illustrate these key points. Feedback mechanisms, such as discussions and activities, are integrated to promote learner engagement and comprehension.",
+        "logical_flow": "The chapter is organized in a coherent sequence that begins with an introduction to software engineering ethics, moves through various key ethical considerations, and culminates in detailed case studies. Each section logically builds upon the previous one, reinforcing key concepts like user privacy and algorithmic bias before moving to practical applications. The use of headings and examples enhances readability and contributes to the overall logical progression of the content.",
+        "alignment_with_learning_objectives": "The chapter clearly outlines eight learning objectives that encompass essential software engineering principles, including methodologies, programming proficiency, and ethical considerations. Each section of the chapter directly corresponds to these objectives, providing content, examples, and assessments that reinforce the students' understanding and application of these topics. For instance, discussions on ethical dilemmas are tied back to real-world case studies, ensuring that students not only learn theoretical concepts but also how to apply them in practical scenarios.",
+        "quality_of_examples": "The chapter provides a range of relevant examples, such as the impact of ethical dilemmas on user trust and the Cambridge Analytica scandal, which are concrete and help illustrate the importance of ethical decision-making in software engineering. These examples are accompanied by clear explanations that enhance understanding and relate directly to the concepts being taught. Additionally, the chapter includes discussions on algorithmic bias and the ethical responsibilities of software engineers, ensuring a diverse exploration of ethical issues.",
+        "instructional_usefulness": "The chapter presents clearly defined and relevant learning objectives centered on software engineering ethics, focusing on the significance of ethical considerations such as user trust, data privacy, and algorithmic bias. It incorporates diverse instructional strategies, including case studies and reflective activities, that effectively engage students and promote critical thinking about contemporary ethical dilemmas. Furthermore, the inclusion of discussion questions encourages active participation, ensuring that students not only grasp the material but also apply ethical principles critically in real-world scenarios."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.981661240179332,
+          "token_probabilities": {
+            "5": 0.9818396360954398,
+            "4": 0.01798301630234039,
+            "3": 0.0001762992883317054,
+            "2": 1.0483138882116646e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.815332105657743,
+          "token_probabilities": {
+            "5": 0.8165675803814154,
+            "4": 0.18220085226751678,
+            "3": 0.001227659978463642,
+            "2": 3.907372604097551e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.903567197833005,
+          "token_probabilities": {
+            "5": 0.904136653657786,
+            "4": 0.09529529509343651,
+            "3": 0.0005666466727738007,
+            "2": 1.4045760037846184e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.997160826578086,
+          "token_probabilities": {
+            "5": 0.997180068742139,
+            "4": 0.0028008741096828805,
+            "3": 1.8872132303217862e-05,
+            "2": 1.8501587489113757e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.962490547536045,
+          "token_probabilities": {
+            "5": 0.962583730416005,
+            "4": 0.037323420367219244,
+            "3": 9.251555359072134e-05,
+            "2": 3.3366318508838333e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.88023757490069,
+          "token_probabilities": {
+            "5": 0.8805356974022548,
+            "4": 0.11916754800788246,
+            "3": 0.0002953866781611536,
+            "2": 1.3679117015326421e-06
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.923408248780817,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    }
+  ],
+  "summary": {
+    "total_artifacts": 12,
+    "average_overall_score": 4.911866280667186,
+    "max_overall_score": 4.996181434314928,
+    "min_overall_score": 4.723134518357193
+  }
+}

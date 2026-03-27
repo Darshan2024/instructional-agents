@@ -5,6 +5,7 @@ from openai import OpenAI
 from pathlib import Path
 import pandas as pd
 from agents import LLM
+from evaluators.geval import GEvalEvaluator, build_chapter_artifacts
 import argparse
 
 class ValidationAgent:
@@ -265,6 +266,7 @@ class CourseEvaluationSystem:
         self.program_chair = ValidationAgent("Program Chair", self.llm)
         self.test_student = ValidationAgent("Test Student", self.llm)
         self.evaluator = EvaluationAgent(self.llm)
+        self.geval_evaluator = GEvalEvaluator(self.llm)
         self.exp_name = exp_name
 
         self.eval_dir = Path(f"eval/{model_name}-Evaluation_{self.exp_name}/evaluation_results")
@@ -308,6 +310,33 @@ class CourseEvaluationSystem:
             f.write(evaluation)
         
         print(f"Saved validation report: {report_path}")
+
+    def save_geval_results(self, results: Dict, artifact_type: str):
+        """Save G-Eval results to JSON and a compact markdown summary."""
+        output_dir = self.eval_dir
+
+        json_path = output_dir / f"geval_{artifact_type}_results.json"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+
+        md_path = output_dir / f"geval_{artifact_type}_summary.md"
+        with open(md_path, "w", encoding="utf-8") as f:
+            f.write(f"# G-Eval Summary ({artifact_type})\n\n")
+            f.write(f"**Model:** {results.get('model_name', self.llm.model_name)}\n\n")
+            summary = results.get("summary", {})
+            f.write(f"- **Total Artifacts:** {summary.get('total_artifacts', 0)}\n")
+            f.write(f"- **Average Overall Score:** {summary.get('average_overall_score', 0):.2f}\n")
+            f.write(f"- **Score Range:** {summary.get('min_overall_score', 0):.2f} - {summary.get('max_overall_score', 0):.2f}\n\n")
+
+            for artifact in results.get("artifacts", []):
+                f.write(f"## {artifact['artifact_id']}\n\n")
+                f.write(f"- **Overall Score:** {artifact['overall_score']:.2f}\n")
+                f.write(f"- **Fallback Scoring Used:** {artifact['fallback_scoring_used']}\n")
+                for criterion, score in artifact.get("scores", {}).items():
+                    f.write(f"- **{criterion}:** {score:.2f}\n")
+                f.write("\n")
+
+        print(f"Saved G-Eval results: {json_path}")
     
     def save_evaluation_results(self, results: Dict):
         """Save evaluation results to JSON and markdown"""
@@ -355,16 +384,8 @@ class CourseEvaluationSystem:
         
         print(f"Saved evaluation results: {json_path}")
 
-def main(model_name, exp_name, provider):
-    """
-    Main function to process course materials
-    """
-    print("Starting Course Material Evaluation System...")
-
-    system = CourseEvaluationSystem(model_name, exp_name, provider=provider)
-    root_dir = Path(f"exp/{exp_name}")
-
-    # Collect all files to process
+def collect_standard_file_data(system: CourseEvaluationSystem, root_dir: Path) -> Dict[str, List[Dict]]:
+    """Collect file data for the legacy rubric evaluator."""
     file_data = {
         'learning_objectives': [],
         'syllabus': [],
@@ -372,23 +393,21 @@ def main(model_name, exp_name, provider):
         'slide_content': [],
         'slide_scripts': []
     }
-    
-    # Process root level files
+
     root_files = ['result_instructional_goals.md', 'result_syllabus_design.md']
     for filename in root_files:
         filepath = root_dir / filename
         if filepath.exists():
             content = system.read_file_content(str(filepath))
             file_type = system.map_file_to_type(filename)
-            
+
             if content and file_type != 'Unknown':
                 file_data[file_type].append({
                     'filename': filename,
                     'content': content,
                     'filepath': str(filepath)
                 })
-    
-    # Process chapter folders
+
     for chapter_dir in root_dir.glob("chapter_*"):
         if chapter_dir.is_dir():
             chapter_files = ['slides.tex', 'assessment.md', 'script.md']
@@ -397,7 +416,7 @@ def main(model_name, exp_name, provider):
                 if filepath.exists():
                     content = system.read_file_content(str(filepath))
                     file_type = system.map_file_to_type(filename)
-                    
+
                     if content and file_type != 'Unknown':
                         file_data[file_type].append({
                             'filename': f"{chapter_dir.name}_{filename}",
@@ -405,19 +424,50 @@ def main(model_name, exp_name, provider):
                             'filepath': str(filepath)
                         })
 
+    return file_data
+
+
+def main(model_name, exp_name, provider, evaluator_name, artifact_type):
+    """
+    Main function to process course materials
+    """
+    print("Starting Course Material Evaluation System...")
+
+    system = CourseEvaluationSystem(model_name, exp_name, provider=provider)
+    root_dir = Path(f"exp/{exp_name}")
+
+    if evaluator_name == "geval":
+        if artifact_type != "chapter":
+            raise ValueError("G-Eval currently supports only --artifact_type chapter")
+        if provider != "openai":
+            raise ValueError("G-Eval currently requires --provider openai because score-token logprobs use the OpenAI chat path")
+
+        artifacts = build_chapter_artifacts(root_dir, system.read_file_content)
+        print(f"Collected {len(artifacts)} chapter artifacts. Starting G-Eval...")
+        evaluation_results = system.geval_evaluator.evaluate_chapter_artifacts(artifacts)
+        system.save_geval_results(evaluation_results, artifact_type)
+        print("G-Eval complete!")
+        print("\n" + "="*50)
+        print("G-EVAL SUMMARY")
+        print("="*50)
+        for artifact in evaluation_results.get("artifacts", []):
+            print(f"\n{artifact['artifact_id']}:")
+            print(f"  Overall Score: {artifact['overall_score']:.2f}")
+            print(f"  Fallback Scoring Used: {artifact['fallback_scoring_used']}")
+        return
+
+    file_data = collect_standard_file_data(system, root_dir)
+
     print("Files collected. Starting evaluation...")
 
-    # Run evaluation agent
     evaluation_results = system.evaluator.evaluate_files(file_data)
     system.save_evaluation_results(evaluation_results)
-    
+
     print("Evaluation complete!")
-    
-    # Run validation agents
+
     for file_type, files in file_data.items():
         for file_info in files:
             if file_info['content']:
-                # Program Chair validation
                 print(f"Program Chair validating {file_info['filename']}...")
                 pc_evaluation = system.program_chair.evaluate_content(
                     file_type, file_info['filename'], file_info['content']
@@ -425,8 +475,7 @@ def main(model_name, exp_name, provider):
                 system.save_validation_report(
                     "Program_Chair", file_type, file_info['filename'], pc_evaluation
                 )
-                
-                # Test Student validation
+
                 print(f"Test Student validating {file_info['filename']}...")
                 ts_evaluation = system.test_student.evaluate_content(
                     file_type, file_info['filename'], file_info['content']
@@ -434,10 +483,9 @@ def main(model_name, exp_name, provider):
                 system.save_validation_report(
                     "Test_Student", file_type, file_info['filename'], ts_evaluation
                 )
-    
+
     print("Validation complete.")
-    
-    # Print summary
+
     print("\n" + "="*50)
     print("EVALUATION SUMMARY")
     print("="*50)
@@ -479,5 +527,27 @@ if __name__ == "__main__":
         help="LLM provider to use (default: openai)"
     )
 
+    parser.add_argument(
+        "--evaluator",
+        type=str,
+        choices=["legacy", "geval"],
+        default="legacy",
+        help="Evaluation pipeline to use (default: legacy)"
+    )
+
+    parser.add_argument(
+        "--artifact_type",
+        type=str,
+        choices=["chapter"],
+        default="chapter",
+        help="Artifact type for evaluator-specific runs (currently used by G-Eval)"
+    )
+
     args = parser.parse_args()
-    main(model_name=args.model, exp_name=args.exp, provider=args.provider)
+    main(
+        model_name=args.model,
+        exp_name=args.exp,
+        provider=args.provider,
+        evaluator_name=args.evaluator,
+        artifact_type=args.artifact_type,
+    )

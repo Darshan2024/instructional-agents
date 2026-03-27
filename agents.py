@@ -1,5 +1,6 @@
+import math
 import os
-from typing import List, Dict
+from typing import Any, Dict, List, Optional
 from openai import OpenAI
 import time
 
@@ -59,6 +60,72 @@ class LLM:
         if convo_parts:
             prompt_sections.append("\n\n".join(convo_parts))
         return "\n\n".join(prompt_sections)
+
+    def generate_response_with_metadata(
+        self,
+        messages: List[Dict[str, str]],
+        *,
+        temperature: float = 0,
+        max_tokens: Optional[int] = None,
+        logprobs: bool = False,
+        top_logprobs: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """
+        OpenAI-only helper for evaluators that need raw response metadata such as token logprobs.
+        """
+        start_time = time.time()
+
+        if self.provider != "openai":
+            raise ValueError("generate_response_with_metadata is only supported for provider='openai'")
+
+        params: Dict[str, Any] = {
+            "messages": messages,
+            "model": self.model_name,
+            "temperature": temperature,
+            "stream": False,
+        }
+        if max_tokens is not None:
+            params["max_tokens"] = max_tokens
+        if logprobs:
+            params["logprobs"] = True
+            if top_logprobs is not None:
+                params["top_logprobs"] = top_logprobs
+
+        chat_completion = self.client.chat.completions.create(**params)
+        choice = chat_completion.choices[0]
+        response = choice.message.content or ""
+        elapsed_time = time.time() - start_time
+        token_usage = chat_completion.usage.total_tokens if chat_completion.usage else 0
+
+        content_logprobs: List[Dict[str, Any]] = []
+        if getattr(choice, "logprobs", None) and getattr(choice.logprobs, "content", None):
+            for token_info in choice.logprobs.content:
+                top_candidates = []
+                for candidate in getattr(token_info, "top_logprobs", []) or []:
+                    top_candidates.append(
+                        {
+                            "token": candidate.token,
+                            "logprob": candidate.logprob,
+                        }
+                    )
+                content_logprobs.append(
+                    {
+                        "token": token_info.token,
+                        "logprob": token_info.logprob,
+                        "top_logprobs": top_candidates,
+                    }
+                )
+
+        print(f"[Response from {self.model_name}]: {response}")
+        print(f"[Response Time: {elapsed_time:.2f}s]")
+        print(f"[Total Tokens: {token_usage}]")
+
+        return {
+            "response": response,
+            "elapsed_time": elapsed_time,
+            "token_usage": token_usage,
+            "content_logprobs": content_logprobs,
+        }
 
     def generate_response(self, messages: List[Dict[str, str]], stream: bool = False) -> str:
         start_time = time.time()
