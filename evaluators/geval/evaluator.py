@@ -73,10 +73,22 @@ class GEvalEvaluator:
         self.llm = llm
         self.evaluator_name = "g-eval"
         self.chapter_rubric = CHAPTER_RUBRIC
+        self.geval_mode = "paper_faithful"
+        self.step_generation_mode = "task_rubric_only"
+        self.rubric_version = "chapter_v1"
+        self._evaluation_step_cache: Dict[Tuple[str, str], List[str]] = {}
 
     def evaluate_chapter_artifacts(self, artifacts: List[Dict[str, Any]]) -> Dict[str, Any]:
         artifact_results = []
         overall_scores = []
+
+        # G-Eval is more faithful when evaluation steps are fixed before scoring artifacts.
+        for criterion_name, criterion_definition in self.chapter_rubric.items():
+            self._get_or_create_evaluation_steps(
+                artifact_type="chapter",
+                criterion_name=criterion_name,
+                criterion_definition=criterion_definition,
+            )
 
         for artifact in artifacts:
             result = self.evaluate_single_artifact(artifact)
@@ -87,6 +99,10 @@ class GEvalEvaluator:
             "evaluator_name": self.evaluator_name,
             "artifact_type": "chapter",
             "model_name": self.llm.model_name,
+            "geval_mode": self.geval_mode,
+            "step_generation_mode": self.step_generation_mode,
+            "logprob_scoring_enabled": self.llm.provider == "openai",
+            "rubric_version": self.rubric_version,
             "artifacts": artifact_results,
             "summary": {
                 "total_artifacts": len(artifact_results),
@@ -101,14 +117,14 @@ class GEvalEvaluator:
         criterion_scores: Dict[str, float] = {}
         criterion_reasons: Dict[str, str] = {}
         weighted_scores: Dict[str, Dict[str, Any]] = {}
+        criterion_details: Dict[str, Dict[str, Any]] = {}
         fallback_used = False
 
         for criterion_name, criterion_definition in self.chapter_rubric.items():
-            steps = self._generate_evaluation_steps(
+            steps = self._get_or_create_evaluation_steps(
                 artifact_type=artifact["artifact_type"],
                 criterion_name=criterion_name,
                 criterion_definition=criterion_definition,
-                artifact_content=artifact["content"],
             )
             evaluation_steps[criterion_name] = steps
 
@@ -132,12 +148,26 @@ class GEvalEvaluator:
                 reason=reason,
             )
 
+            expected_score = None
+            used_fallback = False
             if weighted_score is None:
                 fallback_used = True
+                used_fallback = True
                 criterion_scores[criterion_name] = emitted_score
             else:
-                criterion_scores[criterion_name] = weighted_score["expected_score"]
+                expected_score = weighted_score["expected_score"]
+                criterion_scores[criterion_name] = expected_score
                 weighted_scores[criterion_name] = weighted_score
+
+            criterion_details[criterion_name] = {
+                "reason": reason,
+                "emitted_score": emitted_score,
+                "expected_score": expected_score,
+                "used_fallback": used_fallback,
+                "evaluation_steps": steps,
+                "observed_score_tokens": weighted_score.get("observed_score_tokens") if weighted_score else [],
+                "all_score_tokens_present": weighted_score.get("all_score_tokens_present") if weighted_score else False,
+            }
 
         overall_score = sum(criterion_scores.values()) / len(criterion_scores) if criterion_scores else 0
 
@@ -149,10 +179,27 @@ class GEvalEvaluator:
             "scores": criterion_scores,
             "reasons": criterion_reasons,
             "weighted_scores": weighted_scores if weighted_scores else None,
+            "criterion_details": criterion_details,
             "overall_score": overall_score,
             "fallback_scoring_used": fallback_used,
             "files": artifact.get("files", []),
         }
+
+    def _get_or_create_evaluation_steps(
+        self,
+        *,
+        artifact_type: str,
+        criterion_name: str,
+        criterion_definition: str,
+    ) -> List[str]:
+        cache_key = (artifact_type, criterion_name)
+        if cache_key not in self._evaluation_step_cache:
+            self._evaluation_step_cache[cache_key] = self._generate_evaluation_steps(
+                artifact_type=artifact_type,
+                criterion_name=criterion_name,
+                criterion_definition=criterion_definition,
+            )
+        return self._evaluation_step_cache[cache_key]
 
     def _generate_evaluation_steps(
         self,
@@ -160,7 +207,6 @@ class GEvalEvaluator:
         artifact_type: str,
         criterion_name: str,
         criterion_definition: str,
-        artifact_content: str,
     ) -> List[str]:
         prompt = f"""
 Task Introduction:
@@ -172,14 +218,14 @@ Criterion definition: {criterion_definition}
 Instruction:
 Generate 3 to 5 concrete evaluation steps that a careful evaluator should follow before assigning a score from 1 to 5.
 The steps must be specific to this criterion and this artifact type.
+The steps must rely only on evidence available inside the artifact during runtime scoring.
+Do not include any step that requires learner feedback, pilot users, peer review, expert consultation,
+surveys, classroom observation, or external references not present in the artifact itself.
 
 Return JSON only in the following format:
 {{
   "evaluation_steps": ["step 1", "step 2", "step 3"]
 }}
-
-Artifact:
-{artifact_content}
 """
         response, _, _ = self.llm.generate_response(
             [
@@ -195,12 +241,14 @@ Artifact:
             if normalized_steps:
                 return normalized_steps
 
+        return self._default_evaluation_steps(criterion_name, criterion_definition)
+
+    def _default_evaluation_steps(self, criterion_name: str, criterion_definition: str) -> List[str]:
         return [
             f"Inspect the artifact strictly for {criterion_name}.",
             f"Compare observed evidence against this criterion definition: {criterion_definition}",
             "Assign a score from 1 to 5 using only evidence from the artifact.",
         ]
-
     def _run_form_filling_evaluation(
         self,
         *,
@@ -318,9 +366,11 @@ Artifact:
         candidates = list(first_token.get("top_logprobs", []))
         candidates.append({"token": first_token.get("token", ""), "logprob": first_token.get("logprob", float("-inf"))})
 
+        observed_score_tokens = []
         for candidate in candidates:
             normalized = self._normalize_score_token(candidate.get("token", ""))
             if normalized in {"1", "2", "3", "4", "5"}:
+                observed_score_tokens.append(normalized)
                 token_probs[normalized] = math.exp(candidate["logprob"])
 
         if not token_probs:
@@ -335,7 +385,11 @@ Artifact:
 
         return {
             "expected_score": expected_score,
+            "emitted_score": self._coerce_score(metadata.get("response", "").strip()),
+            "used_fallback": False,
             "token_probabilities": normalized_probs,
+            "observed_score_tokens": sorted(set(observed_score_tokens)),
+            "all_score_tokens_present": all(score_token in normalized_probs for score_token in {"1", "2", "3", "4", "5"}),
             "raw_response": metadata.get("response", "").strip(),
         }
 
@@ -380,4 +434,3 @@ Artifact:
 
     def _normalize_score_token(self, token: str) -> str:
         return token.strip().strip('"').strip("'").strip(".")
-

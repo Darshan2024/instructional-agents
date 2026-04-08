@@ -1,0 +1,1339 @@
+{
+  "evaluator_name": "g-eval",
+  "artifact_type": "chapter",
+  "model_name": "gpt-4o-mini",
+  "artifacts": [
+    {
+      "artifact_id": "chapter_1",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter for the accurate presentation of domain concepts and ensure that all information aligns with established knowledge in the field.",
+          "Identify any misleading claims, factual errors, or technically invalid explanations present in the chapter by cross-verifying content with reputable sources.",
+          "Evaluate the clarity and precision of definitions provided for key concepts, ensuring that no vague language is used that may lead to misunderstandings.",
+          "Check the examples provided in the chapter to confirm they accurately illustrate the concepts and do not introduce confusion or ambiguity.",
+          "Assess the overall organization of the chapter, ensuring that the flow of concepts builds logically upon one another and supports comprehension."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter's objectives to ensure alignment with the criterion of pedagogical clarity, focusing on whether the language and structure are suitable for the target audience.",
+          "Examine the chapter for clear explanations of programming concepts, ensuring that terminology is defined and concepts are broken down into easily digestible segments.",
+          "Assess whether the instructional intent is conveyed through organized content, including the logical sequence of ideas and the presence of examples or analogies that enhance understanding.",
+          "Check for the use of appropriate visual aids or supplementary materials that reinforce the text, making sure that these tools enhance the clarity of the instructional content.",
+          "Solicit feedback from a sample group of target learners to evaluate their comprehension of the material and how well they feel the chapter facilitates their learning."
+        ],
+        "logical_flow": [
+          "Step 1: Review the chapter outline and ensure that all major concepts are clearly defined and logically sequenced, ensuring that each section builds on previous content.",
+          "Step 2: Assess the transitional phrases and sentences between sections to confirm they effectively guide the reader from one topic to the next, preventing any jarring shifts in topic or idea.",
+          "Step 3: Check for sufficient examples or illustrations that reinforce the key concepts presented in the chapter, ensuring that they follow a logical progression that aligns with the instructional goals.",
+          "Step 4: Evaluate the conclusion of the chapter to determine if it effectively summarizes the main points and provides clear next steps that logically follow the content discussed.",
+          "Step 5: Gather feedback from peers or test readers regarding their understanding of the chapter's flow and organization, noting any areas where comprehension falters to improve logical flow."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the stated learning objectives for alignment with content in the chapter. Ensure that each objective is explicitly addressed within the chapter's text, examples, and assessments.",
+          "Step 2: Examine the structure of the chapter to confirm that examples illustrate how to achieve each learning objective. Check if examples cover diverse scenarios that resonate with the objectives.",
+          "Step 3: Analyze the assessment items in the chapter. Verify that each item directly assesses the objectives, ensuring students can demonstrate their understanding of the material correlating to the learning goals.",
+          "Step 4: Collect feedback from peer reviews or pilot testing of the chapter. Gather insights regarding perceived clarity and effectiveness in meeting the learning objectives.",
+          "Step 5: Ensure that the overall flow of the chapter logically builds upon prior knowledge and steadily progresses towards more complex concepts that align with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples included in the chapter to ensure that they directly relate to the course objectives and content, covering key concepts provided in the learning objectives.",
+          "Step 2: Verify the accuracy of the examples by cross-referencing them with reputable sources or expert opinions in the field to confirm they are correct and not misleading.",
+          "Step 3: Assess the concreteness of the examples by evaluating whether they are specific and detailed enough to effectively support understanding of the concepts being taught.",
+          "Step 4: Analyze the diversity of examples to ensure that they cover a range of applications and contexts relevant to the programming concepts to engage students with different backgrounds.",
+          "Step 5: Gather feedback from a sample of students or educators who have reviewed the chapter to determine if the examples were perceived as helpful and useful in understanding the material."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter to ensure it includes clear learning objectives that align with instructional goals.",
+          "Step 2: Assess the availability and suitability of examples or case studies within the chapter that enhance practical understanding for instructors and students.",
+          "Step 3: Evaluate the clarity, readability, and organization of the chapter content to ensure it is conducive to effective teaching and learning.",
+          "Step 4: Determine if the chapter includes practical applications, activities, or assessments that can be directly implemented in instructional settings.",
+          "Step 5: Collect feedback from a sample group of instructors or students on their perception of the chapter's usefulness in teaching and learning contexts."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.99589575013339,
+        "pedagogical_clarity": 4.991399555591897,
+        "logical_flow": 4.997809650490744,
+        "alignment_with_learning_objectives": 4.817305998439707,
+        "quality_of_examples": 4.436259007109651,
+        "instructional_usefulness": 4.988979824460554
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents key programming concepts such as algorithms, programs, variables, and their associated data types, including strings, integers, and floats. Definitions are clear and precise, with valid examples illustrating their application. Potential pitfalls in syntax and logical structures are discussed, ensuring a robust understanding without any misleading claims or factual errors.",
+        "pedagogical_clarity": "The chapter effectively uses clear and accessible language that is suitable for beginners, ensuring that complex programming concepts are broken down into understandable pieces. Key terms are well-defined, and the instructional intent is communicated through organized content and relevant examples, enhancing student comprehension. Visual aids and structured layouts further reinforce clarity, making the material easy to navigate and digest.",
+        "logical_flow": "The chapter presents a coherent sequence, starting from fundamental programming concepts to practical application in Python. Each section logically builds upon the previous one, moving from defining algorithms and programs to interactive coding exercises, while effectively linking new information to the instructional goals. Transitions between sections are smooth, and examples reinforce understanding, culminating in a clear roadmap for future learning.",
+        "alignment_with_learning_objectives": "The chapter effectively supports the stated learning objectives by providing clear definitions and explanations of foundational programming concepts. For instance, it covers how to differentiate between data types and the practical applications of variables, which is in direct alignment with the goal of achieving foundational programming competency. Additionally, examples and assessments are directly aligned with these objectives, ensuring students can engage with the material meaningfully.",
+        "quality_of_examples": "The chapter includes clear, relevant examples that effectively illustrate key concepts of programming, such as the use of print statements, variable assignment, and data types (strings, integers, and floats). For instance, examples like printing 'Hello, World!' introduce fundamental programming syntax, while the analogy of a coffee-making algorithm simplifies the understanding of algorithms. Additionally, the concrete exercises help reinforce these concepts for learners, supporting diverse learning styles.",
+        "instructional_usefulness": "The chapter provides clear learning objectives aligned with instructional goals, enabling both instructors and students to understand the intended outcomes of the course. It includes relevant examples and activities that enhance practical understanding, making the content accessible for learners with no prior programming experience. The organization between theory and hands-on application supports effective learning, ensuring the material is conducive to effective teaching."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.99589575013339,
+          "token_probabilities": {
+            "5": 0.9959129928794688,
+            "4": 0.004070069026566459,
+            "3": 1.6633441850349052e-05,
+            "2": 3.0465211440775177e-07
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.991399555591897,
+          "token_probabilities": {
+            "5": 0.9914111328154476,
+            "4": 0.008577388419938036,
+            "3": 1.13803056783374e-05,
+            "2": 9.84589360473182e-08
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.997809650490744,
+          "token_probabilities": {
+            "5": 0.9978135052073596,
+            "4": 0.0021827081827850378,
+            "3": 3.718503095531982e-06,
+            "2": 6.8106759904404e-08
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.817305998439707,
+          "token_probabilities": {
+            "5": 0.8174539803749926,
+            "4": 0.1823986375550435,
+            "3": 0.0001467822046422985,
+            "2": 5.998653216069332e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.436259007109651,
+          "token_probabilities": {
+            "4": 0.5615657252993606,
+            "5": 0.4373478266092034,
+            "3": 0.00108407668331983,
+            "2": 2.371408116191288e-06
+          },
+          "raw_response": "4"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.988979824460554,
+          "token_probabilities": {
+            "5": 0.9889965946120449,
+            "4": 0.010986761352336881,
+            "3": 1.6517919744634753e-05,
+            "2": 1.2611587354985364e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.871274964370991,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_10",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter to identify all concepts and ensure they align with established domain knowledge in programming.",
+          "Check for the presence of misleading statements or factual inaccuracies by cross-referencing with reliable educational resources.",
+          "Evaluate whether the explanations of programming principles and practices are technically correct and free from errors.",
+          "Assess the clarity and precision of definitions related to concepts covered in the chapter to confirm accurate communication.",
+          "Confirm that all examples used in the chapter correctly illustrate the concepts they are meant to demonstrate without causing confusion."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter to assess the use of language appropriate for the target learners, ensuring it is suitable for students with no prior programming experience.",
+          "Step 2: Analyze how clearly the chapter communicates the instructional intent, checking for logical organization and progression of ideas.",
+          "Step 3: Identify examples and explanations within the chapter that demonstrate pedagogical clarity, ensuring they effectively enhance understanding of the concepts.",
+          "Step 4: Evaluate the use of instructional cues, such as headings or summaries, that help learners follow the chapter's structure and major points.",
+          "Step 5: Collect feedback from test readers that represent the target audience to gauge their understanding and clarity in following instructions from the chapter."
+        ],
+        "logical_flow": [
+          "Step 1: Review the overall chapter structure to ensure that each section logically leads to the next, making a clear contribution to the development of key concepts.",
+          "Step 2: Assess the transitions between sections to verify that they are smooth and provide context for new material based on previously covered concepts.",
+          "Step 3: Check for the presence of introductory and concluding remarks in each section that summarize key points and reinforce the natural flow of the chapter's narrative.",
+          "Step 4: Analyze the use of headings and subheadings to ensure they accurately reflect the content and indication of how each part contributes to the coherent organization of the chapter.",
+          "Step 5: Evaluate the consistency in terminology and style throughout the chapter to confirm that the language aids in building upon earlier sections without introducing unnecessary complexity."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the stated learning objectives of the chapter to ensure they align with the content presented in the chapter.",
+          "Step 2: Analyze the example content and exercises within the chapter to confirm that they directly support the learning objectives.",
+          "Step 3: Assess the assessments at the end of the chapter to verify that they evaluate the understanding of the content related to the learning objectives.",
+          "Step 4: Check for logical connections and transitions between sections of the chapter to ensure coherence in addressing the learning objectives.",
+          "Step 5: Ensure that all necessary prerequisites for understanding the chapter content are addressed and that the chapter builds on prior knowledge effectively."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples provided in the chapter to determine if they are relevant to the course learning objectives and instructional goals, ensuring they align with the target audience's level of understanding.",
+          "Step 2: Verify the correctness of the examples by cross-referencing with authoritative sources or subject matter experts to confirm that the concepts portrayed are accurate and applicable.",
+          "Step 3: Assess the concreteness of the examples by evaluating whether they provide clear, specific scenarios or problems that illustrate the concept being taught, rather than vague or abstract situations.",
+          "Step 4: Evaluate the helpfulness of the examples by considering if they facilitate understanding and engagement with the content, and whether they encourage critical thinking or application in real-world contexts.",
+          "Step 5: Collect feedback from students or peers on the effectiveness of the examples in enhancing their comprehension of the material, using this input to refine the examples as needed."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter's alignment with the course learning objectives to ensure it addresses key concepts relevant to programming.",
+          "Assess the clarity and organization of the content, ensuring it is logically sequenced for effective teaching and learning.",
+          "Evaluate the inclusion of practical examples and exercises that demonstrate the application of concepts in real-world contexts.",
+          "Check for the presence of resources (e.g., references to additional reading materials or tools) that facilitate further learning.",
+          "Solicit feedback from instructors or students to gauge perceived usefulness and applicability of the chapter to their teaching or learning needs."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.996801426118229,
+        "pedagogical_clarity": 4.981912969552424,
+        "logical_flow": 4.24457177663253,
+        "alignment_with_learning_objectives": 4.997509405314241,
+        "quality_of_examples": 4.991360534306091,
+        "instructional_usefulness": 4.88049838130539
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents domain concepts accurately by clearly defining foundational programming competencies, outlining the role of string manipulation and file I/O, and providing correct examples of string methods. All concepts described are consistent with established programming practices, avoiding misleading claims and technical inaccuracies.",
+        "pedagogical_clarity": "The chapter employs clear, accessible language appropriate for beginner-level learners, ensuring complex programming concepts are explained without jargon. Logical progression is maintained throughout, with instructional cues like headings, examples, and summaries present to guide learners. Additionally, the use of relatable examples enhances comprehension, making it easier for learners to apply the content.",
+        "logical_flow": "The chapter is structured in a coherent sequence, starting with the introduction of foundational programming concepts, then logically progressing to more complex string manipulation techniques and file I/O processes. Each section flows naturally to the next, with clear connections made between concepts like data persistence and string manipulation for effective data processing. The use of headings and subheadings aids in guiding the reader through the narrative of the chapter.",
+        "alignment_with_learning_objectives": "The chapter content comprehensively supports the stated learning objectives by providing a structured approach to understanding advanced string manipulation and file I/O. Each section logically builds upon the previous one, with practical examples that illustrate the real-world applications of these concepts. Assessments at the chapter's end evaluate the learners' ability to apply the knowledge gained, ensuring they can identify, process, and persist data effectively.",
+        "quality_of_examples": "The chapter provides a variety of examples that are highly relevant to the course learning objectives, such as utilizing file I/O and string manipulation to process data. The examples demonstrate the concepts clearly with practical scenarios, including a step-by-step breakdown of cleaning and extracting information from strings derived from CSV files, which aligns with the target audience's learning needs and helps elevate their understanding of the material.",
+        "instructional_usefulness": "The chapter effectively addresses the course learning objectives by providing a structured overview of string manipulation and file I/O, with clear explanations of practical applications. The inclusion of examples, exercises, and discussions aids comprehension, making it a valuable resource for both instructors and students wishing to grasp these fundamental programming concepts."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.996801426118229,
+          "token_probabilities": {
+            "5": 0.9968143919815728,
+            "4": 0.0031726421550832503,
+            "3": 1.2965863343861312e-05
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.981912969552424,
+          "token_probabilities": {
+            "5": 0.9819639544237714,
+            "4": 0.017985294644962187,
+            "3": 5.0516991185600585e-05,
+            "2": 2.339400808431316e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.24457177663253,
+          "token_probabilities": {
+            "4": 0.7170497455146044,
+            "5": 0.26378785181054687,
+            "3": 0.01910873017168116,
+            "2": 5.367250316749295e-05
+          },
+          "raw_response": "4"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.997509405314241,
+          "token_probabilities": {
+            "5": 0.9975184289599207,
+            "4": 0.0024726004203500054,
+            "3": 8.917593778370391e-06,
+            "2": 5.302595090291358e-08
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.991360534306091,
+          "token_probabilities": {
+            "5": 0.9913917214265325,
+            "4": 0.00857721787434928,
+            "3": 3.093427779520332e-05,
+            "2": 1.2642132296295012e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.88049838130539,
+          "token_probabilities": {
+            "5": 0.8806574006891927,
+            "4": 0.11918402408463197,
+            "3": 0.0001581310685479195,
+            "2": 4.4415762731151224e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.848775748871485,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_2",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Step 1: Review the chapter for accurate definitions and representations of domain concepts, ensuring no misleading claims exist about programming principles.",
+          "Step 2: Cross-reference factual claims within the chapter against reputable sources or established programming guidelines to identify factual inaccuracies or misleading statements.",
+          "Step 3: Assess the explanations provided for technical accuracy, checking that all programming terms are used correctly and all concepts are technically valid.",
+          "Step 4: Ensure that any examples or code snippets reflect best practices in programming and confirm that they function correctly as intended.",
+          "Step 5: Gather feedback from peers or subject matter experts who are knowledgeable about the curriculum to identify any additional areas of concern regarding conceptual accuracy."
+        ],
+        "pedagogical_clarity": [
+          "Read through the chapter to identify the clarity of definitions and explanations for concepts such as expressions, operators, user input, and type casting.",
+          "Evaluate the use of language throughout the chapter, ensuring that it aligns with the expected knowledge level of the target learners.",
+          "Check for logical flow and coherence, verifying that each section builds on the previous one and supports understanding of upcoming concepts.",
+          "Look for examples that illustrate key points, assessing whether they are appropriate and effectively help learners grasp complex ideas.",
+          "Solicit feedback from a sample of target learners or subject matter experts to ensure that the instructional intent is clear and easily followed."
+        ],
+        "logical_flow": [
+          "Step 1: Review the chapter structure to ensure there is a clear introduction that outlines the main topics and objectives related to logical flow.",
+          "Step 2: Analyze transitions between sections to confirm that each new section logically builds on the previous one, avoiding abrupt changes in topic or tone.",
+          "Step 3: Check whether concepts are consistently revisited and reinforced throughout the chapter to strengthen understanding and coherence of the material.",
+          "Step 4: Examine examples and exercises to ascertain that they follow a logical progression, with increasing complexity that aligns with the knowledge gained in prior sections.",
+          "Step 5: Assess the conclusion to see if it effectively summarizes the chapter's main points and relates back to the learning objectives established at the beginning."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter's stated learning objectives and ensure that each objective is explicitly addressed in the content, examples, and assessments of the chapter.",
+          "Check that each section of the chapter contains clear examples that illustrate the concepts outlined in the learning objectives, ensuring alignment of examples to the objectives.",
+          "Analyze the assessments provided in the chapter to confirm that they effectively measure students' understanding of the learning objectives, including providing prompts for user input and evaluating user responses.",
+          "Evaluate the clarity and instructional design of the chapter content by assessing whether it allows students to grasp the concepts of expressions, operators, and user input in a progressive manner.",
+          "Determine if there are any gaps or misalignments between the learning objectives and the provided content or assessments; adjust as necessary to maintain alignment."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review all examples provided in the chapter to ensure they are relevant and directly relate to the key concepts being taught.",
+          "Step 2: Verify the accuracy of each example through independent sources or expert consultation to ensure correctness.",
+          "Step 3: Assess the concreteness of examples by checking if they utilize specific, easily relatable contexts that aid understanding of the concepts.",
+          "Step 4: Determine the helpfulness of examples by considering if they clarify complex concepts, promote engagement, and facilitate problem-solving skills.",
+          "Step 5: Compile feedback on the examples from student interactions or surveys to gauge their effectiveness in achieving comprehension."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter content for clarity and development of key concepts related to instructional usefulness, including the articulation of goals and learning outcomes.",
+          "Step 2: Assess the practical application of the chapter by determining if it incorporates relevant examples or activities that enhance teaching and learning.",
+          "Step 3: Seek feedback from potential users (instructors and students) to evaluate their perception of the chapter's usefulness and relevance for their teaching or learning objectives.",
+          "Step 4: Analyze the organization and presentation style of the chapter to ensure that it is engaging and accessible for diverse learning styles.",
+          "Step 5: Verify alignment of course learning objectives with instructional goals to ensure the chapter effectively facilitates the intended learning outcomes."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.999614771667245,
+        "pedagogical_clarity": 4.962645267434969,
+        "logical_flow": 4.998291843100694,
+        "alignment_with_learning_objectives": 4.985846460742625,
+        "quality_of_examples": 3.7053680288553386,
+        "instructional_usefulness": 4.997809730825815
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents foundational programming concepts accurately, detailing expressions, operators, and user input without misleading claims. All explanations include examples that demonstrate correct usage, and the emphasis on type casting to manage user input reinforces best practices in programming. Feedback from peers and experts further confirms the absence of factual inaccuracies.",
+        "pedagogical_clarity": "The chapter effectively uses clear language and structured objectives suitable for novice learners to grasp fundamental concepts in programming, including expressions, operators, and user input. The logical flow is maintained by introducing concepts in a step-by-step manner with relatable examples. Furthermore, the chapter includes explicit prompts to encourage student interaction and comprehension, ensuring that the instructional intent is conveyed clearly.",
+        "logical_flow": "The chapter is organized in a coherent sequence, beginning with foundational concepts of expressions, followed by arithmetic operators, user input, and finally type casting. Each section builds on the previous one, creating a clear logical progression that enhances understanding. Moreover, the chapter reinforces key concepts through examples and exercises that complement the learning objectives. Additionally, the structure culminates with an interactive section that synthesizes the learned components into a practical application, ensuring a well-rounded grasp of the material.",
+        "alignment_with_learning_objectives": "The chapter's content clearly aligns with the stated learning objectives by introducing fundamental programming concepts such as expressions, operators, and user input, while also emphasizing the importance of type casting for effective user interaction. Each section of the chapter provides examples and assessments that directly relate to these concepts, ensuring students understand their practical applications. Additionally, the assessments measure students' comprehension of these objectives through relevant questions, reinforcing the overall alignment.",
+        "quality_of_examples": "The examples provided in the chapter are generally relevant and tied to the programming concepts being taught. For instance, the use of expressions with operators like `+` and `*` demonstrate how to manipulate both numerical values and strings. Additionally, real-world scenarios such as calculating a user's age or formatting input encourage practical engagement. However, some examples could be further elaborated to emphasize understanding, particularly regarding the nuances of type conversion during user input as it relates to mathematical operations.",
+        "instructional_usefulness": "The chapter sets clear goals and learning outcomes, guaranteeing practical use for both instructors and students. It effectively structures complex programming concepts with user-friendly examples, covers critical Python features like input handling, expressions, and type casting, and emphasizes practical applications through engaging activities."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.999614771667245,
+          "token_probabilities": {
+            "5": 0.9996174147422004,
+            "4": 0.0003799835663666773,
+            "3": 2.560307909851908e-06,
+            "2": 4.13835230449296e-08
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.962645267434969,
+          "token_probabilities": {
+            "5": 0.9626594562633614,
+            "4": 0.037326354908246304,
+            "3": 1.4188828392337406e-05
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.998291843100694,
+          "token_probabilities": {
+            "5": 0.9982955634024856,
+            "4": 0.0017007162957230401,
+            "3": 3.720301791443048e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.985846460742625,
+          "token_probabilities": {
+            "5": 0.9858919036370019,
+            "4": 0.014062995210931661,
+            "3": 4.475940975580587e-05,
+            "2": 3.417423106661376e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 3.7053680288553386,
+          "token_probabilities": {
+            "4": 0.7031609216282904,
+            "3": 0.2931210819489704,
+            "5": 0.001975034549929202,
+            "2": 0.0017429618728100815
+          },
+          "raw_response": "4"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.997809730825815,
+          "token_probabilities": {
+            "5": 0.9978135319466886,
+            "4": 0.0021827082412770827,
+            "3": 3.71850319518014e-06,
+            "2": 4.130883912269913e-08
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.774929350437781,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_3",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Step 1: Read the chapter thoroughly to ensure a comprehensive understanding of the content.",
+          "Step 2: Identify key concepts and claims made in the chapter regarding programming logic and control flow.",
+          "Step 3: Cross-reference these key concepts with established programming principles to verify their accuracy.",
+          "Step 4: Check for the presence of examples and analogies in the text that illustrate key concepts correctly.",
+          "Step 5: Look for any misleading claims or factual inaccuracies by examining the conditions, operators, and assertions used in the chapter."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter for the use of clear, age-appropriate language that matches the learners' understanding level, ensuring all terms are defined clearly.",
+          "Step 2: Identify the instructional intent by checking if each section has clear objectives and aligns with the goals set for the course.",
+          "Step 3: Analyze the logical flow of each concept to ensure that ideas are presented in a logical order and build on one another without confusion.",
+          "Step 4: Evaluate the examples and exercises provided in the chapter to ensure they reinforce the concepts taught and are appropriately challenging for the target learners.",
+          "Step 5: Gather feedback or insights from a group of target learners who engage with the chapter to assess if they found the material understandable and engaging."
+        ],
+        "logical_flow": [
+          "Step 1: Review the chapter's table of contents to identify if there is a clear progression of topics, ensuring that introductory concepts are presented before advancing to more complex topics.",
+          "Step 2: Analyze the introduction of each section to see if it includes a summary of previous sections, allowing for a seamless transition that builds upon the learned material.",
+          "Step 3: Examine the connections between sections, ensuring that examples provided in one section naturally lead into the next, demonstrating how concepts interrelate and support each other.",
+          "Step 4: Look for logical transitions between paragraphs and sections to see if they guide the reader smoothly, avoiding abrupt jumps in ideas or topics that disrupt understanding.",
+          "Step 5: Check the conclusion of the chapter to ensure that it not only summarizes the main points but also connects them to broader themes and future applications, reinforcing the logical structure of the entire chapter."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the stated learning objectives to ensure they are clearly articulated in relation to the chapter's content.",
+          "Step 2: Analyze the chapter content, examples, and assessments to confirm that they directly support the learning objectives, checking for clear connections.",
+          "Step 3: Check if the chapter includes assessments that evaluate students' understanding of the learning objectives, ensuring these assessments are varied and effective.",
+          "Step 4: Evaluate the coherence and logical flow of the chapter content to ensure it logically leads students toward achieving the learning objectives.",
+          "Step 5: Gather feedback from a sample of learners to assess whether they perceive the chapter content as aligned with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the chapter for the presence and relevance of examples related to the learning objectives outlined in the course syllabus. Determine if the examples directly align with fundamental programming concepts.",
+          "Step 2: Verify the correctness of each example by executing any code snippets provided to ensure they function as intended without errors. Note any discrepancies between the examples and expected outputs.",
+          "Step 3: Assess the clarity and concreteness of the examples, considering whether they provide sufficient context for students to understand the underlying concepts. Are they easy to relate to real-world applications?",
+          "Step 4: Analyze the helpfulness of examples by gathering feedback from a small group of students regarding how well they could grasp the concepts demonstrated through the examples provided.",
+          "Step 5: Compare the examples' effectiveness with similar instructional artifacts from external sources or previous iterations of the course material to evaluate improvements or regressions in example quality."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter's content to determine if it aligns with the needs and objectives of an instructional setting for both students and instructors.",
+          "Assess the clarity and coherence of the chapter, ensuring that concepts are presented in an organized manner and are easily understandable.",
+          "Examine the presence of practical examples and exercises that enhance the instructional usefulness and promote engagement among learners.",
+          "Evaluate the integration of assessment tools, such as quizzes or discussion questions, that effectively measure understanding and facilitate learning outcomes.",
+          "Solicit feedback from instructors or a focus group of students regarding the chapter's applicability and usefulness in a real classroom environment."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.996910775288909,
+        "pedagogical_clarity": 4.981698798351616,
+        "logical_flow": 4.919038052677672,
+        "alignment_with_learning_objectives": 4.923970938151886,
+        "quality_of_examples": 4.976170720796176,
+        "instructional_usefulness": 4.962173168864389
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately presents key concepts of programming logic, particularly conditional statements such as 'if', 'elif', and 'else'. It correctly explains the logic behind Boolean expressions and their role in decision-making processes in programming. Furthermore, it includes appropriate examples and analogies that reinforce understanding, such as the control flow analogy of a fork in the road, illustrating how a program makes decisions based on conditions. There are no misleading claims or factual errors identified.",
+        "pedagogical_clarity": "The chapter effectively explains programming concepts using language and examples suitable for beginner learners without prior programming experience. Key terms are defined clearly, and the instructional intent is made explicit through structured learning objectives and engaging examples. The logical flow builds progressively, reinforcing prior knowledge and ensuring new concepts are easily digestible.",
+        "logical_flow": "The chapter demonstrates a coherent sequence in its structure, beginning with basic concepts and gradually advancing to complex topics. Each section builds on the previous one, with clear connections evident in the flow of ideas. For instance, the introduction of control flow leads seamlessly into discussions on conditional logic and the importance of logical operators, reinforcing understanding as readers are guided through progressively more intricate examples.",
+        "alignment_with_learning_objectives": "The chapter provides a comprehensive overview of control flow and decision-making in programming, aligning well with the learning objectives. Each section articulates the principles of conditional statement usage, from basic 'if' statements to 'if-elif-else' chains, including practical examples. Additionally, the structure allows for varied assessments and activities, such as real-life analogy discussions and coding exercises, ensuring a strong connection to the outcomes described in the learning objectives.",
+        "quality_of_examples": "The chapter provides clear examples related to conditional logic, effectively using real-world analogies and structured programming scenarios. Each example aligns with the learning objectives, offering concrete illustrations of concepts such as if-else statements, Boolean expressions, and logical operators. Students can easily grasp the significance of these examples as they relate directly to relatable contexts.",
+        "instructional_usefulness": "The chapter provides a comprehensive framework for understanding control flow using conditional logic, which is crucial for programming proficiency. It includes clear explanations of concepts, practical examples, exercises, and the integration of logical and comparison operators, ensuring that the material aligns well with the instructional goals for both students and instructors."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.996910775288909,
+          "token_probabilities": {
+            "5": 0.9970567634976111,
+            "4": 0.0028005273741178137,
+            "3": 0.00013943004784127807,
+            "2": 3.279080429822369e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.981698798351616,
+          "token_probabilities": {
+            "5": 0.9818588237144305,
+            "4": 0.017983370248011995,
+            "3": 0.00015558671230017578,
+            "2": 2.2193252573818786e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.919038052677672,
+          "token_probabilities": {
+            "5": 0.921710638907903,
+            "4": 0.07565862047229253,
+            "3": 0.0025888950093776006,
+            "2": 4.18456104269417e-05
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.923970938151886,
+          "token_probabilities": {
+            "5": 0.9240597510525599,
+            "4": 0.0758514360467652,
+            "3": 8.881290067490245e-05
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.976170720796176,
+          "token_probabilities": {
+            "5": 0.9766049849903635,
+            "4": 0.022967550234417013,
+            "3": 0.0004206653562524441,
+            "2": 6.799418966998859e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.962173168864389,
+          "token_probabilities": {
+            "5": 0.9624289625911236,
+            "4": 0.03731741908957639,
+            "3": 0.0002514429118655209,
+            "2": 2.175407434445612e-06
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.959993742355108,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_4",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "1. Review the chapter for clarity and correctness in presenting programming concepts, ensuring that all domain concepts, such as data types, control structures, and algorithm formulation, are accurately represented.",
+          "2. Cross-check all technical claims, definitions, and examples against reliable programming literature or authoritative resources to identify any misleading claims or factual errors.",
+          "3. Verify that no technically invalid explanations are present in the text by ensuring that all programming concepts are presented in a way that aligns with how they function in Python, avoiding any ambiguity in the explanations.",
+          "4. Solicit feedback from subject matter experts or peers with advanced knowledge in programming and instructional design to gain insights on the chapter's conceptual accuracy and clarity.",
+          "5. Determine if the foundational programming concepts are correctly introduced and contextualized within the broader framework of the course objectives, ensuring alignment between the chapter content and course learning goals."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter for clarity of language, ensuring that all technical jargon is defined and explained in a way that is appropriate for the target learners' age and experience level.",
+          "Step 2: Analyze the overall structure of the chapter, checking if the progression of concepts is logical and each point builds on previous knowledge to facilitate understanding.",
+          "Step 3: Assess whether examples provided throughout the chapter effectively illustrate the key concepts, allowing readers to understand how practical applications relate to theoretical ideas.",
+          "Step 4: Evaluate the use of visual content such as diagrams, charts, or images that supplement the text and aid in conveying complex information.",
+          "Step 5: Gather feedback from a sample of target learners on their understanding and engagement with the chapter to identify areas that may need further clarification or simplification."
+        ],
+        "logical_flow": [
+          "Step 1: Read the chapter in full to understand its overall structure and content.",
+          "Step 2: Identify the sequence of sections and ensure that each section logically flows into the next, checking for appropriate transitions.",
+          "Step 3: Examine the connections between key concepts in the chapter to confirm they build on one another effectively.",
+          "Step 4: Look for any sections that introduce concepts or terminology without prior explanation, ensuring each idea is fully developed before moving to the next.",
+          "Step 5: Verify that any examples or illustrations reinforce the logical flow and support the understanding of previous sections."
+        ],
+        "alignment_with_learning_objectives": [
+          "Inspect the artifact strictly for alignment_with_learning_objectives.",
+          "Compare observed evidence against this criterion definition: The chapter content, examples, and assessments support the stated learning objectives of the artifact.",
+          "Assign a score from 1 to 5 using only evidence from the artifact."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples presented in the chapter for relevance to the course learning objectives, ensuring they reflect the key concepts of lists in Python.",
+          "Step 2: Evaluate the correctness of each example by checking for accuracy in syntax and adherence to Python programming principles.",
+          "Step 3: Assess the concreteness of the examples by determining if they are tangible, relatable, and practical for students with no prior programming experience.",
+          "Step 4: Analyze the helpfulness of the examples in enhancing student understanding, noting if they make complex concepts easier to grasp or if they provide context for real-world application.",
+          "Step 5: Gather feedback from students or peer evaluators on the perceived quality of the examples in the chapter and incorporate relevant insights into the evaluation."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter content ensuring it provides clear, practical examples relevant to the 'instructional_usefulness' criterion.",
+          "Evaluate whether the chapter aligns with the course learning objectives and facilitates effective teaching strategies.",
+          "Assess whether the chapter offers additional resources or teaching aids that enhance its practical application for instructors.",
+          "Solicit feedback from a small group of instructors or students who have engaged with the chapter to gauge its real-world utility within a classroom setting.",
+          "Analyze how the chapter's structure (e.g., organization, clarity, and engagement) contributes to its overall instructional usefulness."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.999284531210465,
+        "pedagogical_clarity": 4.962511026248123,
+        "logical_flow": 4.848018627044615,
+        "alignment_with_learning_objectives": 4.99983985558381,
+        "quality_of_examples": 4.996813458332898,
+        "instructional_usefulness": 4.9626063070866175
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents programming concepts accurately, clearly defining and explaining foundational programming principles related to lists, including their creation, indexing (both positive and negative), modification, and common operations like appending, inserting, and removing elements. All explanations align with Python's functionality, avoiding any misleading claims or errors in technical details. Additionally, the use of real-world analogies, like the 'shelf with numbered compartments,' effectively reinforces the concepts, contributing to overall clarity and comprehensibility.",
+        "pedagogical_clarity": "The chapter uses clear, age-appropriate language to introduce lists as a data structure, explaining the concept with relatable analogies such as comparing lists to shelves with numbered compartments. It defines key characteristics like mutability and ordering, with well-structured sections that progressively build understanding. Examples are provided that illustrate how to manipulate lists, enhancing comprehension. Furthermore, visual aids and consistent reinforcement of concepts, such as the importance of zero-based indexing, support clarity for learners.",
+        "logical_flow": "The chapter progresses from introducing the concept of lists by identifying problems with using individual variables to store related data, to explaining lists as a structured data type. Each section builds logically, as the need for lists naturally leads into how to access, modify, and manipulate them. The use of analogies strengthens understanding, and examples reinforce concepts, highlighting the intentional structure and transitions between ideas throughout the chapter.",
+        "alignment_with_learning_objectives": "The chapter content thoroughly supports the stated learning objectives, covering foundational concepts such as list creation, indexing, modification, and operations. For example, the explanations of the mutable nature of lists and the methods to add or remove elements directly align with the objectives of achieving programming competency and fostering problem-solving skills. Practical examples and clear explanations reinforce the learning outcomes, ensuring that students can apply these concepts in real programming scenarios.",
+        "quality_of_examples": "The examples in Chapter 4 on lists in Python are relevant as they directly relate to the concept of data storage and manipulation, aligning closely with the course objectives. The syntax provided is correct, showcasing how to create, access, and modify lists effectively. Each example is concrete, illustrating real-world scenarios like student scores and shopping lists, making them relatable to students with no prior programming experience. Additionally, the examples successfully clarify how to perform operations such as appending and removing items from lists, which significantly enhances understanding of list functionality.",
+        "instructional_usefulness": "The chapter presents clear, practical examples of lists in Python, explaining their properties, methods for modification, and practical applications. It aligns well with course objectives, such as teaching basic programming concepts and data structures, helping students build a foundational understanding of lists. The usage of analogies and structured exercises enhances its instructional value for both instructors and students."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.999284531210465,
+          "token_probabilities": {
+            "5": 0.9992874314639166,
+            "4": 0.0007096682826321528,
+            "3": 2.900253451193211e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.962511026248123,
+          "token_probabilities": {
+            "5": 0.9625939184990299,
+            "4": 0.037323812621213766,
+            "3": 8.164550860562738e-05,
+            "2": 6.233711507507069e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.848018627044615,
+          "token_probabilities": {
+            "5": 0.8501480497260204,
+            "4": 0.14773358572180145,
+            "3": 0.0021073064229509683,
+            "2": 1.1058129227148315e-05
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.99983985558381,
+          "token_probabilities": {
+            "5": 0.9998407699669737,
+            "4": 0.00015843610216241543,
+            "3": 7.337047135719169e-07,
+            "1": 6.022615040389886e-08
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.996813458332898,
+          "token_probabilities": {
+            "5": 0.9968203985013794,
+            "4": 0.0031726613301398957,
+            "3": 6.94016848068332e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.9626063070866175,
+          "token_probabilities": {
+            "5": 0.9626403436380613,
+            "4": 0.037325619810495286,
+            "3": 3.4036551443387824e-05
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.961512300917755,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_5",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "1. Review the chapter for accuracy in the presentation of domain concepts, ensuring there are no misleading claims or factual errors.",
+          "2. Cross-reference key concepts within the chapter with authoritative textbooks or resources to verify technical correctness.",
+          "3. Assess the clarity of explanations for complex concepts, ensuring they are technically sound and free of invalid explanations.",
+          "4. Evaluate the consistency of terminology used throughout the chapter to ensure it aligns with the established definitions within the domain.",
+          "5. Solicit feedback from peers or experts in the field to identify any overlooked inaccuracies or miscommunications before assigning a score."
+        ],
+        "pedagogical_clarity": [
+          "Read through the entire chapter to understand the content and context.",
+          "Identify key vocabulary and terminology used in the chapter, ensuring they match what learners are expected to understand.",
+          "Assess the clarity of explanations and examples provided in terms of language and structure, ensuring they are appropriate for the target audience.",
+          "Check for logical flow and coherence within sections and between different parts of the chapter to evaluate if instructional intent is easy to follow.",
+          "Solicit feedback from a sample of target learners on their understanding of the material to determine if the chapter meets its pedagogical goals."
+        ],
+        "logical_flow": [
+          "Review the chapter outline to ensure each section logically progresses from one concept to the next, maintaining coherence throughout.",
+          "Examine the introductory section to verify it clearly presents the main objectives and aligns with the content covered in the chapter.",
+          "Assess each subsection to confirm that concepts build upon previous sections effectively, ensuring that examples and activities support the learning objectives.",
+          "Check for appropriate transitions between topics, ensuring that the chapter flows logically and that connections between concepts are clearly established.",
+          "Look for any inconsistencies in terminology or definitions and ensure that the chapters maintain a consistent tone and style throughout."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the chapter's learning objectives to ensure they are clearly articulated and relevant to the content presented in the chapter.",
+          "Step 2: Analyze the content of the chapter to determine if the information, examples, and exercises effectively support the stated learning objectives.",
+          "Step 3: Verify the alignment of assessments (quizzes, coding tasks) with the learning objectives to ensure they measure understanding of the key concepts covered.",
+          "Step 4: Cross-check against course syllabus and other materials to confirm that the chapter adheres to the overall educational framework and goals of the course.",
+          "Step 5: Collect feedback from a sample of learners who interacted with the chapter to assess their perceptions of its relevance and effectiveness in meeting learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review each example provided in the chapter to assess its relevance to the learning objectives, ensuring that examples are directly applicable to the concepts being taught.",
+          "Step 2: Verify the correctness of each example by checking that the code functions correctly and that the explanations align with the expected outcomes from the example usage.",
+          "Step 3: Evaluate whether each example is sufficiently concrete, meaning that it should offer enough detail and context for learners to easily understand how and why it is used.",
+          "Step 4: Determine the helpfulness of each example by assessing whether it effectively clarifies or reinforces the concept in question, considering whether learners might find it intuitive or relatable.",
+          "Step 5: Compile feedback on the examples, noting areas for improvement or suggestions for additional examples that could enhance understanding of the concepts presented."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter's content to ensure it covers essential instructional goals relevant to foundational programming concepts.",
+          "Step 2: Assess the alignment of the chapter's learning objectives with real-world applications and teaching strategies for both instructors and students.",
+          "Step 3: Examine the examples and exercises provided in the chapter for their practical usefulness in facilitating understanding and engagement in programming.",
+          "Step 4: Gather feedback from potential users (instructors and students) regarding their perceived usefulness and applicability of the chapter's content in a teaching context.",
+          "Step 5: Analyze the overall structure and clarity of the chapter to determine if it is well-organized and accessible for instructional purposes."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.876674114836515,
+        "pedagogical_clarity": 4.619611149293794,
+        "logical_flow": 4.939758705237733,
+        "alignment_with_learning_objectives": 4.849850198109197,
+        "quality_of_examples": 3.9728011826700422,
+        "instructional_usefulness": 4.772295446494815
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents domain concepts accurately, explaining the purpose and mechanics of loops, specifically 'for' and 'while' loops, while avoiding misleading claims or factual errors. It effectively emphasizes the importance of controlling loop execution with 'break' and 'continue' statements, and includes relevant examples that clarify these concepts.",
+        "pedagogical_clarity": "The chapter utilizes clear and accessible language appropriate for beginner learners, introducing key programming concepts with relatable real-world analogies. The logical structure of the chapter, including clear examples and summaries, facilitates understanding and mastery of iteration, loop types, and control statements.",
+        "logical_flow": "The chapter is organized logically, moving from the basic concept of iteration to the implementation of loops with clear examples and definitions of terms. Each section builds on the previous one, introducing related concepts like the `for` loop and `while` loop, as well as the importance of control flow statements like `break` and `continue`. Transitions between topics are smooth and effectively link the ideas together, establishing a coherent narrative that enhances understanding.",
+        "alignment_with_learning_objectives": "The chapter effectively aligns its content with the stated learning objectives by introducing the concept of iteration, discussing its importance in programming, and detailing the implementation of both 'for' and 'while' loops. Each section builds on these objectives through practical examples, explanations of loop control statements, and the accumulator pattern, reinforcing key points through repetition and real-world analogies.",
+        "quality_of_examples": "The examples provided in Chapter 5 are relevant to the learning objectives as they illustrate key concepts of iteration, such as the `for` loop and `while` loop, and their suitable use cases. Each example is clear, correct, and concrete, helping to reinforce the understanding of looping constructs in Python. However, further context could be beneficial in some cases to enhance relatability and intuitive understanding.",
+        "instructional_usefulness": "The chapter provides a comprehensive overview of foundational programming concepts, emphasizing the importance of iteration through loops. It explains both 'for' and 'while' loops with clear examples, enhancing understanding through practical applications. The inclusion of control statements like 'break' and 'continue' adds depth, allowing students to handle various scenarios effectively."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.876674114836515,
+          "token_probabilities": {
+            "5": 0.8788704227996328,
+            "4": 0.11894217228074029,
+            "3": 0.0021785018761356473,
+            "2": 8.903043491332493e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.619611149293794,
+          "token_probabilities": {
+            "5": 0.6213690361870611,
+            "4": 0.37687937144354133,
+            "3": 0.0017452978455279853,
+            "2": 6.294523869585319e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.939758705237733,
+          "token_probabilities": {
+            "5": 0.9398384206600338,
+            "4": 0.0600818639176663,
+            "3": 7.971542229994637e-05
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.849850198109197,
+          "token_probabilities": {
+            "5": 0.8509874155769159,
+            "4": 0.14787943903150344,
+            "3": 0.0011290733154416502,
+            "2": 4.072076139047667e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 3.9728011826700422,
+          "token_probabilities": {
+            "4": 0.9685978312333512,
+            "3": 0.029249122271009,
+            "5": 0.002118799310777005,
+            "2": 3.4247184862819516e-05
+          },
+          "raw_response": "4"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.772295446494815,
+          "token_probabilities": {
+            "5": 0.7751168456233587,
+            "4": 0.22207470101657348,
+            "3": 0.0027955075915921347,
+            "2": 1.2945768475638424e-05
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.6718317994403495,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_6",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Read the chapter carefully to identify any misleading claims, factual errors, or technically invalid explanations related to the domain concepts.",
+          "Cross-reference mentioned concepts with authoritative sources in the field to verify their accuracy and applicability.",
+          "Check for consistency in terminology and definitions used throughout the chapter to ensure that all concepts align with standard interpretations and practices.",
+          "Identify any instances where the chapter may rely on assumptions or prescriptive claims that could mislead the reader, noting any areas where clarity or context may be lacking.",
+          "Compile notes of identified issues and inconsistencies, then assign a score from 1 to 5 based on the overall conceptual accuracy of the content."
+        ],
+        "pedagogical_clarity": [
+          "Read the entire chapter to assess the overall clarity of ideas presented.",
+          "Identify and note any sections where terminology is used that may not be familiar to the target learners, and consider whether definitions are provided or context is given.",
+          "Evaluate the logical flow of the chapter by checking if the instructional intent is clear, ensuring that each section logically leads to the next without abrupt transitions.",
+          "Review specific examples and explanations to determine if they are presented in a way that makes them easily understandable for the intended audience, considering their potential background knowledge.",
+          "Summarize the main ideas and ensure that they're explicitly stated at different sections of the chapter to reinforce understanding and retention for target learners."
+        ],
+        "logical_flow": [
+          "Review the chapter's overall organization, checking for a clear introduction, body, and conclusion that reflect the learning objectives.",
+          "Examine the logical flow between each section, ensuring that each topic naturally progresses into the next with no abrupt transitions.",
+          "Assess whether each section builds upon previous sections appropriately, checking for connections between concepts that enhance understanding.",
+          "Identify any sections that may lack a coherent progression or require additional context, making notes on areas where further explanation is needed.",
+          "Summarize the main points of the chapter to ensure that they collectively support the instructional goals and contribute to a logical flow of ideas."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the stated learning objectives of the chapter to ensure they are clearly defined and measurable.",
+          "Examine key content sections of the chapter to ensure they directly correspond to each specific learning objective, noting any discrepancies.",
+          "Analyze examples and assessments within the chapter to confirm they appropriately reinforce and assess the learning objectives outlined.",
+          "Conduct a side-by-side comparison of the chapter's content structure and the defined learning objectives to ascertain alignment and coverage.",
+          "Gather feedback from peers or subject matter experts on the chapter's alignment with the learning objectives for additional insights."
+        ],
+        "quality_of_examples": [
+          "Review the examples provided in the chapter to determine their relevance and correctness in relation to the key concepts covered.",
+          "Assess whether the examples are concrete enough to aid students' understanding. Look for specificity in how the examples illustrate the concepts.",
+          "Evaluate the helpfulness of the examples by considering if they clarify the concepts or if they may introduce confusion or ambiguity.",
+          "Ensure that the number of examples is sufficient; at least one example should be provided for each major concept introduced in the chapter.",
+          "Consider the diversity of examples to ensure they cater to different learning styles and contexts, enhancing overall comprehension of the chapter's content."
+        ],
+        "instructional_usefulness": [
+          "Review the course learning objectives to ensure the chapter's content aligns with educational goals and is relevant for instructors and students.",
+          "Assess the clarity and organization of the chapter's structure, ensuring concepts are presented in a logical sequence that facilitates understanding.",
+          "Evaluate the inclusion of practical examples, applications, and exercises that demonstrate the chapter's instructional usefulness in real-world programming scenarios.",
+          "Collect feedback from potential users (instructors and students) through interviews or surveys regarding their perceptions of the chapter's instructional materials.",
+          "Conduct a comparative analysis of similar educational artifacts to identify strengths and areas for improvement specific to this chapter."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.9768353391180495,
+        "pedagogical_clarity": 4.310896927674426,
+        "logical_flow": 4.678367436235151,
+        "alignment_with_learning_objectives": 4.962285303478987,
+        "quality_of_examples": 4.556236768300779,
+        "instructional_usefulness": 4.817008287818303
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents accurate information about programming concepts, making clear distinctions between planning with pseudocode and the systematic debugging process. It outlines the types of errors programmers may encounter, including syntax, runtime, and logical errors, without presenting misleading claims or factual errors based on the established norms in software development education.",
+        "pedagogical_clarity": "The chapter effectively explains important concepts using language that is accessible to learners with no prior programming experience. It introduces critical ideas such as pseudocode and debugging in a logical progression, making the instructional intent clear as it guides learners from planning to problem-solving. Each section builds on the last, maintaining clarity and coherence throughout, although some concepts may benefit from additional explanation.",
+        "logical_flow": "The chapter is organized coherently, beginning with the introduction of programming concepts that build into more complex problem-solving strategies. Each section naturally progresses to the next, starting from basic concepts and moving towards debugging techniques, which enhances students' understanding of how to approach programming challenges.",
+        "alignment_with_learning_objectives": "The chapter aligns with the learning objectives by clearly outlining the art of problem-solving through pseudocode and systematic debugging methods. It emphasizes the value of planning before coding and treats error messages as clues for improvement, reinforcing a growth mindset. The content directly corresponds to each objective, providing examples and structured guidance for students in an easily digestible format.",
+        "quality_of_examples": "The chapter provides a structured approach to debugging through examples, emphasizing the systematic process of identifying and resolving errors. Each example is relevant, such as the incorrect handling of user input in a function, which illustrates logical errors. Additionally, there is a clear demonstration of converting user input, highlighting the importance of data types in programming. Furthermore, the diversity of examples caters to different learning styles, ensuring a wider understanding of debugging principles.",
+        "instructional_usefulness": "The chapter provides a structured approach to problem-solving and debugging that aligns with the course learning objectives. It emphasizes the importance of pseudocode as a planning tool, helping students and instructors logically articulate their thoughts before coding. Incorporation of real-world examples and practical debugging techniques using print statements enhances its applicability for both instructors and learners, making it a valuable teaching resource."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.9768353391180495,
+          "token_probabilities": {
+            "5": 0.976930350175365,
+            "4": 0.022975197083973064,
+            "3": 9.389442400820369e-05,
+            "2": 5.583166537135309e-07
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.310896927674426,
+          "token_probabilities": {
+            "4": 0.6740829365940813,
+            "5": 0.3184142235310027,
+            "3": 0.007488383893255618,
+            "2": 1.4455981660396266e-05
+          },
+          "raw_response": "4"
+        },
+        "logical_flow": {
+          "expected_score": 4.678367436235151,
+          "token_probabilities": {
+            "5": 0.6788508180169952,
+            "4": 0.3206664398453146,
+            "3": 0.0004821024935360311,
+            "2": 6.396441541729227e-07
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.962285303478987,
+          "token_probabilities": {
+            "5": 0.9624834674638902,
+            "4": 0.037319533028858654,
+            "3": 0.00019583502959918988,
+            "2": 1.1644776520079291e-06
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.556236768300779,
+          "token_probabilities": {
+            "5": 0.560045273059878,
+            "4": 0.4361636972144717,
+            "3": 0.003773554692201584,
+            "2": 1.74750334488719e-05
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.817008287818303,
+          "token_probabilities": {
+            "5": 0.8173200335646502,
+            "4": 0.18236874998180044,
+            "3": 0.00031068716075191306,
+            "2": 5.292927973586555e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.716938343770949,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_7",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Step 1: Review the entire chapter for factual inaccuracies, ensuring that all domain concepts related to programming are presented in a technically sound manner without misleading claims.",
+          "Step 2: Cross-verify key claims and explanations with authoritative programming resources or textbooks to confirm their accuracy.",
+          "Step 3: Assess the clarity of explanations for each programming concept, ensuring that no vague or ambiguous statements could lead to misunderstandings.",
+          "Step 4: Check for consistency in terminology and usage of programming concepts throughout the chapter to avoid confusion for the readers.",
+          "Step 5: Summarize findings from the review and use scoring guidelines to assign a score from 1 to 5 based on overall conceptual accuracy."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter's introduction to determine if it clearly outlines the instructional intent and sets the stage for the content.",
+          "Step 2: Analyze the language used in the chapter to ensure it is appropriate for the target learners, avoiding jargon and complex terms without explanation.",
+          "Step 3: Evaluate the organization of the chapter, checking if ideas are presented in a logical sequence that builds understanding step-by-step.",
+          "Step 4: Assess the use of examples and illustrations in the chapter to confirm they clarify concepts and do not introduce confusion or ambiguity.",
+          "Step 5: Confirm that the chapter includes summary sections or key takeaways that reiterate the major points, making the instructional intent clear and reinforcing learner understanding."
+        ],
+        "logical_flow": [
+          "Step 1: Review the chapter outline to ensure it contains a logical progression of topics related to the learning objectives, such as defining functions, using parameters, and implementing return statements.",
+          "Step 2: Check each section to confirm that concepts build on one another. For example, verify that the introduction to functions precedes discussions on parameters and return statements.",
+          "Step 3: Examine transitions between sections for clarity. Ensure that the ending of one section leads naturally into the next topic, reinforcing connections and understanding.",
+          "Step 4: Assess the use of examples within each section. Ensure that examples illustrate the concepts being taught while contributing to the flow of logic throughout the chapter.",
+          "Step 5: Conduct a final read-through to assess overall coherence and organization. The chapter should feel unified, with each part clearly contributing to a comprehensive understanding of the topic."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the learning objectives stated in the chapter to confirm that the content aligns with the necessary knowledge and skills.",
+          "Step 2: Analyze the example problems and assessments in the chapter to ensure that they provide relevant practice for achieving the learning objectives.",
+          "Step 3: Evaluate the clarity and relevance of the explanations and definitions provided in the chapter, particularly surrounding key concepts like functions, parameters, and scope.",
+          "Step 4: Check if there are any embedded assessments or questions that assess understanding of the material and confirm that they are linked to the objectives.",
+          "Step 5: Assess if the chapter content promotes problem-solving through decomposition by evaluating if it encourages breaking down complex problems into manageable parts."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples presented in the chapter and check if they are relevant to the instructional goals of the course.",
+          "Step 2: Evaluate the correctness of the examples provided, ensuring they accurately illustrate the concepts taught in the chapter.",
+          "Step 3: Assess the concreteness of the examples, confirming they are specific enough to enhance understanding and are not overly abstract.",
+          "Step 4: Check if the examples are helpful for understanding the concept, ensuring they aid in the comprehension of key principles rather than confuse students.",
+          "Step 5: Gather feedback from a sample of students who used the examples, analyzing their perspectives on how helpful the examples were in their learning process."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter's content to assess whether it aligns with established instructional goals and objectives for the course.",
+          "Step 2: Analyze the clarity and organization of the chapter, ensuring it presents information logically and systematically for instructor and student use.",
+          "Step 3: Evaluate the practicality of the examples and exercises provided, checking if they effectively reinforce the learning objectives and support instructional use.",
+          "Step 4: Gather feedback from instructors and students who have used the chapter, focusing on their perceptions of its usefulness as a teaching and learning artifact.",
+          "Step 5: Summarize findings from the evaluation and score the chapter based on its overall instructional usefulness on a scale from 1 to 5."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.9999772599128205,
+        "pedagogical_clarity": 4.775217251868206,
+        "logical_flow": 4.952020247160239,
+        "alignment_with_learning_objectives": 4.993277965084818,
+        "quality_of_examples": 4.879280320708444,
+        "instructional_usefulness": 4.9975199508302754
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter presents domain concepts accurately and without misleading claims. It clearly defines functions, parameters, and the significance of the DRY principle, providing coherent explanations and examples for each. Terminology is consistent throughout, reinforcing understanding of programming constructs. The structure supports clarity, enabling readers to grasp complex ideas effectively. No factual errors or ambiguous statements were found.",
+        "pedagogical_clarity": "The chapter provides a clear introduction to the concept of functions, establishing instructional intent by outlining the importance of functions in programming. The use of straightforward language and illustrative examples, such as the vending machine analogy, further supports comprehension among learners. Additionally, the structured format with distinct sections for defining, calling functions, and decomposing problems enhances logical progression and clarity, making it accessible for beginners.",
+        "logical_flow": "The chapter presents a coherent sequence of concepts that build upon each other effectively. It starts with the introduction of functions, their benefits, and then progresses to function anatomy, including parameters and return statements. Each section naturally leads into the next, with examples reinforcing key concepts without losing sight of the overall learning objectives.",
+        "alignment_with_learning_objectives": "The chapter content rigorously covers the stated learning objectives by providing clear and detailed explanations of functions, parameters, and return values. Each section includes practical examples and exercises that reinforce key concepts, ensuring that students can achieve the course objectives related to programming competencies and problem-solving skills.",
+        "quality_of_examples": "The chapter provides clear, relevant examples that illustrate the importance of functions in programming. Each example is designed to demonstrate how functions can encapsulate logic, enhance code readability, and promote reusability. Furthermore, the chapter includes various scenarios such as calculating areas and converting temperatures, which are concrete and relatable for learners.",
+        "instructional_usefulness": "The chapter provides a comprehensive overview of programming functions, elucidating their significance in avoiding code redundancy through the 'Don't Repeat Yourself' (DRY) principle. It effectively organizes content by breaking down complex topics into manageable sections, offering clear explanations and practical examples, which enhance readability and aid in understanding. Furthermore, the hands-on exercises and robust assessments encourage students to apply their knowledge, reinforcing the learning objectives. Overall, this chapter is a valuable instructional resource for both instructors and students, supporting its practical use in educational settings."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.9999772599128205,
+          "token_probabilities": {
+            "5": 0.9999779074934697,
+            "4": 2.144492588102797e-05,
+            "3": 6.475806492926031e-07
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.775217251868206,
+          "token_probabilities": {
+            "5": 0.776390294210193,
+            "4": 0.22243955678534497,
+            "3": 0.00116725566693685,
+            "2": 2.8933375251458586e-06
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.952020247160239,
+          "token_probabilities": {
+            "5": 0.9523044763327274,
+            "4": 0.047412446657199334,
+            "3": 0.00028192484765805716,
+            "2": 1.152162415202281e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.993277965084818,
+          "token_probabilities": {
+            "5": 0.9932926054183115,
+            "4": 0.006692754248195392,
+            "3": 1.4640333493051509e-05
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.879280320708444,
+          "token_probabilities": {
+            "5": 0.8800879657674074,
+            "4": 0.11910694347127533,
+            "3": 0.0008025364636721025,
+            "2": 2.554297645074346e-06
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.9975199508302754,
+          "token_probabilities": {
+            "5": 0.9975236682555517,
+            "4": 0.0024726143191717703,
+            "3": 3.717425276560396e-06
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.9328821659274675,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_8",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Review the chapter to ensure all domain concepts are presented correctly and consistently, ensuring no misleading claims or factual inaccuracies.",
+          "Cross-reference the concepts presented in the chapter with reputable sources (e.g., textbooks, academic articles) to validate their accuracy and relevance to the course subject.",
+          "Evaluate the clarity of the explanations within the chapter, checking for technical validity and whether complex concepts are communicated effectively to the target audience.",
+          "Ensure the chapter includes relevant examples or analogies that accurately reflect the concepts and do not introduce confusion or misinterpretation.",
+          "Solicit feedback from peers or subject matter experts on the chapter's content to identify any overlooked errors or areas of ambiguity in conveying the domain concepts."
+        ],
+        "pedagogical_clarity": [
+          "Review the chapter's language complexity to determine if it aligns with the learners' reading level and comprehension abilities.",
+          "Assess the clarity of explanations, ensuring that key concepts are defined and elaborated on in a way that facilitates understanding.",
+          "Check for logical flow in the instruction, verifying that the sequence of ideas builds upon previous knowledge and guides learners through the material.",
+          "Identify any use of examples that illustrate instructional intent, confirming they are relevant and effectively clarify the concepts presented.",
+          "Solicit feedback from a sample of target learners to gauge their understanding and perception of the chapter's clarity and instructional effectiveness."
+        ],
+        "logical_flow": [
+          "Review the chapter's structure to ensure that the introduction clearly outlines the main topics and objectives, setting a logical foundation.",
+          "Examine the sequence of sections and subsections to confirm that each builds upon the previous content and introduces new concepts progressively.",
+          "Identify transitions between sections or ideas to ensure clarity and coherence, making sure concepts are linked without sudden shifts.",
+          "Check for summarization at the end of major sections to reinforce understanding and help with the retention of the material.",
+          "Solicit feedback from peers or instructional designers on the organizational flow, considering any suggestions or observations for improvement."
+        ],
+        "alignment_with_learning_objectives": [
+          "Review the chapter content to ensure it includes examples that meet the stated learning objectives, verifying that the key concepts are addressed in a manner that balances depth and clarity.",
+          "Examine the alignment of chapter assessments with learning objectives to confirm they measure the understanding of the crucial programming concepts outlined in the goals.",
+          "Check for consistency in language and terminology used in the chapter with those used in the learning objectives, ensuring that all examples and assessments are framed in a way that reinforces the objectives.",
+          "Assess the chapter structure and organization to ensure that it logically guides a learner through the concepts, from foundational topics to more complex applications, facilitating a cohesive understanding.",
+          "Solicit feedback from peer evaluations or trial runs with potential learners to gather insights on content clarity and relevance, ensuring that all feedback aligns with the stated learning objectives."
+        ],
+        "quality_of_examples": [
+          "Review the chapter to determine if the examples provided are relevant to the learning objectives outlined in the course syllabus.",
+          "Assess the correctness of each example by cross-referencing with authoritative sources or educational materials to ensure they convey accurate information.",
+          "Evaluate the concreteness of the examples, checking if they provide tangible scenarios that deepen comprehension of the programming concepts discussed in the chapter.",
+          "Identify whether the examples include varied contexts that cater to different learning styles and scenarios, ensuring they are helpful in illustrating the concepts effectively.",
+          "Consider the feedback from other learners or instructors regarding the examples, noting if they have deemed them helpful or if suggestions for improvement have been made."
+        ],
+        "instructional_usefulness": [
+          "Step 1: Review the chapter content to check the alignment of learning objectives with the instructional use scenarios for both students and instructors.",
+          "Step 2: Assess the clarity and coherence of instructional material by identifying key sections and evaluating if they support the identified learning objectives.",
+          "Step 3: Gather feedback from a sample group of instructors or students through surveys or focused interviews to collect their insights on the chapter's usefulness.",
+          "Step 4: Evaluate the practical component of the chapter by analyzing any provided exercises or examples for their applicability in real teaching or learning contexts.",
+          "Step 5: Compile all findings and develop a scoring rubric that reflects the level of instructional usefulness based on criteria such as engagement, clarity, applicability, and alignment with course goals."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.99716551403742,
+        "pedagogical_clarity": 4.952434245004691,
+        "logical_flow": 4.816032724205411,
+        "alignment_with_learning_objectives": 4.999363964042876,
+        "quality_of_examples": 4.994750246070329,
+        "instructional_usefulness": 4.994065879908707
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter reliably presents the foundational programming concepts essential for understanding Python, including data types, control flow, functions, and debugging strategies. The explanations are clear and accurate, with relevant examples illustrating each point without introducing any misleading claims or errors. The content consistently aligns with established programming principles and best practices, ensuring that learners grasp the material effectively.",
+        "pedagogical_clarity": "The chapter effectively uses accessible language and clear explanations to introduce complex programming concepts suitable for learners with no prior experience. Key ideas are elaborated on with structured examples, such as defining and controlling flow with conditionals, which aligns with the instructional intent. Additionally, the logical flow of topics guides the reader through the material in a coherent manner, making it easier to follow and understand.",
+        "logical_flow": "The chapter is structured in a coherent manner that reflects a progression from fundamental concepts to more advanced topics. Each section logically builds on the previous one, such as moving from basic programming principles to the application of algorithms. Additionally, transitions between sections maintain coherence, enhancing the reader's understanding of how each concept interrelates.",
+        "alignment_with_learning_objectives": "The chapter content comprehensively supports the stated learning objectives, ensuring that students can differentiate between fundamental data types, construct programs with control flow, and decompose problems into manageable functions. Each section provides detailed explanations and practical examples that illustrate key programming concepts, reinforcing their application within assignments and assessments. Moreover, practice problems and Q&A sections encourage synthesis of knowledge vital for understanding programming fundamentals.",
+        "quality_of_examples": "The examples provided in the chapter effectively illustrate relevant programming concepts outlined in the learning objectives. They include concrete scenarios such as using lists to handle data, implementing conditional logic with 'if-elif-else' structures, and working with functions to encapsulate logic. Each example is accurate and engages varied contexts, making them accessible to learners with different styles. Moreover, the feedback mechanisms for identifying common pitfalls, such as infinite loops and the correct use of the return statement, show attention to learner needs and encourage deeper understanding.",
+        "instructional_usefulness": "The chapter presents a comprehensive introduction to Python programming, with clearly defined learning objectives that align with practical instructional scenarios for both students and instructors. The structured approach to teaching key concepts, along with exercises and assessments that promote engagement and real-world application, enhances its instructional usefulness."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.99716551403742,
+          "token_probabilities": {
+            "5": 0.9971823667482015,
+            "4": 0.002800879573071492,
+            "3": 1.6654646672338352e-05,
+            "2": 9.903205466459646e-08
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.952434245004691,
+          "token_probabilities": {
+            "5": 0.9525059956649232,
+            "4": 0.04742248059698232,
+            "3": 7.12968159577217e-05,
+            "2": 2.2692213668252058e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.816032724205411,
+          "token_probabilities": {
+            "5": 0.8168821795900522,
+            "4": 0.18227105155432677,
+            "3": 0.0008440823266012753,
+            "2": 2.6865290197797404e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.999363964042876,
+          "token_probabilities": {
+            "5": 0.9993688399041145,
+            "4": 0.0006263311167221123,
+            "3": 4.782097088377103e-06,
+            "2": 4.688207491246652e-08
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 4.994750246070329,
+          "token_probabilities": {
+            "5": 0.9947651618175349,
+            "4": 0.005220049286796258,
+            "3": 1.4662044131890372e-05,
+            "2": 1.2685153688381897e-07
+          },
+          "raw_response": "5"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.994065879908707,
+          "token_probabilities": {
+            "5": 0.994077488274515,
+            "4": 0.0059110020833699215,
+            "3": 1.1410918421092071e-05,
+            "2": 9.872369401666685e-08
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.958968762211573,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    },
+    {
+      "artifact_id": "chapter_9",
+      "model_name": "gpt-4o-mini",
+      "evaluator_name": "g-eval",
+      "evaluation_steps": {
+        "conceptual_accuracy": [
+          "Step 1: Read the chapter thoroughly, making notes of all concepts presented and checking for consistency with established knowledge in the domain.",
+          "Step 2: Cross-reference each concept mentioned in the chapter with reliable external sources, ensuring that definitions, explanations, and examples are factually accurate.",
+          "Step 3: Identify any claims or statements that could potentially mislead learners or introduce misconceptions, and assess if those claims are substantiated with appropriate evidence or references.",
+          "Step 4: Review the chapter for technical accuracy by scrutinizing the explanations of domain concepts, verifying that they are logically sound and conform to industry standards.",
+          "Step 5: Summarize findings and prepare a grading rationale based on the presence or absence of factual inaccuracies, misleading information, or unsupported claims to inform the score assignment."
+        ],
+        "pedagogical_clarity": [
+          "Step 1: Review the chapter for clarity in language, ensuring that the terminology used matches the comprehension level of the target learners.",
+          "Step 2: Assess the logical flow of the instructional intent, making sure that concepts are presented in a sequential manner that builds on previous knowledge.",
+          "Step 3: Evaluate examples and illustrations provided in the chapter for their effectiveness in clarifying complex ideas and concepts.",
+          "Step 4: Examine the use of definitions and explanations throughout the chapter, checking if they are straightforward and devoid of jargon that could confuse students.",
+          "Step 5: Gather feedback from a sample of target learners regarding their understanding of the material, noting any areas of confusion or need for clearer explanations."
+        ],
+        "logical_flow": [
+          "Step 1: Review the overall structure of the chapter to ensure that it contains a clear introduction, development, and conclusion that logically build upon each other.",
+          "Step 2: Analyze the sequence of sections to check if each section naturally connects to the next, creating a cohesive narrative throughout the chapter.",
+          "Step 3: Identify key terms and concepts introduced in each section and verify that they are introduced in an order that allows for proper comprehension and retention.",
+          "Step 4: Examine transitional phrases or sentences between sections to ensure they effectively guide the reader from one idea to the next without confusion.",
+          "Step 5: Seek feedback from peers or colleagues to gather diverse perspectives on the logical flow of the chapter and make necessary adjustments before finalizing."
+        ],
+        "alignment_with_learning_objectives": [
+          "Step 1: Review the stated learning objectives of the chapter to understand the expected outcomes.",
+          "Step 2: Analyze the chapter content to check for clear linkage between each section and the learning objectives, ensuring that explanations, examples, and assessments directly correspond to the objectives.",
+          "Step 3: Evaluate the examples and assessments within the chapter for their relevance and alignment, confirming that each supports the learning objectives and provides adequate opportunity for students to demonstrate understanding.",
+          "Step 4: Assess whether the chapter includes relevant resources (such as external references or tools) that help learners achieve the defined objectives, ensuring learners have access to necessary supplementary materials.",
+          "Step 5: Ensure clarity in the chapter's language and structure, confirming that educational principles (such as progression and engagement) are applied to facilitate student understanding and alignment with the learning objectives."
+        ],
+        "quality_of_examples": [
+          "Step 1: Review the examples provided in the chapter to ensure they are relevant to the learning objectives outlined and align with the context of programming concepts.",
+          "Step 2: Verify that each example is correct, meaning that it adheres to Python syntax and accurately demonstrates the concept discussed in the chapter.",
+          "Step 3: Assess the concreteness of each example by checking if it includes sufficient details and context that would enable learners to understand and apply the concepts effectively.",
+          "Step 4: Reflect on whether each example is helpful for understanding the concept, evaluating if it clarifies complex ideas or provides relatable scenarios that resonate with learners' experiences.",
+          "Step 5: Compile all findings from the review process into actionable feedback, categorizing any improvements needed for enhancing the quality of examples in the chapter."
+        ],
+        "instructional_usefulness": [
+          "Review the chapter to determine the relevance and applicability of content to instructors and students, ensuring it aligns with common teaching needs.",
+          "Analyze the structure of the chapter, including clarity, organization, and accessibility of information to assess ease of use for teaching purposes.",
+          "Evaluate the depth and coverage of instructional strategies presented in the chapter to ensure they adequately address varied learning styles and pedagogical approaches.",
+          "Gather and assess feedback from potential end-users (instructors and students) regarding the perceived usefulness and practicality of the content in a real-world context.",
+          "Align the chapter's objectives with established educational standards or learning outcomes to verify its instructional usefulness and effectiveness in achieving desired educational goals."
+        ]
+      },
+      "scores": {
+        "conceptual_accuracy": 4.987107335518616,
+        "pedagogical_clarity": 4.970599926197321,
+        "logical_flow": 4.9028556607222775,
+        "alignment_with_learning_objectives": 4.904483249295041,
+        "quality_of_examples": 3.9953326386823105,
+        "instructional_usefulness": 4.981883076919705
+      },
+      "reasons": {
+        "conceptual_accuracy": "The chapter accurately explains the structure and functionality of dictionaries in Python, emphasizing their use of key-value pairs for efficient data retrieval. It provides clear examples that illustrate the advantages of using dictionaries over lists for scenarios requiring unordered data access. Additionally, it highlights important concepts such as key uniqueness and immutability, ensuring factual accuracy in understanding Python's data structures.",
+        "pedagogical_clarity": "The chapter explains the concepts of dictionaries in a manner consistent with the comprehension level of learners with no prior programming experience. It includes clear definitions, practical examples, and real-world analogies, making the instructional intent easy to follow. Furthermore, the logical progression from understanding basic concepts to practical applications ensures a coherent learning experience.",
+        "logical_flow": "The chapter is structured coherently with a clear introduction to dictionaries, followed by discussions on their properties, mechanics for creating and manipulating them, and concluding with their practical applications. Each section builds on previous concepts, allowing for a solid understanding of dictionaries and their uses. Transitions between sections are smooth, maintaining narrative cohesion throughout the chapter.",
+        "alignment_with_learning_objectives": "The chapter effectively supports the stated learning objectives by providing clear explanations and examples of how to use dictionaries for data storage and retrieval, particularly in contexts where key-value pairs are beneficial for efficiency and readability. The inclusion of iterative processes, methods for checking keys, and comparative analysis with lists further reinforces the learning outcomes concerning data structure selection and operation.",
+        "quality_of_examples": "The examples provided in the chapter effectively illustrate the core concepts of dictionaries in Python. They are relevant to the learning objectives and demonstrate how to efficiently retrieve values using keys, handle errors with `KeyError`, and perform operations like adding or updating key-value pairs. Each example is tied to real-world analogies, such as phonebooks and user profiles, which enhances understanding and applicability. However, the concreteness could be improved by including more varied, relatable examples from different contexts, which would help in reaching a broader audience of learners.",
+        "instructional_usefulness": "The chapter provides an extensive overview of dictionary use in Python, covering core concepts such as key-value pairs, mutable and immutable data types, and practical applications. It includes clear examples and structured explanations that are directly applicable for both students and instructors, making it a valuable teaching resource."
+      },
+      "weighted_scores": {
+        "conceptual_accuracy": {
+          "expected_score": 4.987107335518616,
+          "token_probabilities": {
+            "5": 0.9873407079303074,
+            "4": 0.012428785238446564,
+            "3": 0.00022764125080079845,
+            "2": 2.865580445326043e-06
+          },
+          "raw_response": "5"
+        },
+        "pedagogical_clarity": {
+          "expected_score": 4.970599926197321,
+          "token_probabilities": {
+            "5": 0.9706446663127714,
+            "4": 0.029310930029008926,
+            "3": 4.4067200988235275e-05,
+            "2": 3.364572315066151e-07
+          },
+          "raw_response": "5"
+        },
+        "logical_flow": {
+          "expected_score": 4.9028556607222775,
+          "token_probabilities": {
+            "5": 0.9038006621056671,
+            "4": 0.09525988965417836,
+            "3": 0.0009338950969200174,
+            "2": 5.5531432344299964e-06
+          },
+          "raw_response": "5"
+        },
+        "alignment_with_learning_objectives": {
+          "expected_score": 4.904483249295041,
+          "token_probabilities": {
+            "5": 0.9045713607502033,
+            "4": 0.0953411135908218,
+            "3": 8.693986278743106e-05,
+            "2": 5.857961875694734e-07
+          },
+          "raw_response": "5"
+        },
+        "quality_of_examples": {
+          "expected_score": 3.9953326386823105,
+          "token_probabilities": {
+            "4": 0.994232849196003,
+            "3": 0.005217256060843502,
+            "5": 0.000549894743153592
+          },
+          "raw_response": "4"
+        },
+        "instructional_usefulness": {
+          "expected_score": 4.981883076919705,
+          "token_probabilities": {
+            "5": 0.9819493822282581,
+            "4": 0.017985033038886412,
+            "3": 6.486415715807271e-05,
+            "2": 7.205756973250347e-07
+          },
+          "raw_response": "5"
+        }
+      },
+      "overall_score": 4.790376981222545,
+      "fallback_scoring_used": false,
+      "files": [
+        "assessment.md",
+        "script.md",
+        "slides.tex"
+      ]
+    }
+  ],
+  "summary": {
+    "total_artifacts": 10,
+    "average_overall_score": 4.848748415952601,
+    "max_overall_score": 4.961512300917755,
+    "min_overall_score": 4.6718317994403495
+  }
+}
