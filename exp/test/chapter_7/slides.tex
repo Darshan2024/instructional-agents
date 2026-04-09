@@ -1,0 +1,940 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Introduction to Libraries: NumPy}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to NumPy}
+    \begin{block}{What is NumPy?}
+        NumPy, short for "Numerical Python," is a powerful open-source library in Python designed for numerical computing. 
+        It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these structures efficiently.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Significance of NumPy in Numeric Data Analysis}
+    \begin{enumerate}
+        \item \textbf{Performance}
+        \begin{itemize}
+            \item Built on C and Fortran, NumPy offers faster operations on arrays than standard Python lists.
+            \item \textit{Vectorization}: Perform operations on entire arrays without loops, improving performance and reducing complexity.
+        \end{itemize}
+        
+        \item \textbf{Ease of Use}
+        \begin{itemize}
+            \item Intuitive and concise syntax for straightforward mathematical operations.
+            \item Built-in functions simplify complex operations (e.g., linear algebra, statistical analysis).
+        \end{itemize}
+        
+        \item \textbf{Multidimensional Arrays}
+        \begin{itemize}
+            \item Unlike Python lists, NumPy’s \texttt{ndarray} can handle vast amounts of data efficiently in various dimensions.
+        \end{itemize}
+        
+        \item \textbf{Mathematical Functions}
+        \begin{itemize}
+            \item Rich library enabling complex calculations, transformations, and statistical analyses effortlessly.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of NumPy}
+    \begin{itemize}
+        \item \textbf{ndarray}: A fast and flexible container for large datasets.
+        \begin{lstlisting}[language=Python]
+import numpy as np
+# Creating a 1D array
+array_1d = np.array([1, 2, 3, 4, 5])
+        \end{lstlisting}
+
+        \item \textbf{Broadcasting}: Mechanism allowing operations on arrays of different shapes.
+
+        \item \textbf{Mathematical Operations}:
+        \begin{itemize}
+            \item Basic: Addition, subtraction, multiplication, etc.
+            \item Advanced: Dot product, matrix operations, Fourier transforms, etc.
+        \end{itemize}
+
+        \item \textbf{Linear Algebra}: Functions for matrix multiplication and eigenvalue computations.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example of NumPy Usage}
+    \begin{lstlisting}[language=Python]
+import numpy as np
+
+# Creating a 2D array (matrix)
+matrix = np.array([[1, 2, 3], 
+                   [4, 5, 6], 
+                   [7, 8, 9]])
+
+# Perform operation: Transpose of the matrix
+transpose = matrix.T
+
+print("Original Matrix:\n", matrix)
+print("Transposed Matrix:\n", transpose)
+    \end{lstlisting}
+    \begin{block}{Explanation}
+        In this example, we create a 2D array (matrix) and compute its transpose using NumPy's \texttt{T} attribute. 
+        This showcases the ease and efficiency of handling matrix operations.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary}
+    \begin{block}{}
+        NumPy is an essential library for numeric data analysis in Python. Its speed, flexibility, and rich functionality make it foundational for data scientists, engineers, and researchers.
+        \begin{itemize}
+            \item Mastering NumPy lays the groundwork for more complex data manipulation and analysis tasks.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Tip}
+        Remember to practice using NumPy to become comfortable with its functionalities, as it will significantly enhance your data analysis capabilities in Python!
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Pre-Requisites}
+    \begin{itemize}
+        \item \textbf{Python:} Ensure that you have Python installed on your system. Python 3.6 or later is recommended.
+        \item \textbf{Package Manager:} Familiarize yourself with \texttt{pip}, the package manager for Python, which will be used to install NumPy.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Development Environment}
+    Choose an Integrated Development Environment (IDE) that supports Python. Here are a few popular options:
+    \begin{itemize}
+        \item \textbf{Jupyter Notebook:} Ideal for interactive coding and data visualization.
+        \item \textbf{PyCharm:} A powerful IDE with extensive features for Python development.
+        \item \textbf{VS Code:} Lightweight and customizable, suitable for general coding and Python.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Installing NumPy}
+    \textbf{Installing NumPy:}
+    \begin{enumerate}
+        \item Open your terminal (Command Prompt, PowerShell, or terminal emulator).
+        \item Type the following command and hit Enter:
+        \begin{lstlisting}
+pip install numpy
+        \end{lstlisting}
+    \end{enumerate}
+    
+    \textbf{For Linux:}
+    \begin{enumerate}
+        \item Open the terminal.
+        \item Run the same command:
+        \begin{lstlisting}
+pip install numpy
+        \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Verifying Installation}
+    \textbf{Verifying the Installation:}
+    After installation, verify if NumPy is successfully installed by running Python in your terminal:
+    \begin{lstlisting}
+import numpy as np
+print(np.__version__)
+    \end{lstlisting}
+    If NumPy is installed correctly, this will print the version number of NumPy.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Common Issues}
+    \textbf{Common Installation Issues:}
+    \begin{itemize}
+        \item \textbf{Permission Errors:} Use \texttt{pip install --user numpy} to install it for your user account.
+        \item \textbf{Outdated Pip:} If you experience issues, ensure that pip is up to date by running:
+        \begin{lstlisting}
+pip install --upgrade pip
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Key Points}
+    \begin{itemize}
+        \item Ensure Python 3.6+ is installed.
+        \item Familiarize yourself with your chosen IDE, especially how to run Python scripts or notebooks.
+        \item Installation success can be verified by checking the NumPy version.
+        \item Consider using virtual environments for package management to avoid conflicts.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Installation and Setup - Example Code Snippet}
+    \textbf{Example Code Snippet:} Confirm functionality post-installation.
+    \begin{lstlisting}
+import numpy as np
+
+# Create a NumPy array
+arr = np.array([1, 2, 3, 4, 5])
+print("Created NumPy Array:", arr)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of NumPy - Overview}
+    \begin{block}{Summary}
+        This presentation will discuss three essential features of NumPy:
+        \begin{itemize}
+            \item ndarrays (N-dimensional arrays)
+            \item Broadcasting
+            \item Vectorization
+        \end{itemize}
+        Understanding these concepts is foundational for performing advanced data manipulations and calculations in scientific computing and data analysis.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of NumPy - ndarrays}
+    \begin{block}{1. ndarrays (N-dimensional array)}
+        \textbf{Definition:} The core feature of NumPy is the \texttt{ndarray}, a powerful, flexible container for large data sets. It efficiently handles multi-dimensional data and allows for operations on this data.
+
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+import numpy as np
+
+# Creating a 1D array
+array_1d = np.array([1, 2, 3])
+
+# Creating a 2D array
+array_2d = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Shape of the array
+print(array_2d.shape)  # Output: (2, 3)
+        \end{lstlisting}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Supports various data types (int, float, etc.).
+            \item Faster processing than Python lists.
+            \item Convenient for data manipulation.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of NumPy - Broadcasting}
+    \begin{block}{2. Broadcasting}
+        \textbf{Definition:} Broadcasting allows NumPy to perform element-wise operations on arrays of different shapes by automatically expanding the smaller array to match the larger array.
+
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+a = np.array([1, 2, 3])      # Shape (3,)
+b = np.array([[10], [20]])   # Shape (2, 1)
+
+result = a + b
+print(result)
+# Output:
+# [[11 12 13]
+#  [21 22 23]]
+        \end{lstlisting}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Reduces the need for explicit loops.
+            \item Enhances performance through vectorized operations.
+            \item Offers flexibility in array shapes for calculations.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of NumPy - Vectorization}
+    \begin{block}{3. Vectorization}
+        \textbf{Definition:} Vectorization converts operations that require loops into operations that apply to entire arrays, greatly speeding up computations.
+
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+# Using broadcasting and vectorization to compute squares
+x = np.array([1, 2, 3, 4])
+
+# Squaring the array without a loop
+squares = x ** 2
+print(squares)  # Output: [ 1  4  9 16]
+        \end{lstlisting}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Provides clean, concise code.
+            \item Leverages NumPy's optimized and compiled C code for speed.
+            \item Ideal for mathematical and data analysis applications.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Arrays - Overview}
+    In this slide, we will explore how to create arrays using the NumPy library, a powerful tool for numerical computations in Python. 
+    \begin{itemize}
+        \item Different methods of creating arrays
+        \item Manipulating their structures for desired operations
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Arrays - Why Use NumPy Arrays?}
+    \begin{itemize}
+        \item \textbf{Efficiency}: NumPy arrays are more memory-efficient than Python lists.
+        \item \textbf{Performance}: Operations on NumPy arrays are faster due to optimized C and Fortran underpinnings.
+        \item \textbf{Multidimensional}: Arrays can have multiple dimensions, essential for mathematical computations in data science and machine learning.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating NumPy Arrays - Import and Examples}
+    \begin{block}{1. Importing NumPy}
+        Before we can start creating arrays, we need to import the NumPy library:
+        \begin{lstlisting}
+import numpy as np
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{2. Creating Arrays from Lists}
+        You can create a NumPy array from a Python list using \texttt{np.array()}:
+        \begin{lstlisting}
+# Creating a 1D array
+one_d_array = np.array([1, 2, 3, 4, 5])
+# Creating a 2D array (matrix)
+two_d_array = np.array([[1, 2, 3], [4, 5, 6]])
+        \end{lstlisting}
+        Key Point: Dimensionality is inferred from nested lists.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating NumPy Arrays - Functions and Reshaping}
+    \begin{block}{3. Creating Arrays with Functions}
+        \begin{itemize}
+            \item \texttt{np.zeros(shape)}: Creates an array filled with zeros.
+            \begin{lstlisting}
+zeros_array = np.zeros((3, 4))  # 3 rows and 4 columns
+            \end{lstlisting}
+
+            \item \texttt{np.ones(shape)}: Creates an array filled with ones.
+            \begin{lstlisting}
+ones_array = np.ones((2, 3))  # 2 rows and 3 columns
+            \end{lstlisting}
+
+            \item \texttt{np.arange(start, stop, step)}: Creates an array with a range of values.
+            \begin{lstlisting}
+range_array = np.arange(0, 10, 2)  # [0, 2, 4, 6, 8]
+            \end{lstlisting}
+            
+            \item \texttt{np.linspace(start, stop, num)}: Creates an array of evenly spaced values.
+            \begin{lstlisting}
+linspace_array = np.linspace(0, 1, 5)  # [0. , 0.25, 0.5, 0.75, 1.]
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{4. Reshaping Arrays}
+        You can manipulate the shape of an existing array using the \texttt{reshape()} method:
+        \begin{lstlisting}
+reshaped_array = np.arange(6).reshape((2, 3)) # Output: [[0, 1, 2], [3, 4, 5]]
+        \end{lstlisting}
+        Key Point: The total number of elements must remain the same when reshaping.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Arrays - Example and Summary}
+    \begin{block}{Example: Create and Reshape}
+        Here’s a complete example demonstrating array creation and reshaping:
+        \begin{lstlisting}
+import numpy as np
+        
+# Creating a 1D array of the first 6 integers
+array_1d = np.arange(6)  # Output: [0, 1, 2, 3, 4, 5]
+        
+# Reshaping the array to a 2x3 structure
+array_reshaped = array_1d.reshape((2, 3))  # Output: [[0, 1, 2], [3, 4, 5]]
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Summary}
+        \begin{itemize}
+            \item NumPy arrays are essential for numerical data manipulation.
+            \item Use \texttt{np.array()} for creating arrays from lists, and various functions to create specific types of arrays.
+            \item Reshape arrays effectively for computational needs.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Arrays - Conclusion}
+    Mastering the creation and manipulation of NumPy arrays is a fundamental skill for any data science or machine learning application. 
+    Practice creating arrays using different methods to become proficient with this powerful library!
+\end{frame}
+
+\begin{frame}
+    \frametitle{Array Operations}
+    \begin{block}{Overview}
+        NumPy provides extensive capabilities for performing operations on arrays, significantly enhancing data manipulation skills.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Arithmetic Operations}
+    \begin{block}{Element-wise Operations}
+        Arithmetic operations are performed element-wise. Compatible dimensions are required for arrays.
+    \end{block}
+    
+    \begin{itemize}
+        \item Addition \texttt{(+)}
+        \item Subtraction \texttt{(-)}
+        \item Multiplication \texttt{(*)}
+        \item Division \texttt{(/)}
+        \item Exponentiation \texttt{(**)}
+    \end{itemize}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+import numpy as np
+
+# Create two arrays
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+# Perform operations
+addition = a + b      # Output: array([5, 7, 9])
+subtraction = a - b   # Output: array([-3, -3, -3])
+multiplication = a * b # Output: array([4, 10, 18])
+division = a / b      # Output: array([0.25, 0.4, 0.5])
+exponentiation = a ** 2 # Output: array([1, 4, 9])
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Logical Operations}
+    \begin{block}{Element-wise Comparisons}
+        Logical operations return Boolean arrays useful for filtering data.
+    \end{block}
+
+    \begin{itemize}
+        \item Equal \texttt{(==)}
+        \item Not Equal \texttt{(!=)}
+        \item Greater Than \texttt{(>)}
+        \item Less Than \texttt{(<)}
+        \item Logical And \texttt{(&)}
+        \item Logical Or \texttt{(|)}
+    \end{itemize}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# Create an array
+a = np.array([1, 2, 3, 4, 5])
+
+# Logical operations
+greater_than_two = a > 2   # Output: array([False, False,  True,  True,  True])
+even_numbers = a % 2 == 0   # Output: array([False,  True, False,  True, False])
+combined_condition = (a > 2) & (a % 2 == 0) # Output: array([False, False, False,  True, False])
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Aggregation Functions}
+    \begin{block}{Summarizing Data}
+        NumPy provides functions for aggregating array data.
+    \end{block}
+    
+    \begin{itemize}
+        \item \texttt{np.sum()}: sum of all elements
+        \item \texttt{np.mean()}: average of elements
+        \item \texttt{np.max()} / \texttt{np.min()}: largest/smallest element
+    \end{itemize}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+a = np.array([1, 2, 3, 4, 5])
+
+# Aggregation
+total = np.sum(a)        # Output: 15
+mean_value = np.mean(a)  # Output: 3.0
+max_value = np.max(a)    # Output: 5
+min_value = np.min(a)    # Output: 1
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Summary and Next Steps}
+    \begin{itemize}
+        \item Arithmetic Operations enable element-wise calculations.
+        \item Logical Operations allow for comparisons producing Boolean results.
+        \item Aggregation Functions help summarize and analyze data.
+    \end{itemize}
+    \begin{block}{Next Steps}
+        We will explore \textbf{Indexing and Slicing} in NumPy, allowing us to access and modify specific elements within arrays.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Indexing and Slicing - Introduction}
+    \begin{block}{Overview}
+        In this section, we will learn how to access and modify specific elements within NumPy arrays using indexing and slicing techniques.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Indexing in NumPy}
+    \begin{itemize}
+        \item \textbf{Understanding Indexing:} Access elements using zero-based indexing.
+        \item Key Points:
+            \begin{itemize}
+                \item \textbf{1D Arrays:} Use a single index.
+                \item \textbf{2D Arrays:} Use a tuple of indices.
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5])
+print(arr[0])  # Outputs: 1
+
+matrix = np.array([[1, 2, 3], [4, 5, 6]])
+print(matrix[1, 2])  # Outputs: 6
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying Elements and Slicing}
+    \begin{block}{Modifying Elements}
+        Modify elements using indexing:
+        \begin{lstlisting}[language=Python]
+arr[2] = 10
+print(arr)  # Outputs: [1 2 10 4 5]
+        \end{lstlisting}
+    \end{block}
+    \begin{block}{Understanding Slicing}
+        Access a range of elements using the syntax: \texttt{array[start:end]}
+        \begin{itemize}
+            \item \textbf{Excludes:} The end index.
+            \item \textbf{1D Array Example:}
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+print(arr[1:4])  # Outputs: [2 10 4]
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Advanced Slicing Techniques}
+    \begin{itemize}
+        \item \textbf{Step (Stride):} Specify a step size.
+        \begin{lstlisting}[language=Python]
+print(arr[::2])  # Outputs: [1 30 5]
+        \end{lstlisting}
+        \item \textbf{Negative Indices:} Access elements from the end.
+        \begin{lstlisting}[language=Python]
+print(arr[-1])  # Outputs: 5
+        \end{lstlisting}
+    \end{itemize}
+    \begin{block}{Summary}
+        \begin{itemize}
+            \item Indexing for single elements, slicing for a range.
+            \item Key for effective data manipulation in NumPy.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Example}
+    \begin{block}{Task}
+        Create a NumPy array with values from 1 to 10. Access and modify elements using both indexing and slicing. What results do you get?
+    \end{block}
+    \begin{block}{Conclusion}
+        Hands-on practice will solidify your understanding of indexing and slicing in NumPy!
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Statistical Functions}
+    \begin{block}{Overview}
+        NumPy is a powerful library in Python primarily used for numerical computing. 
+        One of its key features is the availability of built-in statistical functions that simplify data analysis, enabling users to perform statistical operations on large datasets.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Statistical Functions - Part 1}
+    \begin{enumerate}
+        \item \textbf{Mean}
+        \begin{itemize}
+            \item \textbf{Function}: \texttt{numpy.mean()}
+            \item \textbf{Description}: Computes the average of array elements.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+import numpy as np
+data = [1, 2, 3, 4, 5]
+mean_value = np.mean(data)  # Output: 3.0
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Median}
+        \begin{itemize}
+            \item \textbf{Function}: \texttt{numpy.median()}
+            \item \textbf{Description}: Finds the middle value in an array.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+median_value = np.median(data)  # Output: 3.0
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Statistical Functions - Part 2}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Continue the enumeration
+        \item \textbf{Variance}
+        \begin{itemize}
+            \item \textbf{Function}: \texttt{numpy.var()}
+            \item \textbf{Description}: Measures the spread of data points around the mean.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+variance_value = np.var(data)  # Output: 2.0
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Standard Deviation}
+        \begin{itemize}
+            \item \textbf{Function}: \texttt{numpy.std()}
+            \item \textbf{Description}: Provides a measure of variation of set values.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+std_dev_value = np.std(data)  # Output: 1.4142135623730951
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Correlation Coefficient}
+        \begin{itemize}
+            \item \textbf{Function}: \texttt{numpy.corrcoef()}
+            \item \textbf{Description}: Returns the correlation matrix of the input data.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+x = np.array([1, 2, 3])
+y = np.array([4, 5, 6])
+correlation = np.corrcoef(x, y)  # Output: [[1. 1.], [1. 1.]]
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points and Conclusion}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Ease of Use}: Rapid statistical calculations on multi-dimensional arrays.
+            \item \textbf{Performance}: Optimized implementations for large datasets.
+            \item \textbf{Integration}: Works seamlessly with other libraries for comprehensive data analysis workflows.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Built-in statistical functions in NumPy are essential tools for data analysis, providing straightforward solutions to complex statistical calculations. Familiarity with these functions enhances your capability to derive insights from data efficiently.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrating NumPy with Other Libraries - Overview}
+    \begin{block}{Brief Summary}
+        NumPy is the foundational library for numerical computing in Python. Its integration with pandas and Matplotlib enhances data manipulation and visualization.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrating NumPy with Pandas}
+    \begin{itemize}
+        \item \textbf{Pandas}:
+        \begin{itemize}
+            \item A data analysis library utilizing NumPy arrays.
+            \item Provides structures like DataFrames and Series.
+        \end{itemize}
+
+        \item \textbf{Integration}:
+        \begin{itemize}
+            \item DataFrames are built on top of NumPy arrays, allowing use of fast array operations.
+        \end{itemize}
+    \end{itemize}
+
+    \begin{block}{Example Code}
+    \begin{lstlisting}[language=Python]
+import pandas as pd
+import numpy as np
+
+# Creating a NumPy array
+data = np.array([[1, 2, 3], [4, 5, 6]])
+
+# Creating a DataFrame from a NumPy array
+df = pd.DataFrame(data, columns=['A', 'B', 'C'])
+print(df)
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrating NumPy with Matplotlib}
+    \begin{itemize}
+        \item \textbf{Matplotlib}:
+        \begin{itemize}
+            \item A library for static, animated, and interactive visualizations.
+        \end{itemize}
+
+        \item \textbf{Integration}:
+        \begin{itemize}
+            \item Allows direct plotting from NumPy arrays.
+        \end{itemize}
+    \end{itemize}
+
+    \begin{block}{Example Code}
+    \begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+
+# Creating a NumPy array for x and y values
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Plotting using Matplotlib
+plt.plot(x, y)
+plt.title("Sine Wave")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.grid()
+plt.show()
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Hands-On Lab Session}
+    \begin{block}{Overview of Exercises Using Real Data Sets}
+        In this lab session, we will explore practical applications of NumPy through hands-on exercises utilizing real-world data sets. 
+        The focus will be on implementing key NumPy functions and features to manipulate and analyze numeric data effectively.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Objectives}
+    \begin{itemize}
+        \item Understand how to work with NumPy arrays in real-world contexts.
+        \item Perform data manipulation tasks including selection, filtering, and basic statistical analysis.
+        \item Integrate NumPy with real data sets for practical applications.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise Breakdown}
+    \begin{enumerate}
+        \item \textbf{Data Set Loading and Inspection}
+        \begin{itemize}
+            \item Load a sample data set (e.g., global temperatures) in CSV format.
+            \begin{lstlisting}
+import numpy as np
+import pandas as pd
+
+# Load the dataset
+data = pd.read_csv('data/global_temperatures.csv')
+# Convert to NumPy array
+temperatures = data['AvgTemperature'].to_numpy()
+print(temperatures)
+            \end{lstlisting}
+            \item \textbf{Key Point:} Familiarize yourself with data types and structures.
+        \end{itemize}
+        
+        \item \textbf{Basic Array Operations}
+        \begin{itemize}
+            \item Perform operations such as reshaping, slicing, and indexing.
+            \item Extract the last 10 entries of temperature data.
+            \begin{lstlisting}
+last_ten = temperatures[-10:]
+print(last_ten)
+            \end{lstlisting}
+            \item \textbf{Key Point:} Understand indexing to focus on specific parts of your data.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise Breakdown (Contd.)}
+    \begin{enumerate}[resume]
+        \item \textbf{Statistical Analysis}
+        \begin{itemize}
+            \item Compute statistical measures: mean, median, standard deviation.
+            \begin{lstlisting}
+mean_temp = np.mean(temperatures)
+median_temp = np.median(temperatures)
+std_temp = np.std(temperatures)
+print(f'Mean: {mean_temp}, Median: {median_temp}, Std Dev: {std_temp}')
+            \end{lstlisting}
+            \item \textbf{Illustration:} Graphically interpret the data distribution.
+        \end{itemize}
+        
+        \item \textbf{Filtering and Conditional Operations}
+        \begin{itemize}
+            \item Filter data based on conditions (e.g., temperatures above a certain threshold).
+            \begin{lstlisting}
+high_temps = temperatures[temperatures > 30]
+print(high_temps)
+            \end{lstlisting}
+            \item \textbf{Key Point:} Use conditional filtering to analyze trends or outliers.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrating with Other Libraries}
+    \begin{enumerate}
+        \item \textbf{Visualization}
+        \begin{itemize}
+            \item Use Matplotlib to visualize data extracted through NumPy.
+            \begin{lstlisting}
+import matplotlib.pyplot as plt
+
+plt.plot(temperatures)
+plt.title('Average Temperatures Over Time')
+plt.xlabel('Time')
+plt.ylabel('Temperature')
+plt.show()
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Questions for Reflection}
+        \begin{itemize}
+            \item How do NumPy's array operations simplify data manipulation compared to standard Python lists?
+            \item What insights can you derive from the statistical analysis and visualizations of the data?
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Next Steps}
+    As we progress to the next slide, we will summarize our key learnings and share additional resources for continued exploration of NumPy and its capabilities.
+    
+    This lab session is designed to immerse you in hands-on applications of NumPy, reinforcing your understanding of how to manipulate and analyze data effectively. Prepare to engage with the data and ask questions that deepen your comprehension of the material!
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Key Takeaways}
+    
+    \begin{enumerate}
+        \item \textbf{What is NumPy?} \\
+        NumPy (Numerical Python) is an open-source library for numerical computing in Python that supports arrays, matrices, and a rich set of mathematical functions.
+        
+        \item \textbf{Core Features:}
+        \begin{itemize}
+            \item \textbf{N-Dimensional Arrays:} Efficient manipulation of large datasets.
+            \item \textbf{Broadcasting:} Facilitates arithmetic operations on differently shaped arrays.
+            \item \textbf{Vectorization:} Element-wise operations without explicit loops for better performance.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Basic Operations}
+    
+    \begin{enumerate}
+        \item \textbf{Creating Arrays:}
+        \begin{lstlisting}[language=Python]
+import numpy as np
+array_1d = np.array([1, 2, 3])
+array_2d = np.array([[1, 2, 3], [4, 5, 6]])
+        \end{lstlisting}
+        
+        \item \textbf{Array Operations:}
+        \begin{itemize}
+            \item \textbf{Addition:}
+            \begin{lstlisting}[language=Python]
+result = array_1d + 10  # Adds 10 to each element
+            \end{lstlisting}
+            \item \textbf{Dot Product:}
+            \begin{lstlisting}[language=Python]
+dot_result = np.dot(array_2d, array_1d)  # Matrix multiplication
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Additional Learning Resources}
+    
+    \begin{block}{Useful Resources}
+        \begin{itemize}
+            \item \textbf{Official Documentation:} \\
+            \texttt{https://numpy.org/doc/stable/}
+            
+            \item \textbf{Online Tutorials:} \\
+            \texttt{https://www.w3schools.com/python/numpy_intro.asp}
+            
+            \item \textbf{Books:}
+            \begin{itemize}
+                \item "Python for Data Analysis" by Wes McKinney
+                \item "Numerical Methods in Engineering with Python"
+            \end{itemize}
+            
+            \item \textbf{Online Courses:}
+            \begin{itemize}
+                \item Coursera: Courses on Data Science & Machine Learning
+                \item edX: Programming courses using NumPy
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Chapter 1: Introduction to Python and Environment Setup",
+    "description": "An introduction to Python programming and setting up the development environment, including IDE installation."
+  },
+  {
+    "title": "Chapter 2: Syntax, Variables, and Data Types",
+    "description": "Exploring the basic syntax of Python, understanding variables, and working with different data types."
+  },
+  {
+    "title": "Chapter 3: Control Structures: Conditionals & Loops",
+    "description": "An overview of control structures in Python, focusing on conditionals and loops for decision-making and iteration."
+  },
+  {
+    "title": "Chapter 4: Functions and Scope",
+    "description": "Understanding the concept of functions in Python, including their design, implementation, and variable scope."
+  },
+  {
+    "title": "Chapter 5: Data Structures: Lists and Tuples",
+    "description": "Introduction to essential data structures such as lists and tuples, along with practical exercises to manipulate them."
+  },
+  {
+    "title": "Chapter 6: Data Structures: Dictionaries and Sets",
+    "description": "Exploration of dictionaries and sets in Python, emphasizing data manipulation and group projects."
+  },
+  {
+    "title": "Chapter 7: Introduction to Libraries: NumPy",
+    "description": "Hands-on lab session focusing on using the NumPy library for numeric data analysis."
+  },
+  {
+    "title": "Chapter 8: Data Analysis with Pandas",
+    "description": "Practical exercises utilizing the Pandas library for data analysis and manipulation."
+  },
+  {
+    "title": "Chapter 9: Data Visualization with Matplotlib",
+    "description": "Developing skills in data visualization through the Matplotlib library, including project work."
+  },
+  {
+    "title": "Chapter 10: Debugging and Testing",
+    "description": "Learning debugging techniques and testing methodologies to improve code quality and performance."
+  },
+  {
+    "title": "Chapter 11: Capstone Project Planning",
+    "description": "Group discussions to brainstorm and plan for the capstone project, focusing on best practices."
+  },
+  {
+    "title": "Chapter 12: Capstone Project Development",
+    "description": "Practical project development for the capstone, receiving feedback from peers and the instructor."
+  },
+  {
+    "title": "Chapter 13: Capstone Project Preparation",
+    "description": "Preparing for project presentations, focusing on effective communication skills."
+  },
+  {
+    "title": "Chapter 14: Capstone Project Presentations",
+    "description": "Final group presentations of the capstone project, showcasing programming skills and project results."
+  },
+  {
+    "title": "Chapter 15: Course Review and Reflection",
+    "description": "A comprehensive review of the course content and activities, along with reflective journaling."
+  }
+]

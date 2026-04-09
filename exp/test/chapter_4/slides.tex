@@ -1,0 +1,763 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 4: Functions and Scope}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Functions in Python - Part 1}
+    \begin{block}{What are Functions?}
+        Functions are reusable, self-contained blocks of code that perform a specific task. They allow programmers to break down a program into smaller, manageable sections, enhancing both organization and readability.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Functions in Python - Part 2}
+    \begin{block}{Significance of Functions in Python}
+        \begin{enumerate}
+            \item \textbf{Modularity}: Functions enable breaking down complex problems into simpler, modular parts. Each function can be developed and tested independently.
+            \item \textbf{Reusability}: Once defined, functions can be called multiple times throughout a program, reducing code duplication. This saves time and helps ensure consistency.
+            \item \textbf{Abstraction}: Functions provide a way to encapsulate functionality, hiding complex details while exposing a simpler interface.
+            \item \textbf{Maintainability}: Code within functions can be updated or modified without affecting other parts of the program, making maintenance easier.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Functions in Python - Part 3}
+    \begin{block}{Example}
+        Consider a scenario where you need to calculate the square of a number multiple times. Instead of rewriting the code each time, you can define a function:
+        \begin{lstlisting}[language=Python]
+def square(num):
+    return num * num
+
+# Using the function
+result1 = square(4)  # Returns 16
+result2 = square(5)  # Returns 25
+        \end{lstlisting}
+        In this example, the \texttt{square} function abstracts the logic for squaring a number, allowing easy reuse.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Functions in Python - Key Points}
+    \begin{itemize}
+        \item Functions improve code organization and readability.
+        \item They promote reusability and reduce redundancy.
+        \item Functions simplify complex tasks by providing a clear interface.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Function?}
+    % Introduction to the concept of a function
+    A \textbf{function} is a named block of reusable code designed to perform a specific task.
+    Functions allow programmers to encapsulate functionality, promoting code reusability and organizational clarity.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Definition of a Function}
+    \begin{block}{Definition}
+    A function is a named block of reusable code designed to perform a specific task.
+    \end{block}
+    
+    \begin{itemize}
+        \item Promotes code reusability
+        \item Enhances organizational clarity
+        \item Avoids duplication of code
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Components of Functions}
+    \begin{enumerate}
+        \item \textbf{Function Name}: A unique identifier to call the function (descriptive of its purpose).
+        \item \textbf{Parameters (Arguments)}: Variables passed into the function to customize behavior (zero or more).
+        \item \textbf{Function Body}: The block of code that executes upon calling the function.
+        \item \textbf{Return Statement}: Sends back a value from the function to its caller (can return single or multiple values).
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example of a Function in Python}
+    Consider the following function that calculates the area of a rectangle:
+    
+    \begin{lstlisting}[language=Python]
+def calculate_area(length, width):
+    area = length * width
+    return area
+    \end{lstlisting}
+    
+    \begin{itemize}
+        \item \texttt{def} indicates the start of a function.
+        \item \texttt{calculate\_area} is the function name.
+        \item \texttt{length} and \texttt{width} are parameters.
+        \item The function computes the area by multiplying \texttt{length} and \texttt{width} and returns the result.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{How to Call the Function}
+    You can call the function as shown below:
+
+    \begin{lstlisting}[language=Python]
+result = calculate_area(5, 10)
+print("The area of the rectangle is:", result)
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item The function is called with arguments \texttt{5} and \texttt{10}.
+        \item The result is stored in the variable \texttt{result}.
+        \item The area is then printed.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Functions}
+    Functions enable us to:
+    \begin{itemize}
+        \item \textbf{Encapsulate logic}: Group related code into a single block for better organization.
+        \item \textbf{Reuse code}: Avoid duplication by allowing the same block of code to be used multiple places.
+        \item \textbf{Test and debug}: Isolate code for testing, simplifying identification and resolution of issues.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item Functions help in breaking down complex problems into manageable parts.
+        \item Reusing functions saves time and reduces errors.
+        \item Functions improve readability and maintainability of the code.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Defining Functions - Introduction}
+    \begin{block}{Overview}
+        In Python, a \textbf{function} is a reusable block of code that performs a specific task. 
+        By defining functions, we enhance:
+        \begin{itemize}
+            \item Code organization
+            \item Maintainability
+            \item Readability
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Defining Functions - Syntax}
+    \begin{block}{Syntax of Function Definition}
+        The syntax to define a function in Python is:
+        \begin{lstlisting}[language=Python]
+def function_name(parameters):
+    # Function body
+    return value
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{enumerate}
+        \item \textbf{def}: Signals the start of a function definition.
+        \item \textbf{function\_name}: Descriptive identifier for the function.
+        \item \textbf{parameters (optional)}: Variables for passing data into the function.
+        \item \textbf{colon (:)}
+        \item \textbf{Function Body}: The code that runs when the function is called.
+        \item \textbf{return (optional)}: Used to exit the function and return a value.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Defining Functions - Example}
+    \begin{block}{Example Function}
+        A simple function to add two numbers:
+        \begin{lstlisting}[language=Python]
+def add_numbers(a, b):
+    sum_result = a + b
+    return sum_result
+        \end{lstlisting}
+        \begin{itemize}
+            \item \textbf{Function Name}: \texttt{add\_numbers}
+            \item \textbf{Parameters}: \texttt{a}, \texttt{b} (numbers to add)
+            \item \textbf{Function Body}: Computes sum and returns the result.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Calling the Function}
+        To use the function, call it with arguments:
+        \begin{lstlisting}[language=Python]
+result = add_numbers(5, 3)
+print(result)  # Output: 8
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Function Parameters and Arguments - Overview}
+    \begin{itemize}
+        \item Functions in Python are defined to perform specific tasks.
+        \item **Parameters** are placeholders in the function definition.
+        \item **Arguments** are the actual values passed to those parameters when calling the function.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Function Arguments}
+    \begin{block}{Positional Arguments}
+        \begin{itemize}
+            \item Assigned based on their position in the function call.
+            \item Example:
+            \begin{lstlisting}[language=Python]
+def greet(name, age):
+    print(f"Hello {name}, you are {age} years old.")
+
+greet("Alice", 30)  # Output: Hello Alice, you are 30 years old.
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Keyword Arguments}
+        \begin{itemize}
+            \item Passed by explicitly naming the parameter.
+            \item Example:
+            \begin{lstlisting}[language=Python]
+greet(age=30, name="Alice")  # Output: Hello Alice, you are 30 years old.
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Differences and Default Parameters}
+    \begin{block}{Key Differences}
+        \begin{center}
+            \begin{tabular}{|l|l|l|}
+                \hline
+                Feature                     & Positional Arguments                 & Keyword Arguments                 \\
+                \hline
+                Syntax                      & Passed in order                     & Passed with parameter names       \\
+                \hline
+                Call Flexibility            & Order sensitive                     & Order independent                 \\
+                \hline
+                Default Values              & Need all positional values          & Can omit non-required parameters if defaults are defined \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{block}
+
+    \begin{block}{Default Parameters}
+        \begin{itemize}
+            \item Allows specifying default values for parameters.
+            \item Example:
+            \begin{lstlisting}[language=Python]
+def greet(name, age=25):
+    print(f"Hello {name}, you are {age} years old.")
+
+greet("Bob")      # Output: Hello Bob, you are 25 years old.
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Return Statement - Overview}
+    \begin{block}{Overview of the Return Statement}
+        The \textbf{return statement} is a crucial component of function definitions in programming. It serves the essential purpose of sending a result back to the part of the program that called the function. Without the return statement, a function would complete its execution but not provide any output value, making it less useful for operations that depend on computing and utilizing results.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Return Statement - Key Concepts}
+    \begin{itemize}
+        \item \textbf{Purpose of return:} Ends function execution and specifies a value to return to the caller.
+        \item \textbf{Function output:} Allows data to be passed back, enabling further processing or computation.
+        \item \textbf{Control Flow:} Influences execution flow, allowing immediate termination and returning to the point of invocation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Return Statement - Syntax and Example}
+    \begin{block}{Syntax}
+        In most programming languages, the syntax of the return statement is as follows:
+        \begin{lstlisting}[language=Python]
+def function_name(parameters):
+    # Process
+    return value
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Example}
+        Consider a simple function that calculates the square of a number:
+        \begin{lstlisting}[language=Python]
+def square(num):
+    return num * num
+        \end{lstlisting}
+        If you call \texttt{result = square(4)}, the variable \texttt{result} will hold the value \textbf{16}.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Return Statement - Importance and Conclusion}
+    \begin{itemize}
+        \item \textbf{Reusability:} Functions can be reused with different inputs.
+        \item \textbf{Data Handling:} Facilitates transfer of results for further use in the program.
+        \item \textbf{Debugging and Testing:} Functions with return statements can be tested independently.
+    \end{itemize}
+
+    \begin{block}{Conclusion}
+        The return statement is fundamental in programming, enhancing code organization and data management. Mastering the return statement lays the groundwork for advanced programming concepts.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope - Introduction}
+    \begin{block}{Understanding Variable Scope}
+        Variable scope refers to the area within a program where a variable is accessible. It determines the visibility and lifetime of variables within different parts of your code.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope - Types}
+    \begin{enumerate}
+        \item \textbf{Local Variables}
+        \begin{itemize}
+            \item \textbf{Scope}: Accessible only within the block or function where they are defined.
+            \item \textbf{Lifetime}: Exists only during the execution of that block/function.
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+def my_function():
+    local_var = 10  # Local Variable
+    print(local_var)  # This will work
+
+my_function()
+# print(local_var)  # Uncommenting this will cause a NameError
+            \end{lstlisting}
+        \end{itemize}
+        \item \textbf{Global Variables}
+        \begin{itemize}
+            \item \textbf{Scope}: Accessible throughout the entire program; can be used in any function or module after being defined.
+            \item \textbf{Lifetime}: Exists for the duration of the program execution.
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+global_var = 20  # Global Variable
+
+def another_function():
+    print(global_var)  # This will work
+
+another_function()
+print(global_var)  # This will also work
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope - Key Points}
+    \begin{itemize}
+        \item \textbf{Local vs. Global}: Always prefer local variables for encapsulation and to avoid unintended side effects. Global variables can lead to code that's harder to debug and maintain.
+        
+        \item \textbf{Namespace}: Each function creates a new namespace. Local variables cannot conflict with global variables unless specified using the \texttt{global} keyword.
+        
+        \item \textbf{Memory Management}: Local variables use stack memory, while global variables use heap memory, making local variables generally faster but limited in scope.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope - Important Notes}
+    \begin{itemize}
+        \item \textbf{Name Clashing}: If a local variable has the same name as a global variable, the local variable will take precedence within the function.
+        
+        \item \textbf{Best Practices}: 
+        \begin{itemize}
+            \item Use global variables sparingly and only when necessary.
+            \item Aim for clear and descriptive variable names to avoid confusion.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope - Summary}
+    Understanding the concept of variable scope helps you avoid common programming pitfalls related to variable visibility. Knowing when to use local vs. global variables can improve your code's readability, maintainability, and efficiency.
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Scope Resolution in Python}
+    \begin{block}{Understanding the LEGB Rule}
+        In Python, variable resolution follows a specific order: 
+        \textbf{LEGB}:
+        \begin{itemize}
+            \item Local
+            \item Enclosing
+            \item Global
+            \item Built-in
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scope Categories}
+    \begin{enumerate}
+        \item \textbf{Local Scope:}
+        \begin{itemize}
+            \item The innermost scope, pertains to the current function.
+            \item Variables defined within a function are not accessible outside it.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+def my_function():
+    x = 10  # Local variable
+    print(x)
+
+my_function()  # Outputs: 10
+print(x)  # Raises NameError: name 'x' is not defined
+        \end{lstlisting}
+        
+        \item \textbf{Enclosing Scope:}
+        \begin{itemize}
+            \item Refers to the scope of nested functions.
+            \item Inner functions can access variables of outer functions.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+def outer_function():
+    outer_var = "Hello"
+    def inner_function():
+        print(outer_var)  # Accessing enclosing scope
+    inner_function()  # Outputs: Hello
+        
+outer_function()
+        \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{More on Scope Categories}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Continue numbering from previous frame
+        \item \textbf{Global Scope:}
+        \begin{itemize}
+            \item Variables defined at the top level of a module.
+            \item Accessible throughout the module.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+global_var = "I'm Global"
+
+def my_function():
+    print(global_var)  # Accesses global variable
+
+my_function()  # Outputs: I'm Global
+        \end{lstlisting}
+
+        \item \textbf{Built-in Scope:}
+        \begin{itemize}
+            \item Contains built-in functions and variables available globally.
+            \item Accessible from any part of the code.
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+print(len([1, 2, 3]))  # Outputs: 3 (len() is a built-in function)
+        \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points and Conclusion}
+    \begin{itemize}
+        \item The LEGB rule outlines the order of variable resolution.
+        \item Variables are resolved as: Local, Enclosing, Global, then Built-in.
+        \item Local variables take precedence over global variables sharing the same name.
+    \end{itemize}
+    
+    \begin{block}{Important Notes}
+        \begin{itemize}
+            \item Avoid variable name clashes across different scopes.
+            \item Use the \texttt{global} keyword to modify a global variable inside a function.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Conclusion}
+        Understanding the LEGB rule is vital for effective variable management in Python and helps avoid scope-related errors.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Anonymous Functions (Lambda Functions) - Overview}
+    \begin{itemize}
+        \item Lambda Functions are small, unnamed function objects in Python.
+        \item Useful for concise operations without defining a full function.
+        \item They provide a compact syntax for functional programming.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anonymous Functions (Lambda Functions) - Syntax}
+    \begin{block}{Basic Syntax}
+        \begin{lstlisting}
+lambda arguments: expression
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item \textbf{lambda}: Keyword indicating the start of a lambda function.
+        \item \textbf{arguments}: Comma-separated list of arguments (any number).
+        \item \textbf{expression}: A single expression that is evaluated and returned.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anonymous Functions (Lambda Functions) - Example}
+    \begin{block}{Example: Adding Two Numbers}
+        \begin{lstlisting}
+add = lambda x, y: x + y
+result = add(3, 5)  # Output: 8
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item This lambda function takes two arguments, \texttt{x} and \texttt{y}, and returns their sum.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anonymous Functions (Lambda Functions) - Use Cases}
+    \begin{enumerate}
+        \item \textbf{In-place Function Definitions}: 
+            \begin{lstlisting}
+squares = list(map(lambda x: x**2, range(10)))  # Output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+            \end{lstlisting}
+        \item \textbf{Sorting with Custom Keys}: 
+            \begin{lstlisting}
+points = [(2, 3), (1, 2), (4, 1)]
+points_sorted = sorted(points, key=lambda point: point[1])  # Output: [(4, 1), (1, 2), (2, 3)]
+            \end{lstlisting}
+        \item \textbf{Filtering Data}: 
+            \begin{lstlisting}
+evens = list(filter(lambda x: x % 2 == 0, range(10)))  # Output: [0, 2, 4, 6, 8]
+            \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Anonymous Functions (Lambda Functions) - Key Points}
+    \begin{itemize}
+        \item \textbf{Anonymous}: Lambda functions are unnamed.
+        \item \textbf{Single Expression}: They can only contain one expression.
+        \item \textbf{Scope}: Follows the same scope rules as regular functions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Anonymous Functions (Lambda Functions) - Limitations and Summary}
+    \begin{itemize}
+        \item \textbf{Readability}: Extensive use can reduce clarity.
+        \item \textbf{No Statements}: Cannot include complex operations requiring multiple statements.
+    \end{itemize}
+    \begin{block}{Summary}
+        Lambda functions enhance flexibility and efficiency in code.
+        Useful in functional programming paradigms.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Docstrings and Function Documentation - Overview}
+    \begin{block}{Introduction to Docstrings}
+        \begin{itemize}
+            \item \textbf{Definition}: A docstring is a special type of comment in Python documentation for functions, methods, classes, or modules.
+            \item \textbf{Format}: Enclosed in triple quotes (either \texttt{"""} or \texttt{'''}), and placed as the first statement in a definition.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Docstrings and Function Documentation - Importance}
+    \begin{block}{Importance of Docstrings}
+        \begin{enumerate}
+            \item \textbf{Readability}: Provides insight into function purpose without reading the full implementation.
+            \item \textbf{Maintainability}: Reduces bugs and aids in maintenance by documenting the code.
+            \item \textbf{Interoperability}: Enables documentation tools like Sphinx to generate user manuals and API documentation.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Docstrings and Function Documentation - Best Practices}
+    \begin{block}{Writing Effective Docstrings}
+        \begin{itemize}
+            \item \textbf{Summary}: Brief description of what the function does.
+            \item \textbf{Parameters}: List of parameters with types and descriptions.
+            \item \textbf{Returns}: Description of the return value including the type.
+            \item \textbf{Raises}: Exceptions the function might raise (if applicable).
+            \item \textbf{Examples}: Usage examples can clarify function use (optional).
+        \end{itemize}
+
+        \begin{lstlisting}[language=Python]
+def add(a: int, b: int) -> int:
+    """
+    Add two integers and return the result.
+    
+    Parameters:
+    a (int): The first integer to add.
+    b (int): The second integer to add.
+    
+    Returns:
+    int: The sum of a and b.
+
+    Example:
+    >>> add(2, 3)
+    5
+    """
+    return a + b
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Docstrings and Function Documentation - Key Points and Conclusion}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Document all functions with clear and concise docstrings.
+            \item Follow a consistent style guide (e.g., PEP 257).
+            \item Utilize tools to check for the presence of docstrings for better documentation.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Docstrings are essential for creating readable, maintainable, and user-friendly code. Remember, clear documentation enhances code usability!
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Function Design - Introduction}
+    Designing functions effectively is key to writing clean, maintainable, and reusable code. 
+    This slide outlines important guidelines that will help you create functions that are not only efficient but also understandable by other developers.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Principles of Function Design - Overview}
+    \begin{enumerate}
+        \item Single Responsibility Principle
+        \item Keep It Simple
+        \item Use Meaningful Names
+        \item Avoid Side Effects
+        \item Parameters and Return Values
+        \item Documentation and Annotation
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Principles of Function Design - Details}
+    \begin{itemize}
+        \item \textbf{Single Responsibility Principle}
+        \begin{itemize}
+            \item Each function should have one clear purpose or task.
+            \item Simplifies debugging; enhances reusability.
+            \item \texttt{def calculate\_area(radius): return 3.14 * radius ** 2}
+        \end{itemize}
+        
+        \item \textbf{Keep It Simple}
+        \begin{itemize}
+            \item Short and easy-to-understand functions reduce cognitive load.
+            \item Example: \texttt{def greet(name): print("Hello, " + name + "!")}
+        \end{itemize}
+        
+        \item \textbf{Use Meaningful Names}
+        \begin{itemize}
+            \item Names should clearly indicate their purpose.
+            \item Example: \texttt{def find\_maximum(numbers): return max(numbers)}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Principles of Function Design - More Details}
+    \begin{itemize}
+        \item \textbf{Avoid Side Effects}
+        \begin{itemize}
+            \item Functions should not alter global variables.
+            \item Example: \texttt{def add\_to\_list(item, lst=[]): lst.append(item); return lst}
+        \end{itemize}
+        
+        \item \textbf{Parameters and Return Values}
+        \begin{itemize}
+            \item Use clear, limited arguments; functions should return values.
+            \item Example: \texttt{def sum\_numbers(a, b): return a + b}
+        \end{itemize}
+        
+        \item \textbf{Documentation and Annotation}
+        \begin{itemize}
+            \item Always include a docstring explaining purpose and usage.
+            \item Example:
+            \begin{lstlisting}[language=Python]
+def multiply(x, y):
+    """
+    Multiplies two numbers.
+    
+    Parameters:
+    x (int or float): First number.
+    y (int or float): Second number.
+    
+    Returns:
+    int or float: The product of x and y.
+    """
+    return x * y
+            \end{lstlisting}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Function Design Summary}
+    By adhering to these best practices—single responsibility, simplicity, meaningful naming, avoiding side effects, and thorough documentation—developers can create high-quality software that is easier to read, maintain, and reuse.
+
+    \textbf{Key Points to Remember:}
+    \begin{itemize}
+        \item A well-designed function is simple and fulfills one purpose.
+        \item Use descriptive names and clear parameters.
+        \item Thoroughly document your functions for others (and yourself!).
+        \item Aim for reusability and predictability in all function designs.
+    \end{itemize}
+\end{frame}
+
+
+\end{document}

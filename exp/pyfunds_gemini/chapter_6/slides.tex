@@ -1,0 +1,638 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 6: The Art of Problem-Solving \& Debugging}
+\author{Teaching Assistant}
+\institute{University Department}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 6: The Art of Problem-Solving \& Debugging}
+    
+    Welcome to the most critical skill set in a programmer's toolkit. This chapter is less about learning new Python syntax and more about developing a new way of thinking.
+    \vspace{1em}
+    
+    We will explore the two essential pillars of effective programming:
+    \begin{itemize}
+        \item \textbf{Careful Planning:} How to think through a problem before writing code.
+        \item \textbf{Methodical Fixing:} How to find and resolve errors when they inevitably appear.
+    \end{itemize}
+    \vspace{\fill}
+    
+    \begin{block}{Key Idea}
+        Errors are not failures; they are clues.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Two Pillars of Programming}
+    
+    \begin{block}{1. The "Art" of Problem-Solving: The Blueprint}
+        \begin{itemize}
+            \item Before writing a single line of code, you need a plan.
+            \item This is the process of translating a human-language request into a clear, step-by-step logical sequence a computer can follow.
+            \item Analogy: You wouldn't build a house without a blueprint. Our blueprint is called \textbf{pseudocode}.
+        \end{itemize}
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{block}{2. The "Science" of Debugging: The Detective Work}
+        \begin{itemize}
+            \item No programmer writes perfect code on the first try. \textbf{Bugs} (errors) are a normal part of the process.
+            \item \textbf{Debugging} is the systematic process of finding and fixing these bugs.
+            \item It’s a science that involves observation, hypothesis, and experimentation.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Learning Objectives}
+    By the end of this lesson, you will be able to:
+    \begin{itemize}
+        \item<1-> Translate a problem description from plain English into a logical plan using \textbf{pseudocode}.
+        \item<2-> Differentiate between the three main types of programming errors.
+        \item<3-> Read and interpret a Python \textbf{traceback} message to find the source of an error.
+        \item<4-> Apply a systematic, step-by-step process to debug your code effectively.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Learning Objectives - The Plan \& The Problems}
+    
+    \begin{block}{1. The Blueprint: Planning with Pseudocode}
+        Before writing code, create a plan. Pseudocode is a way to outline a program's logic in human-readable language, focusing on the steps rather than Python's strict syntax. It's about \textit{thinking before coding}.
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{block}{2. The "Crime Scene": Identifying Error Types}
+        Not all bugs are the same. We will learn to spot the difference:
+        \begin{itemize}
+            \item \textbf{Syntax Errors:} Typos or "grammar" mistakes that Python cannot understand.
+            \item \textbf{Runtime Errors (Exceptions):} The code starts, but crashes when asked to do something impossible (e.g., divide by zero).
+            \item \textbf{Logic Errors:} The code runs perfectly but produces the wrong result.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Learning Objectives - The Investigation}
+    
+    \begin{block}{3. The Evidence: Reading a Traceback}
+        When a runtime error occurs, Python provides a \textbf{traceback}. This "crime scene report" tells you:
+        \begin{itemize}
+            \item The type of error that occurred.
+            \item The exact line number where the program failed.
+        \end{itemize}
+        We'll learn to read this report to quickly locate the source of a bug.
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{block}{4. The Method: Systematic Debugging}
+        Fixing bugs isn't random guesswork. It's a methodical process of:
+        \begin{enumerate}
+            \item Forming a hypothesis about the cause.
+            \item Gathering evidence (e.g., using \texttt{print()} statements).
+            \item Isolating and fixing the problem.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: The Planning Phase - Think Before You Type}
+    \framesubtitle{The Golden Rule of Programming}
+
+    The most common mistake beginners make is trying to solve a problem by immediately writing code. Expert programmers do the opposite.
+
+    \begin{block}{The "Blueprint" Analogy}
+        You wouldn't build a house without a blueprint. Your code needs a plan, too. Rushing to code leads to messy logic and bugs.
+    \end{block}
+
+    \begin{itemize}
+        \item Great programmers spend the majority of their time thinking, planning, and refining their logic.
+        \item The actual act of typing the code is often the final, quickest step in their workflow.
+    \end{itemize}
+
+    \vspace*{\fill}
+    \begin{center}
+        \textit{Invest time in planning to save hours of debugging.}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: The Planning Phase - What is Pseudocode?}
+    \framesubtitle{Our Primary Planning Tool}
+
+    Our blueprint for code is \textbf{pseudocode} (literally "fake code"). It is the bridge between plain English and a programming language.
+
+    \begin{block}{Definition: Pseudocode}
+        A simplified, informal language that describes the logic and steps of an algorithm without the strict rules of programming syntax.
+    \end{block}
+
+    \begin{itemize}
+        \item<1-> \textbf{Focus on Logic, Not Syntax:} Allows you to solve the problem without worrying about colons, parentheses, or exact function names.
+        \item<2-> \textbf{Language-Agnostic:} A good plan can be translated into Python, Java, C++, or any other language.
+        \item<3-> \textbf{Easy to Read \& Write:} Uses a mix of plain English and programming structures, making it easy to review and fix logical flaws early.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: The Planning Phase - Pseudocode in Action}
+    \framesubtitle{Common Keywords and an Example}
+
+    While there are no strict rules, these keywords help structure logic:
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Input/Output:} \\ \texttt{GET, READ, PROMPT} \\ \texttt{PRINT, DISPLAY, SHOW}
+                \item \textbf{Processing:} \\ \texttt{COMPUTE, CALCULATE, SET}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item \textbf{Conditionals:} \\ \texttt{IF, ELSE, ELSE IF}
+                \item \textbf{Loops:} \\ \texttt{WHILE, FOR, LOOP}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \begin{block}{Example Snippet}
+\begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
+PROMPT user for their age
+GET user_age
+CONVERT user_age to a number
+
+IF user_age is greater than or equal to 18:
+    PRINT "Access granted."
+ELSE:
+    PRINT "Access denied."
+\end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Crafting Pseudocode}
+    \begin{block}{Problem Statement}
+        Ask the user for their name and their age. If they are 18 or older, print a message that they are old enough to vote. Otherwise, print a message that they are not.
+    \end{block}
+
+    \vspace{1em}
+    \begin{block}{Pseudocode Plan}
+\begin{verbatim}
+PRINT "What is your name?"
+GET user_name
+PRINT "What is your age?"
+GET user_age
+CONVERT user_age to a number
+
+IF user_age is greater than or equal to 18:
+   PRINT "Hello [user_name], you can vote."
+ELSE:
+   PRINT "Sorry [user_name], you cannot vote yet."
+\end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Example: Deconstructing the Plan}
+    \framesubtitle{From Problem to Pseudocode}
+
+    We translate each part of the problem statement into a logical step in our plan.
+
+    \begin{itemize}
+        \item<1-> \textbf{Identify Inputs:}
+        \begin{itemize}
+            \item The problem says: "Ask the user for their name and their age."
+            \item This becomes our prompt and `GET` commands:
+            \item[] \texttt{PRINT "..."}
+            \item[] \texttt{GET user\_name, user\_age}
+        \end{itemize}
+        \vspace{1em}
+        \item<2-> \textbf{Identify Core Logic (The Decision):}
+        \begin{itemize}
+            \item The key phrase is: "\textit{If} they are 18 or older... \textit{Otherwise}..."
+            \item This directly maps to an \texttt{IF / ELSE} structure.
+            \item The condition is: \texttt{user\_age >= 18}
+        \end{itemize}
+        \vspace{1em}
+        \item<3-> \textbf{Identify Outputs:}
+        \begin{itemize}
+            \item The problem describes two possible messages.
+            \item One message goes in the \texttt{IF} block, the other in the \texttt{ELSE} block.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: A Critical Detail}
+    \framesubtitle{Thinking Ahead}
+
+    One line in our plan is crucial for preventing errors:
+
+    \begin{block}{The Often-Missed Step}
+        \texttt{CONVERT user\_age to a number}
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Why is this necessary?}
+        \begin{itemize}
+            \item When a user types something (like "25"), the computer first reads it as \textbf{text} (a "string"), not a number.
+            \item You cannot perform mathematical comparisons (like $\geq$ 18) on text. It's like asking if the word "apple" is greater than the number 18.
+            \item By explicitly including this conversion step in our plan, we are anticipating and solving a common problem before we even start coding.
+        \end{itemize}
+    \end{itemize}
+    \vspace{1em}
+    \centering
+    \textbf{Good planning is about thinking through these details!}
+\end{frame}
+
+\begin{frame}[fragile]
+                \frametitle{Part 2: The Reality Phase - When Code Breaks}
+                Even with a perfect plan, you will encounter errors. This is a normal and expected part of programming. The skill is not in avoiding errors, but in fixing them efficiently. This process is called \textbf{debugging}.
+            \end{frame}
+
+\begin{frame}[fragile]
+                \frametitle{Understanding the Three Types of Errors}
+                To fix an error, you must first identify its type: \\ \begin{itemize} \item \textbf{Syntax Errors:} The code violates the rules of the Python language. The program won't run at all. \\ \textit{Example: Missing colon in an if statement.} \item \textbf{Runtime Errors (Exceptions):} The code is syntactically valid but encounters an impossible situation during execution. The program starts but crashes. \\ \textit{Example: Trying to divide by zero.} \item \textbf{Logical Errors:} The code runs without crashing but produces the wrong result. The most difficult to find! \\ \textit{Example: Using `>` instead of `>=` to check an age.} \end{itemize}
+            \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{How to Read a Python Traceback}
+    When a runtime error occurs, Python gives you a \textbf{traceback}. Think of it as a map that leads you directly to the bug.
+
+    \begin{block}{An Example Traceback}
+\begin{verbatim}
+Traceback (most recent call last):
+  File "C:/Users/test/my_program.py", line 5, in <module>
+    result = 10 / user_number
+ZeroDivisionError: division by zero
+\end{verbatim}
+    \end{block}
+
+    \vspace{1em}
+    The single most important rule for reading a traceback is:
+    \begin{center}
+        \Large\alert{Start at the bottom and read up!}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anatomy of a Traceback - The "What" and "Where"}
+    Let's analyze the example from the bottom up.
+
+    \begin{block}{1. The Error Type \& Message (The "What")}
+        This is the last line and your first stop. It tells you exactly what went wrong.
+\begin{verbatim}
+ZeroDivisionError: division by zero
+\end{verbatim}
+        \begin{itemize}
+            \item \textbf{Error Type:} \texttt{ZeroDivisionError} - The specific class of error.
+            \item \textbf{Error Message:} \texttt{division by zero} - A human-readable description.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{2. The File \& Line Number (The "Where")}
+        The lines above the error pinpoint the location of the crash.
+\begin{verbatim}
+File "C:/Users/test/my_program.py", line 5, in <module>
+  result = 10 / user_number
+\end{verbatim}
+        \begin{itemize}
+            \item \textbf{File \& Line:} Tells you the error is in \texttt{my\_program.py} on \alert{line 5}.
+            \item \textbf{Code:} Shows you the exact line of code that failed.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Call Stack \& Summary}
+    
+    \begin{block}{3. The Call Stack (The "How")}
+        The top section of the traceback shows the sequence of function calls that led to the error.
+\begin{verbatim}
+Traceback (most recent call last):
+  File "...", line 5, in <module>
+\end{verbatim}
+        \begin{itemize}
+            \item This shows the path your program took to arrive at the error.
+            \item In this simple case, \texttt{<module>} means the error occurred in the main script, not inside a function.
+            \item For complex code, it lists the chain of function calls.
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Key Takeaway: The 3-Step Process}
+        \begin{enumerate}
+            \item \textbf{Start at the bottom:} Identify the \alert{Error Type} and Message (The "What").
+            \item \textbf{Move up one level:} Find the \alert{File and Line Number} (The "Where").
+            \item \textbf{Examine the code:} Look at the line that failed and use the call stack to understand the context (The "How").
+        \end{enumerate}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{A Systematic Process for Debugging}
+    \note{Alright everyone, let's talk about what to do when you actually encounter one of those red error messages. The most common instinct is to panic and start changing code randomly, hoping something will work. This is the slowest and most frustrating way to fix a bug. A much better approach is to be a detective. We're going to learn a simple, four-step scientific method for debugging that will save you countless hours and help you truly understand your code.}
+
+    Don't just randomly change things! A systematic process turns debugging from a frustrating guessing game into a focused investigation.
+    
+    \vspace{1em}
+    \begin{block}{The Four Steps: A Scientific Method for Code}
+        \begin{enumerate}
+            \item \textbf{Read the Error:} Carefully read the traceback. Don't skim. Identify the error type and line number.
+            \pause
+            \item \textbf{Hypothesize:} Form a specific, testable guess about the cause. (e.g., "I think the `user_number` variable is zero.")
+            \pause
+            \item \textbf{Experiment:} Make \textit{one} small, reversible change to test your hypothesis. Often, this is just adding a `print()` statement.
+            \pause
+            \item \textbf{Repeat or Resolve:} If confirmed, fix the bug. If not, undo your change and form a new hypothesis.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Process in Action - Steps 1 \& 2}
+    \note{Let's walk through this with our `ZeroDivisionError` example. Step one is about gathering clues. The traceback is your best friend. Read it from the bottom up. It tells you the exact type of error and the exact line number. Ignoring the type and just looking at the line can send you down the wrong path.
+    \newline\newline
+    Once you have your clues, you form a theory, or a hypothesis. A vague guess like 'something is wrong' isn't helpful. Be specific! A good hypothesis is, 'The error is happening because this specific variable, `user_number`, has a value of 0 right on line 5.' This is something we can actually test.}
+
+    \textbf{Running Example:} A `ZeroDivisionError` on the line `result = 10 / user_number`.
+
+    \vspace{1em}
+    \textbf{1. Read the Error (Gather Clues)}
+    \begin{itemize}
+        \item The traceback is your most important piece of evidence. Read it carefully!
+        \item \textbf{What it tells you:} The specific error type (`ZeroDivisionError`) and the exact location (e.g., `my_program.py`, line 5).
+        \item \textbf{Why it's crucial:} Knowing the error *type* points you directly to the kind of problem (e.g., a math issue, not a typo).
+    \end{itemize}
+    
+    \vspace{1em}
+    \textbf{2. Hypothesize (Form a Theory)}
+    \begin{alertblock}{Bad Hypothesis}
+        "Something is wrong with my variables." (Too vague to be useful)
+    \end{alertblock}
+    
+    \begin{exampleblock}{Good Hypothesis}
+        "The `ZeroDivisionError` is happening because the variable `user_number` must have a value of `0` at the exact moment line 5 is executed." (Specific and testable)
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Process in Action - Steps 3 \& 4}
+    \note{Now for Step 3: the experiment. Your goal is to test your theory with one small, temporary change. The best, simplest experiment is almost always to add a print statement right before the line that crashes to see what your variables actually are.
+    \newline\newline
+    Finally, Step 4. Look at the result. If your print statement shows `user_number` is 0, your hypothesis was right! You've found the cause. Now you can remove the print statement and write the real fix, like an if-statement to handle the zero case. If the print statement shows something else, your hypothesis was wrong. That's fine! Just remove the print statement, and go back to Step 2 to form a new theory based on what you just learned.}
+
+    \textbf{3. Experiment (Test Your Theory)}
+    \begin{itemize}
+        \item Make \textit{one small, reversible change} to gather more information.
+        \item The best first experiment is using `print()` to inspect variable states.
+    \end{itemize}
+    \begin{lstlisting}[language=Python, caption={Add a print statement before the error line to test.}, label=lst:debugprint]
+% Let's test if user_number is actually 0
+print(f"DEBUGGING: The value of user_number is: {user_number}")
+
+% This is the line that crashes
+result = 10 / user_number 
+    \end{lstlisting}
+    
+    \vspace{1em}
+    \textbf{4. Repeat or Resolve (Analyze the Results)}
+    \begin{itemize}
+        \item \textbf{If hypothesis confirmed} (e.g., `user_number` was 0): Remove the `print()` and implement the real fix.
+    \end{itemize}
+    \begin{lstlisting}[language=Python, caption={The permanent fix after confirming the cause.}, label=lst:debugfix]
+# The Fix
+if user_number != 0:
+    result = 10 / user_number
+else:
+    print("Cannot divide by zero!")
+    \end{lstlisting}
+    \begin{itemize}
+        \item \textbf{If hypothesis was wrong:} \textbf{Undo your change} (remove the `print()`) and return to Step 2 with a new hypothesis.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pro Tip: The Power of \texttt{print()} Debugging}
+    \framesubtitle{The Programmer's Most Trusted Tool}
+
+    While complex debuggers exist, the humble \texttt{print()} statement is often the quickest way to understand your code's behavior. It helps find \textit{logical errors}—bugs where code runs but gives the wrong result.
+
+    \begin{block}{What can you do with \texttt{print()}?}
+        \begin{itemize}
+            \item \textbf{Inspect State:} Check the values of your variables at any point.
+            \item \textbf{Trace Execution Flow:} See which lines of code are actually running.
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{The Core Idea}
+        You \textit{assume} a variable holds a certain value. A \texttt{print()} statement proves if you're right or wrong.
+    \end{alertblock}
+
+    \note{
+        "Alright, let's talk about the single most powerful, universally available, and frequently used debugging tool in any programmer's toolkit: the `print()` function. While modern IDEs have complex debuggers, you'll find that even senior developers constantly fall back on `print()` because of its simplicity and effectiveness. Think of your program as a black box. `print()` is like cutting small windows into that box to see the state of the machinery at any point. It's the fastest way to test your hypotheses about what's going wrong."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{print()} Debugging - Use Case 1: Checking Variable Values}
+    \framesubtitle{Scenario: A calculation is producing an incorrect result.}
+    \vspace{1em}
+    Use \texttt{print()} to isolate whether the issue is with the initial inputs or the calculation itself.
+
+    \begin{block}{Example: Debugging a Price Calculation}
+        \begin{verbatim}
+# Original Code
+price = get_item_price()
+quantity = get_quantity()
+final_price = (price * quantity) * 1.07 # Add 7% tax
+print(f"Total: ${final_price}")
+
+# --- Debugging with print() ---
+price = get_item_price()
+quantity = get_quantity()
+
+# Let's add "windows" to see the state
+print(f"[DEBUG] Price: {price} (Type: {type(price)})")
+print(f"[DEBUG] Quantity: {quantity} (Type: {type(quantity)})")
+
+final_price = (price * quantity) * 1.07
+print(f"[DEBUG] Final price: {final_price}")
+print(f"Total: ${final_price}")
+        \end{verbatim}
+    \end{block}
+
+    \textbf{What this tells you:} The debug prints immediately reveal if \texttt{price} or \texttt{quantity} have unexpected values or types (e.g., a string \texttt{"5"} instead of a number \texttt{5}).
+
+    \note{
+        "Let's look at our first use case: checking variable values. Imagine you're writing e-commerce software, and the final price calculation is off. The problem could be bad input, or it could be a mistake in your formula. By adding print statements, we create 'windows' into our code. The first two prints show us the exact value and type of `price` and `quantity` as soon as we get them. A very common bug is receiving input as a string when you expect a number. `print(type(price))` would expose that instantly. If those inputs are correct, but the final debug print is wrong, you've successfully isolated the problem to your calculation logic."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{print()} Debugging - Use Case 2: Tracing Execution Flow}
+    \framesubtitle{Scenario: A specific block of code is not running when it should.}
+    \vspace{1em}
+    Use \texttt{print()} to create a "breadcrumb trail" and see which path your code follows.
+
+    \begin{block}{Example: Debugging a Discount Condition}
+        \begin{verbatim}
+# Original Code
+if user.is_premium_member and user.purchase_total > 50:
+    apply_discount(cart) # Why is this not running?
+
+# --- Debugging with print() ---
+print(f"[DEBUG] Is premium? {user.is_premium_member}")
+print(f"[DEBUG] Purchase total: {user.purchase_total}")
+
+if user.is_premium_member and user.purchase_total > 50:
+    print("[DEBUG] SUCCESS: Conditions met. Applying discount.")
+    apply_discount(cart)
+else:
+    print("[DEBUG] FAILED: Conditions not met. No discount.")
+        \end{verbatim}
+    \end{block}
+
+    \begin{alertblock}{Key Takeaway}
+        \textbf{When in doubt, print it out!} Use descriptive prefixes like \texttt{[DEBUG]} to check variable states and trace your code's path. This turns mysteries into solvable problems.
+    \end{alertblock}
+    \note{
+        "Our second use case is tracing execution flow. Sometimes the problem isn't a bad value, but code that you expect to run not running at all. Here, a discount isn't being applied. Why? We assume the conditions in the `if` statement are true, but are they? By printing the values of `user.is_premium_member` and `user.purchase_total` right before the check, we're no longer guessing. We can see exactly which part of the condition is failing. The prints inside the `if` and `else` blocks then give us 100% confirmation of which path the code took. This brings us to the key takeaway, which is the most important rule of simple debugging: When in doubt, print it out! It's a simple technique that will solve a huge percentage of your bugs."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 6 Summary: A Problem-Solving Framework}
+    
+    You now have a framework for tackling any programming problem. The key is to be deliberate in how you write, debug, and think about code.
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item<1-> \textbf{Plan First:} Always translate a problem into pseudocode \textit{before} you write Python code.
+        
+        \item<2-> \textbf{Errors are Clues:} Don't be afraid of tracebacks. Learn to read them carefully to understand the problem.
+        
+        \item<3-> \textbf{Be Systematic:} Follow the Read-Hypothesize-Experiment process to debug efficiently.
+        
+        \item<4-> \textbf{When in Doubt, Print it Out:} Use `print()` statements to inspect the state of your variables and track down logical errors.
+    \end{itemize}
+    
+    \note{
+        "Alright, let's bring everything together and summarize the key takeaways from Chapter 6. This chapter was all about building your mental toolkit. The skills we've discussed are universal and arguably more important than memorizing any specific piece of Python syntax. They form a framework you can use to solve any problem you encounter.
+        
+        Let's review the four pillars of this framework.
+        \begin{itemize}
+            \item First, we plan our logic before we ever type a line of Python.
+            \item Second, when we inevitably encounter errors, we treat them as helpful clues, not failures.
+            \item Third, we use a systematic cycle to form and test our ideas about what's wrong.
+            \item And fourth, we use our most reliable tool—the print statement—to see what our code is actually doing. Let's look at the first two in more detail."
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 6 Summary - Part 1: Plan \& Decode}
+    
+    \begin{block}{Plan First: The Power of Pseudocode}
+        \begin{itemize}
+            \item Separates problem-solving (the \textit{what}) from coding (the \textit{how}).
+            \item Pseudocode is your blueprint to spot logical flaws early.
+            \item \textbf{Mantra:} Think before you type.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Errors are Clues: Decoding Tracebacks}
+        \begin{itemize}
+            \item A traceback tells you three things:
+            \begin{enumerate}
+                \item \textbf{Where} the problem occurred (file and line number).
+                \item \textbf{What} the code was doing (the call stack).
+                \item \textbf{Why} it failed (the error type, e.g., `TypeError`).
+            \end{enumerate}
+            \item \textbf{Tip:} Read the last line of the error message first!
+        \end{itemize}
+    \end{block}
+    
+    \note{
+        "Our first and most important principle: **Always plan before you code.** Before you write a single line of Python, you should have a clear roadmap. Your best tool for this is **pseudocode**. You wouldn't build a house without a blueprint. Pseudocode is your blueprint. It allows you to solve the logical problem in plain language, without getting bogged down by syntax.
+        
+        Next, we must change our relationship with errors. **Errors are not failures; they are clues.** When you see a red traceback in your console, don't be intimidated. The computer is trying to help you! A traceback is a map. Your job is to be a detective. Read the error message at the very bottom first—it's the most direct clue to solving the mystery."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 6 Summary - Part 2: The Debugging Cycle}
+    
+    \begin{block}{Be Systematic: The Read-Hypothesize-Experiment Cycle}
+        This structured approach is like the scientific method for your code:
+        \begin{enumerate}
+            \item \textbf{Read:} Carefully read the error and the surrounding code.
+            \item \textbf{Hypothesize:} Form a specific, testable guess. (e.g., "I think the `total` variable is `None` here.")
+            \item \textbf{Experiment:} Make \textit{one small change} to test the hypothesis and run again.
+        \end{enumerate}
+    \end{block}
+    
+    \begin{block}{When in Doubt, Print it Out}
+        \begin{itemize}
+            \item Your ultimate tool for logical errors (when code runs but gives the wrong answer).
+            \item `print()` is like an X-ray for your code, letting you see the "invisible" state of your variables.
+            \item Use it to pinpoint the exact moment your logic goes off track.
+        \end{itemize}
+    \end{block}
+
+    \note{
+        "When you have a clue from a traceback, you don't just guess randomly. You need a systematic process. We call this the **Read-Hypothesize-Experiment** cycle. First, you read the error and the code. Second, you form a specific, testable hypothesis about the cause. Third, you run an experiment—making one small change—to test that hypothesis. This is far more efficient than changing code at random.
+        
+        But what about logical errors, where the code runs but gives the wrong answer? This is where your most powerful tool comes into play: the `print()` function. `print()` lets you see the state of your variables at any point in your program's execution. Is a calculation wrong? Print the variables right before it. This allows you to pinpoint the exact moment your logic fails. So remember the golden rule: **When in doubt, print it out!**
+        
+        These four ideas—**Plan, Read Clues, Be Systematic, and Print**—form a complete problem-solving loop. Mastering this cycle is the true art of becoming a proficient and resilient programmer."
+    }
+\end{frame}
+
+
+\end{document}

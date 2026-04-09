@@ -1,0 +1,32 @@
+\frametitle{Installation and Setup - Final Steps}
+    \begin{enumerate}
+        \setcounter{enumi}{3} % Continue the enumeration
+        \item \textbf{Setting up the Environment}
+            \begin{itemize}
+                \item Install Jupyter Notebook (optional):
+                \begin{lstlisting}[language=bash]
+pip install notebook
+                \end{lstlisting}
+                \item Start Jupyter Notebook:
+                \begin{lstlisting}[language=bash]
+jupyter notebook
+                \end{lstlisting}
+            \end{itemize}
+
+        \item \textbf{Importing Matplotlib}
+            \begin{lstlisting}[language=python]
+import matplotlib.pyplot as plt
+            \end{lstlisting}
+
+        \item \textbf{Example Code Snippet}:
+            \begin{lstlisting}[language=python]
+# Sample data for a plot
+x = [1, 2, 3, 4, 5]
+y = [2, 3, 5, 7, 11]
+plt.plot(x, y)
+plt.title("Simple Line Plot")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.show()
+            \end{lstlisting}
+    \end{enumerate}

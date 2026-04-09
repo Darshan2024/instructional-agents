@@ -1,0 +1,770 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs} % For professional-looking tables
+
+% Code listings
+\usepackage{listings}
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=tb, % Adds top and bottom frame lines to code blocks
+    showstringspaces=false,
+    tabsize=4
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 3: Control Flow: Conditional Logic}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 3: Control Flow - Introduction to Conditional Logic}
+    
+    \begin{itemize}
+        \item \textbf{Control Flow:} The order in which the statements in your program are executed. By default, Python executes code sequentially from top to bottom.
+        
+        \item \textbf{Conditional Logic:} Allows a program to make decisions. It enables you to write code that performs different actions based on whether a certain condition is \texttt{True} or \texttt{False}.
+        
+        \item The primary tool for conditional logic in Python is the \textbf{\texttt{if}} statement.
+    \end{itemize}
+    
+    \begin{block}{What is a Condition?}
+        A condition is an expression that evaluates to a Boolean value: either \texttt{True} or \texttt{False}. These are often called \textbf{Boolean expressions}.
+        \vspace{0.5em}
+        
+        Examples:
+        \begin{itemize}
+            \item \texttt{age >= 18}
+            \item \texttt{name == "Alice"}
+            \item \texttt{temperature < 0}
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conditional Logic - The \texttt{if} and \texttt{if-else} Statements}
+    
+    \begin{block}{The \texttt{if} Statement}
+        Executes a block of code only if a specified condition is true.
+        \begin{lstlisting}[language=Python]
+# Syntax
+if condition:
+    # Code to execute if condition is True
+
+# Example
+temperature = 30
+if temperature > 25:
+    print("It's a hot day!")
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{The \texttt{if-else} Statement}
+        Provides an alternative block of code to execute if the condition is false.
+        \begin{lstlisting}[language=Python]
+# Syntax
+if condition:
+    # Code to execute if condition is True
+else:
+    # Code to execute if condition is False
+
+# Example
+age = 17
+if age >= 18:
+    print("You are eligible to vote.")
+else:
+    print("You are not eligible to vote yet.")
+        \end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conditional Logic - The \texttt{if-elif-else} Chain}
+    
+    \begin{block}{Handling Multiple Conditions}
+        When you have more than two possible outcomes, you can use the \textbf{\texttt{elif}} (else if) statement to check multiple conditions in sequence.
+        \begin{lstlisting}[language=Python]
+# Syntax
+if condition_1:
+    # Code for condition 1
+elif condition_2:
+    # Code for condition 2
+else:
+    # Code if no conditions are met
+
+# Example: Grading System
+score = 85
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+print(f"Your grade is {grade}")
+        \end{lstlisting}
+    \end{block}
+    
+    \textbf{Common Comparison Operators:}
+    \begin{itemize}
+        \item \texttt{==} : Equal to
+        \item \texttt{!=} : Not equal to
+        \item \texttt{<} : Less than
+        \item \texttt{>} : Greater than
+        \item \texttt{<=} : Less than or equal to
+        \item \texttt{>=} : Greater than or equal to
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is Control Flow?}
+    \begin{block}{Definition}
+        Control flow is the order in which a program's statements are executed. Think of it as the path a computer takes through your code.
+    \end{block}
+
+    \vspace{1em}
+
+    By default, the path is a straight line, but we can create forks and loops.
+    
+    \vfill
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{Sequential Flow}
+                The default path. Code runs from top to bottom, one line after another.
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{Conditional Flow}
+                A fork in the road. The program chooses which block of code to run based on a condition.
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Control Flow - Part 1: Sequential Flow}
+    \framesubtitle{The Default Path}
+    
+    This is the standard, top-to-bottom execution. The computer runs line 1, then line 2, and so on, without skipping or repeating.
+
+    \begin{block}{Analogy: Following a Recipe}
+        You complete each step in the prescribed order to get the final result.
+    \end{block}
+    
+    \begin{exampleblock}{Python Example}
+        This program will \textit{always} print the same lines in the exact same order.
+        \begin{lstlisting}[language=Python]
+% Sequential Execution
+print("Preparing to launch...")
+name = "Apollo"
+mission_step = 1
+print(f"Mission {name}, step {mission_step} is complete.")
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{lstlisting}[basicstyle=\ttfamily\small]
+Preparing to launch...
+Mission Apollo, step 1 is complete.
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Control Flow - Part 2: Conditional Flow}
+    \framesubtitle{A Fork in the Road}
+    
+    Conditional flow allows a program to make a choice. It evaluates a condition and, based on the result, decides which block of code to execute.
+    
+    \begin{block}{Analogy: A "Choose Your Own Adventure" Book}
+        Based on your decision ("Do you enter the cave?"), you turn to a different page and the story continues down a different path.
+    \end{block}
+    
+    \begin{exampleblock}{Conceptual Example}
+        Imagine a program deciding if you need an umbrella:
+        \begin{lstlisting}[language=Python]
+# CONCEPT: if the weather is "raining":
+#              Execute this block
+#              print("Don't forget your umbrella!")
+#
+#          CONCEPT: otherwise:
+#              Execute this other block
+#              print("Looks like a sunny day!")
+        \end{lstlisting}
+    \end{exampleblock}
+    
+    \begin{alertblock}{Key Takeaway}
+        We use \textbf{conditional logic} to ask questions. The program's flow changes based on whether the answer is \texttt{True} or \texttt{False}.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Foundation: Boolean Expressions - The Core Idea}
+    
+    A \textbf{Boolean Expression} is a statement that the computer evaluates to one of two possible values: \texttt{True} or \texttt{False}.
+    
+    \vfill
+    
+    Think of it as a question with a definitive "yes" or "no" answer:
+    \begin{itemize}
+        \item Is the traffic light green? $\rightarrow$ \texttt{True} / \texttt{False}
+        \item Is the user's password correct? $\rightarrow$ \texttt{True} / \texttt{False}
+        \item Is the player's health $\le$ 0? $\rightarrow$ \texttt{True} / \texttt{False}
+    \end{itemize}
+    
+    \vfill
+    
+    \begin{alertblock}{Key Point: Capitalization Matters!}
+        In Python, the keywords must be \texttt{True} and \texttt{False}. Lowercase versions like \texttt{true} or \texttt{false} will cause an error. These values belong to the \texttt{bool} data type.
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Foundation: Boolean Expressions - Role in Control Flow}
+    
+    Boolean expressions are the \textbf{decision-makers} in your code. They form the \textit{condition} that is checked by control flow statements (like \texttt{if} statements).
+    
+    \vfill
+    
+    \begin{block}{The "Fork in the Road"}
+    This is how programs choose which path to take:
+    \begin{itemize}
+        \item If the expression evaluates to \texttt{True}, the program executes one block of code.
+        \vfill
+        \item If the expression evaluates to \texttt{False}, the program takes another path (or skips the block entirely).
+    \end{itemize}
+    \end{block}
+    
+    \vfill
+    
+    Essentially, Boolean expressions give our programs the ability to react differently to different situations.
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Foundation: Boolean Expressions - A Python Example}
+    
+    Let's see how Python evaluates an expression and turns it into a \texttt{bool} value.
+    
+    \begin{columns}[T] % T aligns the tops of the columns
+        \begin{column}{0.55\textwidth}
+            \begin{block}{Python Code}
+\begin{lstlisting}[language=Python]
+# Set a student's score
+score = 85
+
+# Ask a question (Boolean expression)
+is_passing = (score >= 60)
+
+print("Score:", score)
+print("Is passing?", is_passing)
+
+# What if the score was lower?
+score = 50
+is_passing = (score >= 60)
+
+print("\nScore:", score)
+print("Is passing?", is_passing)
+\end{lstlisting}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Program Output}
+\begin{verbatim}
+Score: 85
+Is passing? True
+
+Score: 50
+Is passing? False
+\end{verbatim}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    The expression \texttt{(score >= 60)} is the question. Python answers it directly with \texttt{True} or \texttt{False}.
+    
+    \vfill
+    \textbf{Up Next}: We will learn the symbols like \texttt{>=}, called \textbf{Comparison Operators}, that we use to build these questions.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Comparison Operators: Asking Questions in Code}
+    
+    We use comparison operators to create Boolean expressions by comparing two values. The result of any comparison is always either \texttt{True} or \texttt{False}.
+    
+    \vspace{1.5em}
+    
+    \centering
+    \begin{tabular}{l l l l}
+        \toprule
+        \textbf{Operator} & \textbf{Meaning} & \textbf{Example (\texttt{x} is 5)} & \textbf{Result} \\
+        \midrule
+        \texttt{==} & Equal to & \texttt{x == 5} & \texttt{True} \\
+        \texttt{!=} & Not equal to & \texttt{x != 10} & \texttt{True} \\
+        \texttt{>}  & Greater than & \texttt{x > 10} & \texttt{False} \\
+        \texttt{<}  & Less than & \texttt{x < 10} & \texttt{True} \\
+        \texttt{>=} & Greater than or equal to & \texttt{x >= 5} & \texttt{True} \\
+        \texttt{<=} & Less than or equal to & \texttt{x <= 4} & \texttt{False} \\
+        \bottomrule
+    \end{tabular}
+    
+    \vfill
+    \note{
+        **(Start of Slide)**
+        "In our last slide, we established that our programs make decisions based on Boolean expressions—questions that are either `True` or `False`. Now, let's look at the primary tools we use to *build* those questions: **Comparison Operators**."
+        
+        "Think of these operators as the core of any question you ask in your code. They take two pieces of data—one on the left and one on the right—and compare them, producing a `True` or `False` answer."
+        
+        **(Walking Through the Table)**
+        "Let's walk through the table, assuming we have a variable `x` that holds the value `5`."
+        \begin{enumerate}
+            \item \textbf{\texttt{==} (Equal to):} "First, we have the double equals sign, `==`. This is the 'is exactly equal to' operator. If we ask `x == 5`, Python checks if the value in `x` is 5. It is, so the expression evaluates to `True`."
+            \item \textbf{\texttt{!=} (Not equal to):} "Next is its opposite, `!=`, which means 'not equal to'. The expression `x != 10` is asking, 'Is the value in x different from 10?' Since 5 is not 10, this is `True`."
+            \item \textbf{\texttt{>} and \texttt{<}:} "These are straightforward. `x > 10` asks 'Is 5 greater than 10?', which is `False`. And `x < 10` asks 'Is 5 less than 10?', which is `True`."
+            \item \textbf{\texttt{>=} and \texttt{<=}:} "These are extremely important because they include the boundary case. `x >= 5` asks, 'Is x greater than OR equal to 5?' Since x is equal to 5, the condition is met, and this is `True`. Similarly, `x <= 4` is `False`."
+        \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Comparison Operators: Assignment vs. Comparison}
+    
+    \begin{block}{Crucial Note: The Most Common Beginner Mistake}
+    A single equals sign (\texttt{=}) \textbf{assigns} a value. A double equals sign (\texttt{==}) \textbf{compares} two values. Mixing them up is a very common source of errors.
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item[\texttt{=}] \textbf{The Assignment Operator}
+        \begin{itemize}
+            \item It gives a command: "Make this variable hold this value."
+            \item Example: \texttt{level = 5} \\ \textit{"Set the variable \texttt{level} to 5."}
+        \end{itemize}
+        
+        \vspace{1em}
+        
+        \item[\texttt{==}] \textbf{The Equality Operator}
+        \begin{itemize}
+            \item It asks a question: "Is this variable's value the same as this other value?"
+            \item Example: \texttt{level == 5} \\ \textit{"Is the value of \texttt{level} equal to 5?" (Returns \texttt{True} or \texttt{False})}
+        \end{itemize}
+    \end{itemize}
+    
+    \vfill
+    \note{
+        **(Emphasizing the Crucial Note)**
+        "Now, I want everyone to focus on this slide. This is arguably the most common mistake for new programmers, and understanding it now will save you hours of debugging later."
+        
+        "The single equals sign, `=`, is the **Assignment Operator**. Its only job is to put a value into a variable. When you write `level = 5`, you are giving a command: 'Take the number 5 and store it in a variable named `level`'."
+        
+        "The double equals sign, `==`, is the **Equality Operator**. It's a question. `level == 5` asks the question, 'Is the value currently stored in `level` equal to 5?'. It doesn't change anything; it just gives you a `True` or `False` answer."
+        
+        "Think of it this way:
+        \begin{itemize}
+            \item \textbf{\texttt{=} is for *making* a variable something.}
+            \item \textbf{\texttt{==} is for *asking* if a variable is something.}
+        \end{itemize}"
+        
+        "If you mix these up inside a conditional statement, you're not asking a question; you're trying to give a command, which will often cause an error. Always use `==` when you want to check for equality."
+        
+        **(Transition to Next Slide)**
+        "So, these operators are our building blocks for creating `True`/`False` questions. Now that we know how to ask the questions, our very next step is to learn how to tell the computer what to do based on the answers. And for that, we'll use the `if` statement."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if} Statement: Core Concept \& Syntax}
+    
+    The \texttt{if} statement allows your program to ask a "yes" or "no" question and execute code only if the answer is "yes" (\texttt{True}).
+    \begin{itemize}
+        \item \textbf{The Question}: Is a certain condition \texttt{True}?
+        \item \textbf{The Action}: If \texttt{True}, execute a specific block of code.
+        \item \textbf{The Alternative}: If \texttt{False}, do nothing and skip the block.
+    \end{itemize}
+    
+    \begin{block}{Anatomy of the \texttt{if} Statement}
+        \begin{lstlisting}[language=Python]
+if condition:
+    # This indented block of code
+    # is the "body" of the if statement.
+    statement_1
+    statement_2
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item \texttt{if}: The keyword that starts the statement.
+        \item \texttt{condition}: An expression that evaluates to \texttt{True} or \texttt{False}.
+        \item \texttt{:}: A mandatory colon that separates the condition from the body.
+        \item \textbf{Indented Block}: The code to run if the condition is \texttt{True}. Indentation (4 spaces) is a syntax requirement in Python.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if} Statement: Execution Flow \& Example (True)}
+    
+    The program's path depends on the condition's outcome:
+    \begin{itemize}
+        \item \textbf{If \texttt{True}}: The program enters the indented block, executes all statements inside, and then continues with the code after the block.
+        \item \textbf{If \texttt{False}}: The program \textbf{skips} the entire indented block and jumps to the next line of code after it.
+    \end{itemize}
+    
+    \begin{block}{Example: Condition is \texttt{True}}
+        \begin{lstlisting}[language=Python]
+# Setup
+temperature = 35
+
+# The condition (35 > 30) evaluates to True.
+if temperature > 30:
+    # This block is EXECUTED.
+    print("It's a hot day!")
+    print("Don't forget to stay hydrated.")
+
+print("Weather check complete.")
+
+# --- Output ---
+# It's a hot day!
+# Don't forget to stay hydrated.
+# Weather check complete.
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if} Statement: Example (Condition is False)}
+    
+    When the condition is \texttt{False}, the code block is completely ignored.
+    
+    \begin{block}{Example: Condition is \texttt{False}}
+        \begin{lstlisting}[language=Python]
+# Setup
+account_balance = 50
+item_cost = 100
+
+# The condition (50 >= 100) evaluates to False.
+if account_balance >= item_cost:
+    # This block is SKIPPED.
+    print("Purchase successful!")
+    account_balance = account_balance - item_cost
+
+print(f"Your final balance is ${account_balance}.")
+
+# --- Output ---
+# Your final balance is $50.
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item Notice the "Purchase successful!" message never appeared.
+        \item The \texttt{if} statement provides a path for \texttt{True}, but nothing for \texttt{False}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+                \frametitle{The `if-else` Statement: The Two-Way Path}
+                The \texttt{if-else} statement provides an alternative path for when the \texttt{if} condition is \texttt{False}.\n\n\textbf{Syntax:}\n\begin{verbatim}
+if condition:
+    # Runs if condition is True
+else:
+    # Runs if condition is False
+\end{verbatim}\n\textbf{Example:}\n\begin{verbatim}
+age = 16
+if age >= 18:
+    print("You are eligible to vote.")
+else:
+    print("You are not yet eligible to vote.")
+\end{verbatim}
+            \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if-elif-else} Chain: Multi-Way Paths}
+    \framesubtitle{Conceptual Overview}
+    
+    Used for checking multiple, mutually exclusive conditions. It creates a "multi-way path" when a simple `if-else` is not enough.
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item Think of it as a series of questions asked in order.
+        \item The keyword \texttt{elif} is a contraction of \textbf{"else if"}.
+        \item It allows you to add more conditions to the logic chain.
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \begin{block}{The "First True" Execution Rule}
+        Python evaluates conditions from top to bottom. It runs the code for the \textbf{first} condition that is \texttt{True} and then \textbf{skips the rest of the entire chain}.
+        \vspace{0.5em}
+        \pause
+        \centering\textit{Result: Exactly one block is ever executed.}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if-elif-else} Chain: Syntax}
+    
+    The structure always starts with an \texttt{if}. You can have as many \texttt{elif} blocks as you need. The \texttt{else} block is optional and acts as a final fallback.
+    
+    \vspace{1em}
+    
+    \begin{verbatim}
+% The structure always starts with `if`
+if condition_A:
+    # This block runs only if condition_A is True.
+
+# You can have one or more `elif` blocks
+elif condition_B:
+    # This block runs only if condition_A was False
+    # AND condition_B is True.
+
+elif condition_C:
+    # This block runs only if A and B were both False
+    # AND condition_C is True.
+
+# The optional `else` block is the final fallback
+else:
+    # This block runs only if ALL preceding conditions
+    # (A, B, and C) were False.
+    \end{verbatim}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{if-elif-else} Chain: Example}
+    \framesubtitle{Checking a Number's Sign}
+    
+    A number can only be positive, negative, or zero. This is a perfect use case for an \texttt{if-elif-else} chain.
+    
+    \vspace{1em}
+    
+    \begin{columns}[T] % The [T] option aligns the tops of the columns
+        \begin{column}{0.5\textwidth}
+            \textbf{Code:}
+\begin{verbatim}
+num = -10
+
+if num > 0:
+    print(f"{num} is positive.")
+    
+elif num < 0:
+    print(f"{num} is negative.")
+    
+else:
+    print(f"{num} is zero.")
+\end{verbatim}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \pause
+            \begin{block}{Execution Trace for \texttt{num = -10}}
+                \begin{enumerate}
+                    \item Check \texttt{if num > 0}:\\ Is \texttt{-10 > 0}? \textbf{False}.
+                    \item Move to the next condition.
+                    \item Check \texttt{elif num < 0}:\\ Is \texttt{-10 < 0}? \textbf{True}.
+                    \item Execute this block: print the output.
+                    \item \textbf{Skip} the rest of the chain (the \texttt{else} block is ignored).
+                \end{enumerate}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Grading with \texttt{if-elif-else}}
+    \framesubtitle{The Problem and The Code}
+    
+    Our goal is to take a numerical \texttt{score} and assign the correct letter \texttt{grade}. This is a perfect use case for an \texttt{if-elif-else} chain because a score can only fall into one grade category.
+    
+    \vspace{1em}
+    
+    \begin{block}{Python Code}
+\begin{verbatim}
+# The score we are testing
+score = 85
+
+# Start the conditional chain
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+else:
+    grade = "F"
+
+# Print the final result
+print(f"Your grade is: {grade}")
+
+# Output: Your grade is: B
+\end{verbatim}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Grading with \texttt{if-elif-else}}
+    \framesubtitle{Execution Walkthrough}
+    
+    Python evaluates the chain from top to bottom, executing the block for the \textbf{first} condition that is \texttt{True}.
+    
+    \vspace{1em}
+    
+    \begin{block}{Tracing the execution for \texttt{score = 85}}
+    \begin{enumerate}
+        \item \textbf{\texttt{if score >= 90:}}
+        \begin{itemize}
+            \item Is \texttt{85 >= 90}? \textbf{False}. Python skips this block.
+        \end{itemize}
+        
+        \item \textbf{\texttt{elif score >= 80:}}
+        \begin{itemize}
+            \item Is \texttt{85 >= 80}? \textbf{True}. Python executes this block.
+            \item The variable \texttt{grade} is assigned the value \texttt{"B"}.
+        \end{itemize}
+        
+        \item \textbf{Chain Exits}
+        \begin{itemize}
+            \item A \texttt{True} condition was found. Python \textbf{skips the rest of the chain} and jumps to the line after the \texttt{else} block.
+        \end{itemize}
+        
+        \item \textbf{\texttt{print(...)}}
+        \begin{itemize}
+            \item The final \texttt{print} statement is executed.
+        \end{itemize}
+    \end{enumerate}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Grading with \texttt{if-elif-else}}
+    \framesubtitle{Key Concept}
+    
+    \begin{block}{The Importance of Order}
+        The order of conditions in an \texttt{if-elif-else} chain is critical. We must check from the most specific to the least specific case.
+        \vspace{1em}
+        \begin{itemize}
+            \item \textbf{Why does our order work?}
+            \begin{itemize}
+                \item We check for an "A" (\texttt{>= 90}) first.
+                \item If that fails, we \textit{already know} the score is less than 90.
+                \item So, the next check, \texttt{elif score >= 80}, is implicitly checking for scores in the range [80, 89].
+            \end{itemize}
+            \vspace{0.5em}
+            \item \textbf{What if the order was wrong?}
+            \begin{itemize}
+                \item If we checked \texttt{if score >= 70} first, a score of \texttt{95} would be graded as a "C".
+                \item This is because \texttt{95 >= 70} is \texttt{True}, and the chain would exit before ever checking for an "A".
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+                \frametitle{Combining Conditions: Logical Operators}
+                We can combine multiple Boolean expressions using logical operators.\n\n$\bullet$ \texttt{and}: Both conditions must be \texttt{True}.\n  \texttt{if age > 18 and has_ticket:}\n\n$\bullet$ \texttt{or}: At least one condition must be \texttt{True}.\n  \texttt{if is_weekend or is_holiday:}\n\n$\bullet$ \texttt{not}: Inverts a Boolean value (\texttt{True} becomes \texttt{False}).\n  \texttt{if not is_logged_in:}
+            \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 3 Summary: Key Concepts}
+    
+    \begin{center}
+        \Large\textbf{You can now control the flow of your programs!}
+    \end{center}
+    \vspace{1em}
+    
+    \begin{block}{The Foundation: Boolean Logic}
+        At the core of every decision is a \textbf{Boolean expression} that evaluates to \texttt{True} or \texttt{False}.
+        \begin{itemize}
+            \item Use \textbf{comparison operators} (\texttt{==}, \texttt{!=}, \texttt{>}, etc.) to ask questions about data.
+            \item Use \textbf{logical operators} (\texttt{and}, \texttt{or}, \texttt{not}) to combine these questions.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{The Structure: The \texttt{if-elif-else} Chain}
+        This structure acts on the \texttt{True}/\texttt{False} answers. It executes the code for the \textit{first} true condition it finds.
+        \begin{itemize}
+            \item \texttt{if}: The starting point; asks the first question.
+            \item \texttt{elif}: Asks a new question if the previous conditions were false.
+            \item \texttt{else}: The "catch-all" default path if all other conditions are false.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 3 Summary: Putting It All Together}
+    
+    \begin{block}{Example: Grade Calculation}
+        The program checks each condition in order and executes the first one that is \texttt{True}.
+\begin{verbatim}
+score = 75
+is_extra_credit = False
+
+# The first question: is it an 'A'?
+if score >= 90:
+    print("Grade: A")
+
+# If not an 'A', what about a 'B'?
+elif score >= 80:
+    print("Grade: B")
+
+# If not an 'A' or 'B', what about a 'C'?
+elif score >= 70 and not is_extra_credit:
+    print("Grade: C")
+
+# The default case if none of the above were true.
+else:
+    print("Grade: D or F")
+
+# Output for score=75: Grade: C
+\end{verbatim}
+    \end{block}
+
+    \begin{alertblock}{Next Up}
+        \textbf{Chapter 4 - Control Flow: Iteration (Loops)} \\
+        We've learned how to make a choice \textit{once}. Next, we'll learn how to repeat actions over and over again.
+    \end{alertblock}
+\end{frame}
+
+
+\end{document}

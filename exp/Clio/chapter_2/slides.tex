@@ -1,0 +1,691 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Week 2: Software Development Methodologies}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Software Development Methodologies}
+    \begin{block}{Overview}
+        Software development methodologies are structured approaches that outline the processes and practices necessary for successful software development. They are essential for enhancing efficiency, quality, and collaboration among team members.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Methodologies}
+    \begin{enumerate}
+        \item \textbf{Guidance and Structure:}
+        \begin{itemize}
+            \item Provide a clear roadmap for development teams.
+            \item Example: In Agile, work is divided into time-boxed iterations (sprints).
+        \end{itemize}
+        
+        \item \textbf{Risk Management:}
+        \begin{itemize}
+            \item Identify potential risks early.
+            \item Example: Waterfall ensures thorough documentation before coding.
+        \end{itemize}
+
+        \item \textbf{Enhanced Communication:}
+        \begin{itemize}
+            \item Foster better communication among all stakeholders.
+            \item Example: Scrum's daily stand-ups ensure ongoing communication.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item Variety of methodologies exists (Agile, Waterfall, DevOps, Scrum).
+        \item The choice of methodology impacts team dynamics and project success.
+        \item Continuous learning is essential due to the industry's evolution.
+    \end{itemize}
+    
+    \begin{block}{Illustrative Example}
+        \textbf{Waterfall vs. Agile:}
+        \begin{itemize}
+            \item Waterfall: Strict sequence; costly changes after feedback.
+            \item Agile: Iterative increments; user feedback at each sprint allows for adjustments.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC)}
+    \begin{block}{What is SDLC?}
+        The Software Development Lifecycle (SDLC) is a systematic process for planning, creating, testing, and deploying software applications. It provides a structured approach to software development, ensuring quality and efficiency.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Stages of SDLC}
+    The SDLC consists of several distinct phases, each with specific objectives and deliverables. Here’s a breakdown of each stage:
+    \begin{enumerate}
+        \item \textbf{Planning}
+        \begin{itemize}
+            \item \textbf{Purpose}: Define the scope, set goals, and outline resources.
+            \item \textbf{Activities}: Feasibility studies, project charters, risk assessment.
+            \item \textbf{Example}: A startup conducting market analysis for a project management tool.
+        \end{itemize}
+        
+        \item \textbf{Requirements Analysis}
+        \begin{itemize}
+            \item \textbf{Purpose}: Gather and document functionalities based on stakeholder needs.
+            \item \textbf{Activities}: Interviews, surveys, use case development.
+            \item \textbf{Example}: Gathering user stories for a mobile banking application.
+        \end{itemize}
+        
+        \item \textbf{Design}
+        \begin{itemize}
+            \item \textbf{Purpose}: Create the architecture detailing hardware and software specifications.
+            \item \textbf{Activities}: Architectural designs, interface designs, database models.
+            \item \textbf{Technical Detail}: Data flow diagrams can help illustrate system interactions.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Further Stages of SDLC}
+    \begin{enumerate}[resume]
+        \item \textbf{Implementation (Coding)}
+        \begin{itemize}
+            \item \textbf{Purpose}: Build the software using programming languages.
+            \item \textbf{Activities}: Writing code, unit testing, integration.
+            \item \textbf{Code Snippet}:
+            \begin{lstlisting}[language=Python]
+def add(a, b):
+    return a + b
+            \end{lstlisting}
+            \end{itemize}
+        
+        \item \textbf{Testing}
+        \begin{itemize}
+            \item \textbf{Purpose}: Ensure bug-free operation and compliance with requirements.
+            \item \textbf{Activities}: Unit testing, integration testing, user acceptance testing.
+            \item \textbf{Example}: Conducting user acceptance testing with end-users.
+        \end{itemize}
+
+        \item \textbf{Deployment}
+        \begin{itemize}
+            \item \textbf{Purpose}: Release the software for production use.
+            \item \textbf{Activities}: Application launch and deployment checks.
+            \item \textbf{Example}: Deploying a web application on a cloud platform like AWS.
+        \end{itemize}
+
+        \item \textbf{Maintenance}
+        \begin{itemize}
+            \item \textbf{Purpose}: Provide ongoing support and enhancements.
+            \item \textbf{Activities}: Bug fixing, performance improvements, updates.
+            \item \textbf{Example}: Releasing a software patch for vulnerabilities.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Waterfall Methodology Overview}
+    The Waterfall methodology is a linear and sequential approach to software development. It emphasizes a systematic process where each phase must be completed before moving on to the next.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Phases of Waterfall Methodology}
+    \begin{enumerate}
+        \item \textbf{Requirement Analysis}:
+            \begin{itemize}
+                \item \textbf{Description}: Gathering and documenting the complete set of requirements from stakeholders.
+                \item \textbf{Output}: Software Requirement Specification (SRS) document.
+            \end{itemize}
+        \item \textbf{System Design}:
+            \begin{itemize}
+                \item \textbf{Description}: Planning the software architecture and design based on requirements.
+                \item \textbf{Output}: Design Specification Document.
+            \end{itemize}
+        \item \textbf{Implementation (Coding)}:
+            \begin{itemize}
+                \item \textbf{Description}: Writing code according to the design specifications.
+                \item \textbf{Output}: Completed software code.
+            \end{itemize}
+        \item \textbf{Integration and Testing}:
+            \begin{itemize}
+                \item \textbf{Description}: Integrating software modules and testing the application for defects.
+                \item \textbf{Output}: Test plans, test cases, and test reports.
+            \end{itemize}
+        \item \textbf{Deployment}:
+            \begin{itemize}
+                \item \textbf{Description}: Releasing the software to the production environment.
+                \item \textbf{Output}: Deployment of the software.
+            \end{itemize}
+        \item \textbf{Maintenance}:
+            \begin{itemize}
+                \item \textbf{Description}: Addressing bugs or enhancement requests post-deployment.
+                \item \textbf{Output}: Updated software version or patches.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Advantages and Disadvantages of Waterfall Methodology}
+    \textbf{Advantages}:
+    \begin{itemize}
+        \item Simplicity and clarity with a clear structure.
+        \item Well-defined stages with specific deliverables.
+        \item Comprehensive early documentation for future maintenance.
+        \item Easy management of timelines and milestones.
+    \end{itemize}
+
+    \textbf{Disadvantages}:
+    \begin{itemize}
+        \item Inflexibility to changing requirements.
+        \item Late testing leading to higher costs for fixing issues.
+        \item Risky for long-term projects with evolving needs.
+        \item Not suitable for projects with uncertain requirements.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item Best suited for projects with well-defined requirements and minimal changes.
+        \item Emphasizes systematic progression through distinct phases.
+        \item Reflects the accountability of each phase's outcomes.
+        \item Flexibility and adaptability are essential in the evolving software landscape.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Summary}
+    To help visualize the Waterfall methodology, imagine a linear chart with distinct phases flowing from one to the next, resembling a waterfall cascading downward.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Agile Methodology - Overview}
+    \begin{block}{Overview}
+        Agile methodology is a flexible and iterative approach to software development that focuses on collaboration, customer feedback, and small, rapid releases. Unlike traditional methodologies like Waterfall, Agile emphasizes adaptive planning and promotes principles outlined in the Agile Manifesto.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Agile Methodology - Core Principles}
+    \begin{enumerate}
+        \item \textbf{Customer Satisfaction:} Deliver valuable software quickly and continuously to meet changing customer needs.
+        \item \textbf{Embrace Change:} Adapt to changing requirements, even late in the development process.
+        \item \textbf{Frequent Delivery:} Release working software frequently, from a couple of weeks to a couple of months.
+        \item \textbf{Collaboration:} Promote close, daily cooperation between business stakeholders and developers.
+        \item \textbf{Motivated Teams:} Build projects around motivated individuals, providing the environment and support they need.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Agile vs. Waterfall - Key Differences}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Feature} & \textbf{Agile} & \textbf{Waterfall} \\
+            \hline
+            Approach & Iterative and incremental & Linear and sequential \\
+            \hline
+            Flexibility & Highly adaptive to change & Rigid; changes are difficult to implement \\
+            \hline
+            Feedback & Regular feedback loops with stakeholders & Feedback after each phase completion \\
+            \hline
+            Project Structure & Divided into small units (sprints) & Defined phases (requirements, design, etc.) \\
+            \hline
+            Delivery & Frequent releases of small increments & Final product delivery at project end \\
+            \hline
+            Stakeholder Involvement & Continuous and collaborative & Limited to specific phases \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scrum Framework - Introduction}
+    Scrum is an agile framework that facilitates collaborative project management. 
+    It emphasizes iterative progress through short cycles called Sprints, fostering adaptability and continuous improvement.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scrum Framework - Core Components}
+    \begin{enumerate}
+        \item \textbf{Roles}
+        \begin{itemize}
+            \item \textbf{Scrum Master:} Facilitates and ensures adherence to practices.
+            \item \textbf{Product Owner:} Represents stakeholders and maximizes product value.
+            \item \textbf{Development Team:} A cross-functional group delivering product increments.
+        \end{itemize}
+        
+        \item \textbf{Events}
+        \begin{itemize}
+            \item \textbf{Sprint:} A time-boxed period to create a "Done" product increment.
+            \item \textbf{Sprint Planning:} Meeting to plan work for the Sprint.
+            \item \textbf{Daily Scrum:} A 15-minute sync meeting held each day.
+            \item \textbf{Sprint Review:} Inspecting increment and adapting the backlog based on feedback.
+            \item \textbf{Sprint Retrospective:} Reflecting on the past Sprint for continuous improvement.
+        \end{itemize}
+
+        \item \textbf{Artifacts}
+        \begin{itemize}
+            \item \textbf{Product Backlog:} An ordered list of what is needed in the product.
+            \item \textbf{Sprint Backlog:} Committed items from the product backlog for the Sprint.
+            \item \textbf{Increment:} The sum of completed product backlog items during a Sprint.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scrum Framework - Key Points}
+    \begin{itemize}
+        \item \textbf{Iterative Development:} Regular adjustments based on feedback.
+        \item \textbf{Collaboration and Transparency:} Active participation and communication are crucial.
+        \item \textbf{Focus on Delivering Value:} Maximizing customer value through effective backlog management.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scrum Framework - Illustrative Example}
+    Imagine a software team developing an e-commerce application:
+    \begin{itemize}
+        \item A Product Owner prioritizes features like user login or shopping cart functionality.
+        \item Each Sprint, the team plans to implement a set of these features.
+        \item They hold daily meetings to discuss progress and reflect on their workflow for continuous improvement.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scrum Framework - Conclusion}
+    By adhering to the Scrum framework, teams can achieve:
+    \begin{itemize}
+        \item Greater efficiency
+        \item Higher product quality
+        \item Improved responsiveness to changing requirements
+    \end{itemize}
+    This makes Scrum a preferred choice in dynamic development environments.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Comparative Analysis: Agile vs Waterfall}
+    \begin{block}{Overview}
+        In software development, **Agile** and **Waterfall** are two prominent methodologies that dictate how projects are managed and executed. Understanding their key differences is essential for selecting the appropriate approach based on project requirements and constraints.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Agile Methodology}
+    \begin{itemize}
+        \item \textbf{Definition}: Agile is an iterative and incremental approach to software development. It emphasizes flexibility, customer collaboration, and responsiveness to change.
+        \item \textbf{Key Characteristics}:
+        \begin{itemize}
+            \item \textbf{Iterative Cycles}: Divides projects into small increments or sprints (often lasting 1-4 weeks).
+            \item \textbf{Customer Involvement}: Continuous feedback from stakeholders is encouraged.
+            \item \textbf{Adaptability}: Adjusts to changes even late in development.
+        \end{itemize}
+        \item \textbf{Example}: A mobile app development project might go through numerous iterations, allowing the development team to tweak features based on user feedback collected after each sprint.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Waterfall Methodology}
+    \begin{itemize}
+        \item \textbf{Definition}: Waterfall is a linear and sequential approach, where each phase must be completed before the next one begins. It follows a strict structure.
+        \item \textbf{Key Characteristics}:
+        \begin{itemize}
+            \item \textbf{Phased Approach}: Typically consists of phases: Requirements, Design, Implementation, Testing, Deployment, and Maintenance.
+            \item \textbf{Documentation-Heavy}: Comprehensive documentation is created at each stage.
+            \item \textbf{Limited Flexibility}: Changes are costly and complicated to implement once a phase is completed.
+        \end{itemize}
+        \item \textbf{Example}: For a banking software system, all requirements would be gathered upfront, followed by a detailed design and coding phase, with little room for deviations based on later feedback.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Differences}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Feature} & \textbf{Agile} & \textbf{Waterfall} \\
+        \hline
+        \textbf{Structure} & Iterative and Incremental & Linear and Sequential \\
+        \hline
+        \textbf{Customer Involvement} & High & Low \\
+        \hline
+        \textbf{Flexibility} & Highly Flexible & Rigid \\
+        \hline
+        \textbf{Documentation} & Minimal, focused on what's necessary & Comprehensive, detailed documentation \\
+        \hline
+        \textbf{Risk Management} & Continuous assessment through sprints & Risk assessed primarily at the start \\
+        \hline
+    \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{When to Use Each Methodology}
+    \begin{block}{Use Agile when:}
+        \begin{itemize}
+            \item Requirements are expected to evolve.
+            \item Quick delivery and feedback are prioritized.
+            \item Stakeholder collaboration is essential.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Use Waterfall when:}
+        \begin{itemize}
+            \item Requirements are well-defined and unlikely to change.
+            \item Projects require strict regulatory compliance.
+            \item The timeline and budget are fixed and need structured phases.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    \begin{block}{Summary}
+        Choosing between Agile and Waterfall methodologies depends on project requirements, team dynamics, and the client’s needs. 
+        Each approach has its strengths and ideal use cases, making it vital to consider the unique context of the software project at hand.
+    \end{block}
+    
+    \begin{block}{Key Points to Remember}
+        \begin{itemize}
+            \item **Agile** allows for flexibility and responsiveness but may lead to scope creep if not managed correctly.
+            \item **Waterfall** emphasizes meticulous planning but can result in delayed adaptations to changing requirements.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of Agile Methodologies - Introduction}
+    Agile methodologies prioritize flexibility, collaboration, and customer feedback throughout the software development process. This approach fosters adaptive planning and encourages rapid responses to change, making it particularly suitable for dynamic project environments.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of Agile Methodologies - Key Benefits}
+    \begin{itemize}
+        \item \textbf{Increased Flexibility and Adaptability}
+            \begin{itemize}
+                \item Agile allows teams to adapt to changes in requirements even late in the development process.
+                \item If a market need shifts, teams can easily adjust features in upcoming iterations without derailing the entire project.
+            \end{itemize}
+
+        \item \textbf{Enhanced Collaboration and Communication}
+            \begin{itemize}
+                \item Continuous engagement among team members and stakeholders through regular meetings promotes transparency.
+                \item Frequent interactions ensure that all team members are aligned, reducing misunderstandings.
+            \end{itemize}
+
+        \item \textbf{Faster Time to Market}
+            \begin{itemize}
+                \item Agile methodologies cycle through short development phases (sprints).
+                \item A product may go live with core features within weeks, allowing for user feedback and further enhancements.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of Agile Methodologies - Additional Benefits}
+    \begin{itemize}
+        \item \textbf{Improved Quality and Risk Management}
+            \begin{itemize}
+                \item Continuous testing and integration throughout the process help identify and fix issues early.
+                \item Regular feedback loops allow for addressing potential issues before they escalate.
+            \end{itemize}
+
+        \item \textbf{Focus on Customer Satisfaction}
+            \begin{itemize}
+                \item Agile methodologies put customers at the center, ensuring that their feedback is integrated throughout development.
+                \item Regular feedback cycles help develop features that align with user needs, enhancing satisfaction.
+            \end{itemize}
+
+        \item \textbf{Empowered Teams}
+            \begin{itemize}
+                \item Agile gives teams more autonomy, enhancing motivation and creativity.
+                \item Empowered teams are more likely to innovate and suggest improvements, resulting in high-quality products.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of Agile Methodologies - Summary and Conclusion}
+    \begin{itemize}
+        \item Agile is inherently flexible, allowing quick adaptability to change.
+        \item Continuous collaboration enhances communication and reduces misunderstandings.
+        \item Incremental releases accelerate time to market, enabling early user feedback.
+        \item Continuous testing improves product quality and lowers risks.
+        \item Customer-centric focus ensures products meet genuine user needs.
+        \item Empowered teams contribute to high levels of innovation.
+    \end{itemize}
+
+    Adopting Agile methodologies can improve not only the outcome of a software project but also the working environment for team members, leading to more effective and satisfying work experiences.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenges in Agile Implementation - Overview}
+    \begin{block}{Overview}
+        While Agile methodologies offer significant benefits, implementing them can come with numerous challenges that teams must navigate. Understanding these challenges is crucial for successful Agile adoption.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenges in Agile Implementation - Key Challenges}
+    \begin{enumerate}
+        \item \textbf{Cultural Resistance}
+        \begin{itemize}
+            \item Agile requires a shift in company culture, leading to potential resistance from teams.
+            \item \textit{Example:} Team members may hesitate to embrace self-organizing practices.
+        \end{itemize}
+
+        \item \textbf{Inadequate Training and Understanding}
+        \begin{itemize}
+            \item Without proper training, inconsistent application of practices may occur.
+            \item \textit{Example:} Teams may conduct daily stand-ups without meaningful discussions.
+        \end{itemize}
+
+        \item \textbf{Evolving Requirements}
+        \begin{itemize}
+            \item Constant changes can disrupt processes and lead to scope creep if mismanaged.
+            \item \textit{Example:} Frequent changes in stakeholder priorities can delay project timelines.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenges in Agile Implementation - Key Challenges (cont.)}
+    \begin{enumerate}[resume]
+        \item \textbf{Lack of Stakeholder Engagement}
+        \begin{itemize}
+            \item Disengaged stakeholders can hinder progress in Agile processes.
+            \item \textit{Example:} Product owners not providing timely feedback leads to misalignment.
+        \end{itemize}
+
+        \item \textbf{Insufficient Team Autonomy}
+        \begin{itemize}
+            \item Micromanagement can stifle innovation and responsiveness.
+            \item \textit{Example:} A project manager dictating daily tasks undermines team dynamics.
+        \end{itemize}
+
+        \item \textbf{Tooling and Infrastructure Limitations}
+        \begin{itemize}
+            \item The right tools are essential to support Agile practices effectively.
+            \item \textit{Example:} Outdated communication tools hinder rapid iteration and feedback.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenges in Agile Implementation - Key Points and Conclusion}
+    \begin{block}{Key Points to Remember}
+        \begin{itemize}
+            \item Successful Agile implementation requires managing cultural shifts and gaining buy-in.
+            \item Investing in training and resources helps facilitate smoother transitions.
+            \item Open communication between stakeholders is essential for Agile success.
+            \item Teams must balance flexibility with clear boundaries to avoid chaos.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Recognizing and addressing these challenges is essential for teams to harness the full potential of Agile methodologies. Proactively managing common hurdles enhances collaboration and responsiveness, ultimately delivering better software products.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Overview of Methodologies}
+    \begin{block}{Agile Methodology}
+        Agile is a flexible, iterative approach to software development that promotes:
+        \begin{itemize}
+            \item Collaboration
+            \item Customer feedback
+            \item Rapid delivery of functional software
+            \item Work in short cycles, or "sprints"
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Waterfall Methodology}
+        Waterfall is a traditional, linear approach characterized by:
+        \begin{itemize}
+            \item Distinct phases: Requirements, Design, Implementation, Verification, and Maintenance
+            \item Sequential progression
+            \item Easier management of complexities
+            \item Less adaptability to change
+        \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Case Studies}
+    \begin{block}{1. Agile in Action: Spotify}
+        \textbf{Context:} Spotify has implemented Agile to enhance product development.\\
+        \textbf{Approach:} 
+        \begin{itemize}
+            \item Squads (small cross-functional teams) operate like mini-startups
+            \item Each squad owns a specific feature, enabling quick adaptations based on user feedback
+        \end{itemize}
+        \textbf{Outcomes:}
+        \begin{itemize}
+            \item Rapid feature deployment
+            \item Increased employee engagement
+            \item Higher user satisfaction
+        \end{itemize}
+        \textbf{Key Takeaway:} Agile allows for flexibility and quick responses to market changes.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Case Studies (cont.)}
+    \begin{block}{2. Waterfall in Action: NASA's Mars Rover Project}
+        \textbf{Context:} NASA used the Waterfall methodology for Mars Rover missions due to complexity.\\
+        \textbf{Approach:}
+        \begin{enumerate}
+            \item Requirements Gathering
+            \item Design Phase
+            \item Implementation
+            \item Verification
+        \end{enumerate}
+        \textbf{Outcomes:}
+        \begin{itemize}
+            \item High reliability and adherence to specifications
+            \item Structured approach minimizing risks
+        \end{itemize}
+        \textbf{Key Takeaway:} Waterfall's structured nature ensures thorough testing critical for space missions.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Summary}
+    \begin{block}{Summary of Key Points}
+        \begin{itemize}
+            \item \textbf{Agile} is best for projects requiring flexibility and rapid iterations.
+            \item \textbf{Waterfall} excels in projects with well-defined requirements.
+            \item Real-world applications illustrate tailored usage of both methodologies.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Conclusion}
+        Understanding Agile and Waterfall enhances the ability to select the right approach for projects.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Key Takeaways - Overview}
+    In this week's exploration of software development methodologies, we've examined two prominent paradigms: 
+    \textbf{Agile} and \textbf{Waterfall}. Understanding these methodologies equips teams with the tools to enhance their software development processes, ultimately leading to timelier deliveries and superior products.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Key Takeaways - Key Concepts}
+    \begin{block}{Agile Methodology}
+        \begin{itemize}
+            \item \textbf{Iterative \& Incremental}: Work is divided into small, manageable units called iterations or sprints, allowing for regular assessment and adjustment of project scope.
+            \item \textbf{Flexibility \& Adaptability}: Enables teams to respond to changing requirements even late in the development process.
+            \item \textbf{Collaboration}: Emphasizes ongoing collaboration between cross-functional teams and stakeholders.
+        \end{itemize}
+        \textit{Example}: A company developing a mobile app shifts features based on user feedback after each sprint, ensuring the final product meets customer expectations.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Key Takeaways - More Key Concepts}
+    \begin{block}{Waterfall Methodology}
+        \begin{itemize}
+            \item \textbf{Linear \& Sequential}: Involves a structured series of phases, where each must be completed before the next begins; ideal for projects with well-defined requirements.
+            \item \textbf{Documentation-Centric}: Heavy emphasis on documentation at each step, providing clarity and direction.
+            \item \textbf{Risk of Obsolescence}: Less flexibility can lead to issues if user needs change throughout the project.
+        \end{itemize}
+        \textit{Example}: A government project with fixed requirements followed the Waterfall model, successfully completing each phase from requirements gathering to deployment without changes to the original plan.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Key Takeaways - Final Thoughts}
+    \begin{itemize}
+        \item Each methodology suits different project types based on their nature and requirements. Teams must choose the right approach to align with project goals.
+        \item Agile is highly favored in fast-paced environments where change is constant, while Waterfall is beneficial for projects with stable requirements and regulatory constraints.
+        \item Success often depends on the team's experience with the chosen methodology, highlighting the importance of training and continuous improvement.
+    \end{itemize}
+    
+    Choosing an appropriate software development methodology is crucial for the successful delivery of software projects. By understanding the strengths and weaknesses of Agile and Waterfall, teams can tailor their approach to optimize performance and team satisfaction. 
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,747 @@
+=== ATTEMPT 1 ===
+Command: pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+Return code: 1
+STDOUT:
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(slides.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28>
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
+Document Class: beamer 2026/01/22 v3.77 A class for typesetting presentations
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasemodes.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasedecode
+.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseoption
+s.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common-lists.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+filtered.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\xxcolor.s
+ty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 4317 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/ltxcmds.tar.lzma...
+0.00 MB, 0.18 Mbit/s
+extracting files from ltxcmds.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 293465 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/infwarerr.tar.lzma...
+0.29 MB, 8.24 Mbit/s
+extracting files from infwarerr.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty))
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 3794 bytes
+going to install 2 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/kvsetkeys.tar.lzma...
+0.00 MB, 0.19 Mbit/s
+extracting files from kvsetkeys.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 304244 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/kvdefinekeys.tar.lzma...
+0.30 MB, 8.31 Mbit/s
+extracting files from kvdefinekeys.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 355594 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/pdfescape.tar.lzma...
+0.36 MB, 7.57 Mbit/s
+extracting files from pdfescape.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 389104 bytes
+going to install 6 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/hycolor.tar.lzma...
+0.39 MB, 8.19 Mbit/s
+extracting files from hycolor.tar.lzma...
+======================================================================
+ (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 298537 bytes
+going to install 6 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/letltxmacro.tar.lzma...
+0.30 MB, 8.18 Mbit/s
+extracting files from letltxmacro.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 292852 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/auxhook.tar.lzma...
+0.29 MB, 7.32 Mbit/s
+extracting files from auxhook.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 336386 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/refcount.tar.lzma...
+0.34 MB, 2.37 Mbit/s
+extracting files from refcount.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 327428 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/gettitlestring.tar.lzma...
+0.33 MB, 9.13 Mbit/s
+extracting files from gettitlestring.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 8196 bytes
+going to install 4 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/kvoptions.tar.lzma...
+0.01 MB, 0.46 Mbit/s
+extracting files from kvoptions.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 441613 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/intcalc.tar.lzma...
+0.44 MB, 12.40 Mbit/s
+extracting files from intcalc.tar.lzma...
+======================================================================
+ (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 308618 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/etexcmds.tar.lzma...
+0.31 MB, 8.63 Mbit/s
+extracting files from etexcmds.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+======================================================================
+starting package maintenance...
+installation directory: C:\Users\darsh\AppData\Local\Programs\MiKTeX
+package repository: https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/
+package repository digest: 7e0d920fb07c1fe51b66ac27a51fdd3c
+going to download 638837 bytes
+going to install 5 file(s) (1 package(s))
+downloading https://mirror.math.princeton.edu/pub/CTAN/systems/win32/miktex/tm/packages/bitset.tar.lzma...
+0.64 MB, 15.12 Mbit/s
+extracting files from bitset.tar.lzma...
+======================================================================
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+
+! LaTeX Error: File `bigintcalc.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.180   \RequirePackage{bigintcalc}[2007/09/27]
+                                               %^^M
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on slides.log.
+
+STDERR:
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+==================================================
+
+=== ATTEMPT 2 ===
+Command: pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+Return code: 1
+STDOUT:
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(slides.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28>
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
+Document Class: beamer 2026/01/22 v3.77 A class for typesetting presentations
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasemodes.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasedecode
+.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseoption
+s.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common-lists.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+filtered.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\xxcolor.s
+ty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+
+! LaTeX Error: File `bigintcalc.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.180   \RequirePackage{bigintcalc}[2007/09/27]
+                                               %^^M
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on slides.log.
+
+STDERR:
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+==================================================
+
+=== ATTEMPT 3 ===
+Command: pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+Return code: 1
+STDOUT:
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(slides.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28>
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
+Document Class: beamer 2026/01/22 v3.77 A class for typesetting presentations
+
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasemodes.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasedecode
+.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseoption
+s.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common-lists.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+filtered.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\xxcolor.s
+ty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty))
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\darsh\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+
+! LaTeX Error: File `bigintcalc.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.180   \RequirePackage{bigintcalc}[2007/09/27]
+                                               %^^M
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on slides.log.
+
+STDERR:
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.
+
+==================================================
+

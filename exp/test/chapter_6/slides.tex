@@ -1,0 +1,848 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 6: Data Structures: Dictionaries and Sets}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Dictionaries and Sets}
+    \begin{block}{Overview}
+        Overview of dictionaries and sets in Python, their importance in data manipulation, and their applications in group projects.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Dictionaries?}
+    \begin{itemize}
+        \item \textbf{Definition}: A dictionary is a mutable, unordered collection of key-value pairs. Each key is unique and is used to access its corresponding value.
+        \item \textbf{Syntax}: Defined using curly braces \{\} with keys and values separated by a colon \(:\).
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+student_info = {
+    'name': 'Alice',
+    'age': 21,
+    'major': 'Computer Science'
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of Dictionaries}
+    \begin{itemize}
+        \item \textbf{Mutable}: Can change, add, or remove items after it is created.
+        \item \textbf{Unordered}: Items do not maintain any specific order.
+        \item \textbf{Key-Value Association}: Each value is accessed using its unique key.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Sets?}
+    \begin{itemize}
+        \item \textbf{Definition}: A set is an unordered collection of unique items. Sets are commonly used to remove duplicates from a list or to perform mathematical set operations.
+        \item \textbf{Syntax}: Defined using curly braces \{\} or the \texttt{set()} function.
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+fruits = {'apple', 'banana', 'orange'}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Features of Sets}
+    \begin{itemize}
+        \item \textbf{Unordered}: The elements have no specific order, making it efficient for membership testing.
+        \item \textbf{Unique Elements}: Automatically ensures that all elements in the set are unique.
+        \item \textbf{Mutable}: Elements can be added or removed from a set.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance in Data Manipulation}
+    \begin{itemize}
+        \item \textbf{Data Organization}: Both dictionaries and sets allow for efficient organization of data, making it easier to retrieve and manipulate.
+        \item \textbf{Enhanced Performance}: Searching for elements in a set is faster (average O(1) time complexity) than in a list (average O(n) time complexity).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Applications in Group Projects}
+    \begin{itemize}
+        \item \textbf{Data Categorization}: Use dictionaries to store group members and their respective roles (e.g., \{'member1': 'researcher', 'member2': 'developer'\}).
+        \item \textbf{Managing Unique Entries}: Utilize sets to keep track of completed tasks or unique contributors without duplicates.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet Example}
+    \begin{block}{Creating a Dictionary and Set}
+        \begin{lstlisting}[language=Python]
+# Creating a dictionary of group members
+group_members = {
+    'John': 'Project Manager',
+    'Sara': 'Designer',
+    'Mike': 'Developer'
+}
+
+# Creating a set of completed tasks
+completed_tasks = {'design', 'development', 'testing'}
+
+# Adding a new task to the set
+completed_tasks.add('deployment')
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Takeaway}
+    Mastering dictionaries and sets is essential for effective data manipulation in Python, aiding in logical structuring of group project tasks and roles.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Dictionary? - Definition}
+    A \textbf{Dictionary} in Python is a built-in data structure that allows you to store data in a key-value pair format. This means that each value in the dictionary is associated with a unique key, which serves as an identifier.
+    
+    \begin{block}{Key Characteristics}
+        \begin{itemize}
+            \item \textbf{Key-Value Pairs}: Each entry consists of a key and its corresponding value, separated by a colon. 
+            \item \textbf{Uniqueness of Keys}: Keys must be unique; assigning a new value to an existing key overrides the previous value.
+            \item \textbf{Unordered}: Dictionaries do not maintain any order for the key-value pairs (prior to Python 3.7).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Dictionary? - Comparison with Lists}
+    \begin{block}{How Dictionaries Differ from Lists}
+        \begin{itemize}
+            \item \textbf{Data Structure Type}:
+                \begin{itemize}
+                    \item \textbf{Lists}: Ordered collection, indexed by their position (e.g., \texttt{my\_list = [10, "Python", 3.14]}).
+                    \item \textbf{Dictionaries}: Unordered collection, indexed by keys (e.g., \texttt{my\_dict = \{"fruit": "apple", "quantity": 5\}}).
+                \end{itemize}
+            \item \textbf{Access Method}:
+                \begin{itemize}
+                    \item \textbf{Lists}: Accessed by index (e.g., \texttt{my\_list[1]} returns ``Python'').
+                    \item \textbf{Dictionaries}: Accessed by keys (e.g., \texttt{my\_dict["fruit"]} returns ``apple'').
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example of a Dictionary}
+    \begin{block}{Example Dictionary}
+        \begin{lstlisting}[language=Python]
+student_info = {
+    "name": "John",
+    "age": 21,
+    "major": "Computer Science",
+    "gpa": 3.75
+}
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Keys}: ``name'', ``age'', ``major'', ``gpa''
+        \item \textbf{Values}: ``John'', 21, ``Computer Science'', 3.75
+    \end{itemize}
+    
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Fast Lookups}: Accessing a value by its key is efficient (O(1)).
+            \item \textbf{Dynamic Size}: Dictionaries can grow and shrink as key-value pairs are added or removed.
+            \item \textbf{Versatile Data}: Values can be of any data type; keys must be immutable (e.g., strings, numbers).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating and Accessing Dictionaries - Overview}
+    \begin{block}{Understanding Dictionaries}
+        \begin{itemize}
+            \item A dictionary in Python is a collection of key-value pairs.
+            \item It is mutable, meaning you can change its contents after creation.
+            \item Keys must be unique and immutable (strings, numbers, tuples) while values can be of any data type.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating a Dictionary}
+    \begin{block}{Methods of Creation}
+        \begin{itemize}
+            \item Use curly braces \{\} or the \texttt{dict()} constructor.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+# Using curly braces
+student = {
+    "name": "Alice",
+    "age": 22,
+    "major": "Computer Science"
+}
+
+# Using dict() constructor
+student = dict(name="Alice", age=22, major="Computer Science")
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying Dictionaries}
+    \begin{block}{Adding Items}
+        Add a new key-value pair by assigning a value to a new key.
+        \begin{lstlisting}[language=Python]
+student["GPA"] = 3.9  # Adding GPA
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Result}
+    \begin{lstlisting}[language=Python]
+print(student)
+# Output: {'name': 'Alice', 'age': 22, 'major': 'Computer Science', 'GPA': 3.9}
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying and Removing Items}
+    \begin{block}{Modifying Items}
+        Change the value of an existing key by direct assignment.
+        \begin{lstlisting}[language=Python]
+student["age"] = 23  # Updating age
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Example Output}
+    \begin{lstlisting}[language=Python]
+print(student)
+# Output: {'name': 'Alice', 'age': 23, 'major': 'Computer Science', 'GPA': 3.9}
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Items}
+    \begin{block}{Removing Items}
+        Use \texttt{del} or the \texttt{.pop()} method to remove an item.
+    \end{block}
+    
+    \begin{block}{Examples}
+        Using \texttt{del}:
+        \begin{lstlisting}[language=Python]
+del student["major"]  # Removes the major key
+        \end{lstlisting}
+        
+        Using \texttt{.pop()}:
+        \begin{lstlisting}[language=Python]
+gpa = student.pop("GPA")  # Removes GPA and returns its value
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Values}
+    \begin{block}{Accessing Items}
+        Access values using keys inside square brackets \texttt{[]} or using \texttt{.get()}.
+    \end{block}
+    
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+name = student["name"]        # Accessing name
+age = student.get("age")      # Accessing age
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points and Summary}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Keys must be unique: Adding a duplicate key will overwrite the existing value.
+            \item Dictionaries are unordered until Python 3.7; they maintain insertion order afterward.
+            \item Accessing non-existent keys: Using \texttt{[]} raises a KeyError; \texttt{get()} allows specifying a default value.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Quick Summary}
+        \begin{itemize}
+            \item Creating: \texttt{my\_dict = \{key: value\}}
+            \item Adding: \texttt{my\_dict[new\_key] = new\_value}
+            \item Modifying: \texttt{my\_dict[existing\_key] = new\_value}
+            \item Removing: \texttt{del my\_dict[key]} or \texttt{my\_dict.pop(key)}
+            \item Accessing: \texttt{value = my\_dict[key]} or \texttt{value = my\_dict.get(key, default)}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Dictionary Methods - Overview}
+    Dictionaries in Python are powerful data structures that store key-value pairs. 
+    Understanding the built-in methods for dictionaries is crucial for effective data manipulation and retrieval. 
+    In this slide, we will cover the following essential dictionary methods:
+    \begin{itemize}
+        \item \texttt{.get()}
+        \item \texttt{.keys()}
+        \item \texttt{.values()}
+        \item \texttt{.items()}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Dictionary Methods - The \texttt{.get()} Method}
+    \begin{block}{Purpose}
+        Safely retrieves a value for a given key. If the key does not exist, it returns \texttt{None} or a specified default value instead of raising an error.
+    \end{block}
+    \textbf{Syntax:} \texttt{dictionary.get(key, default\_value)}
+
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+sample_dict = {'a': 1, 'b': 2}
+print(sample_dict.get('b'))        # Output: 2
+print(sample_dict.get('c', 'Not Found'))  # Output: Not Found
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Dictionary Methods - The \texttt{.keys()}, \texttt{.values()}, and \texttt{.items()} Methods}
+    \begin{block}{The \texttt{.keys()} Method}
+        Returns a view object that displays a list of all the keys in the dictionary.
+        \textbf{Syntax:} \texttt{dictionary.keys()}
+        
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+person = {'name': 'Alice', 'age': 25, 'city': 'New York'}
+key_list = person.keys()
+print(key_list)  # Output: dict_keys(['name', 'age', 'city'])
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{The \texttt{.values()} Method}
+        Returns a view object that displays a list of all the values in the dictionary.
+        \textbf{Syntax:} \texttt{dictionary.values()}
+        
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+value_list = person.values()
+print(value_list)  # Output: dict_values(['Alice', 25, 'New York'])
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{The \texttt{.items()} Method}
+        Returns a view object that displays a list of the dictionary’s key-value pairs as tuples.
+        \textbf{Syntax:} \texttt{dictionary.items()}
+        
+        \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+items_list = person.items()
+print(items_list)  # Output: dict_items([('name', 'Alice'), ('age', 25), ('city', 'New York')])
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Sets}
+    \textbf{Definition:} A set is an unordered collection of unique, immutable items in Python. 
+    \begin{itemize}
+        \item Allows efficient membership testing
+        \item Eliminates duplicate entries
+        \item Supports mathematical set operations: union, intersection, difference
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Unique Properties of Sets}
+    \begin{enumerate}
+        \item \textbf{Unordered:} Items do not have defined order; inaccessible by index
+        \item \textbf{Unique Elements:} Automatically discards duplicates
+        \item \textbf{Mutable:} Can modify the set but elements must be immutable
+        \item \textbf{Dynamic Size:} Grows and shrinks with additions or removals
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sets vs. Lists and Dictionaries}
+    \textbf{Lists:}
+    \begin{itemize}
+        \item Ordered collection; allows duplicates
+        \item Accessed via index
+        \item \texttt{my\_list = [1, 2, 2, 3]}
+    \end{itemize}
+
+    \textbf{Dictionaries:}
+    \begin{itemize}
+        \item Collection of key-value pairs; keys are unique
+        \item Unordered; fast retrieval using keys
+        \item \texttt{my\_dict = \{'a': 1, 'b': 2\}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet Demonstrating Sets}
+    \begin{lstlisting}[language=Python]
+# Creating a set with unique elements
+my_set = {1, 2, 3, 4, 5}
+print(my_set)  # Output: {1, 2, 3, 4, 5}
+
+# Adding an element
+my_set.add(6)
+print(my_set)  # Output: {1, 2, 3, 4, 5, 6}
+
+# Attempting to add a duplicate element
+my_set.add(3)
+print(my_set)  # Output: {1, 2, 3, 4, 5, 6} (No duplicates)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points}
+    \begin{itemize}
+        \item Best used for collections of unique items
+        \item Efficient for membership testing
+        \item Set operations simplify complex tasks involving multiple collections
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    Understanding sets is crucial in Python programming. They simplify tasks related to collections and significantly contribute to effective data manipulation.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating and Using Sets - What is a Set?}
+    \begin{itemize}
+        \item A \textbf{set} is a built-in data structure in Python that holds an \textbf{unordered} collection of \textbf{unique} elements.
+        \item Uniqueness means that no two items in a set can be the same.
+        \item Sets are mutable, allowing changes to their contents after creation, but they do not support indexing.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Sets}
+    \begin{block}{Using Curly Braces}
+        A set can be created by placing comma-separated values inside curly braces \{\}:
+        \begin{lstlisting}[language=Python]
+my_set = {1, 2, 3}
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Using the set() Constructor}
+        Create a set from a list or other iterable using the \texttt{set()} function:
+        \begin{lstlisting}[language=Python]
+my_list = [1, 2, 2, 3]
+my_set = set(my_list)  # Result: {1, 2, 3}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Adding and Removing Elements}
+    \begin{itemize}
+        \item \textbf{Adding Elements:}
+        \begin{itemize}
+            \item Use \texttt{.add()} to add a single element:
+            \begin{lstlisting}[language=Python]
+my_set.add(4)  # Now my_set is {1, 2, 3, 4}
+            \end{lstlisting}
+            \item Use \texttt{.update()} to add multiple elements:
+            \begin{lstlisting}[language=Python]
+my_set.update([5, 6])  # Now my_set is {1, 2, 3, 4, 5, 6}
+            \end{lstlisting}
+        \end{itemize}
+
+        \item \textbf{Removing Elements:}
+        \begin{itemize}
+            \item Use \texttt{.remove()}:
+            \begin{lstlisting}[language=Python]
+my_set.remove(2)  # Now my_set is {1, 3, 4, 5, 6}
+            \end{lstlisting}
+            \item Use \texttt{.discard()} (does not raise an error if not found):
+            \begin{lstlisting}[language=Python]
+my_set.discard(10)  # No error, my_set remains unchanged
+            \end{lstlisting}
+            \item Use \texttt{.pop()} (removes an arbitrary element):
+            \begin{lstlisting}[language=Python]
+popped_element = my_set.pop()  # Removes and returns an element
+            \end{lstlisting}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Set Operations and Key Points}
+    \begin{itemize}
+        \item \textbf{Set Operations:}
+        \begin{itemize}
+            \item \textbf{Union} (\(A \cup B\)): Combines unique elements from both sets (\(A | B\)).
+            \item \textbf{Intersection} (\(A \cap B\)): Elements present in both sets (\(A & B\)).
+            \item \textbf{Difference} (\(A - B\)): Elements in set \(A\) that are not in set \(B\).
+        \end{itemize}
+        \item \textbf{Key Points to Remember:}
+        \begin{itemize}
+            \item Sets are unordered and do not allow duplicates.
+            \item Elements can be added or removed dynamically.
+            \item Essential for mathematical set operations in programming.
+            \item Useful in scenarios where the presence of distinct elements is crucial (e.g., collecting unique user IDs).
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Next Topic}
+    \begin{itemize}
+        \item Review common set methods including \texttt{.union()}, \texttt{.intersection()}, and \texttt{.difference()}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Common Set Methods}
+    \begin{block}{Overview}
+        Sets are a powerful data structure in Python that allow for the storage of unique elements. Here, we will explore three common set methods: 
+        \begin{itemize}
+            \item \texttt{.union()}
+            \item \texttt{.intersection()}
+            \item \texttt{.difference()}
+        \end{itemize}
+        Understanding these methods will enhance your ability to perform operations on sets effectively.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Union (\texttt{.union()})}
+    \begin{block}{Definition}
+        Combines all unique elements from two or more sets. If there are duplicate elements, they are included only once in the resulting set.
+    \end{block}
+    \begin{block}{Syntax}
+        \texttt{set1.union(set2) OR set1 \textbar{} set2}
+    \end{block}
+    
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+result = set_a.union(set_b)
+# Output: {1, 2, 3, 4, 5}
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Intersection (\texttt{.intersection()}) and Difference (\texttt{.difference()})}
+    \begin{block}{Intersection (\texttt{.intersection()})}
+        \begin{itemize}
+            \item \textbf{Definition:} Returns only the elements that are common to both sets.
+            \item \textbf{Syntax:} \texttt{set1.intersection(set2) OR set1 \& set2}
+        \end{itemize}
+        \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+result = set_a.intersection(set_b)
+# Output: {3}
+        \end{lstlisting}
+        \end{block}
+    \end{block}
+
+    \begin{block}{Difference (\texttt{.difference()})}
+        \begin{itemize}
+            \item \textbf{Definition:} Returns the elements that are in the first set but not in the second set.
+            \item \textbf{Syntax:} \texttt{set1.difference(set2) OR set1 - set2}
+        \end{itemize}
+        \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+result = set_a.difference(set_b)
+# Output: {1, 2}
+        \end{lstlisting}
+        \end{block}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points and Conclusion}
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item \textbf{Uniqueness:} Sets only store unique elements, making them ideal for membership testing and removing duplicates.
+            \item \textbf{Mutability:} Sets are mutable, meaning you can change their contents (add/remove elements) after they are created.
+            \item \textbf{Operations:} Use these methods to combine, find commonalities, or differentiate datasets efficiently.
+        \end{itemize}
+    \end{block}
+    \begin{block}{Conclusion}
+        Utilizing these common set methods expands your ability to manipulate collections of unique items effectively in Python, facilitating a wide range of applications in data analysis and processing.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Practical Applications in Data Manipulation}
+    \begin{block}{Introduction to Dictionaries and Sets}
+        \begin{itemize}
+            \item \textbf{Dictionaries}: Data structure storing data in key-value pairs. Ideal for fast lookup, insertion, and deletion using unique keys.
+            \item \textbf{Sets}: Unordered collection of unique elements. Useful for eliminating duplicates and performing set operations.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Part 1}
+    \begin{enumerate}
+        \item \textbf{Dictionaries in User Profiles}
+            \begin{lstlisting}[language=Python]
+user_profile = {
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "age": 30,
+    "preferences": ["news", "sports", "music"]
+}
+            \end{lstlisting}
+            \item \textbf{Use Case}: Easily retrieve or update user information (e.g., fetching a user’s email based on their username).
+        
+        \item \textbf{Sets for Unique Item Tracking}
+            \begin{lstlisting}[language=Python]
+shopping_cart = {"apple", "banana", "orange"}
+            \end{lstlisting}
+            \item \textbf{Use Case}: Prevent adding duplicate items in the shopping cart. E.g., trying to add "apple" again remains unchanged.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Part 2}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Resume enumeration from 3
+        \item \textbf{Dictionaries for Frequency Counting}
+            \begin{lstlisting}[language=Python]
+text = "hello world hello"
+word_count = {}
+for word in text.split():
+    word_count[word] = word_count.get(word, 0) + 1
+            \end{lstlisting}
+            \item \textbf{Use Case}: Quick access to how many times each word appears for text analysis.
+        
+        \item \textbf{Sets for Data Deduplication}
+            \begin{lstlisting}[language=Python]
+email_list = ["test@example.com", "hello@example.com", "test@example.com"]
+unique_emails = set(email_list)  # {'test@example.com', 'hello@example.com'}
+            \end{lstlisting}
+            \item \textbf{Use Case}: Filters out duplicate entries to ensure valid email addresses are stored.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points and Conclusion}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Efficiency}: O(1) average time complexity for lookups in dictionaries and sets.
+            \item \textbf{Flexibility}: Adaptable to various applications in finance, e-commerce, and user management.
+            \item \textbf{Data Integrity}: Maintains data uniqueness and facilitates quick modifications.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Dictionaries and sets are essential tools for organizing and manipulating data, enhancing performance and data management capabilities for developers and data scientists alike.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Group Project Overview}
+    \begin{block}{Objective}
+        Utilize dictionaries and sets in Python to collaboratively solve a real-world problem.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Project Guidelines}
+    \begin{enumerate}
+        \item \textbf{Project Selection:}
+        \begin{itemize}
+            \item Choose a relevant problem that could benefit from data organization or manipulation. 
+            \item Examples include:
+                \begin{itemize}
+                    \item Analyzing survey data
+                    \item Managing inventory for a small business
+                    \item Tracking student grades
+                    \item Collecting and organizing environmental data
+                \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Utilization of Data Structures:}
+        \begin{itemize}
+            \item \textbf{Dictionaries:} Use for key-value pairs to map relationships. 
+            \item \textbf{Sets:} Use for collections of unique items, useful for various tasks.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Team Roles and Deliverables}
+    \begin{block}{Team Roles}
+        \begin{itemize}
+            \item \textbf{Project Manager:} Oversees project timeline and deliverables.
+            \item \textbf{Data Analyst:} Focuses on data manipulation using dictionaries and sets.
+            \item \textbf{Moderator:} Manages discussions and synthesizes ideas.
+            \item \textbf{Presenter:} Develops and delivers the final presentation.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Deliverables}
+        \begin{itemize}
+            \item \textbf{Final Report (2-3 pages):} Summarize your project findings, methodology, and outcomes.
+            \item \textbf{Code Implementation:} A working script demonstrating the functionality of your solution.
+            \item \textbf{Presentation (10-15 minutes):} Present project details and findings, emphasizing your use of dictionaries and sets.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Code Snippet}
+    \begin{lstlisting}[language=Python]
+# Using a dictionary to store student grades
+grades = {
+    "Alice": [90, 85, 92],
+    "Bob": [78, 82, 88],
+    "Charlie": [85, 90, 91]
+}
+
+# Using a set to find unique subjects taken
+subjects = set(["Math", "Science", "English", "Art", "Math"])
+print(subjects)  # Output: {'Math', 'Science', 'English', 'Art'}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion and Next Steps}
+    \begin{block}{Conclusion}
+        This group project will deepen your understanding of dictionaries and sets through practical application. Embrace creativity and collaboration to find innovative solutions to your chosen problem!
+    \end{block}
+
+    \begin{block}{Next Steps}
+        Review Chapter 6 for deeper insights into dictionaries and sets, and prepare ideas for your project topic before the next class.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Q\&A}
+    \begin{block}{Recap: Key Concepts of Dictionaries and Sets}
+        \begin{itemize}
+            \item \textbf{Dictionaries:}
+                \begin{itemize}
+                    \item A collection of key-value pairs where each key is unique.
+                    \item Created using curly braces \{\} or the \texttt{dict()} function.
+                    \item Access values using keys.
+                    \item Common methods: 
+                        \begin{itemize}
+                            \item \texttt{my\_dict.keys()} – Returns all keys.
+                            \item \texttt{my\_dict.values()} – Returns all values.
+                            \item \texttt{my\_dict.items()} – Returns key-value pairs.
+                        \end{itemize}
+                \end{itemize}
+            \item \textbf{Sets:}
+                \begin{itemize}
+                    \item An unordered collection of unique elements.
+                    \item Created using curly braces \{\} or the \texttt{set()} function.
+                    \item Operations include union, intersection, and difference.
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points and Applications}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Uniqueness:} 
+                \begin{itemize}
+                    \item Dictionaries (keys) and sets (elements) do not allow duplicates. 
+                \end{itemize}
+            \item \textbf{Efficiency:}
+                \begin{itemize}
+                    \item Efficient operations for insertion, deletion, and membership tests.
+                \end{itemize}
+            \item \textbf{Applications:} 
+                \begin{itemize}
+                    \item Data modeling, caching results, and performing statistical operations on datasets.
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Q\&A Session}
+    \begin{block}{Encourage Questions}
+        \begin{itemize}
+            \item Invite students to ask questions regarding:
+                \begin{itemize}
+                    \item Implementation of dictionaries and sets in Python.
+                    \item Differences between dictionaries and sets.
+                    \item Scenarios for use in development.
+                \end{itemize}
+            \item \textbf{Discussion Points:}
+                \begin{itemize}
+                    \item When to use a dictionary vs. a set.
+                    \item Examples of real applications in software development.
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Example Code Snippet}
+        \begin{lstlisting}[language=Python]
+# Merging dictionaries
+dict_a = {'a': 1, 'b': 2}
+dict_b = {'b': 3, 'c': 4}
+merged_dict = {**dict_a, **dict_b}
+print(merged_dict)  # Output: {'a': 1, 'b': 3, 'c': 4}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+
+\end{document}

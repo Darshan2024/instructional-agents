@@ -1,0 +1,929 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 5: Data Structures: Lists and Tuples}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Overview of Data Structures in Python}
+    \begin{itemize}
+        \item Data structures are essential components in programming.
+        \item They allow us to organize, manage, and store data efficiently.
+        \item In Python, two commonly used data structures are \textbf{Lists} and \textbf{Tuples}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Concepts}
+    \begin{enumerate}
+        \item \textbf{What are Data Structures?}
+            \begin{itemize}
+                \item A collection of data values, their relationships, and operations.
+                \item Facilitate effective management and processing of large datasets.
+            \end{itemize}
+        \item \textbf{Importance of Lists and Tuples}
+            \begin{itemize}
+                \item Group multiple items into a single entity.
+                \item Choosing the right structure impacts usability and performance.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Lists}
+    \begin{block}{Definition}
+        A list is a mutable sequence of elements that can hold different data types.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Characteristics:}
+            \begin{itemize}
+                \item \textbf{Ordered:} Maintains insertion order.
+                \item \textbf{Mutable:} Can be modified (add/remove/change elements).
+                \item \textbf{Indexing:} Access via 0-based index.
+            \end{itemize}
+        \item \textbf{Example of a List:}
+            \begin{lstlisting}[language=Python]
+my_list = [10, "Apple", 3.14, True]
+print(my_list[1])  # Output: Apple
+            \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tuples}
+    \begin{block}{Definition}
+        A tuple is an immutable sequence of elements that can also hold multiple data types.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Characteristics:}
+            \begin{itemize}
+                \item \textbf{Ordered:} Maintains a definite order.
+                \item \textbf{Immutable:} Cannot be changed after creation.
+                \item \textbf{Indexing:} Access via 0-based index.
+            \end{itemize}
+        \item \textbf{Example of a Tuple:}
+            \begin{lstlisting}[language=Python]
+my_tuple = (20, "Banana", 2.71, False)
+print(my_tuple[2])  # Output: 2.71
+            \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Mutability:}
+            \begin{itemize}
+                \item Lists can be changed.
+                \item Tuples are fixed.
+            \end{itemize}
+        \item \textbf{Memory Considerations:} 
+            \begin{itemize}
+                \item Tuples are faster and use less memory because of immutability.
+            \end{itemize}
+        \item \textbf{Use Cases:}
+            \begin{itemize}
+                \item Use lists for flexible collections.
+                \item Use tuples for constant data.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    \begin{itemize}
+        \item Understanding lists and tuples is fundamental to mastering data handling in Python.
+        \item Next, we will explore the specific characteristics of \textbf{Lists} in detail.
+        \item Ready to dive deeper?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Lists? - Definition}
+    A \textbf{list} in Python is an ordered, mutable collection of items that can hold a variety of data types, including integers, strings, and even other lists. 
+    Lists allow for the storage and manipulation of multiple items as a single entity.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Lists? - Characteristics}
+    \begin{enumerate}
+        \item \textbf{Ordered}: The items in a list maintain their order, allowing access and iteration in the sequence they were added.
+        \item \textbf{Mutable}: Lists can be modified after creation, enabling changes to items, addition of new elements, or removal of existing ones.
+        \item \textbf{Indexed}: Each item is assigned an index, starting from 0. Negative indexing supports access to items from the end of the list.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Lists? - Example and Key Points}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# Creating a list
+fruits = ['apple', 'banana', 'cherry', 'date']
+
+# Accessing elements using indexing
+print(fruits[0])  # Output: apple
+print(fruits[-1]) # Output: date
+
+# Modifying elements
+fruits[1] = 'blueberry' # Change 'banana' to 'blueberry'
+print(fruits) # Output: ['apple', 'blueberry', 'cherry', 'date']
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item Lists can contain different data types in the same collection:
+        \begin{lstlisting}[language=Python]
+mixed_list = [1, 'hello', 3.14, True]
+        \end{lstlisting}
+        
+        \item Lists can be nested, meaning you can have lists within lists:
+        \begin{lstlisting}[language=Python]
+nested_list = [1, [2, 3], ['four', 'five']]
+        \end{lstlisting}
+        
+        \item Lists are dynamic in size:
+        \begin{lstlisting}[language=Python]
+fruits.append('elderberry')  # Adds 'elderberry' to the end of the list
+del fruits[0]                 # Removes the first item from the list
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating and Modifying Lists - Overview}
+    \begin{block}{Overview of Lists in Python}
+        Lists are versatile data structures that allow you to store, manage, and manipulate groups of related items. Key characteristics include:
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Ordered:} The items maintain the order in which they are added.
+        \item \textbf{Mutable:} You can change, add, or remove items after the list has been created.
+        \item \textbf{Dynamic:} Lists can grow and shrink as needed.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Lists}
+    \begin{block}{Creating Lists}
+        To create a list, use square brackets \texttt{[]} and separate items with commas. Lists can contain mixed data types.
+    \end{block}
+    
+    \begin{block}{Syntax}
+        \begin{lstlisting}[language=Python]
+my_list = [item1, item2, item3]
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+fruits = ['apple', 'banana', 'cherry']
+print(fruits)  # Output: ['apple', 'banana', 'cherry']
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying Lists}
+    \begin{block}{Adding Elements}
+        You can modify lists in several ways using built-in list methods:
+    \end{block}
+    
+    \begin{enumerate}
+        \item \textbf{Append:} Add an element to the end of the list.
+            \begin{lstlisting}[language=Python]
+fruits.append('orange')
+print(fruits)  # Output: ['apple', 'banana', 'cherry', 'orange']
+            \end{lstlisting}
+        
+        \item \textbf{Insert:} Add an element at a specific index.
+            \begin{lstlisting}[language=Python]
+fruits.insert(1, 'mango')
+print(fruits)  # Output: ['apple', 'mango', 'banana', 'cherry', 'orange']
+            \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing and Modifying Elements}
+    \begin{block}{Removing Elements}
+        To remove elements, you can use:
+    \end{block}
+    
+    \begin{enumerate}
+        \item \textbf{Remove:} Remove the first occurrence of a specified value.
+            \begin{lstlisting}[language=Python]
+fruits.remove('banana')
+print(fruits)  # Output: ['apple', 'mango', 'cherry', 'orange']
+            \end{lstlisting}
+        
+        \item \textbf{Pop:} Remove and return an element at a specified index.
+            \begin{lstlisting}[language=Python]
+last_fruit = fruits.pop()
+print(last_fruit)  # Output: 'orange'
+print(fruits)      # Output: ['apple', 'mango', 'cherry']
+            \end{lstlisting}
+    \end{enumerate}
+    
+    \begin{block}{Modifying Elements}
+        Change the value of an element by accessing it via its index:
+        \begin{lstlisting}[language=Python]
+fruits[0] = 'grape'
+print(fruits)  # Output: ['grape', 'mango', 'cherry']
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points and Conclusion}
+    \begin{block}{Key Points to Remember}
+        \begin{itemize}
+            \item Lists can store a collection of items, making them robust for many applications.
+            \item You can add, remove, and change elements using convenient methods like \texttt{append()}, \texttt{insert()}, \texttt{remove()}, and \texttt{pop()}.
+            \item Lists are indexed, meaning you can easily access items via their position in the list (starting with index 0).
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Lists are fundamental to data management in Python. By mastering how to create and modify lists, you’ll be prepared to utilize them effectively in your programming tasks!
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet Recap}
+    \begin{lstlisting}[language=Python]
+# Create a list
+fruits = ['apple', 'banana', 'cherry']
+
+# Modify the list
+fruits.append('orange')
+fruits.insert(1, 'mango')
+fruits.remove('banana')
+fruits[0] = 'grape'
+last_fruit = fruits.pop()
+    \end{lstlisting}
+    
+    Understanding these techniques will pave the way for further exploration of more complex list operations in the upcoming slides!
+\end{frame}
+
+\begin{frame}
+    \frametitle{Common List Operations}
+    \begin{block}{Overview}
+        Lists in Python are dynamic and versatile data structures that allow for a variety of operations. Understanding these operations is crucial for effective data handling and manipulation. In this slide, we will cover four key list operations:
+        \begin{itemize}
+            \item Slicing
+            \item Iterating
+            \item Sorting
+            \item Comprehensions
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Slicing}
+    \begin{block}{Definition}
+        Slicing allows you to access a subset of elements from a list.
+    \end{block}
+    
+    \textbf{Syntax:} \texttt{list[start:end:step]} \\
+    \begin{itemize}
+        \item \textbf{start}: Index to begin the slice (inclusive).
+        \item \textbf{end}: Index to end the slice (exclusive).
+        \item \textbf{step}: Interval between each index. Default is 1.
+    \end{itemize}
+
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+my_list = [0, 1, 2, 3, 4, 5]
+slice_example = my_list[1:4]  # Output: [1, 2, 3]
+    \end{lstlisting}
+
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Negative indices can be used to slice from the end.
+        \item Omitting start or end means slicing will continue to the ends of the list.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Iterating and Sorting}
+    
+    \begin{block}{Iterating}
+        \begin{itemize}
+            \item \textbf{Definition}: Iterating involves going over each element in a list, typically using loops.
+            \item \textbf{For Loop Example:}
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+my_list = [10, 20, 30]
+for item in my_list:
+    print(item)
+        \end{lstlisting}
+        
+        \textbf{Output:}
+        \begin{verbatim}
+10
+20
+30
+        \end{verbatim}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Efficient way to perform operations on each element.
+            \item Can be combined with conditional statements for filtering.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Sorting}
+        \begin{itemize}
+            \item \textbf{Definition}: Sorting arranges the elements in a list in a specified order (ascending or descending).
+            \item \textbf{Using the \texttt{sort()} method:}
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+my_list = [3, 1, 4, 2]
+my_list.sort()  # Original list is now [1, 2, 3, 4]
+        \end{lstlisting}
+
+        \begin{itemize}
+            \item \textbf{Using the \texttt{sorted()} function:}
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+my_list = [3, 1, 4, 2]
+new_list = sorted(my_list)  # Returns a new sorted list: [1, 2, 3, 4]
+        \end{lstlisting}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Sorting can be done in reverse by passing \texttt{reverse=True}.
+            \item Can also sort custom objects by providing a \texttt{key} function.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{List Comprehensions and Summary}
+
+    \begin{block}{List Comprehensions}
+        \begin{itemize}
+            \item \textbf{Definition}: A concise way to create lists based on existing lists, allowing for transformation and filtering in a single line of code.
+            \item \textbf{Example:}
+        \end{itemize}
+        
+        \begin{lstlisting}[language=Python]
+squared_numbers = [x**2 for x in range(5)]  # Output: [0, 1, 4, 9, 16]
+        \end{lstlisting}
+
+        \textbf{Key Points:}
+        \begin{itemize}
+            \item Syntax: \texttt{[expression for item in iterable if condition]}
+            \item More readable and often more efficient than traditional loops.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Summary}
+        In this slide, we've explored essential operations that enhance your ability to manipulate lists in Python:
+        \begin{itemize}
+            \item Slicing helps access portions of lists.
+            \item Iterating allows processing of each element.
+            \item Sorting organizes the data.
+            \item List comprehensions provide powerful syntax for creating new lists efficiently.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What are Tuples?}
+    \begin{block}{Definition}
+        Tuples are a built-in data structure in Python used to store an ordered collection of items, 
+        which can include various data types such as integers, strings, lists, and even other tuples.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Characteristics of Tuples}
+    \begin{enumerate}
+        \item \textbf{Immutability:} Tuples, once created, cannot be altered. This 
+        property makes them ideal for storing data that should not change.
+        \begin{lstlisting}
+my_tuple = (1, 2, 3)
+# my_tuple[0] = 5  # Raises TypeError
+        \end{lstlisting}
+
+        \item \textbf{Ordered Collection:} Tuples maintain the order of elements, allowing 
+        for indexing and slicing.
+        \begin{lstlisting}
+my_tuple = ('apple', 'banana', 'cherry')
+print(my_tuple[1])  # Output: banana
+        \end{lstlisting}
+
+        \item \textbf{Heterogeneous:} Tuples can hold diverse data types together.
+        \begin{lstlisting}
+mixed_tuple = (42, 'hello', 3.14, [1, 2, 3])
+        \end{lstlisting}
+
+        \item \textbf{Hashable:} Tuples can be used as keys in dictionaries, unlike lists.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Use Cases for Tuples}
+    \begin{itemize}
+        \item \textbf{Returning Multiple Values:} Functions can return multiple values packed in a tuple.
+        \begin{lstlisting}
+def coordinates():
+    return (10, 20)
+
+x, y = coordinates()  # Tuple unpacking
+        \end{lstlisting}
+        
+        \item \textbf{Data Integrity:} To ensure a collection of items does not change, use tuples.
+        
+        \item \textbf{Dictionary Keys:} Use tuples to create composite keys in dictionaries.
+    \end{itemize}
+    
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Immutability is both a strength (data integrity) and a limitation (no modifications).
+            \item Tuples can be faster than lists for certain operations due to their immutable nature.
+            \item Tuples generally consume less memory compared to lists, making them suitable for large constant data collections.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating and Using Tuples}
+    \begin{block}{Overview}
+        Tuples are immutable ordered collections in Python. This slide covers:
+        \begin{itemize}
+            \item Creating tuples
+            \item Accessing tuple elements
+            \item Tuple unpacking
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Creating Tuples}
+    \begin{block}{Syntax}
+        To create a tuple, use parentheses \texttt{()} and separate elements with commas.
+        \begin{lstlisting}[language=Python]
+my_tuple = (1, 2, 3)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Points to Remember}
+        \begin{itemize}
+            \item \textbf{Single Element Tuple:} A single element must include a comma.
+                \begin{lstlisting}[language=Python]
+single_element_tuple = (5,)
+                \end{lstlisting}
+            \item \textbf{Empty Tuple:} Create an empty tuple using empty parentheses.
+                \begin{lstlisting}[language=Python]
+empty_tuple = ()
+                \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Tuple Elements and Unpacking}
+    \begin{block}{Accessing Elements}
+        Tuples are indexed, allowing access to elements using square brackets. The index starts at 0.
+        \begin{lstlisting}[language=Python]
+first_element = my_tuple[0]  # Accesses the first element (1)
+second_element = my_tuple[1]  # Accesses the second element (2)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Tuple Unpacking}
+        Tuple unpacking assigns elements of a tuple to separate variables in one statement, enhancing clarity.
+        \begin{lstlisting}[language=Python]
+coordinates = (10, 20)
+x, y = coordinates  # x = 10, y = 20
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points and Conclusion}
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item Tuples are immutable; contents cannot be changed.
+            \item Can contain mixed data types (integers, strings, lists, etc.).
+            \item Useful for fixed collections of items.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Mastering tuple creation, access methods, and unpacking techniques enhances your coding proficiency and helps create cleaner, more efficient code.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Tuples vs. Lists}
+    \begin{block}{Overview}
+        In this slide, we will explore the differences between lists and tuples in Python. 
+        Both are used to store collections of data but serve different purposes and have distinct characteristics. 
+        Understanding these differences can help you choose the right data structure for your specific use case.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tuples vs. Lists - Definition}
+    \begin{itemize}
+        \item \textbf{List}: A mutable, ordered collection of items that can contain different data types. Lists are defined using square brackets $[]$.
+        \begin{block}{Example}
+            \begin{lstlisting}
+my_list = [1, 2, 'three', 4.0]
+            \end{lstlisting}
+        \end{block}
+        
+        \item \textbf{Tuple}: An immutable, ordered collection of items. Once a tuple is created, its contents cannot be changed. Tuples are defined using parentheses $()$.
+        \begin{block}{Example}
+            \begin{lstlisting}
+my_tuple = (1, 2, 'three', 4.0)
+            \end{lstlisting}
+        \end{block}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tuples vs. Lists - Key Differences}
+    \begin{enumerate}
+        \item \textbf{Mutability}
+        \begin{itemize}
+            \item \textbf{Lists}:
+            \begin{itemize}
+                \item Can be modified after creation.
+                \item \textbf{Example}:
+                \begin{lstlisting}
+my_list.append(5)        # Adds 5 to the end
+my_list[0] = 'one'       # Changes first element
+                \end{lstlisting}
+            \end{itemize}
+            \item \textbf{Tuples}: 
+            \begin{itemize}
+                \item Cannot be altered after creation.
+                \item \textbf{Example}:
+                \begin{lstlisting}
+my_tuple = my_tuple + (5,)  # Creates a new tuple
+                \end{lstlisting}
+            \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Performance}
+        \begin{itemize}
+            \item \textbf{Lists}: Slightly slower due to memory overhead.
+            \item \textbf{Tuples}: Generally faster and more memory efficient.
+        \end{itemize}
+        
+        \item \textbf{Use Cases}
+        \begin{itemize}
+            \item \textbf{Choose Lists} for dynamic data or frequent updates.
+            \item \textbf{Choose Tuples} for fixed collections, hashable types, or coordinates.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    Understanding the differences between lists and tuples will allow you to select the appropriate data structure for your applications based on:
+    \begin{itemize}
+        \item \textbf{Mutability}: Lists are mutable; tuples are immutable.
+        \item \textbf{Performance}: Tuples are generally faster and more memory-efficient than lists.
+        \item \textbf{Use Cases}: Choose the structure based on whether the data needs to be modified.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Lists and Tuples - Introduction}
+    This slide presents hands-on exercises that will help you manipulate \texttt{lists} and \texttt{tuples} in Python. 
+    Understanding how to work with these data structures will enhance your programming skills and prepare you for real-world data handling challenges.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Lists and Tuples - Key Concepts}
+    \begin{itemize}
+        \item \textbf{Lists}: Mutable, ordered collections of items. 
+        \begin{itemize}
+            \item Can contain items of different data types
+            \item Items can be modified (e.g., added, removed, or changed)
+        \end{itemize}
+        \item \textbf{Tuples}: Immutable, ordered collections of items.
+        \begin{itemize}
+            \item Once defined, their elements cannot be modified
+            \item Ideal for fixed collections and ensures data integrity
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Creating and Modifying a List}
+    \textbf{Exercise 1: Creating and Modifying a List}\\
+    \textbf{Objective}: Create a list of your favorite fruits and modify it.
+    
+    \begin{enumerate}
+        \item Create a list: 
+        \begin{lstlisting}[language=Python]
+fruits = ['apple', 'banana', 'cherry']
+        \end{lstlisting}
+        \item Add a new fruit:
+        \begin{lstlisting}[language=Python]
+fruits.append('orange')
+        \end{lstlisting}
+        \item Remove a fruit:
+        \begin{lstlisting}[language=Python]
+fruits.remove('banana')
+        \end{lstlisting}
+    \end{enumerate}
+    
+    \textbf{Expected Result}:
+    \begin{itemize}
+        \item Original list: \texttt{['apple', 'banana', 'cherry']}
+        \item Modified list: \texttt{['apple', 'cherry', 'orange']}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Accessing Elements in a Tuple}
+    \textbf{Exercise 2: Accessing Elements in a Tuple}\\
+    \textbf{Objective}: Create a tuple of integers and access elements by index.
+    
+    \begin{enumerate}
+        \item Create a tuple:
+        \begin{lstlisting}[language=Python]
+numbers = (1, 2, 3, 4, 5)
+        \end{lstlisting}
+        \item Access the first and third elements:
+        \begin{lstlisting}[language=Python]
+first_number = numbers[0]  # Output: 1
+third_number = numbers[2]   # Output: 3
+        \end{lstlisting}
+    \end{enumerate}
+    
+    \textbf{Key Point}: Remember that tuples are accessed similarly to lists but do not allow for modification of their contents.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Slicing Lists and Tuples}
+    \textbf{Exercise 3: Slicing Lists and Tuples}\\
+    \textbf{Objective}: Use slicing to obtain a subset of items.
+    
+    \begin{enumerate}
+        \item Slicing a list:
+        \begin{lstlisting}[language=Python]
+fruits = ['apple', 'cherry', 'orange', 'grape']
+fruit_slice = fruits[1:3]  # Output: ['cherry', 'orange']
+        \end{lstlisting}
+        \item Slicing a tuple:
+        \begin{lstlisting}[language=Python]
+numbers = (1, 2, 3, 4, 5)
+number_slice = numbers[1:4]  # Output: (2, 3, 4)
+        \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Iterating through Lists and Tuples}
+    \textbf{Exercise 4: Iterating through Lists and Tuples}\\
+    \textbf{Objective}: Use a loop to iterate through the contents of a list and a tuple.
+    
+    \begin{enumerate}
+        \item Looping through a list:
+        \begin{lstlisting}[language=Python]
+for fruit in fruits:
+    print(fruit)
+        \end{lstlisting}
+        \item Looping through a tuple:
+        \begin{lstlisting}[language=Python]
+for number in numbers:
+    print(number)
+        \end{lstlisting}
+    \end{enumerate}
+    
+    \textbf{Expected Output}:
+    \begin{itemize}
+        \item For \texttt{fruits}: outputs each fruit in the list.
+        \item For \texttt{numbers}: outputs each number in the tuple.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practical Exercises: Summary and Key Takeaways}
+    \textbf{Summary}:
+    \begin{itemize}
+        \item \textbf{Lists}: Useful for maintaining a collection of items that can change dynamically.
+        \item \textbf{Tuples}: Ideal for fixed collections of items that should remain constant.
+        \item Practice manipulating these structures to become comfortable with their operations, which is crucial for effective programming.
+    \end{itemize}
+    
+    \textbf{Key Takeaways}:
+    \begin{itemize}
+        \item Understand when to use lists vs. tuples based on mutability needs.
+        \item Familiarize yourself with core operations like appending, removing, and slicing.
+        \item Use iterative techniques to access elements efficiently.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Lists and Tuples - Overview}
+    \begin{block}{Understanding Lists and Tuples}
+        \begin{itemize}
+            \item \textbf{Lists}: Mutable sequences for collections that may need modification.
+            \item \textbf{Tuples}: Immutable sequences for fixed collections where data integrity is crucial.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Lists}
+    \begin{enumerate}
+        \item \textbf{Use Descriptive Variable Names}:
+            \begin{itemize}
+                \item Choose clear names that describe the contents. 
+                \item Example: \texttt{student\_scores} instead of \texttt{list1}.
+            \end{itemize}
+
+        \item \textbf{List Comprehensions}:
+            \begin{itemize}
+                \item Use for concise and efficient creation.
+                \item Example:
+                \begin{lstlisting}[language=Python]
+squares = [x**2 for x in range(10)]
+                \end{lstlisting}
+            \end{itemize}
+
+        \item \textbf{Keep Lists Homogeneous}:
+            \begin{itemize}
+                \item Consistent data types for easier processing.
+                \item Example: \texttt{students = ['Alice', 'Bob', 'Charlie']}.
+            \end{itemize}
+
+        \item \textbf{Avoid Changing Size During Iteration}:
+            \begin{itemize}
+                \item Avoid modifying lists while iterating. Use copies or list comprehensions.
+            \end{itemize}
+
+        \item \textbf{Use Built-in Methods}:
+            \begin{itemize}
+                \item Leverage Python's built-in methods for tasks.
+                \item Example:
+                \begin{lstlisting}[language=Python]
+my_list.sort()
+                \end{lstlisting}
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Tuples}
+    \begin{enumerate}
+        \item \textbf{Choose Tuples for Fixed Data}:
+            \begin{itemize}
+                \item Ideal for constant data collections.
+                \item Example: 
+                \begin{lstlisting}[language=Python]
+dimensions = (1920, 1080)
+                \end{lstlisting}
+            \end{itemize}
+
+        \item \textbf{Accessing Tuple Elements}:
+            \begin{itemize}
+                \item Use indexing (starts at 0).
+                \item Example:
+                \begin{lstlisting}[language=Python]
+color = ('red', 'green', 'blue')
+print(color[1])  # Output: green
+                \end{lstlisting}
+            \end{itemize}
+
+        \item \textbf{Use as Dictionary Keys}:
+            \begin{itemize}
+                \item Immutable tuples can be dictionary keys.
+                \item Example:
+                \begin{lstlisting}[language=Python]
+point = (2, 3)
+my_dict = {point: "This is a point"}
+                \end{lstlisting}
+            \end{itemize}
+
+        \item \textbf{Unpacking}:
+            \begin{itemize}
+                \item Assign values to multiple variables in one line.
+                \item Example:
+                \begin{lstlisting}[language=Python]
+x, y = (5, 10)
+                \end{lstlisting}
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Q\&A - Key Points Recap}
+    \begin{enumerate}
+        \item \textbf{Definitions}:
+        \begin{itemize}
+            \item \textbf{Lists}: Ordered, mutable, and can contain duplicates. Defined using square brackets \texttt{[]}.
+            \item \textbf{Tuples}: Ordered, immutable, and can also contain duplicates. Defined using parentheses \texttt{()}.
+        \end{itemize}
+        \item \textbf{Mutability}:
+        \begin{itemize}
+            \item Lists can be modified; tuples cannot.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Q\&A - Key Points Recap (cont.)}
+    \begin{enumerate}[resume]
+        \item \textbf{Accessing Elements}:
+        \begin{itemize}
+            \item \textbf{Indexing}:
+            \begin{lstlisting}
+            first_item = my_list[0]    # 1
+            second_item = my_tuple[1]   # 2
+            \end{lstlisting}
+            \item \textbf{Slicing}:
+            \begin{lstlisting}
+            sub_list = my_list[1:3]     # [2, 3]
+            sub_tuple = my_tuple[1:3]   # (2, 3)
+            \end{lstlisting}
+        \end{itemize}
+        \item \textbf{Performance}:
+        \begin{itemize}
+            \item Tuples can be faster due to their immutability.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Q\&A - Applications and Discussion}
+    \begin{enumerate}[resume]
+        \item \textbf{Applications}:
+        \begin{itemize}
+            \item Lists: Ideal for collections that require modification.
+            \item Tuples: Useful for storing fixed data, like coordinates.
+        \end{itemize}
+        \item \textbf{Common Methods}:
+        \begin{itemize}
+            \item List Methods: \texttt{append()}, \texttt{extend()}, \texttt{remove()}, \texttt{pop()}, \texttt{sort()}, \texttt{reverse()}.
+            \item Tuple Methods: \texttt{count()}, \texttt{index()}.
+        \end{itemize}
+    \end{enumerate}
+    
+    \textbf{Discussion Points:}  
+    - When to use a list versus a tuple?  
+    - Real-world examples of lists and tuples.  
+    - Share experiences about coding with lists/tuples.  
+\end{frame}
+
+
+\end{document}

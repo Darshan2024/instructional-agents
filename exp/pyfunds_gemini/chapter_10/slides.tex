@@ -1,0 +1,833 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single,
+  showstringspaces=false % To not show spaces in strings with a special symbol
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 10: Advanced String Manipulation \& File I/O}
+\author{Teaching Assistant}
+\institute{University Name}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 10: Advanced String Manipulation \& File I/O}
+    
+    \begin{block}{Welcome!}
+        In this chapter, we will unlock two essential skills for any programmer:
+        \begin{itemize}
+            \item Mastering powerful tools to process text data.
+            \item Learning how to make your programs interact with files on your computer.
+        \end{itemize}
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{alertblock}{Chapter Agenda}
+        \begin{enumerate}
+            \item Part 1: Advanced String Methods
+            \item Part 2: Introduction to File I/O
+            \item Part 3: Reading from Files
+            \item Part 4: Writing to Files
+        \end{enumerate}
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 10 - Why These Skills Matter}
+    
+    \begin{block}{Problem 1: Program Amnesia}
+        \textbf{Issue:} So far, our programs lose all data when they finish running. They only use temporary memory (RAM).
+        \vspace{0.5em}
+        
+        \textbf{Solution: File I/O (Input/Output).} This gives our programs a long-term memory by allowing them to read from and write to permanent files.
+    \end{block}
+
+    \vspace{1em}
+    
+    \begin{block}{Problem 2: Messy Real-World Data}
+        \textbf{Issue:} Data from users, logs, or the web is often inconsistent and unstructured (e.g., extra spaces, mixed case).
+        \vspace{0.5em}
+        
+        \textbf{Solution: Advanced String Methods.} A toolkit for cleaning, parsing, searching, and reformatting text into a usable form.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 10 - A Common Workflow}
+    
+    \begin{block}{How They Work Together}
+    A typical data processing task combines both concepts in a simple, powerful sequence:
+    \end{block}
+
+    \begin{enumerate}
+        \item \textbf{Read (File I/O):} Open a file (e.g., \texttt{user\_data.csv}) and read its raw text content into your program.
+        \item \textbf{Process (String Manipulation):} Use string methods to clean, split, and extract the necessary information from the raw text.
+        \item \textbf{Write (File I/O):} Save the processed, structured results to a new file (e.g., \texttt{report.txt}).
+    \end{enumerate}
+
+    \vspace{1em}
+    
+    \begin{exampleblock}{Conceptual Example: Processing Log Files}
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, keywordstyle=\color{blue}]
+// 1. Read from 'system.log' (File I/O)
+raw_log_data = read_file("system.log"); 
+
+// 2. Process the text (String Manipulation)
+for each line in raw_log_data:
+    if line.starts_with("ERROR"):
+        cleaned_line = line.strip_whitespace();
+        save_to_error_list(cleaned_line);
+
+// 3. Write to 'errors.txt' (File I/O)
+write_file("errors.txt", saved_errors);
+\end{lstlisting}
+    \end{exampleblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: Beyond Basic Strings - The Need for Methods}
+
+    We've already mastered the fundamentals of strings:
+    \begin{itemize}
+        \item \textbf{Creation:} \texttt{my\_string = "Hello World"}
+        \item \textbf{Concatenation:} \texttt{'Hello' + ' ' + 'World'}
+        \item \textbf{Slicing:} \texttt{my\_string[0:5]} $\rightarrow$ \texttt{'Hello'}
+    \end{itemize}
+
+    \vspace{1em}
+    \begin{block}{The Real-World Problem}
+        However, real-world data is rarely this clean. Imagine input from a user form, a log file, or a web page:
+        \begin{lstlisting}[language=Python]
+raw_input = "  john.doe@email.com   "
+        \end{lstlisting}
+        How would you check if this is the same as \texttt{'john.doe@email.com'}?
+        \vspace{0.5em}
+        A simple \texttt{==} comparison would fail because of the extra whitespace!
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: Beyond Basic Strings - The Solution: Methods}
+
+    Python's strings are more than just sequences of characters; they are powerful \textbf{objects} with built-in functions called \textbf{methods}.
+
+    \begin{block}{What is a Method?}
+        A method is a function that "belongs" to an object and performs an action on that object's data. It's a pre-built capability that saves you from writing the logic yourself.
+    \end{block}
+
+    \begin{block}{Syntax: Dot Notation}
+        We use "dot notation" to call a method on a string variable.
+        \begin{lstlisting}[language=Python]
+variable_name.method_name(arguments)
+        \end{lstlisting}
+    \end{block}
+
+    \vspace{1em}
+    These methods provide efficient, ready-to-use solutions for the most common text manipulation tasks.
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 1: Beyond Basic Strings - Our Roadmap}
+    In this section, we will explore four key categories of string methods:
+
+    \begin{itemize}
+        \item \textbf{Cleaning \& Formatting:}
+        \begin{itemize}
+            \item \textit{Goal:} Standardize messy text for reliable comparison.
+            \item \textit{Tasks:} Removing extra whitespace, changing letter case (e.g., \texttt{UPPERCASE} or \texttt{lowercase}).
+        \end{itemize}
+
+        \item \textbf{Splitting a String into a List:}
+        \begin{itemize}
+            \item \textit{Goal:} Deconstruct a string into smaller, usable parts.
+            \item \textit{Example:} Turn \texttt{"apple,banana,cherry"} into \texttt{['apple', 'banana', 'cherry']}.
+        \end{itemize}
+
+        \item \textbf{Joining a List into a String:}
+        \begin{itemize}
+            \item \textit{Goal:} The reverse of splitting; build a single string from a list.
+            \item \textit{Example:} Turn \texttt{['2023', '10', '26']} into \texttt{"2023-10-26"}.
+        \end{itemize}
+
+        \item \textbf{Searching \& Replacing:}
+        \begin{itemize}
+            \item \textit{Goal:} Find, count, or modify parts of a string.
+            \item \textit{Tasks:} Check if a substring exists, find its location, or replace all occurrences of one word with another.
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Methods: Cleaning \& Casing (1/3)}
+    \framesubtitle{Trimming Whitespace}
+    
+    Raw text data is often messy. These methods help standardize it by removing leading/trailing whitespace (spaces, tabs, newlines).
+    
+    \begin{itemize}
+        \item \texttt{strip()}: Removes whitespace from \textbf{both} the beginning and end.
+        \item \texttt{lstrip()}: Removes whitespace from the \textbf{left} side only.
+        \item \texttt{rstrip()}: Removes whitespace from the \textbf{right} side only.
+    \end{itemize}
+    
+    \begin{block}{Example: Cleaning User Input}
+\begin{lstlisting}[language=Python]
+# Input with extra spaces, a tab (\t), and a newline (\n)
+user_name = "  \tAlice \n"
+
+# .strip() is the most common for cleaning
+cleaned_name = user_name.strip() 
+print(f"'{cleaned_name}'")  # Output: 'Alice'
+
+# Compare with lstrip() and rstrip()
+left_cleaned = user_name.lstrip()
+print(f"'{left_cleaned}'")  # Output: 'Alice \n'
+
+right_cleaned = user_name.rstrip()
+print(f"'{right_cleaned}'") # Output: '  \tAlice'
+\end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Methods: Cleaning \& Casing (2/3)}
+    \framesubtitle{Standardizing and Formatting Case}
+
+    \begin{block}{Standardizing Case for Comparisons}
+    To compare strings without worrying about capitalization (e.g., "Apple" vs "apple"), convert them to a standard case first.
+    \begin{itemize}
+        \item \texttt{lower()}: Converts the entire string to lowercase.
+        \item \texttt{upper()}: Converts the entire string to uppercase.
+    \end{itemize}
+\begin{lstlisting}[language=Python]
+user_command = "Quit"
+
+# Robust check: convert to a standard case before comparing
+if user_command.lower() == "quit":
+    print("Exiting program...") # This code will run
+\end{lstlisting}
+    \end{block}
+
+    \begin{block}{Formatting Case for Display}
+    To format strings into a conventional, human-readable style.
+    \begin{itemize}
+        \item \texttt{capitalize()}: First character of the string is uppercase.
+        \item \texttt{title()}: First character of \textbf{every word} is uppercase.
+    \end{itemize}
+\begin{lstlisting}[language=Python]
+messy_title = "a tale of TWO CITIES"
+print(messy_title.capitalize()) # Output: 'A tale of two cities'
+print(messy_title.title())      # Output: 'A Tale Of Two Cities'
+\end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Methods: Cleaning \& Casing (3/3)}
+    \framesubtitle{A Crucial Concept: Immutability}
+    
+    \begin{alertblock}{Key Concept: Strings are Immutable}
+        String methods \textbf{do not change} the original string. They \textbf{return a new, modified string}. You must assign this new string to a variable to use the result.
+    \end{alertblock}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Incorrect \faTimesCircle}
+                The new string is created but not saved. The original remains unchanged.
+\begin{lstlisting}[language=Python]
+original = "  data  "
+original.strip() 
+print(original)
+# Output: '  data  '
+\end{lstlisting}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Correct \faCheckCircle}
+                The new string returned by \texttt{.strip()} is assigned to a new variable.
+\begin{lstlisting}[language=Python]
+original = "  data  "
+cleaned = original.strip()
+print(cleaned)   
+# Output: 'data'
+\end{lstlisting}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Methods: Splitting a String}
+    \framesubtitle{Deconstructing a String into a List}
+
+    The \texttt{split()} method "chops up" a string based on a separator and returns a \textbf{list} of the resulting substrings. This is a primary way to parse structured data.
+
+    \vspace{1em}
+
+    \begin{block}{Syntax}
+        \texttt{some\_string.split(separator)}
+    \end{block}
+
+    \begin{columns}[T]
+        \begin{column}{.5\textwidth}
+            \begin{block}{Example 1: Splitting by a specific character}
+                Ideal for structured data like CSV files.
+                \begin{verbatim}
+data_line = 'apple,banana,cherry'
+items = data_line.split(',')
+# items is ['apple', 'banana', 'cherry']
+                \end{verbatim}
+            \end{block}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \begin{block}{Example 2: Splitting by whitespace (default)}
+                If no separator is given, it splits on any amount of whitespace (spaces, tabs, newlines).
+                \begin{verbatim}
+sentence = "This   is a sentence."
+words = sentence.split()
+# words is ['This', 'is', 'a', 'sentence.']
+                \end{verbatim}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Methods: Joining a List}
+    \framesubtitle{Constructing a String from a List}
+
+    The \texttt{join()} method is the inverse of \texttt{split()}. It "glues" elements from a list of strings into a single string using a specific separator.
+
+    \vspace{1em}
+
+    \begin{block}{Syntax}
+        \texttt{separator\_string.join(list\_of\_strings)}
+    \end{block}
+
+    \begin{alertblock}{Key Point: Note the Syntax!}
+        The method is called on the \textit{separator string} itself, not on the list. This is a common point of confusion for beginners.
+    \end{alertblock}
+
+    \begin{block}{Example: Creating a file path}
+        Useful for building strings from component parts in a platform-agnostic way.
+        \begin{verbatim}
+path_parts = ['C:', 'Users', 'Zoe', 'data.txt']
+full_path = '\\'.join(path_parts)
+# full_path is now 'C:\\Users\\Zoe\\data.txt'
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The "Split-Process-Join" Pattern}
+    \framesubtitle{A Fundamental Data Manipulation Workflow}
+
+    This powerful pattern is central to many data cleaning and transformation tasks:
+    \begin{enumerate}
+        \item \textbf{Split} a string into a list to access its individual parts.
+        \item \textbf{Process} the elements of the list (e.g., clean, convert, calculate).
+        \item \textbf{Join} the list back into a single string for output or storage.
+    \end{enumerate}
+
+    \vspace{1em}
+
+    \begin{block}{Example: Reformatting a Data Record}
+        Let's clean up a record and change its delimiter.
+        \begin{verbatim}
+// Initial record
+record = 'jane doe, 99'
+
+// 1. Split
+parts = record.split(',') // -> ['jane doe', ' 99']
+
+// 2. Process
+parts[0] = parts[0].title() // -> 'Jane Doe'
+parts[1] = parts[1].strip() // -> '99'
+
+// 3. Join
+new_record = ';'.join(parts) // -> 'Jane Doe;99'
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 2: Introduction to File I/O}
+    \subtitle{Why Use Files? Data Persistence}
+    
+    File Input/Output (I/O) allows your program to persist data by reading from and writing to files.
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item \textbf{The Problem}: Variables are stored in RAM (Random Access Memory), which is \textbf{volatile}. When your program ends, all data is lost.
+        
+        \item \textbf{The Solution}: Files provide \textbf{persistent storage} on a non-volatile medium (e.g., a hard drive or SSD), so data can be saved and retrieved later.
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \begin{block}{Analogy}
+        \begin{itemize}
+            \item \textbf{RAM} is like a temporary \textbf{whiteboard} for calculations.
+            \item A \textbf{File} is like a saved \textbf{document} you can refer to later.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to File I/O - Part 2}
+    \subtitle{How Do We Find Files? The File Path}
+    
+    A \textbf{file path} is a string that specifies the unique location of a file.
+    
+    \begin{block}{Absolute Path: The Full Address}
+        The full address from the file system's root.
+        \begin{itemize}
+            \item \textbf{Pro}: Unambiguous.
+            \item \textbf{Con}: Not portable (breaks if you move the project).
+            \item \textit{Windows}: \texttt{C:\textbackslash Users\textbackslash Zoe\textbackslash data.txt}
+            \item \textit{macOS/Linux}: \texttt{/Users/Zoe/Documents/data.txt}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Relative Path: The Local Address (Recommended)}
+        The address relative to the program's Current Working Directory (CWD).
+        \begin{itemize}
+            \item \textbf{Pro}: Portable and self-contained.
+            \item \texttt{'data.txt'} (in the same folder as the script)
+            \item \texttt{'files/data.txt'} (in a sub-folder named \texttt{files})
+            \item \texttt{'../notes.txt'} (in the parent folder)
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to File I/O - Part 3}
+    \subtitle{What Kind of Files Will We Use?}
+    
+    We will focus on plain text files, which store human-readable characters.
+    
+    \begin{itemize}
+        \item \textbf{Plain Text Files}
+        \begin{itemize}
+            \item \textbf{What}: Simple text you can read in any text editor.
+            \item \textbf{Examples}: \texttt{.txt}, \texttt{.csv}, \texttt{.py}, \texttt{.json}
+            \item \textbf{Use}: Excellent for storing logs, settings, and simple records.
+        \end{itemize}
+        
+        \vspace{1em}
+        
+        \item \textbf{Binary Files}
+        \begin{itemize}
+            \item \textbf{What}: Data stored as raw bytes, unreadable in a text editor. Requires specific programs to open.
+            \item \textbf{Examples}: \texttt{.jpg}, \texttt{.mp3}, \texttt{.exe}, \texttt{.docx}
+            \item We will not cover these in this section.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 3: Reading from Files - The \texttt{with} Statement}
+    \framesubtitle{Safely Opening and Closing Files}
+
+    To read from a file, you must first open it. The best practice in Python is using the \texttt{with} statement, which manages the file resource for you.
+
+    \begin{block}{Best Practice: Syntax}
+        \begin{lstlisting}[language=Python]
+with open('filename.txt', 'r') as file_object:
+    # Work with file_object inside this indented block
+    # The file is automatically closed after this block
+        \end{lstlisting}
+    \end{block}
+
+    \begin{itemize}
+        \item \texttt{with}: The keyword that starts a context manager. It guarantees that the file will be closed automatically, even if errors occur.
+        \item \texttt{open('filename.txt', 'r')}: The function that opens the file.
+              \begin{itemize}
+                  \item The first argument is the file path.
+                  \item The second argument, \texttt{'r'}, stands for \textbf{read mode} (this is the default).
+              \end{itemize}
+        \item \texttt{as file\_object}: Assigns the opened file object to a variable.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 3: Reading from Files - Reading Methods}
+    \framesubtitle{Three Common Approaches}
+
+    Once the file is open, you can read its content in several ways.
+
+    \begin{enumerate}
+        \item \textbf{\texttt{file\_object.read()}}
+              \begin{itemize}
+                  \item Reads the \textbf{entire file} into a \textbf{single string}.
+                  \item \textit{Use Case}: Good for small files where you need all content at once.
+                  \item \textit{Warning}: Can consume all available memory on very large files.
+              \end{itemize}
+
+        \item \textbf{\texttt{file\_object.readlines()}}
+              \begin{itemize}
+                  \item Reads the \textbf{entire file} into a \textbf{list of strings}, one for each line.
+                  \item \textit{Use Case}: Good for small files when you want to process lines individually.
+                  \item \textit{Warning}: Also loads the entire file into memory.
+              \end{itemize}
+
+        \item \textbf{\texttt{for line in file\_object:}}
+              \begin{itemize}
+                  \item Reads the file \textbf{one line at a time} in a loop.
+                  \item \textbf{Most memory-efficient} and Pythonic approach.
+                  \item \textbf{Recommended for most cases}, especially for large files.
+              \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 3: Reading from Files - Code Examples}
+    \framesubtitle{Seeing the Methods in Action}
+
+    \begin{block}{Example File: \texttt{haiku.txt}}
+        \begin{verbatim}
+An old silent pond...
+A frog jumps into the pond,
+splash! Silence again.
+        \end{verbatim}
+    \end{block}
+
+    \textbf{1. Using \texttt{.read()}}
+    \begin{lstlisting}[language=Python]
+with open('haiku.txt', 'r') as f:
+    content = f.read()
+# content is 'An old silent pond...\nA frog...\n...'
+    \end{lstlisting}
+
+    \textbf{2. Using \texttt{.readlines()}}
+    \begin{lstlisting}[language=Python]
+with open('haiku.txt', 'r') as f:
+    lines = f.readlines()
+# lines is ['An old silent pond...\n', '...', '...']
+    \end{lstlisting}
+
+    \textbf{3. Using a \texttt{for} loop (Recommended)}
+    \begin{lstlisting}[language=Python]
+with open('haiku.txt', 'r') as f:
+    for line in f:
+        print(line.strip()) # .strip() removes newlines
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Live Code Example: Reading and Processing a File}
+    \framesubtitle{The Scenario and the Code}
+    
+    Let's read a file named \texttt{data.csv} and print the product name and price from each line.
+    
+    \begin{columns}[T] % T option aligns tops
+        \begin{column}{0.4\textwidth}
+            \begin{block}{File Content: \texttt{data.csv}}
+\begin{lstlisting}
+product,price,quantity
+Apple,0.50,10
+Milk,3.50,2
+\end{lstlisting}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.6\textwidth}
+            \begin{block}{Python Code}
+\begin{lstlisting}[language=Python]
+with open('data.csv', 'r') as f:
+    for line in f:
+        # Clean up whitespace
+        cleaned_line = line.strip()
+        
+        # Split into a list
+        parts = cleaned_line.split(',')
+        
+        # Access parts by index
+        print(f'Product: {parts[0]}, Price: {parts[1]}')
+\end{lstlisting}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Live Code Example - Execution Breakdown}
+    \framesubtitle{Tracing the line: 'Apple,0.50,10\textbackslash n'}
+    
+    Let's see what happens inside the loop for the second line of the file.
+    
+    \begin{enumerate}
+        \item \textbf{\texttt{for line in f:}}
+        \begin{itemize}
+            \item Python reads the next line, including the invisible newline character `\n`.
+            \item Value of \texttt{line}: \texttt{'Apple,0.50,10\textbackslash n'}
+        \end{itemize}
+        
+        \item \textbf{\texttt{cleaned\_line = line.strip()}}
+        \begin{itemize}
+            \item The \texttt{.strip()} method removes leading/trailing whitespace (including `\n`). This is a crucial cleaning step.
+            \item Value of \texttt{cleaned\_line}: \texttt{'Apple,0.50,10'}
+        \end{itemize}
+        
+        \item \textbf{\texttt{parts = cleaned\_line.split(',')}}
+        \begin{itemize}
+            \item The \texttt{.split(',')} method breaks the string into a list, using the comma as the separator.
+            \item Value of \texttt{parts}: \texttt{['Apple', '0.50', '10']}
+        \end{itemize}
+
+        \item \textbf{\texttt{print(f'Product: ...')}}
+        \begin{itemize}
+            \item We use list indexing (\texttt{parts[0]}, \texttt{parts[1]}) to access the desired data.
+            \item \textbf{Output for this line:} \texttt{Product: Apple, Price: 0.50}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Live Code Example - Key Takeaways}
+    
+    This example illustrates several important concepts in data processing.
+    
+    \begin{itemize}
+        \item \textbf{The "Loop, Strip, Split" Pattern:} This is a cornerstone of processing text files in Python. You will use this pattern constantly.
+        
+        \item \textbf{Data is Text:} When you read from a file, everything is a string, even numbers. To do math, you must convert them first.
+        \begin{itemize}
+            \item E.g., \texttt{price\_float = float(parts[1])}
+        \end{itemize}
+        
+        \item \textbf{Combining Skills:} This example powerfully combines file handling, string manipulation, and list indexing.
+    \end{itemize}
+    
+    \begin{block}{Final Output of the Code}
+\begin{lstlisting}
+Product: product, Price: price
+Product: Apple, Price: 0.50
+Product: Milk, Price: 3.50
+\end{lstlisting}
+    \end{block}
+    
+    \textit{Food for thought: How could you modify the code to skip the header line?}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 4: Writing to Files - Modes}
+    Writing to files uses the same \texttt{with open(...)} pattern, but the \textit{mode} determines the behavior.
+
+    \begin{columns}[T] % T option aligns blocks at the top
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Write Mode ('w'): A Blank Slate}
+                \begin{itemize}
+                    \item Opens a file for writing.
+                    \item If the file doesn't exist, it is created.
+                    \item \textbf{Destructive}: If the file exists, its content is \textbf{erased} before writing.
+                \end{itemize}
+                \begin{alertblock}{Critical Warning}
+                    Use mode \texttt{'w'} with extreme care. It will permanently delete any existing content in the file without confirmation.
+                \end{alertblock}
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Append Mode ('a'): Adding to the End}
+                \begin{itemize}
+                    \item Opens a file to add content to the end.
+                    \item If the file doesn't exist, it is created.
+                    \item \textbf{Preserves}: Existing content is kept, and new content is written after it.
+                    \item Ideal for log files or adding records over time.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Part 4: Writing to Files - The \texttt{.write()} Method}
+    Once a file is open in \texttt{'w'} or \texttt{'a'} mode, you use the \texttt{.write()} method to add text.
+
+    \begin{block}{Important: \texttt{.write()} Does Not Add Newlines}
+        Unlike the \texttt{print()} function, \texttt{.write()} only writes the exact string you give it. You must manually add the newline character \texttt{\textbackslash{}n} to create separate lines.
+    \end{block}
+
+    \begin{exampleblock}{Example: The Importance of \texttt{\textbackslash{}n}}
+        \textbf{Code without \texttt{\textbackslash{}n}:}
+\begin{lstlisting}[language=Python]
+with open('greetings.txt', 'w') as f:
+    f.write('Hello')
+    f.write('World')
+\end{lstlisting}
+        \textbf{Resulting \texttt{greetings.txt}:}
+\begin{lstlisting}[language=text, frame=none]
+HelloWorld
+\end{lstlisting}
+        \hrule
+        \vspace{0.5em}
+        \textbf{Code with \texttt{\textbackslash{}n}:}
+\begin{lstlisting}[language=Python]
+with open('greetings.txt', 'w') as f:
+    f.write('Hello\n')
+    f.write('World\n')
+\end{lstlisting}
+        \textbf{Resulting \texttt{greetings.txt}:}
+\begin{lstlisting}[language=text, frame=none]
+Hello
+World
+\end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Example: Writing and Appending - Part 1}
+    \framesubtitle{Creating a New Log File}
+
+    Let's create a log file. We'll start by using \textbf{write mode (`'w'`)} to create the file and add our first entries.
+    \vspace{1em}
+
+    \begin{block}{Creating and Writing to a New File (`'w'` mode)}
+    This code creates a new file named \texttt{log.txt} or completely erases its content if it already exists.
+    \begin{lstlisting}[language=Python]
+    # 'w' mode creates a new file or overwrites an existing one.
+    with open('log.txt', 'w') as f:
+        f.write('Log file started.\n')
+        f.write('First entry recorded.\n')
+    \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Resulting \texttt{log.txt}}
+    The file is created with the specified content. The \texttt{\textbackslash n} ensures each entry is on a new line.
+    \begin{lstlisting}[language=text]
+    Log file started.
+    First entry recorded.
+    \end{lstlisting}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Example: Writing and Appending - Part 2}
+    \framesubtitle{Adding to an Existing Log File}
+
+    Now, let's add a new event to our log. We use \textbf{append mode (`'a'`)} to add to the end without deleting existing content.
+    \vspace{1em}
+
+    \begin{block}{Appending to the Existing File (`'a'` mode)}
+    This code opens \texttt{log.txt} and places the cursor at the end, ready to add new text.
+    \begin{lstlisting}[language=Python]
+    # 'a' mode opens the file to add content at the end.
+    with open('log.txt', 'a') as f:
+        f.write('A second entry was added.\n')
+    \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Final \texttt{log.txt}}
+    The new entry is added after the original content.
+    \begin{lstlisting}[language=text]
+    Log file started.
+    First entry recorded.
+    A second entry was added.
+    \end{lstlisting}
+    \end{block}
+
+    \begin{alertblock}{Key Takeaway}
+        \begin{itemize}
+            \item \textbf{Write ('w')}: Use to \textbf{create} a file or to \alert{completely replace} its contents.
+            \item \textbf{Append ('a')}: Use for all \textbf{subsequent additions} to a file to \alert{preserve} existing data.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary: What We've Mastered}
+    \begin{block}{String Manipulation: Cleaning and Parsing Data}
+        \begin{itemize}
+            \item \texttt{strip()}: Cleans whitespace from the ends of a string.
+            \item \texttt{split()}: Breaks a string into a list of substrings based on a delimiter.
+            \item \texttt{join()}: Combines a list of strings into a single string.
+        \end{itemize}
+    \end{block}
+
+    \vspace{1em}
+
+    \begin{block}{File I/O: Persisting Data}
+        \begin{itemize}
+            \item We can now read from and write to text files, making our program's data persistent.
+            \item The \texttt{with open(...) as f:} statement is the standard, safe way to handle files, ensuring they are closed automatically.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary: Why It Matters \& What's Next}
+    \begin{block}{Connection: Real-World Applications}
+        These skills are the building blocks for countless tasks:
+        \begin{itemize}
+            \item \textbf{Data Analysis}: Parsing log files or raw data to extract meaningful information.
+            \item \textbf{Web Scraping}: Cleaning raw HTML text to pull out specific data points.
+            \item \textbf{Configuration}: Reading settings from \texttt{.conf} files to control program behavior.
+        \end{itemize}
+    \end{block}
+
+    \vspace{1em}
+
+    \begin{block}{Next Up: Building on Our Foundation}
+        \begin{itemize}
+            \item We will explore \textbf{Modules}: pre-written libraries that extend Python's capabilities.
+            \item Our first stop is the \texttt{csv} module, which builds directly on our file I/O skills to easily handle Comma-Separated Values (CSV) files.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\end{document}

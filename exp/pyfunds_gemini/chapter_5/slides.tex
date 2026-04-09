@@ -1,0 +1,1099 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  xleftmargin=2em
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 5: Control Flow: Iteration}
+\author{Teaching Assistant}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 5: Control Flow: Iteration}
+    
+    \begin{block}{What is Iteration?}
+        At its core, iteration is the process of repeating a set of instructions. Think of any task you do that involves repetition:
+        \begin{itemize}
+            \item Washing a stack of dishes (repeat "wash, rinse, dry" for each dish).
+            \item Climbing a flight of stairs (repeat "lift foot, place on next step" for each stair).
+            \item Dealing cards for a game (repeat "give one card to player" for each person).
+        \end{itemize}
+        
+        \vspace{1em}
+        
+        In programming, we use \textbf{loops} to perform iteration. A loop is a control structure that allows us to execute a block of code multiple times, saving us from writing the same lines of code over and over again.
+    \end{block}
+    \begin{note}
+    "Alright, let's begin Chapter 5, which is all about iteration. This is a fundamental concept where we teach the computer how to handle repetitive tasks.
+
+    So, what exactly is iteration? Simply put, it's the act of repeating something. We do this all the time in our daily lives without thinking much about it. For example, when you wash a pile of dishes, you're repeating the same sequence of actions for every single dish. The same goes for climbing stairs or dealing cards. You're executing a simple, repeated instruction set.
+
+    In the world of programming, we have a special tool for this: the loop. A loop is a structure that tells the computer, 'Hey, run this piece of code again and again.' This is incredibly powerful because it lets us automate tasks and avoid writing redundant code. Instead of telling the computer to process item 1, then item 2, then item 3, we can just say, 'Process every item in this list.' This is the core idea we'll be building on."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 5: Control Flow: Iteration}
+    
+    \begin{block}{Learning Objectives for This Chapter}
+        By the end of this chapter, you will be able to:
+        \begin{enumerate}
+            \item \textbf{Understand the "Why":} Explain why loops are a fundamental tool for solving problems efficiently.
+            \item \textbf{Use \texttt{for} Loops:} Write \texttt{for} loops to iterate a specific number of times or over all items in a sequence.
+            \item \textbf{Use \texttt{while} Loops:} Implement \texttt{while} loops to repeat code as long as a certain condition remains true.
+            \item \textbf{Control Loop Execution:} Use the \texttt{break} and \texttt{continue} statements to customize and control the flow of your loops.
+            \item \textbf{Avoid Common Pitfalls:} Recognize and prevent issues like infinite loops.
+        \end{enumerate}
+    \end{block}
+    
+    \vfill
+    
+    \textit{This chapter is about making the computer do the boring, repetitive work for us—a cornerstone of automation and powerful programming.}
+    \begin{note}
+    "Now that we know what iteration is, let's look at our roadmap for this chapter. These are the key skills you'll master.
+
+    First, we'll solidify our understanding of *why* loops are so critical. It's not just about saving keystrokes; it’s a strategy for efficient problem-solving.
+
+    Second, we'll dive into our first type of loop: the `for` loop. This is your go-to tool when you know exactly how many times you need to repeat an action, like processing every item in a list.
+
+    Third, we'll explore the `while` loop. This is used when the repetition depends on a condition being met, and you might not know in advance how many iterations it will take.
+
+    Fourth, you'll learn to be the master of your loops by using `break` and `continue`. These statements give you fine-grained control to exit a loop early or skip a specific iteration.
+
+    And finally, a very important topic: we'll discuss how to avoid common mistakes, especially the dreaded infinite loop, which can freeze your program.
+
+    Ultimately, as the slide says, this is all about automation. By mastering loops, you're learning how to delegate all the tedious, repetitive work to the machine, which is what makes programming so powerful."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why Do We Need Loops? (The Problem)}
+    
+    Let's start with a simple task: greet three people by name.
+    \vspace{1em}
+    
+    Without a loop, the code is repetitive:
+    \begin{lstlisting}[language=Python]
+# Greet three specific individuals
+print("Hello, Alice!")
+print("Hello, Bob!")
+print("Hello, Charlie!")
+    \end{lstlisting}
+    
+    \begin{block}{Key Questions}
+        \begin{itemize}
+            \item What if you had to greet \textbf{100 people}?
+            \item What if you needed to change "Hello" to "Welcome"?
+        \end{itemize}
+    \end{block}
+    
+    \note{
+    "So far, we've written programs that run from top to bottom, executing each instruction once. But what happens when you need to perform the same action multiple times? This is one of the most common scenarios in programming."
+    \par\vspace{1em}
+    "Let's start with a simple task: greet three people by name. Without any special tools, you would probably write something like this. This code works perfectly for three people. But now, ask yourself two important questions: What if you had to greet 100 people? You'd have to write 100 lines of code. And what if you needed to change the greeting from 'Hello' to 'Welcome'? You'd have to edit all 100 lines. This is not just tedious; it's a recipe for errors."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why Do We Need Loops? (The Issues)}
+    
+    This "manual" approach violates a fundamental principle of software development:
+    \begin{block}{\textbf{Don't Repeat Yourself (DRY)}}
+        Repetitive code is a sign of inefficiency and potential bugs.
+    \end{block}
+    
+    \textbf{Core Issues with Repetitive Code:}
+    \begin{itemize}
+        \item \textbf{Not Scalable:} The code is rigid. It cannot adapt to a changing number of items (e.g., greeting 4,000 people from a file).
+        \pause
+        \item \textbf{Hard to Maintain:} To change the core action (like the greeting message), you must find and update every single occurrence.
+        \pause
+        \item \textbf{Error-Prone:} More lines of code mean more opportunities for typos and copy-paste mistakes.
+    \end{itemize}
+    
+    \note{
+    "This 'manual' approach we just saw violates a fundamental principle of software development: Don't Repeat Yourself, or DRY."
+    \par\vspace{1em}
+    "Repetitive code is problematic for several key reasons. First, it's not scalable. The code is rigid and can't adapt if the number of items changes. It works for three people, but it fails for a list of 4,000 students from a file."
+    \par\vspace{1em}
+    "Second, it's hard to maintain. To change the greeting, you have to find and update every single print statement. If you miss just one, you've introduced a bug."
+    \par\vspace{1em}
+    "Finally, it's error-prone. The more code you write, especially repetitive code, the more chances you have for typos or copy-paste mistakes."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why Do We Need Loops? (The Solution: Iteration)}
+    
+    The solution is to tell the computer to perform the same action \textit{for each item} in a collection. This process is called \textbf{iteration}.
+    
+    A \textbf{loop} allows us to:
+    \begin{enumerate}
+        \item Define a task \textbf{once} (e.g., the `print()` statement).
+        \item Provide a collection of data (e.g., a list of names).
+        \item Let the computer automatically perform the task for every item.
+    \end{enumerate}
+    
+    \begin{block}{Conceptual Model}
+\begin{verbatim}
+For each name in the list of students:
+    Execute this block of code
+    using the current name.
+\end{verbatim}
+    \end{block}
+    
+    Each pass through the loop is a single \textbf{iteration}.
+    
+    \note{
+    "The solution to this problem is to tell the computer to perform the same action for each item in a collection. This process of repeating a block of code is called iteration, and the structures we use to do it are called loops."
+    \par\vspace{1em}
+    "A loop lets us define the task just once, provide a collection of data like a list of names, and then let the computer do all the repetitive work for us."
+    \par\vspace{1em}
+    "Here's the conceptual model. We say, 'For each name in our list of students, execute this block of code.' The loop will then take the first name, run the code, take the second name, run the code again, and so on, until it's done."
+    \par\vspace{1em}
+    "Each one of these passes—greeting Alice, then Bob, then Charlie—is a single iteration. By using a loop, our code becomes efficient, scalable, and easy to maintain. On the next slide, we'll see how to write this in Python using a `for` loop."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{for} Loop: Definite Iteration}
+    A \texttt{for} loop is used for \textbf{definite iteration}—it executes a block of code for each item in a known sequence.
+    \vspace{1em}
+
+    \begin{block}{General Syntax}
+        \begin{lstlisting}[language=Python]
+for loop_variable in sequence:
+    # Loop body: this code executes for each item
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item \texttt{for...in}: Keywords that begin the loop.
+        \item \texttt{loop\_variable}: A temporary variable you name that holds the \textit{current} item from the sequence.
+        \item \texttt{sequence}: The collection of items to iterate over (e.g., a list).
+        \item \texttt{:} and \textbf{Indentation}: The colon marks the end of the statement. The indented code that follows is the \textbf{loop body}.
+    \end{itemize}
+
+    \begin{note}
+    "Alright, everyone. Our first and most common type of loop is the `for` loop. We call it a tool for 'definite iteration'. This is a key term. It means that before the loop even begins, we know exactly how many times it's going to run. If you have a list of 3 items, it will run 3 times.
+
+    Let's look at the syntax. It starts with the `for` keyword, followed by a 'loop variable' that you name—this variable will hold the current item in each cycle. The `in` keyword connects it to the sequence you're looping over. The line must end with a colon, and, crucially, the code you want to repeat must be indented underneath. This indented section is called the loop body."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{for} Loop - Example: Automating Greetings}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Python Code}
+\begin{lstlisting}[language=Python]
+# 1. Define the sequence
+students = ["Alice", "Bob", "Charlie"]
+
+# 2. Loop through the sequence
+for name in students:
+    # 3. This body runs 3 times
+    print(f"Hello, {name}!")
+\end{lstlisting}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{How It Executes}
+                \begin{enumerate}
+                    \item \textbf{Iteration 1:} \texttt{name} is \texttt{"Alice"}. Prints "Hello, Alice!".
+                    \item \textbf{Iteration 2:} \texttt{name} is \texttt{"Bob"}. Prints "Hello, Bob!".
+                    \item \textbf{Iteration 3:} \texttt{name} is \texttt{"Charlie"}. Prints "Hello, Charlie!".
+                    \item The loop ends.
+                \end{enumerate}
+            \end{block}
+            \begin{block}{Final Output}
+\begin{verbatim}
+Hello, Alice!
+Hello, Bob!
+Hello, Charlie!
+\end{verbatim}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \begin{note}
+    "Let's make this concrete with an example. First, we define a list called `students`.
+
+    Next, we write our `for` loop. We can read this as 'for each `name` in the `students` list, do the following'. The indented code, our `print` statement, is the loop body.
+
+    Here's how Python executes it. For the first iteration, it takes the first item, "Alice", and assigns it to the `name` variable. Then it runs the loop body, printing 'Hello, Alice!'.
+    
+    Then, it moves to the second item, "Bob", assigns it to `name`, and runs the body again to print 'Hello, Bob!'.
+    
+    Finally, it takes "Charlie", assigns it to `name`, and prints 'Hello, Charlie!'. After that, Python sees there are no more items in the list, so the loop concludes."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{for} Loop - Key Points}
+    
+    \begin{block}{Key Points to Remember}
+        \begin{itemize}
+            \item \textbf{Automation}: The \texttt{for} loop is your primary tool for automating repetitive tasks over a collection of items.
+            \vspace{1em}
+            \item \textbf{Readability}: Its syntax is designed to be clear and read almost like a plain English sentence.
+            \vspace{1em}
+            \item \textbf{Indentation is Crucial}: Only the indented code is part of the loop. Code at the same indentation level as the \texttt{for} statement will run only \textit{after} the entire loop has finished.
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Common Mistake}
+        Forgetting the colon at the end of the \texttt{for} line or using incorrect indentation are the most common errors for beginners.
+    \end{alertblock}
+    
+    \begin{note}
+    "To wrap up on `for` loops for now, let's review the three most important takeaways.
+    
+    First, automation. This is why we use loops—to avoid writing repetitive code.
+    
+    Second, readability. Python's `for` loop is very easy to read and understand once you're familiar with the structure.
+    
+    And finally, and this is critical in Python, indentation matters. The indented code belongs to the loop. Anything that is not indented at that level will not be part of the loop. This is a very common source of bugs when you're starting out, so always double-check your indentation!"
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding the Loop Variable and State}
+    \framesubtitle{Defining the Core Concepts}
+
+    A \texttt{for} loop automates repetition by managing two key components:
+
+    \begin{block}{Loop Variable}
+        A temporary variable that holds the value of the \textit{current item} from the sequence for each pass of the loop.
+        \begin{itemize}
+            \item Its value is automatically updated at the start of each iteration.
+            \item In our example, \texttt{name} is the loop variable.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Program State}
+        A "snapshot" of the program's memory at a specific moment in time.
+        \begin{itemize}
+            \item It includes the current values of all variables.
+            \item As a loop runs, the program's state changes with each iteration.
+        \end{itemize}
+    \end{block}
+
+    \begin{note}
+    "Now that we've seen the basic structure of a `for` loop, let's break down exactly what's happening behind the scenes. This involves two key concepts: the 'loop variable' and the 'program state'.
+
+    Think of the **loop variable**—in our case, `name`—as a temporary nametag. For each iteration, Python takes one item from the list and assigns it this nametag.
+
+    The **program state** is simply the program's memory at any given point. As we assign new values to our loop variable, the state changes. Understanding how the state evolves is crucial for tracing how your code works and for debugging problems."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visualizing the Loop: A Step-by-Step Trace}
+    \framesubtitle{Tracking the State Changes}
+
+    \begin{columns}[T]
+        \begin{column}{0.4\textwidth}
+            \textbf{Initial Code:}
+            \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+students = ["Alice", "Bob", "Charlie"]
+
+for name in students:
+    print(f"Hello, {name}!")
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \textbf{Execution Trace:}
+            \begin{itemize}
+                \item \textbf{Before Loop:} The \texttt{students} list exists. \texttt{name} is not yet defined by the loop.
+                \pause
+                \item \textbf{1st Iteration:}
+                \begin{itemize}
+                    \item \textbf{State Change:} \texttt{name} is assigned \texttt{"Alice"}.
+                    \item \textit{Output:} \texttt{Hello, Alice!}
+                \end{itemize}
+                \pause
+                \item \textbf{2nd Iteration:}
+                \begin{itemize}
+                    \item \textbf{State Change:} \texttt{name} is updated to \texttt{"Bob"}.
+                    \item \textit{Output:} \texttt{Hello, Bob!}
+                \end{itemize}
+                \pause
+                \item \textbf{3rd Iteration:}
+                \begin{itemize}
+                    \item \textbf{State Change:} \texttt{name} is updated to \texttt{"Charlie"}.
+                    \item \textit{Output:} \texttt{Hello, Charlie!}
+                \end{itemize}
+            \end{itemize}
+            \pause
+            \textbf{End of Loop:} No more items in \texttt{students}. The loop terminates.
+        \end{column}
+    \end{columns}
+
+    \begin{note}
+    "Let's trace the execution of this code to see the concepts from the last slide in action.
+
+    First, Python creates the `students` list in memory. The loop hasn't started, so the loop variable `name` hasn't been assigned anything yet.
+
+    Now, the first iteration begins. Python fetches the first item from `students`, which is 'Alice', and assigns it to `name`. The program's state has now changed. The indented code runs, printing 'Hello, Alice!'.
+
+    Next, the second iteration. Python goes back, fetches the second item, 'Bob', and *reassigns* it to `name`. The previous value, 'Alice', is overwritten. The state changes again, and the code prints 'Hello, Bob!'.
+
+    The same thing happens for the third iteration with 'Charlie'.
+
+    After the third pass, Python checks the list one more time. It finds no more items, so the loop's condition is no longer met. The loop terminates automatically, and the program will continue with any code that follows."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Looping a Specific Number of Times with \texttt{range()}}
+    
+    The \texttt{range()} function generates a sequence of numbers, which is perfect for running a loop a specific number of times.
+    \vspace{1em}
+    
+    \begin{block}{The Basic Form: \texttt{range(stop)}}
+        \begin{itemize}
+            \item \textbf{Syntax:} \texttt{range(stop)}
+            \item \textbf{Generates:} A sequence of integers from 0 up to (but not including) \texttt{stop}.
+            \item \textbf{Rule of Thumb:} \texttt{range(N)} executes the loop exactly \texttt{N} times, with values from 0 to \texttt{N-1}.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# range(3) generates the sequence: 0, 1, 2
+for i in range(3):
+    print(f"This is iteration number {i}")
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{verbatim}
+This is iteration number 0
+This is iteration number 1
+This is iteration number 2
+        \end{verbatim}
+    \end{block}
+
+    \note{
+    "In the previous slide, we saw how a `for` loop iterates over an existing sequence, like a list of names. But what if we don't have a list? What if we just want to repeat a block of code a specific number of times—say, 5 times, or 100 times? This is a very common task, and Python provides an elegant solution: the `range()` function."
+    
+    "Think of `range()` as a special-purpose number sequence generator. When used in a `for` loop, it provides the numbers that the loop variable will take on in each iteration."
+    
+    "Let's look at its simplest and most common form: `range(stop)`. This takes a single number."
+
+    "There are two critical rules to remember for `range(stop)`:
+    1.  It always starts at 0. This aligns with how indexing works in Python and many other languages.
+    2.  The `stop` value is exclusive. This means the sequence goes *up to* but does not include this final number. So, `range(3)` doesn't give you `0, 1, 2, 3`; it gives you `0, 1, 2`."
+
+    "Look at our first example. `for i in range(3):`. The `range(3)` function generates the sequence 0, 1, 2. So, the loop will run three times.
+    In the first pass, `i` is 0, and it prints 'This is iteration number 0'.
+    In the second pass, `i` becomes 1, and it prints 'This is iteration number 1'.
+    In the third and final pass, `i` is 2, and it prints 'This is iteration number 2'.
+    The loop then terminates. It ran exactly 3 times, as we wanted."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Looping with \texttt{range()} (cont.)}
+    
+    \begin{block}{The Extended Form: \texttt{range(start, stop)}}
+        \begin{itemize}
+            \item \textbf{Syntax:} \texttt{range(start, stop)}
+            \item \textbf{Generates:} A sequence from the \texttt{start} value up to, but not including, the \texttt{stop} value.
+            \item The \texttt{start} value is \textbf{inclusive}; the \texttt{stop} value is \textbf{exclusive}.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# range(1, 4) generates the sequence: 1, 2, 3
+for i in range(1, 4):
+    print(f"Launch sequence: T-{i}")
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{verbatim}
+Launch sequence: T-1
+Launch sequence: T-2
+Launch sequence: T-3
+        \end{verbatim}
+    \end{block}
+
+    \note{
+    "But what if you don't want to start at 0? For that, we can use the two-argument form: `range(start, stop)`."
+
+    "This gives us more control. The `start` argument is **inclusive**—it's the first number in our sequence. The `stop` argument remains **exclusive**, just like before."
+
+    "In our second example, we want to print a launch sequence. `range(1, 4)` tells Python to 'start counting at 1, and stop before you get to 4'. This generates the sequence 1, 2, 3."
+
+    "The loop then runs with `i` taking on these values, producing the output 'T-1', 'T-2', and 'T-3'."
+    
+    "So, `range()` is the perfect tool for **definite iteration**—when you know in advance exactly how many times you want the loop to run. It's more memory-efficient than creating a full list of numbers, especially for large ranges."
+
+    "This contrasts with what we'll see next. What if you *don't* know how many times you need to loop? What if you need to loop until a certain condition is met? For that, we'll use a different kind of loop, the `while` loop, which is the topic of our next slide."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{while} Loop: Introduction}
+    
+    In contrast to \texttt{for} loops that perform a set number of iterations, a \texttt{while} loop performs \textbf{indefinite iteration}. It repeats as long as a condition remains true.
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\texttt{for} loop (Definite)}
+                "Run 10 laps around the track."
+                \vspace{0.5em}
+                You know exactly when you'll stop.
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\texttt{while} loop (Indefinite)}
+                "Keep running laps \textit{while} you still have energy."
+                \vspace{0.5em}
+                You stop when a condition changes.
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1em}
+    \textbf{General Syntax:}
+    \begin{lstlisting}[language=Python]
+while condition:
+    # Code to execute as long as the
+    # condition is True.
+
+    # IMPORTANT: Something in this block
+    # must eventually make the condition False!
+    \end{lstlisting}
+    
+    \begin{note}
+    Alright, let's move from definite to indefinite iteration. We've seen `for` loops, which are perfect when we know exactly how many times we need to repeat something. But what if we don't know when to stop? For that, we use a `while` loop.
+
+    Think of it like this: a `for` loop is like being told to "run 10 laps around the track"—you know the exact endpoint. A `while` loop is like being told to "keep running laps while you still have energy." The stopping point isn't a number, it's a condition.
+
+    Here's the syntax. It starts with the `while` keyword, followed by a boolean condition and a colon. The indented code block, or the body of the loop, is executed repeatedly. The loop checks the condition *before* each iteration. If it's `True`, the body runs. This cycle continues until the condition becomes `False`. The most important thing to remember is that something inside the loop's body must work towards making that condition false.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{while} Loop: Example Walkthrough}
+    
+    Let's trace the execution of a simple countdown to see the loop in action.
+    
+    \begin{columns}[T]
+        \begin{column}{0.4\textwidth}
+            \textbf{Code:}
+            \begin{lstlisting}[language=Python]
+count = 3
+while count > 0:
+    print(count)
+    count = count - 1
+
+print("Blast off!")
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \textbf{Execution Trace:}
+            \begin{enumerate}
+                \item \textbf{Setup:} \texttt{count} is initialized to \texttt{3}.
+                \item \textbf{Check 1:} Is \texttt{3 > 0}? Yes (\texttt{True}).
+                \begin{itemize}
+                    \item Print \texttt{3}.
+                    \item Update \texttt{count} to \texttt{2}.
+                \end{itemize}
+                \item \textbf{Check 2:} Is \texttt{2 > 0}? Yes (\texttt{True}).
+                \begin{itemize}
+                    \item Print \texttt{2}.
+                    \item Update \texttt{count} to \texttt{1}.
+                \end{itemize}
+                \item \textbf{Check 3:} Is \texttt{1 > 0}? Yes (\texttt{True}).
+                \begin{itemize}
+                    \item Print \texttt{1}.
+                    \item Update \texttt{count} to \texttt{0}.
+                \end{itemize}
+                \item \textbf{Check 4:} Is \texttt{0 > 0}? No (\texttt{False}).
+                \item \textbf{Exit Loop:} Execute code after the loop.
+                \begin{itemize}
+                    \item Print "Blast off!".
+                \end{itemize}
+            \end{enumerate}
+        \end{column}
+    \end{columns}
+    
+    \begin{note}
+    Let's trace this code line by line to really understand the flow.
+
+    First, Python creates the variable `count` and sets its value to 3.
+
+    Now we reach the `while` loop. Python checks the condition: is `count > 0`? Since 3 is greater than 0, the condition is `True`, so we enter the loop's body. We print the value of `count`, which is 3. Then, we update `count` by subtracting 1, so `count` is now 2.
+
+    We've reached the end of the block, so we go back to the top of the loop and check the condition again. Is `count > 0`? Yes, 2 is greater than 0. So we enter the body again, print 2, and update `count` to 1.
+
+    Back to the top. Is `count > 0`? Yes, 1 is greater than 0. We print 1, and update `count` to 0.
+
+    Back to the top one last time. Is `count > 0`? No, 0 is not greater than 0, so the condition is finally `False`. Because the condition is false, Python skips the loop's body entirely and moves to the next line of code after the loop.
+
+    Finally, it executes `print("Blast off!")`, and our program is done. This step-by-step process is how the `while` loop controls the program's flow.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{while} Loop: The Golden Rule}
+    
+    The body of a \texttt{while} loop \textbf{must} contain logic that will eventually cause the loop's condition to become \texttt{False}.
+    
+    \begin{alertblock}{The Danger: Infinite Loops}
+        If the condition \textit{never} becomes \texttt{False}, the loop will run forever. This is called an \textbf{infinite loop}, and it will typically cause your program to freeze or crash.
+    \end{alertblock}
+    
+    \vspace{1em}
+    
+    \begin{block}{The "Escape Plan"}
+    In our countdown example, this line is the crucial "escape plan" that prevents an infinite loop. Without it, \texttt{count} would always be 3, and \texttt{count > 0} would always be true.
+    
+    \begin{lstlisting}[language=Python]
+count = 3
+while count > 0:
+    print(count)
+    # This line ensures the loop will eventually terminate.
+    count = count - 1 
+    \end{lstlisting}
+    \end{block}
+    
+    \begin{note}
+    This brings us to the single most important rule for `while` loops: the loop's body must contain code that will eventually make the condition false. I call this the "escape plan."
+
+    If you forget this, you create an infinite loop. The condition will always be true, and the loop will run forever, which usually means your program will become unresponsive and you'll have to force it to close.
+
+    Let's look at our countdown example again. The line `count = count - 1` is our escape plan. With every iteration, it brings the value of `count` one step closer to 0. Once `count` hits 0, the condition `count > 0` becomes false, and we break out of the loop. If we forgot that line, `count` would always be 3, the condition would always be true, and the program would just print `3, 3, 3, 3...` forever. So, whenever you write a `while` loop, always ask yourself: "What is my escape plan? How will this loop stop?"
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Pitfall: The Infinite Loop (1/3)}
+    \framesubtitle{What is an Infinite Loop?}
+    
+    An \textbf{infinite loop} is a loop whose condition always evaluates to \texttt{True}, causing it to run forever.
+    \vspace{1em}
+    
+    When a program gets stuck in an infinite loop, it becomes unresponsive or "hangs."
+    
+    \begin{itemize}
+        \item \textbf{Cause:} The loop's body fails to update the variables in the condition in a way that will eventually make the condition \texttt{False}.
+        \item \textbf{Symptom:} The program seems to freeze, or it continuously prints the same output without stopping.
+        \item \textbf{Solution:} To stop a running program in most terminals, press \textbf{\texttt{Ctrl+C}}.
+    \end{itemize}
+
+    \begin{note}
+    "In the last slide, we saw how a `while` loop works correctly. Now, let's look at the single most common error students make with `while` loops: the infinite loop. Understanding this is crucial for writing stable programs. An infinite loop is a loop that never ends.
+    The reason it happens is that the condition we're checking, like `count > 0`, starts as true and never becomes false. This traps the computer in an endless cycle. If this happens to you, your program will look like it has frozen. The quickest way to stop it is by pressing Ctrl+C in your terminal."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Pitfall: The Infinite Loop (2/3)}
+    \framesubtitle{Anatomy of the Error: A Countdown Gone Wrong}
+    
+    Let's analyze code that is \textit{supposed} to be a countdown.
+    
+    \begin{block}{Example of an Infinite Loop}
+    \begin{lstlisting}[language=Python]
+count = 3
+while count > 0:
+    print(f"Current count: {count}") 
+    # MISTAKE: The value of 'count' is never updated!
+    \end{lstlisting}
+    \end{block}
+    
+    \textbf{Step-by-step Execution Trace:}
+    \begin{enumerate}
+        \item \textbf{Start:} \texttt{count} is initialized to \texttt{3}.
+        \item \textbf{Check 1:} Is \texttt{count > 0}? Yes, \texttt{3 > 0} is \texttt{True}. Execute body.
+        \item \textbf{Check 2:} Is \texttt{count > 0}? Yes, \texttt{3 > 0} is \texttt{True}. Execute body.
+        \item \textbf{Check 3:} Is \texttt{count > 0}? Yes, \texttt{3 > 0} is \texttt{True}. Execute body.
+        \item \dots and so on, forever. The condition never becomes \texttt{False}.
+    \end{enumerate}
+
+    \begin{note}
+    "Here's a concrete example. We initialize `count` to 3 and we want to loop as long as `count` is greater than 0. Let's trace the execution.
+    First, the program checks the condition: is 3 greater than 0? Yes, it is. So, the loop body runs and it prints 'Current count: 3'.
+    Now, the loop repeats. It checks the condition again. What is the value of `count`? It's still 3. We never changed it. So, is 3 greater than 0? Yes. It prints 'Current count: 3' again.
+    You can see the problem. The value of `count` is static. It never changes, so the condition `count > 0` will be true forever."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Pitfall: The Infinite Loop (3/3)}
+    \framesubtitle{The Fix and The Golden Rule}
+
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{❌ Infinite Loop (Incorrect)}
+\begin{lstlisting}[language=Python]
+count = 3
+while count > 0:
+    print(count)
+# Missing update!
+\end{lstlisting}
+            \vspace{0.5em}
+            \textbf{Problem:} `count` never changes. The condition is always \texttt{True}.
+            \end{alertblock}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{✅ Correct Loop (Fixed)}
+\begin{lstlisting}[language=Python]
+count = 3
+while count > 0:
+    print(count)
+    count = count - 1
+\end{lstlisting}
+            \vspace{0.5em}
+            \textbf{Solution:} `count` decreases each iteration, eventually becoming `0` and stopping the loop.
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1em}
+    \begin{block}{Key Takeaway: The Golden Rule}
+    Before running any \texttt{while} loop, ask yourself this question:
+    \begin{center}
+    \textit{"What line of code \textbf{inside} my loop will eventually make the condition \texttt{False}?"}
+    \end{center}
+    If you can't point to a specific line, you've likely created an infinite loop.
+    \end{block}
+    
+    \begin{note}
+    "So, how do we fix it? It's often just one line of code. Look at this side-by-side comparison. The code on the right adds the line `count = count - 1` inside the loop. This is our 'exit strategy'. Each time the loop runs, `count` gets smaller: 3, then 2, then 1. After it prints 1, `count` becomes 0. The loop checks the condition again: is 0 greater than 0? No, it's false. The loop terminates.
+    This leads us to a golden rule. Whenever you write a `while` loop, stop and ask yourself: 'What line inside this loop is working to make the condition false?' If you have a good answer, your loop will probably work. If not, you need to add that line."
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Pattern: The Accumulator - The Concept}
+    \begin{block}{The Core Idea: Building a Result Step-by-Step}
+        Think of the accumulator pattern like collecting items in a shopping basket. You start with an empty basket, and as you walk through the aisles (iterate), you add items one by one. The basket holds the final result.
+    \end{block}
+
+    \vfill
+
+    \begin{block}{The Two-Step Recipe}
+        This powerful pattern always follows two simple steps:
+        \begin{enumerate}
+            \item \textbf{Initialize}: Create a variable \textit{before} the loop begins. This is your "empty basket".
+            \begin{itemize}
+                \item For summing numbers, start with \texttt{0}.
+                \item For building a string, start with an empty string \texttt{""}.
+                \item For finding a product, start with \texttt{1}.
+            \end{itemize}
+            \item \textbf{Update}: \textit{Inside} the loop, update the accumulator's value in each iteration by combining it with the current item.
+        \end{enumerate}
+    \end{block}
+
+    \begin{note}
+    Hello everyone. Today we're going to discuss a fundamental and extremely common programming pattern called the 'Accumulator'.
+    
+    The core idea is simple: we want to build up a result step-by-step. I like to use the analogy of a shopping basket. When you start shopping, you grab an empty basket. As you iterate through the store aisles, you add items to it. By the time you're done, your basket has accumulated everything you wanted. In programming, our 'basket' is just a variable.
+    
+    This pattern always has two distinct steps. First, and this is crucial, you must **initialize** your accumulator variable *before* the loop even starts. This is you grabbing the empty basket. The starting value depends entirely on your goal. If you're adding numbers, you start with 0, because adding 0 doesn't change the sum. If you're building a string, you start with an empty string. If you were multiplying numbers, you'd start with 1.
+    
+    The second step is the **update**, which happens *inside* the loop. In each iteration, you take the accumulator's current value and combine it with the current item from the sequence. This is you putting an item into your basket. Let's see this in action.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Pattern: The Accumulator - Example 1: Summing Numbers}
+    
+    \textbf{Goal}: Calculate the sum of all numbers in a list.
+    
+    \begin{lstlisting}[language=Python, caption=Summing Numbers]
+# --- Step 1: Initialize ---
+# Create our "basket" for the total, starting at 0.
+running_total = 0
+
+numbers = [10, 20, 30, 40]
+
+# Loop through each number in the list
+for num in numbers:
+    # --- Step 2: Update ---
+    # Add the current number to our running total.
+    running_total = running_total + num # Or shorthand: +=
+
+print(f"The final sum is: {running_total}")
+# Output: The final sum is: 100
+    \end{lstlisting}
+    
+    \begin{block}{How it Works (Trace)}
+        \begin{verbatim}
++-----------+-----+---------------+------------------+
+| Iteration | num | running_total | running_total    |
+|           |     | (Before)      | (After Update)   |
++-----------+-----+---------------+------------------+
+| (Start)   | -   | 0             | 0                |
+| 1         | 10  | 0             | 10   (0 + 10)    |
+| 2         | 20  | 10            | 30   (10 + 20)   |
+| 3         | 30  | 30            | 60   (30 + 30)   |
+| 4         | 40  | 60            | 100  (60 + 40)   |
++-----------+-----+---------------+------------------+
+        \end{verbatim}
+    \end{block}
+    
+    \begin{note}
+    Here is the most classic example of the accumulator pattern: summing a list of numbers.
+    
+    First, look at the code. Before the loop, we follow Step 1: we initialize `running_total` to 0. This is our accumulator.
+    
+    Then, the `for` loop begins. Inside the loop, we follow Step 2: we update `running_total`. The line `running_total = running_total + num` takes the current value of `running_total` and adds the current number (`num`) to it, storing the result back into `running_total`.
+    
+    Let's trace this step-by-step using the table.
+    - Before the loop starts, `running_total` is 0.
+    - **Iteration 1:** `num` is 10. We calculate `running_total` (which is 0) + `num` (which is 10). The new `running_total` becomes 10.
+    - **Iteration 2:** `num` is 20. We calculate `running_total` (now 10) + `num` (which is 20). The new `running_total` becomes 30.
+    - **Iteration 3:** `num` is 30. We calculate `running_total` (30) + `num` (30). The new `running_total` becomes 60.
+    - **Iteration 4:** `num` is 40. We calculate `running_total` (60) + `num` (40). The new `running_total` becomes 100.
+    
+    The loop has now processed every number in the list. It finishes, and the program moves to the print statement, which shows the final accumulated value: 100.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Pattern: The Accumulator - Example 2 \& Takeaways}
+    
+    \begin{block}{Example 2: Building a String}
+        The pattern works for more than just numbers. Here, we accumulate characters to build a new string.
+        \begin{lstlisting}[language=Python, caption=Finding Vowels]
+# --- Step 1: Initialize ---
+vowels_found = ""
+
+sentence = "programming is fun"
+
+for char in sentence:
+    if char in "aeiou":
+        # --- Step 2: Update ---
+        # Add (concatenate) the vowel to our string.
+        vowels_found = vowels_found + char
+
+print(f"Vowels found: {vowels_found}")
+# Output: Vowels found: oaiu
+        \end{lstlisting}
+    \end{block}
+    
+    \vfill
+    
+    \begin{alertblock}{Key Takeaways}
+        \begin{itemize}
+            \item \textbf{Placement is Key}: Initialization happens \textbf{before} the loop; the update happens \textbf{inside} it.
+            \item \textbf{The Initial Value Matters}: Starting with the wrong value (like `1` for a sum) will produce an incorrect result.
+            \item \textbf{Versatility}: This pattern is fundamental and can be adapted for counting, averaging, finding min/max values, and much more.
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{note}
+    To show you how versatile this pattern is, let's look at a non-numeric example: building a string. Our goal is to pull all the vowels out of a sentence.
+    
+    Again, we follow the two-step recipe.
+    - **Step 1 (Initialize):** We create an accumulator variable `vowels_found` and initialize it to an empty string, `""`, before the loop starts.
+    - **Step 2 (Update):** We loop through each character in the sentence. If a character is a vowel, we update our accumulator by concatenating (adding) the character to the end of the `vowels_found` string.
+    
+    The loop goes through 'p', 'r', 'o'... When it gets to 'o', it adds it to `vowels_found`. Then it finds 'a', and `vowels_found` becomes "oa". This continues until the loop finishes, and we're left with the final string "oaiu".
+    
+    So let's summarize the key points to remember about the accumulator pattern.
+    - First, the placement of the two steps is non-negotiable. Initialize *before* the loop, update *inside* the loop. If you initialize inside the loop, it will be reset to its starting value in every iteration, which is a common bug.
+    - Second, the initial value is critical. Zero for sums, one for products, empty string for concatenation. The right starting point is essential for the correct final answer.
+    - Finally, remember that this is one of the most powerful and common patterns in programming. You will use it constantly for all sorts of tasks beyond just summing and string building.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Controlling Loops: The \texttt{break} Statement}
+    \framesubtitle{The Emergency Exit}
+    
+    The \texttt{break} statement \textbf{immediately terminates the entire loop}. Execution jumps to the very next statement \textit{after} the loop's code block.
+    
+    \begin{itemize}
+        \item \textbf{Core Use Case:} Stop a loop once a specific condition is met, making your code more efficient.
+        \item \textbf{Analogy:} You're searching a bookshelf for a specific book. Once you find it, you stop looking.
+    \end{itemize}
+    
+    \begin{block}{Example: Finding the First Winner}
+        \begin{lstlisting}[language=Python]
+scores = [88, 92, 105, 74, 99, 110]
+winner_score = None
+
+for score in scores:
+    print(f"Checking score: {score}")
+    if score >= 100:
+        print("Found a winning score!")
+        break  # <-- Exit the loop NOW.
+        
+print(f"The first winning score was: {winner_score}")
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+Checking score: 88
+Checking score: 92
+Checking score: 105
+Found a winning score!
+The first winning score was: 105
+        \end{verbatim}
+    \end{block}
+    
+    \note{
+    "So far, the loops we've written run through every single item. But what if we find what we're looking for early? Let's start with `break`.
+    
+    Think of `break` as an emergency exit. When Python encounters `break`, it immediately stops the loop it's in and jumps to the code following the loop.
+    
+    In this example, we're searching for the first score of 100 or more. The loop checks 88, then 92. When it gets to 105, the `if` condition is true, it prints 'Found a winning score!', and `break` is executed. The loop stops right there; it never even looks at 74, 99, or 110. This is very efficient."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Controlling Loops: The \texttt{continue} Statement}
+    \framesubtitle{Skip This One}
+    
+    The \texttt{continue} statement \textbf{skips the remainder of the current iteration} and immediately proceeds to the next one. The loop itself keeps running.
+    
+    \begin{itemize}
+        \item \textbf{Core Use Case:} Ignore or skip items in a sequence that don't meet criteria, while still processing all other items.
+        \item \textbf{Analogy:} You're checking a batch of fruit. If you find a bruised apple, you put it aside (\texttt{continue}) and move on to inspect the next one.
+    \end{itemize}
+    
+    \begin{block}{Example: Summing Only Positive Numbers}
+        \begin{lstlisting}[language=Python]
+numbers = [10, -5, 20, -8, 15]
+total = 0
+
+for num in numbers:
+    if num < 0:
+        print(f"Skipping negative number: {num}")
+        continue # <-- Skip to the next iteration.
+    
+    print(f"Adding {num} to total.")
+    total += num
+    
+print(f"Sum of positive numbers: {total}")
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+Adding 10 to total.
+Skipping negative number: -5
+Adding 20 to total.
+Skipping negative number: -8
+Adding 15 to total.
+Sum of positive numbers: 45
+        \end{verbatim}
+    \end{block}
+    
+    \note{
+    "Now let's look at `continue`. `continue` is different; it doesn't stop the whole loop. It just stops the current iteration and tells the loop to move on to the next item.
+    
+    In this example, we want to sum a list of numbers but ignore any negatives. When the loop sees -5, the `if` condition is true and it hits `continue`. This causes the loop to immediately jump to the next item, skipping the line `total += num` for that iteration. The loop continues for all other items. As the output shows, the negative numbers are skipped, and only the positive ones are added to the total."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Controlling Loops: \texttt{break} vs. \texttt{continue}}
+    \framesubtitle{Key Distinction}
+    
+    Understanding the difference is key to using them correctly.
+    
+    \begin{columns}[T] % T option aligns blocks at the top
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\texttt{break}: Stop the Entire Loop}
+                \begin{itemize}
+                    \item \textbf{Action:} Exits the innermost loop it is in.
+                    \item \textbf{Effect:} No further iterations are run. The code after the loop is executed next.
+                    \item \textbf{Think:} "I'm done with this whole loop."
+                \end{itemize}
+                \begin{center}
+                    \includegraphics[width=0.7\textwidth]{./break_diagram.png} % Placeholder for diagram
+                \end{center}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\texttt{continue}: Skip One Iteration}
+                \begin{itemize}
+                    \item \textbf{Action:} Jumps to the top of the loop for the next iteration.
+                    \item \textbf{Effect:} Skips the remaining code in the \textit{current} iteration only.
+                    \item \textbf{Think:} "I'm done with this item, on to the next."
+                \end{itemize}
+                \begin{center}
+                    \includegraphics[width=0.7\textwidth]{./continue_diagram.png} % Placeholder for diagram
+                \end{center}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \note{
+    "To summarize, let's put them side-by-side.
+    
+    `break` is the big red stop button. It breaks you out of the loop entirely. Think 'Stop'.
+    
+    `continue` is a skip button. It just skips the current item and continues to the next one. Think 'Skip'.
+    
+    Use `break` when your task is complete, like finding an item in a search.
+    Use `continue` when you need to ignore certain items but still process the rest of the list."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary: \texttt{for} vs. \texttt{while}}
+    \subtitle{Choosing the Right Tool for Repetition}
+
+    Choosing the right loop is key to writing clear and effective code. The main difference lies in whether the number of repetitions is known beforehand.
+    \vspace{1em}
+    
+    \begin{block}{Use a \texttt{for} loop when... (Definite Iteration)}
+        \begin{itemize}
+            \item You are iterating over a known sequence (like a list, string, or \texttt{range()}).
+            \item You know exactly how many times the loop needs to run.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Use a \texttt{while} loop when... (Indefinite Iteration)}
+        \begin{itemize}
+            \item You are looping based on a condition, not a fixed sequence.
+            \item You \textit{don't know} how many times the loop will run in advance.
+        \end{itemize}
+    \end{block}
+
+    \begin{note}
+    Welcome. In this section, we'll summarize the crucial difference between `for` and `while` loops. This is a fundamental concept in programming, and getting it right makes your code much more readable and logical.
+
+    The core idea boils down to one question: "Do I know how many times I need to repeat this task?"
+
+    If the answer is yes, you're dealing with **definite iteration**. This is the domain of the `for` loop. You use it when you have a collection of items, like a list of students or a range of numbers, and you want to perform an action for each and every item.
+
+    If the answer is no, you're dealing with **indefinite iteration**. This is where the `while` loop shines. You use it when you need to repeat a task until a certain condition is met, but you have no idea when that will be. Think of waiting for a user to type 'quit', or a game loop that runs as long as the player is alive.
+
+    In the next slides, we'll look at a concrete example for each.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{for} Loop: Definite Iteration in Practice}
+    
+    \begin{block}{Mental Model}
+        Think of a \texttt{for} loop as checking off every item on a to-do list. You know you're done when you reach the end of the list.
+    \end{block}
+
+    \begin{exampleblock}{Example: Processing a list of files}
+        A \texttt{for} loop is perfect here because the number of iterations is determined by the number of files in the list.
+        
+        \begin{lstlisting}[language=Python]
+% Code Snippet
+filenames = ["report.docx", "data.csv", "image.png"]
+
+print("Starting file processing...")
+for filename in filenames:
+    # This loop runs exactly 3 times
+    print(f"-> Processing {filename}")
+print("...All files processed.")
+        \end{lstlisting}
+    \end{exampleblock}
+    
+    \begin{note}
+    Let's dive into our `for` loop example. The mental model here is a checklist. Imagine you have a list of tasks; you go through them one by one until you hit the bottom. That's definite iteration.
+
+    In this code, we have a list called `filenames`. It contains three strings. The `for` loop is designed to visit every single item in that list. It will run exactly three times—no more, no less.
+
+    The first time, the variable `filename` will be "report.docx". The second time, it will be "data.csv". The third time, "image.png". After that, the list is exhausted, and the loop automatically terminates. The program then prints the final message.
+
+    This is clean, predictable, and the ideal use case for a `for` loop.
+    \end{note}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\texttt{while} Loop: Indefinite Iteration in Practice}
+    
+    \begin{block}{Mental Model}
+        Think of a \texttt{while} loop as waiting for a pot of water to boil. You keep checking the condition ("is it boiling yet?"), but you don't know exactly how long it will take.
+    \end{block}
+    
+    \begin{exampleblock}{Example: Simple Guessing Game}
+        The loop continues as long as the user's guess is incorrect. We don't know if this will take one try or twenty.
+        \begin{lstlisting}[language=Python]
+% Code Snippet
+import random
+secret_number = random.randint(1, 10)
+guess = 0 # Initialize to a non-matching value
+
+while guess != secret_number:
+    # The number of iterations is unknown
+    guess = int(input("What's your guess? "))
+
+print(f"You got it! The number was {secret_number}.")
+        \end{lstlisting}
+    \end{exampleblock}
+    
+    \begin{alertblock}{Key Takeaway}
+        Ask yourself: \textbf{"Am I iterating through a collection, or am I waiting for a condition to change?"}
+        \begin{itemize}
+            \item Collection of items? $\rightarrow$ Use a \texttt{for} loop.
+            \item Waiting for a condition? $\rightarrow$ Use a \texttt{while} loop.
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{note}
+    Now let's look at the `while` loop. Our mental model is waiting for water to boil. You don't loop a fixed number of times; you keep checking a condition. This is indefinite iteration.
+
+    In this guessing game, the loop's condition is `while guess != secret_number`. The loop will continue to run as long as this condition is true. We have no idea how many guesses the user will take. It could be one, or it could be fifty. The number of iterations is unknown at the start.
+
+    Notice we have to initialize the `guess` variable before the loop to ensure the condition can be checked the first time. The loop continues to ask for input until the user's guess matches the `secret_number`, at which point the condition becomes false and the loop terminates.
+
+    This brings us to our key takeaway. When you're deciding which loop to use, ask yourself that one simple question: "Am I iterating through a collection of items, or am I waiting for a condition to change?" If you're going through a list, use `for`. If you're waiting for something to happen, use `while`.
+    \end{note}
+\end{frame}
+
+
+\end{document}

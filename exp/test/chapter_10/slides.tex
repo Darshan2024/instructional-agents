@@ -1,0 +1,884 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 10: Debugging and Testing}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Debugging and Testing}
+    \begin{block}{Understanding Debugging and Testing}
+        \begin{itemize}
+            \item \textbf{Definition of Debugging:} 
+                Debugging is the process of identifying, isolating, and fixing problems ("bugs") in code.
+            \item \textbf{Definition of Testing:} 
+                Testing is the systematic process of executing a program to identify bugs or verify requirements.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance in Programming}
+    \begin{enumerate}
+        \item \textbf{Code Quality:}
+        \begin{itemize}
+            \item \textbf{Correctness:} Ensures software meets its requirements.
+            \item \textbf{Reliability:} Decreases the likelihood of failures.
+            \item \textbf{Maintainability:} Simplifies future modifications.
+        \end{itemize}
+        
+        \item \textbf{Performance:}
+        \begin{itemize}
+            \item \textbf{Responsiveness:} Faster applications improve user satisfaction.
+            \item \textbf{Scalability:} Well-tested code can handle increased loads.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Proactive vs. Reactive:} 
+            Effective debugging and testing prevent issues before reaching production.
+        \item \textbf{The Development Cycle:} 
+            Should be integrated throughout the entire software development lifecycle (SDLC).
+        \item \textbf{Diverse Techniques:} 
+            Techniques vary; unit tests for small segments, integration tests for module interactions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Debugging and Testing}
+    \begin{block}{Example of Debugging:}
+        \begin{lstlisting}[language=python]
+def calculate_area(radius):
+    return 3.14 * radius ** 2
+
+# Debugging example with a wrong expected call
+print(calculate_area('five'))  # This will raise a TypeError
+        \end{lstlisting}
+        Debugging would involve ensuring a valid numeric input.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Debugging and Testing (Continued)}
+    \begin{block}{Example of Testing:}
+        \begin{lstlisting}[language=python]
+import unittest
+
+class TestCalculator(unittest.TestCase):
+    def test_area(self):
+        self.assertAlmostEqual(calculate_area(5), 78.5)
+
+# Running this test ensures that calculate_area works as expected.
+if __name__ == '__main__':
+    unittest.main()
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    \begin{block}{Conclusion:}
+        Debugging and testing are essential for producing a robust, high-quality product. 
+        Mastering these practices enhances both the product's success and the developer's efficiency.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Techniques - Overview}
+    \begin{itemize}
+        \item Debugging is essential for identifying and fixing errors in code.
+        \item Discussing three common techniques:
+        \begin{itemize}
+            \item Print Statements
+            \item Using Debuggers
+            \item Logging
+        \end{itemize}
+        \item Each method has strengths and ideal use cases.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Techniques - Print Statements}
+    \begin{block}{Description}
+        The simplest and oldest debugging technique, involving print statements to output variable values and track execution flow.
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+def add_numbers(a, b):
+    print(f"Adding {a} and {b}")
+    return a + b
+
+result = add_numbers(5, 3)
+print(f"The result is {result}")
+        \end{lstlisting}
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Pros:}
+        \begin{itemize}
+            \item Fast and straightforward.
+            \item No special tools required.
+        \end{itemize}
+        \item \textbf{Cons:}
+        \begin{itemize}
+            \item Can clutter code if overused.
+            \item Not suitable for complex debugging.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Techniques - Using Debuggers}
+    \begin{block}{Description}
+        Debuggers are tools that allow step-by-step execution, variable inspection, and control of logic flow.
+    \end{block}
+    
+    \begin{block}{Features}
+        \begin{itemize}
+            \item Breakpoints: Pause execution at certain lines.
+            \item Step-Over: Execute the next line without diving into functions.
+            \item Watch Variables: Monitor values of selected variables.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example (Using a Debugger)}
+        Setting a breakpoint in Visual Studio Code to pause execution and inspect variables.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Pros:}
+        \begin{itemize}
+            \item Powerful for complex applications.
+            \item Visual and interactive to inspect execution.
+        \end{itemize}
+        \item \textbf{Cons:}
+        \begin{itemize}
+            \item Requires tool familiarity.
+            \item Setup varies by language and IDE.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Techniques - Logging}
+    \begin{block}{Description}
+        Logging is the recording of events during program execution, providing different levels (info, warning, error).
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+def multiply_numbers(a, b):
+    logging.info(f"Multiplying {a} by {b}")
+    return a * b
+
+result = multiply_numbers(4, 2)
+logging.info(f"The result is {result}")
+        \end{lstlisting}
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Pros:}
+        \begin{itemize}
+            \item Provides a permanent record.
+            \item Can filter messages by severity.
+        \end{itemize}
+        \item \textbf{Cons:}
+        \begin{itemize}
+            \item Requires logging framework setup.
+            \item Can introduce performance overhead if unmanaged.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary of Key Points}
+    \begin{itemize}
+        \item Different debugging techniques serve various purposes in software development.
+        \item Print statements are suitable for quick checks.
+        \item Debuggers and logging help manage complex debugging tasks.
+        \item Mastering these techniques enhances error identification and code quality.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Testing}
+    \begin{block}{Overview of the Role of Testing in Software Development}
+        Testing is a critical phase in the software development lifecycle (SDLC) that involves evaluating software applications to ensure they perform as expected. The primary roles of testing include:
+    \end{block}
+    \begin{enumerate}
+        \item \textbf{Error Detection}: Identifying bugs and errors in code before deployment or integration.
+        \item \textbf{Quality Assurance}: Ensuring that the software meets specified requirements and standards.
+        \item \textbf{Risk Management}: Mitigating potential risks associated with software failures which can lead to financial loss, security breaches, or user dissatisfaction.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Errors that Testing Can Mitigate - Part 1}
+    \begin{block}{Various Types of Errors}
+        Testing can help identify a variety of errors, which can broadly be categorized as follows:
+    \end{block}
+    \begin{enumerate}
+        \item \textbf{Syntax Errors}: Mistakes in the code that violate the grammatical rules of the programming language. 
+        \begin{itemize}
+            \item \textit{Example}:
+            \begin{lstlisting}[language=Python]
+print("Hello World"  # SyntaxError: missing parentheses in call to 'print'
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Logic Errors}: These occur when the program runs without crashing but produces incorrect results.
+        \begin{itemize}
+            \item \textit{Example}:
+            \begin{lstlisting}[language=Python]
+total = price * quantity  # If intended logic was to add prices, should be total = price + quantity
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Types of Errors that Testing Can Mitigate - Part 2}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Continue from previous enumeration
+        \item \textbf{Runtime Errors}: Errors that only occur during execution.
+        \begin{itemize}
+            \item \textit{Example}:
+            \begin{lstlisting}[language=Python]
+array = [1, 2, 3]
+print(array[3])  # IndexError: list index out of range
+            \end{lstlisting}
+        \end{itemize}
+
+        \item \textbf{Performance Errors}: Issues that may degrade performance (e.g., memory leaks).
+        \begin{itemize}
+            \item \textit{Example}: Inefficient algorithms that lead to slow response times.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Early Testing}: Incorporate testing early in the SDLC.
+        \item \textbf{Automated Testing}: Utilize automated tests for repetitive tasks.
+        \item \textbf{Different Types of Testing}: Understanding testing methodologies enhances error mitigation.
+    \end{itemize}
+    \begin{block}{Conclusion}
+        Testing is an integral part of the software development process that contributes to the overall success of the project.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Testing - Overview}
+    \begin{block}{Overview of Testing Methodologies}
+        Testing is a critical phase in software development aimed at identifying and rectifying errors before deployment. The three key types of testing methodologies are:
+        \begin{itemize}
+            \item \textbf{Unit Testing}
+            \item \textbf{Integration Testing}
+            \item \textbf{System Testing}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Testing - Unit Testing}
+    \begin{block}{Unit Testing}
+        \textbf{Definition}: Testing individual components or modules of the software. \\
+        \textbf{Purpose}: Validate each unit performs as expected to prevent early bugs. 
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Implementation:}
+            \begin{itemize}
+                \item Written by developers using frameworks (e.g., JUnit, pytest).
+                \item Each test case checks specific inputs against expected outputs.
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+def add(a, b):
+    return a + b
+
+# Unit test for the add function
+def test_add():
+    assert add(2, 3) == 5
+    assert add(-1, 1) == 0
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Testing - Integration Testing}
+    \begin{block}{Integration Testing}
+        \textbf{Definition}: Testing interactions between multiple components. \\
+        \textbf{Purpose}: Detect interface defects when units are combined.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Implementation:}
+            \begin{itemize}
+                \item Simulates real-world scenarios (e.g., Postman for APIs).
+                \item Tests groups of units collectively. 
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+def fetch_user_details(user_id):
+    user = get_user_from_db(user_id)
+    profile = get_user_profile(user_id)
+    return {**user, **profile}
+
+# Integration test for fetching user details
+def test_fetch_user_details():
+    # Mocking database and profile responses
+    user_data = {'id': 1, 'name': 'Jane Doe'}
+    profile_data = {'age': 30, 'location': 'New York'}
+    assert fetch_user_details(1) == {**user_data, **profile_data}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Testing - System Testing}
+    \begin{block}{System Testing}
+        \textbf{Definition}: Evaluating the entire system's compliance with requirements. \\
+        \textbf{Purpose}: Ensure the complete software product meets specifications.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Implementation:}
+            \begin{itemize}
+                \item Conducted in a production-like environment.
+                \item Tests user interfaces, APIs, databases, and overall performance. 
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        Performing a stress test on a web application to ensure it can handle 1000 concurrent users without failures.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Testing - Conclusion & Next Steps}
+    \begin{block}{Conclusion}
+        Understanding Unit Testing, Integration Testing, and System Testing is essential for delivering high-quality software. They collectively ensure robustness, functionality, and user satisfaction in the final product.
+    \end{block}
+    \begin{block}{Next Steps}
+        In the upcoming slide, we will delve into \textbf{Test-Driven Development (TDD)}, exploring its principles and benefits in the software development lifecycle.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Test-Driven Development (TDD)}
+    \begin{block}{Understanding TDD}
+        Test-Driven Development (TDD) is a software development methodology that emphasizes writing tests before implementing code, following a cycle known as Red-Green-Refactor.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The TDD Cycle}
+    \begin{enumerate}
+        \item \textbf{Red}: Write a test for the new functionality that should initially fail.
+        \item \textbf{Green}: Write the minimal code to pass the test.
+        \item \textbf{Refactor}: Improve the code while keeping all tests passing.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: TDD Cycle}
+    \begin{block}{Red Phase Example}
+        \begin{lstlisting}[language=python]
+def test_add_numbers():
+    assert add(1, 2) == 3  # Test fails initially
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Green Phase Example}
+        \begin{lstlisting}[language=python]
+def add(a, b):
+    return a + b  # Code to pass the test
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Refactor Phase Example}
+        % Add refactoring explanation or example here
+        \begin{lstlisting}[language=python]
+# Refactoring might look like this:
+def add_numbers(numbers):
+    return sum(numbers)  # Refactored implementation
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Benefits and Principles of TDD}
+    \begin{itemize}
+        \item \textbf{Improved Code Quality}: Reduces the likelihood of bugs.
+        \item \textbf{Better Design}: Encourages modular and understandable code.
+        \item \textbf{Documentation}: Tests serve as living documentation.
+        \item \textbf{Facilitates Refactoring}: Provides confidence to change code safely.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Using Python Testing Frameworks}
+    \begin{block}{Introduction}
+        Python offers several powerful testing frameworks that simplify the process of writing and running tests to ensure that code functions as intended. Two of the most popular frameworks are \textbf{unittest} and \textbf{pytest}.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Unittest}
+    \begin{itemize}
+        \item \textbf{What is it?}
+        \begin{itemize}
+            \item A built-in Python module that follows the xUnit style framework for writing and running tests.
+        \end{itemize}
+        
+        \item \textbf{Key Features}:
+        \begin{itemize}
+            \item Supports test discovery and organization.
+            \item Allows for setup and teardown of test cases.
+            \item Provides various assertion methods to verify outcomes.
+        \end{itemize}
+
+        \item \textbf{Basic Example}:
+        \begin{lstlisting}
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestMathOperations(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(2, 3), 5)
+        self.assertEqual(add(-1, 1), 0)
+
+if __name__ == '__main__':
+    unittest.main()
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Explanation of Unittest Example}
+    The code defines a simple function \texttt{add} and a unit test class \texttt{TestMathOperations}. The test case checks various scenarios to ensure the \texttt{add} function produces correct output.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pytest}
+    \begin{itemize}
+        \item \textbf{What is it?}
+        \begin{itemize}
+            \item An advanced testing framework that facilitates simple and scalable testing while allowing for plugins.
+        \end{itemize}
+
+        \item \textbf{Key Features}:
+        \begin{itemize}
+            \item Requires less boilerplate code compared to unittest.
+            \item Supports fixtures for setup code and has a rich plugin architecture.
+            \item Easy to assert using simple Python assertions (\texttt{assert}).
+        \end{itemize}
+
+        \item \textbf{Basic Example}:
+        \begin{lstlisting}
+def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(2, 3) == 5
+    assert add(-1, 1) == 0
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Explanation of Pytest Example}
+    Here, the \texttt{test_add} function directly uses assertions to validate the \texttt{add} function, demonstrating how pytest enables clearer, more concise test writing.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Test-Driven Development (TDD)}: Using these frameworks is aligned with the TDD approach where tests are written before the actual code, helping identify and fix bugs early.
+        \item \textbf{Suitability}: Choose \texttt{unittest} for more structured, traditional testing. Opt for \texttt{pytest} for flexibility, ease of use, and extensive testing capabilities.
+        \item \textbf{Running Tests}: 
+        \begin{itemize}
+            \item For unittest: \texttt{python -m unittest discover}
+            \item For pytest: simply run \texttt{pytest} in the terminal.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    Understanding and utilizing testing frameworks like \textbf{unittest} and \textbf{pytest} is crucial for maintaining high-quality code. They facilitate not just the identification of bugs but also help in building a robust codebase through consistent testing practices.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Debugging in Python}
+    \begin{block}{Understanding Debugging}
+        Debugging is the process of identifying and removing errors or bugs from the code.
+        It is a critical skill for Python developers as it helps ensure code runs smoothly and as intended.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Setting Breakpoints}
+    \begin{itemize}
+        \item \textbf{What is a Breakpoint?}  
+        A breakpoint is a designated stopping point in your code where the execution will pause, allowing 
+        you to inspect the program's state (variables, memory, etc.) at that precise moment.
+        
+        \item \textbf{How to Set a Breakpoint in IDEs:}
+        \begin{enumerate}
+            \item \textbf{Visual Studio Code (VS Code):}
+            \begin{enumerate}
+                \item Open the file you want to debug.
+                \item Click in the gutter next to the line where you want to set the breakpoint; a red dot will appear.
+                \item Start debugging by pressing \texttt{F5} or selecting "Run" > "Start Debugging".
+            \end{enumerate}
+            \item \textbf{PyCharm:}
+            \begin{enumerate}
+                \item Open your Python file.
+                \item Click in the left margin next to the line number where you want the code to stop.
+                \item Begin debugging by clicking the bug icon in the toolbar or pressing \texttt{Shift + F9}.
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Stepping Through Code}
+    \begin{itemize}
+        \item \textbf{Step Over (F10):} Executes the next line but doesn’t enter any called functions.
+        
+        \item \textbf{Step Into (F11):} Enters the next function call to see its inner workings.
+        
+        \item \textbf{Step Out (Shift + F11):} Runs until the current function exits and returns to the previous level.
+        
+        \item \textbf{Continue (F5):} Resumes execution until the next breakpoint is reached.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Code for Debugging}
+    \begin{lstlisting}[language=Python]
+def divide_numbers(num1, num2):
+    # Set a breakpoint here
+    return num1 / num2
+
+result = divide_numbers(10, 0)  # This will raise an error
+print(result)
+    \end{lstlisting}
+
+    \begin{block}{Concept}
+        Setting a breakpoint on the line with \texttt{return num1 / num2} allows you to 
+        inspect \texttt{num1} and \texttt{num2} before the division occurs and 
+        catch the error raised by dividing by zero.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item Use of Breakpoints provides a powerful mechanism to pause execution to inspect variable states and control flow.
+        
+        \item Understanding the difference between Step Over, Step Into, and Step Out is crucial for effective debugging.
+        
+        \item Most modern IDEs like VS Code and PyCharm offer intuitive interfaces for setting breakpoints and debugging, which can greatly enhance productivity.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    Effective debugging is essential for developing robust Python applications. 
+    By mastering breakpoints and step-through debugging, you can ensure your applications run efficiently and handle errors gracefully. 
+
+    \begin{block}{Encouragement}
+        Encourage students to practice debugging through examples in their own code and explore the features of 
+        their preferred IDE for a deeper understanding of these concepts.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Best Practices for Debugging and Testing}
+    \begin{block}{Effective Strategies for Reliable Code}
+        \begin{enumerate}
+            \item Understand Your Code
+            \item Use a Debugger
+            \item Isolate the Problem
+            \item Test Early and Often
+            \item Use Version Control
+            \item Collaborate and Review
+            \item Maintain a Debugging Mindset
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Your Code}
+    \begin{itemize}
+        \item \textbf{Read Before You Debug:} Familiarize yourself with the codebase and logical flow.
+        \item \textbf{Comment and Document:} Explain complex parts and document functions clearly.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Using a Debugger}
+    \begin{itemize}
+        \item \textbf{IDE Features:} Utilize built-in debugging tools such as breakpoints, step execution, and variable inspection.
+        \item \textbf{Example:} In Python, tools like PyCharm or Visual Studio Code provide functionalities for setting breakpoints and evaluating expressions on the fly.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Isolating the Problem}
+    \begin{itemize}
+        \item \textbf{Divide and Conquer:} Break down code to identify the source of the bug.
+        \item \textbf{Print Statements:} Track variable values and program flow using print statements or logging.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Testing Early and Often}
+    \begin{itemize}
+        \item \textbf{Unit Testing:} Write unit tests for functions to catch bugs early in the development cycle.
+        \item \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+import unittest
+
+class TestSum(unittest.TestCase):
+    def test_sum(self):
+        self.assertEqual(sum([1, 2, 3]), 6)
+
+if __name__ == '__main__':
+    unittest.main()
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Additional Best Practices}
+    \begin{itemize}
+        \item \textbf{Use Version Control:} Manage changes with Git or other systems to revert to previous states easily.
+        \item \textbf{Collaborate and Review:} Engage in peer reviews and pair programming to catch overlooked errors.
+        \item \textbf{Maintain a Debugging Mindset:} 
+            \begin{itemize}
+                \item Be patient and persistent; maintain a calm and methodical approach.
+                \item Take breaks if stuck to find new perspectives.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Documentation is Vital:} Aids in debugging and future development.
+        \item \textbf{Testing is Not Just a Phase:} Integrate it throughout the development lifecycle.
+        \item \textbf{Learning from Errors:} Treat bugs as learning opportunities for skill improvement.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Challenges - Overview}
+    \begin{itemize}
+        \item Debugging is crucial in software development.
+        \item Developers face various challenges that hinder effectiveness. 
+        \item Understanding these challenges and strategies to overcome them is key.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Challenges - Part 1}
+    \begin{enumerate}
+        \item \textbf{Over-Complexity of Code}
+            \begin{itemize}
+                \item \textbf{Challenge:} Difficult to trace logic.
+                \item \textbf{Solution:} Refactor code; simplify with clear naming.
+                \item \textbf{Example:} 
+                \begin{lstlisting}[language=Python]
+def process(order):
+    if order.status == "Pending":
+        # lengthy conditions
+        if order.amount > 1000 and order.country == "USA":
+            pass
+
+# Refactored
+def handle_pending_order(order):
+    if order.amount > 1000 and order.country == "USA":
+        process_large_order(order)
+                \end{lstlisting}
+            \end{itemize}
+        
+        \item \textbf{Misleading Error Messages}
+            \begin{itemize}
+                \item \textbf{Challenge:} Vague error messages confuse diagnosis.
+                \item \textbf{Solution:} Improve error logging with context.
+                \item \textbf{Key Points:}
+                    \begin{itemize}
+                        \item Use descriptive error messages.
+                        \item Log stack traces for better tracking.
+                    \end{itemize}
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Challenges - Part 2}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item \textbf{Intermittent Bugs}
+            \begin{itemize}
+                \item \textbf{Challenge:} Bugs that appear sporadically.
+                \item \textbf{Solution:} Capture environmental conditions.
+                \item \textbf{Example:} Implement logging for variable states.
+            \end{itemize}
+
+        \item \textbf{Failure to Isolate the Problem}
+            \begin{itemize}
+                \item \textbf{Challenge:} Bugs propagate through systems.
+                \item \textbf{Solution:} Use unit tests and mock components.
+                \item \textbf{Key Points:}
+                    \begin{itemize}
+                        \item Document tests and expected behaviors.
+                    \end{itemize}
+            \end{itemize}
+
+        \item \textbf{Ignoring Edge Cases}
+            \begin{itemize}
+                \item \textbf{Challenge:} Overlooking unusual inputs.
+                \item \textbf{Solution:} Employ boundary testing, validate inputs.
+                \item \textbf{Example:} Consider scenarios for numeric inputs.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Debugging Challenges - Part 3}
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item \textbf{Sticking to a Single Debugging Method}
+            \begin{itemize}
+                \item \textbf{Challenge:} Limiting effectiveness with one method.
+                \item \textbf{Solution:} Utilize various debugging strategies.
+                \item \textbf{Key Points:}
+                    \begin{itemize}
+                        \item Experiment with different debugging techniques.
+                        \item Find the right tool for the problem.
+                    \end{itemize}
+            \end{itemize}
+    \end{enumerate}
+    
+    \begin{block}{Conclusion}
+        Recognizing these debugging challenges is crucial for a productive development environment. By applying strategic approaches, developers enhance their problem-solving skills and improve overall code quality.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Summary - Key Points Recap}
+    \begin{enumerate}
+        \item \textbf{Importance of Debugging and Testing}
+        \begin{itemize}
+            \item Debugging identifies and resolves defects, crucial for reliable software.
+            \item Testing ensures software meets requirements and maintains quality.
+        \end{itemize}
+        \item \textbf{Stages of Debugging}
+        \begin{itemize}
+            \item Reproduction of the Issue
+            \item Diagnosis
+            \item Resolution
+            \item Verification
+        \end{itemize}
+        \item \textbf{Types of Testing}
+        \begin{itemize}
+            \item Unit Testing
+            \item Integration Testing
+            \item System Testing
+            \item User Acceptance Testing (UAT)
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Summary - Tools, Techniques, and Best Practices}
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item \textbf{Tools and Techniques}
+        \begin{itemize}
+            \item Use testing frameworks (e.g., JUnit, pytest) for automation.
+            \item Implement CI/CD practices for efficiency.
+        \end{itemize}
+        \item \textbf{Best Practices}
+        \begin{itemize}
+            \item Write tests first (Test-Driven Development - TDD).
+            \item Regularly review and refactor code.
+            \item Document debugging findings.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Summary - Significance in Software Development}
+    \begin{block}{Significance in the Software Development Lifecycle}
+        \begin{itemize}
+            \item \textbf{Risk Mitigation:} Reduces software failure risks and builds user trust.
+            \item \textbf{Cost Efficiency:} Early debugging lowers maintenance costs.
+            \item \textbf{Enhanced Collaboration:} Clear tested codebase facilitates teamwork.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Conclusion}
+        Mastering debugging and testing is essential for quality software delivery, user satisfaction, and cost reduction.
+    \end{block}
+\end{frame}
+
+
+\end{document}

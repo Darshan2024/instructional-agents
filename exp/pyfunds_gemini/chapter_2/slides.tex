@@ -1,0 +1,679 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings - Using verbatim for this example as it's simpler for copy-paste
+\usepackage{verbatim}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 2: Expressions, Operators, and User Input}
+\author{Teaching Assistant}
+\institute{University Department}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 2: Expressions, Operators, and User Input}
+    \framesubtitle{Welcome and Introduction}
+    
+    \begin{block}{From Alphabet to Sentences}
+        Welcome to Chapter 2! In our last lesson, we learned the "alphabet" of programming:
+        \begin{itemize}
+            \item Variables
+            \item Basic Data Types
+        \end{itemize}
+        Now, we'll learn how to form "sentences" and have a "conversation" with our program.
+    \end{block}
+    
+    \vspace{1em}
+    
+    \begin{alertblock}{Our Goal: From Static to Interactive}
+        This chapter is all about making your programs dynamic. We will move beyond scripts with fixed outputs and start writing code that can:
+        \begin{itemize}
+            \item Perform calculations
+            \item React to user input
+            \item Manipulate data in powerful ways
+        \end{itemize}
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 2: The Big Picture}
+    \framesubtitle{Core Concepts for Interactive Programs}
+
+    \begin{itemize}
+        \item \textbf{Expressions:} The "phrases" of our code.
+        \begin{itemize}
+            \item Combinations of values, variables, and operators.
+            \item Your program computes them to produce a new value (e.g., \texttt{5 + 3} results in \texttt{8}).
+        \end{itemize}
+        
+        \vspace{1em}
+        
+        \item \textbf{Operators:} The "action words" or verbs.
+        \begin{itemize}
+            \item Special symbols that perform operations on data.
+            \item Examples include \texttt{+} for addition or \texttt{*} for multiplication.
+        \end{itemize}
+        
+        \vspace{1em}
+        
+        \item \textbf{User Input:} The "conversation" with your program.
+        \begin{itemize}
+            \item Allows your program to ask the user for information.
+            \item The program can then use that information to change its behavior.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 2: Key Learning Objectives}
+    
+    \begin{block}{By the end of this chapter, you will be able to:}
+        \begin{enumerate}
+            \item \textbf{Perform Calculations:}\\
+            Use arithmetic operators (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}) to solve mathematical problems.
+            
+            \vspace{0.5em}
+            
+            \item \textbf{Manipulate Text:}\\
+            Combine strings of text using concatenation operators.
+            
+            \vspace{0.5em}
+            
+            \item \textbf{Build Interactive Programs:}\\
+            Use the \texttt{input()} function to get data directly from the user.
+            
+            \vspace{0.5em}
+            
+            \item \textbf{Manage Data Types:}\\
+            Understand data type differences and convert between them using \textbf{Type Casting}.
+        \end{enumerate}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Lesson Agenda}
+    
+    Here's our roadmap for making our programs more dynamic and powerful. Today, we will learn how to go from storing data to actually \textit{doing things} with it.
+    
+    \begin{itemize}
+        \item \textbf{What is an Expression?} \\
+        The fundamental building blocks of computation.
+        
+        \item \textbf{Performing Math: Arithmetic Operators} \\
+        Use operators like \texttt{+}, \texttt{-}, \texttt{*}, and \texttt{/} to perform calculations.
+        
+        \item \textbf{Combining Text: String Operators} \\
+        Join and repeat text to create dynamic, custom messages.
+        
+        \item \textbf{Getting User Input with \texttt{input()}} \\
+        Make our programs truly interactive by asking the user for information.
+        
+        \item \textbf{Changing Data Types with Type Casting} \\
+        Convert data from one type to another (e.g., text to a number).
+    \end{itemize}
+    
+    \begin{block}{Key Goal for Today}
+        You will be able to write a simple, interactive program that asks a user for information, performs a calculation, and prints a custom result.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is an Expression?}
+
+    \begin{block}{Definition}
+        An \textbf{expression} is a combination of values, variables, and operators that Python \textit{evaluates} to produce a new, single value.
+    \end{block}
+
+    \vspace{1em}
+
+    An expression is made of three possible ingredients:
+    \begin{itemize}
+        \item \textbf{Values (Literals):} Concrete data like \texttt{10}, \texttt{3.14}, or \texttt{'Hello'}.
+        \item \textbf{Variables:} Names that store values, like \texttt{price} or \texttt{user\_name}.
+        \item \textbf{Operators:} Symbols that perform an action, like \texttt{+} or \texttt{*}.
+    \end{itemize}
+
+    \vfill
+    \begin{center}
+        \small The single value an expression results in is its \textbf{output}.
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is an Expression? - The Evaluation Process}
+
+    Think of an expression as a question you ask Python. Python finds the answer by reducing it to a single, final value.
+
+    \begin{block}{Examples of Evaluation}
+        \begin{itemize}
+            \item A simple arithmetic expression: \\
+            \texttt{5 + 10} \quad $\rightarrow$ \quad evaluates to \quad \texttt{15}
+
+            \vspace{1em}
+
+            \item An expression with variables: \\
+            \texttt{width * height} \quad $\rightarrow$ \quad evaluates to the product (e.g., \texttt{200})
+
+            \vspace{1em}
+
+            \item A string expression (concatenation): \\
+            \texttt{'Hello' + ' ' + 'World'} \quad $\rightarrow$ \quad evaluates to \quad \texttt{'Hello World'}
+        \end{itemize}
+    \end{block}
+
+    \vfill
+
+    \begin{alertblock}{Key Takeaway}
+        Every expression, no matter how complex, simplifies to a \textbf{single value} of a specific data type (e.g., an \texttt{int}, a \texttt{float}, or a \texttt{str}).
+    \end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Arithmetic Operators}
+    Python provides standard operators for mathematical calculations. These operators take two numerical values (operands) and combine them to produce a new value.
+    \vspace{1em}
+
+    \begin{block}{The Core Operators}
+        \centering
+        \begin{tabular}{ l l l }
+            \textbf{Operator} & \textbf{Name} & \textbf{Example} \\
+            \hline
+            \texttt{+} & Addition & \texttt{10 + 5} $\rightarrow$ \texttt{15} \\
+            \texttt{-} & Subtraction & \texttt{10 - 5} $\rightarrow$ \texttt{5} \\
+            \texttt{*} & Multiplication & \texttt{10 * 5} $\rightarrow$ \texttt{50} \\
+            \texttt{/} & Division & \texttt{10 / 4} $\rightarrow$ \texttt{2.5} \\
+            \texttt{//} & Integer Division & \texttt{10 // 4} $\rightarrow$ \texttt{2} \\
+            \texttt{\%} & Modulo (Remainder) & \texttt{10 \% 3} $\rightarrow$ \texttt{1} \\
+            \texttt{**} & Exponent & \texttt{10 ** 2} $\rightarrow$ \texttt{100} \\
+        \end{tabular}
+    \end{block}
+
+    \vspace{1em}
+    While `+`, `-`, and `*` are straightforward, let's look closer at division, modulo, and exponentiation.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Arithmetic Operators - The Division Duo}
+    Understanding the difference between the two division operators is crucial.
+
+    \begin{block}{Float Division (/)}
+        \begin{itemize}
+            \item Performs "true" division.
+            \item \textbf{Always} returns a float (a number with a decimal point).
+            \item Example 1: \texttt{10 / 4} $\rightarrow$ \texttt{2.5}
+            \item Example 2: \texttt{12 / 4} $\rightarrow$ \texttt{3.0} (Note the \texttt{.0}!)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Integer Division (//)}
+        \begin{itemize}
+            \item Also called "floor division".
+            \item Divides and then \textbf{discards the entire fractional part}.
+            \item Effectively rounds down to the nearest whole number.
+            \item Example 1: \texttt{10 // 4} $\rightarrow$ \texttt{2}
+            \item Example 2: \texttt{17 // 5} $\rightarrow$ \texttt{3}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Arithmetic Operators - Modulo \& Exponent}
+
+    \begin{block}{Modulo (\%) - The Remainder}
+        \begin{itemize}
+            \item The perfect companion to integer division. It gives you the \textbf{remainder} left over after division.
+            \item Think: `10` divided by `3` is `3` (\texttt{10 // 3}) with a remainder of `1` (\texttt{10 \% 3}).
+            \item \textbf{Use Case:} Checking for even or odd numbers.
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+# If a number % 2 is 0, it's even.
+# If a number % 2 is 1, it's odd.
+print(14 % 2)  # Output: 0 (even)
+print(15 % 2)  # Output: 1 (odd)
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Exponent (**) - To the Power Of}
+        \begin{itemize}
+            \item Raises the left operand to the power of the right operand.
+            \item \texttt{2 ** 3} is equivalent to $2^3$ or \texttt{2 * 2 * 2}, resulting in \texttt{8}.
+            \item \texttt{5 ** 2} is equivalent to $5^2$ or \texttt{5 * 5}, resulting in \texttt{25}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Order of Operations (PEMDAS)}
+    \framesubtitle{How Python Prioritizes Calculations}
+    
+    When an expression contains multiple operators, Python follows a set of precedence rules to determine which operation to perform first. This ensures consistent evaluation.
+
+    \begin{block}{The Precedence Hierarchy (Highest to Lowest)}
+        \begin{enumerate}
+            \item \textbf{P}arentheses \texttt{()}: Expressions inside parentheses are \textit{always} evaluated first.
+            \item \textbf{E}xponentiation \texttt{**}: Raised to the power of.
+            \item \textbf{M}ultiplication \& \textbf{D}ivision \texttt{*}, \texttt{/}, \texttt{//}, \texttt{\%}\\
+            These have equal precedence and are evaluated from \textbf{left to right}.
+            \item \textbf{A}ddition \& \textbf{S}ubtraction \texttt{+}, \texttt{-}\\
+            These have the lowest precedence and are also evaluated from \textbf{left to right}.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Order of Operations - Examples}
+    
+    Using parentheses allows you to explicitly control the order of evaluation.
+    
+    \begin{columns}[T] % The [T] option aligns the tops of the columns
+        \begin{column}{.5\textwidth}
+            \begin{block}{Example 1: Default Order}
+                \texttt{5 + 2 * 3}
+                \begin{itemize}
+                    \item \texttt{2 * 3} is evaluated first (Multiplication has higher precedence) \rightarrow \texttt{6}
+                    \item Expression becomes: \texttt{5 + 6}
+                    \item Final Result: \textbf{11}
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{.5\textwidth}
+            \begin{block}{Example 2: Overriding with Parentheses}
+                \texttt{(5 + 2) * 3}
+                \begin{itemize}
+                    \item \texttt{(5 + 2)} is evaluated first (Parentheses have highest precedence) \rightarrow \texttt{7}
+                    \item Expression becomes: \texttt{7 * 3}
+                    \item Final Result: \textbf{21}
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1em}
+    
+    \begin{alertblock}{Key Takeaway: Readability and Control}
+        When in doubt, use parentheses! They not only force the order you want but also make your code much easier for others (and your future self) to read and understand.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Operators: Concatenation (+)}
+    \framesubtitle{Joining Strings Together}
+
+    In Python, operators can behave differently based on the data type. This is called \textbf{operator overloading}.
+    
+    \vspace{1em}
+    
+    When used with strings, the \texttt{+} operator joins them end-to-end. This is called \textbf{concatenation}.
+    
+    \begin{block}{Example: Building a Full Name}
+\begin{verbatim}
+first_name = 'Ada'
+last_name = 'Lovelace'
+
+# We must add the space in the middle explicitly
+full_name = first_name + ' ' + last_name
+
+print(full_name)
+# Output: Ada Lovelace
+\end{verbatim}
+    \end{block}
+    
+    \begin{alertblock}{Watch Out: TypeError}
+        You can only concatenate a string with another string. Trying to "add" a number to a string will cause an error.
+\begin{verbatim}
+>>> greeting = 'Agent ' + 7
+TypeError: can only concatenate str (not "int") to str
+\end{verbatim}
+    \end{alertblock}
+    
+    \note{
+        "Alright everyone, on the last slide, we saw how operators like plus and star work with numbers. Now, let's explore what happens when we use these same symbols with strings. In programming, this is a concept called 'operator overloading'—where an operator's behavior changes based on the data types it's working with.
+
+        First, let's look at the plus sign. With numbers, it's addition. With strings, it's \textbf{concatenation}, which is just a fancy word for 'gluing' them together.
+
+        Look at this example. We have a `first_name` and a `last_name`. To create a `full_name`, we concatenate the first name, a literal space string, and then the last name. It's crucial to remember that Python won't add spaces for you; you have to put them in yourself.
+
+        Now, a very common pitfall for beginners. As you can see in the 'Watch Out' box, Python is strict about types. You can't add the number 7 to the string 'Agent '. Python will raise a `TypeError` because it doesn't know whether you want to do math or join strings. To fix this, you would have to explicitly convert the number to a string first, like this: `'Agent ' + str(7)`."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Operators: Replication (*) \& Summary}
+    \framesubtitle{Repeating and Comparing Strings}
+    
+    The \texttt{*} operator, when used between a string and an integer, repeats the string multiple times. This is called \textbf{replication}.
+
+    \begin{block}{Example: Creating a Visual Separator}
+\begin{verbatim}
+# Replicate the string '-*-' 15 times
+separator = '-*-' * 15
+
+print(separator)
+# Output: -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+\end{verbatim}
+    \end{block}
+
+    \begin{alertblock}{Watch Out: Integer Required}
+        The replication operator requires one string and one \textit{integer}. You cannot multiply a string by another string or by a float.
+    \end{alertblock}
+
+    \begin{block}{Key Takeaway: Context is Everything}
+    \centering
+    \begin{tabular}{|c|l|l|}
+        \hline
+        \textbf{Operator} & \textbf{With Numbers} & \textbf{With Strings} \\
+        \hline
+        \texttt{+} & \textbf{Addition} & \textbf{Concatenation} \\
+         & \texttt{5 + 2} $\rightarrow$ \texttt{7} & \texttt{'5' + '2'} $\rightarrow$ \texttt{'52'} \\
+        \hline
+        \texttt{*} & \textbf{Multiplication} & \textbf{Replication} \\
+         & \texttt{5 * 3} $\rightarrow$ \texttt{15} & \texttt{'Go' * 3} $\rightarrow$ \texttt{'GoGoGo'} \\
+        \hline
+    \end{tabular}
+    \end{block}
+    
+    \note{
+        "Next up is the star operator. With numbers, it's multiplication. With strings, it's \textbf{replication}. It repeats a string a given number of times.
+
+        This is a handy trick for creating things like dividers or borders in your output, as shown in the example where we create a separator by repeating '-*-' 15 times. The order doesn't matter; you can write `15 * '-*-'` and get the same result.
+
+        Just like with concatenation, there's a rule: you must use an integer. You can't multiply a string by a float or another string.
+
+        Finally, this table provides a perfect summary. On the left, you see the familiar mathematical operations. On the right, you see how Python reinterprets these exact same operators when it sees strings. Notice how `'5' + '2'` gives `'52'`, not 7. This is the core idea: the data type determines what the operator does. Context is everything."
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Making Programs Interactive: The \texttt{input()} Function}
+    \framesubtitle{Why We Need User Input}
+
+    So far, our programs have been static. To make them dynamic and responsive, we need to get data from the user during execution.
+
+    \vspace{1em}
+
+    The built-in \texttt{input()} function allows us to do this. It:
+    \begin{enumerate}
+        \item \textbf{Displays} a message (a "prompt") to the user.
+        \item \textbf{Pauses} the program's execution.
+        \item \textbf{Waits} for the user to type something and press \textbf{Enter}.
+        \item \textbf{Returns} the user's entry back to the program, which we can store in a variable.
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Making Programs Interactive: Syntax \& Example}
+
+    The string you pass to \texttt{input()} is the prompt shown to the user. The function's return value is then assigned to a variable.
+
+    \begin{block}{Code Example}
+\begin{verbatim}
+# The string inside input() is the prompt
+user_name = input('Please enter your name: ')
+
+# We use concatenation to greet the user
+print('Hello, ' + user_name + '!')
+\end{verbatim}
+    \end{block}
+
+    \begin{block}{What the User Sees}
+\begin{verbatim}
+Please enter your name: Maria
+Hello, Maria!
+\end{verbatim}
+    \end{block}
+
+    \small{\textit{Tip: It's good practice to end your prompt with a colon and a space (`: `) for readability.}}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Making Programs Interactive: The Crucial Rule}
+
+    This is the most important concept to remember about this function.
+
+    \begin{alertblock}{Crucial Rule}
+        The \texttt{input()} function \textit{always} returns the user's entry as a \textbf{string}, even if they type numbers.
+    \end{alertblock}
+
+    \vspace{1em}
+
+    Let's see what this means:
+    \begin{itemize}
+        \item If a user types \texttt{Ada}, \texttt{input()} returns the string \texttt{'Ada'}.
+        \item If a user types \texttt{25}, \texttt{input()} returns the string \texttt{'25'}, \textbf{not} the integer \texttt{25}.
+        \item If a user types \texttt{3.14}, \texttt{input()} returns the string \texttt{'3.14'}, \textbf{not} the float \texttt{3.14}.
+    \end{itemize}
+
+    \vspace{1em}
+    \textbf{Consequence:} You cannot directly perform mathematical operations on the result of \texttt{input()}. We will see how to handle this next!
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{input()} Problem: A Common Bug}
+    
+    \begin{block}{The Core Issue: Text vs. Numbers}
+        The golden rule: \textbf{\texttt{input()} always returns a string.}
+        \begin{itemize}
+            \item The value \texttt{25} is an \textbf{integer} (a number for math).
+            \item The value \texttt{'25'} is a \textbf{string} (text).
+        \end{itemize}
+        You can't do math with text. In Python's view, \texttt{'25' + 1} is like trying to solve ``apple + 1''.
+    \end{block}
+    
+    \begin{block}{Example Bug}
+\begin{verbatim}
+age_string = input('How old are you? ')
+# If user enters 25, age_string becomes '25'
+
+# This line will CRASH!
+age_next_year = age_string + 1
+# TypeError: can only concatenate str (not "int") to str
+\end{verbatim}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The \texttt{input()} Problem: Decoding the Error}
+
+    When the code crashes, Python gives you a helpful clue.
+    
+    \begin{alertblock}{The Error Message}
+        \texttt{TypeError: can only concatenate str (not "int") to str}
+    \end{alertblock}
+    
+    Let's translate this:
+    \begin{itemize}
+        \item \textbf{\texttt{TypeError}}: You tried an operation on incompatible data types.
+        \item \textbf{\texttt{can only concatenate str...}}: With a string, the \texttt{+} operator's job is to join (concatenate).
+        \item \textbf{\texttt{... (not "int") to str}}: Python is telling you, ``I can't join an integer (\texttt{int}) onto a string (\texttt{str}).''
+    \end{itemize}
+    
+    \begin{block}{How do we fix this?}
+        This is one of the most common bugs for new programmers. The solution is not to change the operator, but to change the data itself.
+        \vspace{0.5em}
+        
+        We must \textbf{convert the data type} from a string to a number before doing math. This is called \textbf{type casting}.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Converting Data Types (Casting)}
+    \framesubtitle{The Solution to Our \texttt{input()} Problem}
+
+    Casting is the process of explicitly converting a value from one data type to another using built-in functions.
+    \vspace{1em}
+
+    \begin{block}{Core Casting Functions}
+        We can use these functions to convert between data types:
+        \begin{itemize}
+            \item \texttt{int(x)}: Converts \texttt{x} to an integer.
+            \item \texttt{float(x)}: Converts \texttt{x} to a floating-point number.
+            \item \texttt{str(x)}: Converts \texttt{x} to a string.
+        \end{itemize}
+    \end{block}
+
+    \vspace{1em}
+    Now, let's use \texttt{int()} and \texttt{str()} to fix the bug from the previous slide.
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Casting: The Solution in Action}
+    
+    By casting the input string to an integer, we can perform mathematical operations.
+    \vspace{1em}
+
+    \textbf{Corrected Code:}
+\begin{verbatim}
+age_string = input('How old are you? ')
+age_integer = int(age_string) # Cast the string to an integer
+age_next_year = age_integer + 1 # Now math is possible!
+
+print('Next year, you will be ' + str(age_next_year))
+\end{verbatim}
+    
+    \vspace{1em}
+    \begin{block}{Step-by-Step Breakdown}
+        \begin{enumerate}
+            \item \texttt{int(age\_string)} converts the input from a string (e.g., '25') to an integer (25).
+            \item The addition \texttt{age\_integer + 1} can now be performed successfully.
+            \item \texttt{str(age\_next\_year)} converts the final number back to a string so it can be concatenated for the \texttt{print()} function.
+        \end{enumerate}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary: Expressions \& Operators}
+    \begin{itemize}
+        \item An \textbf{expression} is a combination of values, variables, and operators that evaluates to a single value.
+        \begin{itemize}
+            \item Example: \texttt{2 * (user\_age + 5)}
+        \end{itemize}
+        \vspace{1em}
+        \item Python uses standard \textbf{arithmetic operators}:
+        \begin{columns}[T]
+            \begin{column}{0.5\textwidth}
+                \begin{itemize}
+                    \item \texttt{+} (Addition)
+                    \item \texttt{-} (Subtraction)
+                    \item \texttt{*} (Multiplication)
+                    \item \texttt{**} (Exponent)
+                \end{itemize}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+                \begin{itemize}
+                    \item \texttt{/} (Float Division)
+                    \item \texttt{//} (Integer Division)
+                    \item \texttt{\%} (Modulo/Remainder)
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{itemize}
+    \vspace{1em}
+    \begin{block}{Order of Operations (PEMDAS)}
+        Python follows \textbf{P}arentheses, \textbf{E}xponents, \textbf{M}ultiplication/\textbf{D}ivision, \textbf{A}ddition/\textbf{S}ubtraction.
+        \begin{itemize}
+            \item \texttt{2 + 3 * 4} evaluates to \texttt{14}
+            \item \texttt{(2 + 3) * 4} evaluates to \texttt{20}
+        \end{itemize}
+        \textit{When in doubt, use parentheses `()` for clarity!}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary: String Operations \& Input}
+    \textbf{Special String Operators}
+    \begin{itemize}
+        \item The \texttt{+} and \texttt{*} operators are "overloaded" for strings.
+        \item \textbf{Concatenation (+):} Joins strings.
+        \begin{lstlisting}[language=Python]
+full_name = "Ada" + " " + "Lovelace" # "Ada Lovelace"
+        \end{lstlisting}
+        \item \textbf{Replication (*):} Repeats a string.
+        \begin{lstlisting}[language=Python]
+separator = "-=" * 10 # "-=-=-=-=-=-=-=-=-=-="
+        \end{lstlisting}
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \begin{alertblock}{The Golden Rule of \texttt{input()}}
+        The \texttt{input()} function gets user input, but it \textbf{ALWAYS} returns a \textbf{string (`str`)}, even if the user types numbers.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary: Casting \& The Input Pattern}
+    To use string input from \texttt{input()} in calculations, you must convert it to a number. This is called \textbf{casting}.
+
+    \begin{itemize}
+        \item \textbf{\texttt{int(x)}}: Converts a value \texttt{x} to an integer (whole number).
+        \item \textbf{\texttt{float(x)}}: Converts a value \texttt{x} to a float (decimal number).
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \begin{block}{The Common Pattern: Input -> Cast -> Calculate}
+        \begin{enumerate}
+            \item Get input as a string from the user.
+            \item \textbf{Cast} the string to a numeric type (\texttt{int} or \texttt{float}).
+            \item Perform mathematical calculations with the number.
+        \end{enumerate}
+    \end{block}
+
+    \begin{lstlisting}[language=Python]
+# 1. Get input (always a string)
+price_string = input("Enter the item price: ")
+
+# 2. Cast the string to a number (float for money)
+price_float = float(price_string)
+
+# 3. Now you can perform calculations!
+price_with_tax = price_float * 1.07
+print("The final price is:", price_with_tax)
+    \end{lstlisting}
+\end{frame}
+
+
+\end{document}

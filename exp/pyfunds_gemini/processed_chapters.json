@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Chapter 1: Introduction to Programming & Python",
+    "description": "Define fundamental concepts like 'program' and 'algorithm,' navigate the Google Colab environment, write a 'Hello, World!' program, and use variables to store basic data types such as integers, floats, and strings."
+  },
+  {
+    "title": "Chapter 2: Expressions, Operators, and User Input",
+    "description": "Learn to construct expressions using mathematical and string operators, get input from a user, store it, and convert between different data types (casting)."
+  },
+  {
+    "title": "Chapter 3: Control Flow: Conditional Logic",
+    "description": "Write programs that make decisions using `if`, `elif`, and `else` statements. Utilize comparison operators to create Boolean expressions for controlling program flow."
+  },
+  {
+    "title": "Chapter 4: Data Structures I: Lists",
+    "description": "Introduction to lists for storing collections of values. Learn to access, modify, add, and remove list elements using indices, slices, and common methods."
+  },
+  {
+    "title": "Chapter 5: Control Flow: Iteration",
+    "description": "Master program repetition using `for` loops to iterate over sequences and `while` loops for indefinite iteration. Understand the concepts of loop variables and state."
+  },
+  {
+    "title": "Chapter 6: The Art of Problem-Solving & Debugging",
+    "description": "Develop skills to translate a problem description into pseudocode, apply a systematic debugging process, and interpret Python's traceback messages to locate and fix errors."
+  },
+  {
+    "title": "Chapter 7: Functions: Creating Reusable Code",
+    "description": "Learn to define and use functions that accept parameters and return values, understand the difference between local and global scope, and decompose complex problems into smaller, manageable functions."
+  },
+  {
+    "title": "Chapter 8: Midterm Review & Exam",
+    "description": "A comprehensive review week to synthesize and apply all concepts covered in the first half of the course, culminating in the midterm exam."
+  },
+  {
+    "title": "Chapter 9: Data Structures II: Dictionaries",
+    "description": "Explore dictionaries for modeling data with key-value pairs. Learn to add, access, and remove items, and understand the differences between lists and dictionaries."
+  },
+  {
+    "title": "Chapter 10: Advanced String Manipulation & File I/O",
+    "description": "Master powerful string manipulation methods and learn to perform file input/output (I/O) by opening, reading from, and writing to plain text files."
+  },
+  {
+    "title": "Chapter 11: Modules & the Python Standard Library",
+    "description": "Learn to use the `import` statement to access code from external modules and solve problems using powerful tools from the Python Standard Library like `math`, `random`, and `csv`."
+  },
+  {
+    "title": "Chapter 12: A Deeper Dive into Python's Objects",
+    "description": "Understand that everything in Python is an object with methods. Learn to use `dir()` and `help()` to explore object capabilities and master advanced methods for built-in data types."
+  },
+  {
+    "title": "Chapter 13: Error Handling & Final Project Launch",
+    "description": "Learn to handle potential runtime errors gracefully using `try` and `except` blocks. This week also marks the beginning of the design and implementation of the final project."
+  },
+  {
+    "title": "Chapter 14: Course Wrap-up & Final Review",
+    "description": "A comprehensive review of all major course topics in preparation for the final exam. This week also includes a discussion on pathways for continued learning in programming."
+  },
+  {
+    "title": "Chapter 15: Final Exam Week",
+    "description": "The culmination of the course with the final examination, covering all material from the semester with an emphasis on topics from the second half."
+  }
+]

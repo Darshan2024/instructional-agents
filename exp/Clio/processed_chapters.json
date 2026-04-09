@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Week 1: Introduction to Software Engineering",
+    "description": "Overview of Software Engineering and Development Lifecycles, establishing foundational knowledge in software engineering."
+  },
+  {
+    "title": "Week 2: Software Development Methodologies",
+    "description": "Exploration of Agile vs. Waterfall Methodologies and the Scrum Framework, focusing on different approaches to software development."
+  },
+  {
+    "title": "Week 3: Foundations of Programming",
+    "description": "Introduction to Object-Oriented Programming concepts, laying the groundwork for programming practices."
+  },
+  {
+    "title": "Week 4: Problem-Solving & Algorithms",
+    "description": "Techniques for problem-solving and an introduction to algorithms, enhancing analytical skills in coding."
+  },
+  {
+    "title": "Week 5: Data Structures",
+    "description": "Study of common data structures such as arrays, lists, and trees, essential for effective coding."
+  },
+  {
+    "title": "Week 6: Version Control Systems",
+    "description": "Fundamentals of Git and collaborative software development practices to manage code changes effectively."
+  },
+  {
+    "title": "Week 7: Testing and Quality Assurance",
+    "description": "Understanding the importance of testing in software development, including unit and integration testing."
+  },
+  {
+    "title": "Week 8: Automated Testing Tools",
+    "description": "Utilization of JUnit and pytest for unit testing, expanding knowledge in automated testing frameworks."
+  },
+  {
+    "title": "Week 9: Ethical Dilemmas in Software Engineering",
+    "description": "Analysis of ethical dilemmas through case studies, focusing on the social impact of software engineering."
+  },
+  {
+    "title": "Week 10: Technical Documentation",
+    "description": "Best practices for writing effective technical documentation, crucial for effective communication in software projects."
+  },
+  {
+    "title": "Week 11: Software Design Patterns",
+    "description": "Introduction to design patterns such as Singleton and Observer, enhancing software design skills."
+  },
+  {
+    "title": "Week 12: Group Project Presentations",
+    "description": "Student presentations of group projects to showcase collaboration and application of learned concepts."
+  },
+  {
+    "title": "Week 13: Review and Examination Preparation",
+    "description": "Comprehensive review of key concepts to prepare for the final exam, reinforcing the learning material."
+  },
+  {
+    "title": "Week 14: Final Exam",
+    "description": "A comprehensive final exam covering all course content, assessing the students' overall understanding of software engineering principles."
+  }
+]

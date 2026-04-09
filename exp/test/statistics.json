@@ -1,0 +1,26 @@
+[
+  {
+    "elapsed_time": 37.16409659385681,
+    "token_usage": 3408
+  },
+  {
+    "elapsed_time": 38.997886419296265,
+    "token_usage": 5126
+  },
+  {
+    "elapsed_time": 40.04934120178223,
+    "token_usage": 7205
+  },
+  {
+    "elapsed_time": 56.55395746231079,
+    "token_usage": 10522
+  },
+  {
+    "elapsed_time": 50.69148588180542,
+    "token_usage": 13082
+  },
+  {
+    "elapsed_time": 46.97071290016174,
+    "token_usage": 14700
+  }
+]

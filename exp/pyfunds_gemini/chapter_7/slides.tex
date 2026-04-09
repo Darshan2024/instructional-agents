@@ -1,0 +1,747 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+    language=Python, % Set default language to Python
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=tb, % top and bottom frame lines
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    tabsize=4,
+    captionpos=b % caption position at the bottom
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 7: Functions: Creating Reusable Code}
+\author{Teaching Assistant}
+\institute{University Department}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 7: Functions: Creating Reusable Code}
+    \framesubtitle{The Power of Reusability}
+
+    \begin{itemize}
+        \item Welcome to one of the most fundamental concepts in programming: \textbf{functions}.
+        \item Imagine building a complex machine. Instead of creating every single screw and gear from scratch each time, you would create a blueprint and manufacture them as needed.
+    \end{itemize}
+    \vspace{1cm}
+
+    \begin{block}{The Core Analogy}
+        Functions are the "blueprints" of your code. They allow you to define a piece of logic once and reuse it whenever necessary.
+    \end{block>
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Function? \& Chapter Goals}
+
+    \begin{itemize}
+        \item A \textbf{function} is a named, self-contained block of code that performs a specific task.
+        \item You write the code once inside the function, and then "call" it anytime you need to perform that task.
+    \end{itemize}
+
+    \begin{block}{Key Principle: DRY (Don't Repeat Yourself)}
+        \centering
+        \textbf{Write Once, Use Many Times.}
+        \vspace{0.2cm}
+        
+        This is the key to managing complexity and building powerful, maintainable programs.
+    \end{block}
+    \vspace{0.5cm}
+
+    \textbf{In this chapter, you will learn:}
+    \begin{itemize}
+        \item \textbf{Defining and Calling Functions:} The syntax for creating and executing functions.
+        \item \textbf{Parameters and Arguments:} How to pass information \textit{into} a function.
+        \item \textbf{Return Values:} How to get results \textit{out of} a function.
+        \item \textbf{Scope:} Where variables are accessible (local vs. global environments).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why Do We Need Functions?}
+    \begin{block}{The Core Problem: Repetitive Code}
+        Imagine you copy and paste the same 10 lines of code in five different places. If you need to fix a bug or make an update, you must find and change all five copies perfectly. This is inefficient and leads to errors.
+    \end{block}
+
+    \begin{block}{The Solution: The DRY Principle}
+        Functions allow us to follow a core principle of software development: \textbf{DRY (Don't Repeat Yourself)}. You write the code once, inside a function, and then call it whenever you need it.
+    \end{block}
+
+    \vspace{1em}
+    Functions provide four main benefits:
+    \begin{itemize}
+        \item Reduces Redundancy
+        \item Improves Readability
+        \item Simplifies Debugging
+        \item Enables Abstraction
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits: Redundancy \& Readability}
+    \begin{columns}[T] % The T option aligns the columns at the top
+        \begin{column}{0.5\textwidth}
+            \begin{block}{1. Reduces Redundancy}
+                Define logic once and reuse it. If you need to update it (e.g., change the value of pi), you only have to make one change.
+                \vfill
+                \textbf{Example: With a Function}
+\begin{verbatim}
+def calculate_circle_area(radius):
+    return 3.14159 * radius**2
+
+# Call the same logic multiple times
+area1 = calculate_circle_area(5)
+area2 = calculate_circle_area(10)
+\end{verbatim}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{2. Improves Readability}
+                Well-named functions make your code read like a summary of steps, hiding the complex details.
+                \vfill
+                \textbf{Example: Organized Main Logic}
+\begin{verbatim}
+def display_welcome_message():
+    #... implementation details ...
+
+def get_user_data():
+    #... implementation details ...
+
+def calculate_birth_year(age):
+    #... implementation details ...
+
+# Main code is clean and readable
+display_welcome_message()
+name, age = get_user_data()
+year = calculate_birth_year(age)
+\end{verbatim}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits: Debugging \& Abstraction}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{3. Simplifies Debugging}
+                Functions isolate code into small, independent units.
+                \begin{itemize}
+                    \item It's much easier to find a bug in a 10-line function than in a 500-line script.
+                    \item Error messages often point directly to the function that failed, narrowing your search.
+                    \item If you know the input is correct but the output is wrong, the bug \textit{must} be inside that specific function.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{4. Enables Abstraction}
+                Abstraction means hiding complexity and showing only what's necessary. Functions are like ``black boxes''.
+                \vfill
+                \textbf{Analogy: Driving a Car}\\
+                You use the steering wheel and pedals (the interface) without needing to know how the engine works (the implementation).
+                \vfill
+                \textbf{Example: Python's \texttt{len()} function}}
+\begin{verbatim}
+# We use len() without seeing its code.
+# This is abstraction in action.
+numbers = [10, 20, 30, 40]
+count = len(numbers)
+print(count) # Output: 4
+\end{verbatim}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anatomy of a Python Function - The Blueprint}
+    \framesubtitle{Understanding the Structure}
+    
+    A function is like a recipe for a task. It consists of a \textbf{header} (the first line) and an indented \textbf{body} (the instructions).
+    
+    \begin{block}{Example: `calculate_sum`}
+\begin{lstlisting}[language=Python]
+# The Function Header
+def calculate_sum(num1, num2):
+    # The Function Body (indented)
+    total = num1 + num2
+    return total
+\end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item The \textbf{Header} defines the function's name and its parameters.
+        \item The \textbf{Body} contains the code that runs when the function is called.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anatomy of a Python Function - The Header}
+    \framesubtitle{\texttt{def calculate\_sum(num1, num2):}}
+    
+    The header is the signature of the function. Let's break it down:
+    \begin{enumerate}
+        \item \textbf{\texttt{def} Keyword:} Stands for "define". It tells Python you are creating a new function.
+        
+        \item \textbf{Function Name (\texttt{calculate\_sum}):} A descriptive name following the \texttt{snake\_case} convention (lowercase with underscores).
+        
+        \item \textbf{Parentheses \texttt{()}:} Required after the name. They hold the function's parameters. They must be included even if there are no parameters (\texttt{def my\_function():}).
+        
+        \item \textbf{Parameters (\texttt{num1, num2}):} Placeholder variables for the inputs (arguments) the function will receive.
+        
+        \item \textbf{Colon \texttt{:}:} Marks the end of the header and signals that an indented code block (the body) will follow.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anatomy of a Python Function - The Body}
+    \framesubtitle{The Indented Instructions}
+    
+    The body contains the logic that executes when the function is called.
+    
+    \begin{itemize}
+        \item \textbf{Indented Body:}
+        \begin{itemize}
+            \item The block of code that forms the function's logic.
+            \item \textbf{Crucially, it must be indented} (standard is 4 spaces).
+            \item Indentation is how Python groups statements together.
+        \end{itemize}
+        \bigskip % Adds a bit of vertical space
+        
+        \item \textbf{\texttt{return} Statement (Optional):}
+        \begin{itemize}
+            \item Sends a value back from the function to the calling code.
+            \item Immediately exits the function once executed.
+            \item If omitted, the function automatically returns the special value \texttt{None}.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Defining and Calling a Function - Part 1: The Concept}
+
+    A function is a stored set of instructions. Using a function is a two-step process:
+    \begin{itemize}
+        \item \textbf{Defining} a function is like writing down a recipe; it creates the instructions but doesn't do anything yet.
+        \item \textbf{Calling} a function is like following the recipe to actually cook the dish; it executes the instructions.
+    \end{itemize}
+
+    \begin{block}{Step 1: Define the Function}
+        The \texttt{def} keyword tells Python you are creating a function. Python reads the indented code and stores it in memory. \textbf{The code does not run at this stage.}
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+# This code is read and stored under the name 'display_greeting'.
+# The print statements inside are NOT executed yet.
+def display_greeting():
+    print("---------------------")
+    print("Welcome to the program!")
+    print("---------------------")
+
+# Program execution continues here...
+# (Nothing has been printed to the screen yet)
+    \end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Defining and Calling a Function - Part 2: The Execution}
+    
+    \begin{block}{Step 2: Call the Function}
+        To execute the stored code, you must \textbf{call} it by writing its name followed by parentheses \texttt{()}. This is the trigger!
+    \end{block}
+
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Full Code:}
+            \begin{lstlisting}[language=Python]
+# 1. DEFINE the function
+def display_greeting():
+    print("---------------------")
+    print("Welcome to the program!")
+    print("---------------------")
+
+# Other code could run here...
+
+# 2. CALL the function
+# Execution jumps into the
+# function's code block NOW.
+display_greeting()
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{Program Output:}
+            \begin{verbatim}
+---------------------
+Welcome to the program!
+---------------------
+            \end{verbatim}
+            
+            \begin{alertblock}{The Power of Reusability}
+            Define the function once, and you can call it as many times as you need!
+            \begin{lstlisting}[language=Python]
+display_greeting() # First call
+# ... do other work ...
+display_greeting() # Second call
+            \end{lstlisting}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Passing Information with Parameters}
+    
+    Parameters make functions flexible and reusable. They act as placeholders for data that a function needs to do its work.
+    
+    \begin{itemize}
+        \item \textbf{Parameter}: A variable listed inside the parentheses in the function definition. It's a placeholder.
+        \item \textbf{Argument}: The actual value that is sent to the function when it is called.
+    \end{itemize}
+    
+    \begin{block}{Analogy: The Vending Machine}
+        \begin{itemize}
+            \item \textbf{Function}: The vending machine itself (\texttt{get\_snack}).
+            \item \textbf{Parameter}: The placeholder for your choice (e.g., \texttt{item\_code}).
+            \item \textbf{Argument}: The specific choice you make (e.g., the string \texttt{"B4"}).
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Passing Information with Parameters - Code Example}
+    
+    \begin{lstlisting}[language=Python]
+# 'name' is the PARAMETER (a placeholder in the function's definition)
+def personalized_greet(name):
+    # Inside the function, 'name' behaves like a variable
+    # holding the value that was passed in.
+    print(f"Hello, {name}! Welcome.")
+
+# "Alice" is the ARGUMENT (the actual data passed during the call)
+personalized_greet("Alice")
+# Python effectively does: name = "Alice"
+# Output: Hello, Alice! Welcome.
+
+# "Bob" is another ARGUMENT for a separate function call
+personalized_greet("Bob")
+# Python effectively does: name = "Bob"
+# Output: Hello, Bob! Welcome.
+    \end{lstlisting}
+    
+    \begin{block}{Key Takeaway}
+        By using a parameter, we created one \texttt{personalized\_greet} function that can greet anyone, making our code highly reusable.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Results with the \texttt{return} Statement}
+    
+    Functions can perform a task and send a result back to the code that called it using the \texttt{return} keyword.
+    
+    \begin{block}{Capturing the Output}
+        The returned value can be stored in a variable, printed, or used in another expression.
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+# This function calculates and returns a value
+def calculate_area(length, width):
+    area = length * width
+    return area
+
+# Call the function and store its output in a variable
+room_area = calculate_area(10, 5) # room_area is now 50
+print(f"The area of the room is {room_area} sq ft.")
+    \end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Results with the \texttt{return} Statement - Data Flow}
+    
+    Let's trace the flow of data from the function call to the final result.
+    
+    \begin{lstlisting}[language=Python]
+# This function calculates and returns a value
+def calculate_area(length, width):
+    area = length * width
+    return area  # Step 2: The value of 'area' (50) is sent back
+
+# Step 1: Call the function. Python pauses here and runs the function.
+# Step 3: The function call is replaced by its returned value (50).
+#         The line effectively becomes: room_area = 50
+room_area = calculate_area(10, 5)
+
+# Step 4: Use the captured value.
+print(f"The area of the room is {room_area} sq ft.")
+# Output: The area of the room is 50 sq ft.
+    \end{lstlisting}
+    
+    \begin{block}{Key Rules for \texttt{return}}
+        \begin{itemize}
+            \item \textbf{Immediate Exit:} When a \texttt{return} statement is executed, the function stops immediately. No code after it will run.
+            \item \textbf{Implicit Return:} A function that ends without an explicit \texttt{return} automatically returns a special value: \texttt{None}.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Variable Scope: The Core Idea}
+    \textbf{Scope} defines where a variable can be seen and accessed in your code.
+    
+    \begin{block}{An Analogy: The House and The Rooms}
+        Think of your entire program as a large \textbf{house}. Each function you define is like a separate, private \textbf{room} inside that house.
+    \end{block}
+    
+    There are two primary types of scope:
+    \begin{itemize}
+        \item \textbf{Global Scope (The House):} Variables created here are accessible from anywhere in the program, including inside any "room".
+        
+        \item \textbf{Local Scope (A Room):} Variables created inside a function are private to that "room". They cannot be seen or used from the main house or other rooms.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Variable Scope: Local vs. Global in Code}
+    \begin{itemize}
+    \item \textbf{Local Scope:} Variables created \textit{inside} a function are local. They only exist while the function is running.
+    \item \textbf{Global Scope:} Variables created \textit{outside} of any function are global. They can be accessed from anywhere in the script.
+    \end{itemize}
+    
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+global_var = "I am global"
+
+def my_function():
+    # This variable is created in the local scope
+    local_var = "I am local" 
+    
+    # We can access global variables from inside a function
+    print(global_var)
+
+my_function()
+
+# This line would cause an error because local_var
+# does not exist in the global scope.
+# print(local_var)
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scope: The \texttt{NameError} and Best Practices}
+    
+    \begin{block}{Why does \texttt{print(local\_var)} fail?}
+        \begin{itemize}
+            \item The variable \texttt{local\_var} is created inside \texttt{my\_function()}. It lives only in the function's local scope (its "room").
+            \item When the function finishes, its local scope is destroyed, and \texttt{local\_var} vanishes completely.
+            \item Trying to access it from the global scope results in a \textbf{\texttt{NameError}}, as Python cannot find a variable with that name there.
+        \end{itemize}
+    \end{block}
+    
+    \textbf{Best Practices:}
+    \begin{enumerate}
+        \item \textbf{Encapsulation is Key:} Local scopes keep functions self-contained and prevent them from accidentally interfering with each other.
+        \item \textbf{Pass Data Explicitly:}
+        \begin{itemize}
+            \item Pass data \textbf{INTO} functions using \textbf{parameters}.
+            \item Get data \textbf{OUT OF} functions using the \textbf{\texttt{return}} statement.
+        \end{itemize}
+        \item \textbf{Use Globals Sparingly:} Relying on global variables can make your code harder to read, debug, and maintain.
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Power of Decomposition (Part 1) - The Concept}
+    
+    Problem decomposition is the process of breaking a complex problem down into smaller, simpler, and more manageable sub-problems. Each sub-problem can then be solved with a dedicated function.
+    
+    \begin{block}{Example Problem}
+        Calculate the final price of an item after a 10\% discount and an 8\% sales tax are applied.
+    \end{block}
+    
+    \textbf{Decomposition into Steps:}
+    \begin{enumerate}
+        \item A function to calculate the price after the discount is applied.\\
+        \texttt{calculate\_discounted\_price(price, percent)}
+        
+        \vspace{0.5cm}
+        
+        \item A function to calculate the final price by adding tax to the discounted price.\\
+        \texttt{add\_tax(price, tax\_rate)}
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Power of Decomposition (Part 2) - Code Example}
+    
+    The main script acts as an "orchestrator," coordinating the work of specialized functions.
+    
+    \begin{lstlisting}[language=Python]
+# Function for sub-problem 1: Applying the discount
+def calculate_discounted_price(price, percent):
+    discount = price * (percent / 100)
+    return price - discount
+
+# Function for sub-problem 2: Adding the tax
+def add_tax(price, tax_rate):
+    tax = price * (tax_rate / 100)
+    return price + tax
+
+# --- Main Code: The Orchestrator ---
+original_price = 100.0
+
+# Step 1: Call the discount function
+price_after_discount = calculate_discounted_price(original_price, 10)
+
+# Step 2: Use the result to call the tax function
+final_price = add_tax(price_after_discount, 8)
+
+print(f"Final Price: ${final_price:.2f}") # $97.20
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Power of Decomposition (Part 3) - Key Benefits}
+    
+    Decomposing problems into functions makes your code better in several ways:
+    
+    \begin{itemize}
+        \item \textbf{Clarity \& Readability}
+        \begin{itemize}
+            \item The main code reads like a high-level summary of steps.
+            \item It focuses on \textit{what} is happening, not \textit{how}. The complex details are hidden inside functions.
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        
+        \item \textbf{Reusability}
+        \begin{itemize}
+            \item Functions like \texttt{add\_tax} are reusable tools.
+            \item You can call them from anywhere in your program without rewriting the logic.
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        
+        \item \textbf{Easier Debugging}
+        \begin{itemize}
+            \item If the tax calculation is wrong, you know exactly which small function to examine (\texttt{add\_tax}).
+            \item This isolates bugs and makes them much faster to find and fix.
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Putting It All Together: A Complete Example}
+    
+    Let's combine our knowledge of functions to build a small, organized program that converts temperature from Celsius to Fahrenheit. This example demonstrates how to structure a program by decomposing a problem.
+    
+    \begin{block}{Temperature Conversion Program}
+\begin{lstlisting}[language=Python]
+def get_celsius_input():
+    """Gets temperature in Celsius from the user."""
+    c_temp = float(input("Enter temp in Celsius: "))
+    return c_temp
+
+def convert_c_to_f(celsius_temp):
+    """Converts Celsius to Fahrenheit."""
+    fahrenheit = (celsius_temp * 9/5) + 32
+    return fahrenheit
+
+def display_result(celsius, fahrenheit):
+    """Prints the final result."""
+    print(f"{celsius:.1f}C is equal to {fahrenheit:.1f}F.")
+
+# --- Main part of the script ---
+celsius = get_celsius_input()
+fahrenheit = convert_c_to_f(celsius)
+display_result(celsius, fahrenheit)
+\end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Putting It All Together: Code Analysis}
+    
+    This program demonstrates \textbf{problem decomposition}. We've broken the task into three logical parts, each handled by a dedicated function:
+    
+    \begin{enumerate}
+        \item \textbf{Get Input:} Get the temperature from the user.
+        \item \textbf{Process Data:} Perform the conversion calculation.
+        \item \textbf{Display Output:} Show the final result to the user.
+    \end{enumerate}
+    
+    \begin{block}{Function Responsibilities}
+    \begin{itemize}
+        \item \texttt{get\_celsius\_input()}:
+            \begin{itemize}
+                \item \textbf{Responsibility:} Manages all user interaction for input.
+                \item \textbf{Action:} Prompts user, converts input to a \texttt{float}, and returns the value.
+            \end{itemize}
+        \item \texttt{convert\_c\_to\_f()}:
+            \begin{itemize}
+                \item \textbf{Responsibility:} The "engine" that handles the core logic.
+                \item \textbf{Action:} Takes Celsius as an argument, performs the calculation, and returns the result.
+            \end{itemize}
+        \item \texttt{display\_result()}:
+            \begin{itemize}
+                \item \textbf{Responsibility:} Manages the final output formatting.
+                \item \textbf{Action:} Takes two arguments and prints a formatted string to the console.
+            \end{itemize}
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Putting It All Together: Execution Flow \& Takeaways}
+    
+    \begin{block}{The "Main" Script: The Orchestrator}
+    The code outside the functions runs sequentially, calling each function to perform its task in the correct order.
+    
+    \begin{enumerate}
+        \item \texttt{celsius = get\_celsius\_input()} \\
+        Calls the input function and stores its \texttt{return} value.
+        
+        \item \texttt{fahrenheit = convert\_c\_to\_f(celsius)} \\
+        Passes the stored Celsius value to the conversion function and stores the new result.
+        
+        \item \texttt{display\_result(celsius, fahrenheit)} \\
+        Passes both values to the display function to print the final output.
+    \end{enumerate}
+    \end{block}
+    
+    \bigskip
+    \textbf{Key Takeaways:}
+    \begin{itemize}
+        \item \textbf{Clarity:} The main script reads like a high-level summary of the program's steps.
+        \item \textbf{Modularity:} To change the conversion formula (e.g., to Kelvin), you only need to edit \texttt{convert\_c\_to\_f}.
+        \item \textbf{Reusability:} The \texttt{convert\_c\_to\_f} function is a self-contained tool that can be used in other programs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 7: Summary - Core Mechanics}
+    
+    \begin{block}{1. Defining vs. Calling: The Two-Step Process}
+        A function is a block of code that only runs when you explicitly tell it to.
+        \begin{itemize}
+            \item \textbf{Definition (\texttt{def})}: This is the blueprint for your function. The code inside is \textit{not} executed yet.
+            \item \textbf{Calling}: This is when you execute the function's code by its name, followed by parentheses \texttt{()}.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{2. Parameters: The Function's "In-box"}
+        Parameters are placeholders that make functions flexible and reusable. You provide actual values (arguments) when you call the function.
+        \begin{lstlisting}[language=Python]
+% 'user_name' is a parameter (placeholder)
+def say_hello(user_name):
+    print(f"Hello, {user_name}!")
+
+say_hello("Charlie") % "Charlie" is an argument
+say_hello("Dana")    % "Dana" is an argument
+        \end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 7: Summary - Return Values \& Scope}
+    
+    \begin{block}{3. The \texttt{return} Statement: Getting a Result Back}
+        The \texttt{return} keyword sends a value back from the function to the code that called it. This allows you to use the result elsewhere.
+        \begin{lstlisting}[language=Python]
+def add(a, b):
+    result = a + b
+    return result % Sends the value of 'result' back
+
+sum_val = add(5, 3) % The returned value is stored
+print(f"The result is: {sum_val}")
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{4. Local Scope: What Happens in a Function, Stays in a Function}
+        Variables created inside a function are \textbf{local}. They only exist within that function and are destroyed when it finishes.
+        \begin{lstlisting}[language=Python]
+def calculate_area(width, height):
+    area = width * height % 'area' is a local variable
+    return area
+
+rectangle_area = calculate_area(10, 5)
+% print(area) % This would cause a NameError
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 7: Summary - The Big Picture}
+    
+    \begin{block}{5. Decomposition: Thinking Like a Programmer}
+        The practice of breaking down a large, complex problem into smaller, more manageable sub-problems. Each sub-problem is then solved with a dedicated function.
+        \begin{itemize}
+            \item This makes code easier to read, test, and debug.
+            \item Example: The temperature converter was broken into \texttt{get\_celsius\_input()}, \texttt{convert\_c\_to\_f()}, and \texttt{display\_result()}.
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Key Takeaways}
+        \begin{itemize}
+            \item Functions are defined with \textbf{\texttt{def}} and executed when \textbf{called}.
+            \item \textbf{Parameters} are placeholders for inputs, making functions reusable.
+            \item The \textbf{\texttt{return}} keyword sends a value back from a function.
+            \item Variables inside a function are \textbf{local} to that function's scope.
+            \item \textbf{Decomposition} helps manage complexity by breaking tasks into smaller functions.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+
+\end{document}

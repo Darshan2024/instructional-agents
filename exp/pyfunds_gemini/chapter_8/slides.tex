@@ -1,0 +1,747 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 8: Midterm Review \& Exam}
+\author{Teaching Assistant}
+\institute{University Name}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 8: Midterm Review \& Exam}
+    
+    \begin{block}{Welcome! Our Goal for Today}
+        Welcome to our midterm review session! Today is all about connecting the dots.
+        \vspace{0.5em}
+        
+        Our goal is to move beyond individual topics and \textbf{synthesize} the core programming concepts from the first seven weeks. By seeing how these ideas fit together, you'll be better prepared for the exam.
+    \end{block}
+    
+    \vspace{1em}
+    
+    \textbf{Today's Agenda:}
+    \begin{itemize}
+        \item Exam Logistics \& Strategy
+        \item Comprehensive Review of Weeks 1-7 Topics
+        \item Integrated Practice Problem
+        \item Open Q\&A Session
+    \end{itemize}
+    
+    \vspace{\fill}
+    
+    \begin{alertblock}{Key Mindset for Today}
+        Think \textbf{synthesis}, not just memorization. Focus on \textit{how} and \textit{why} concepts work together.
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Today's Agenda: Our Roadmap to Success}
+    
+    \begin{columns}[T] % Top-aligned columns
+        \begin{column}{0.5\textwidth}
+            \begin{block}{1. Exam Logistics \& Strategy}
+                \begin{itemize}
+                    \item \textbf{What:} We'll cover the format, timing, and tools (Google Colab).
+                    \item \textbf{Why:} Knowing the "rules of the game" helps you focus on solving problems, not logistics.
+                \end{itemize}
+            \end{block}
+            
+            \vspace{1em}
+            
+            \begin{block}{2. Comprehensive Review}
+                \begin{itemize}
+                    \item \textbf{What:} A recap from fundamentals (variables) to more complex structures (loops, functions).
+                    \item \textbf{Why:} Reinforce foundations and highlight the connections between topics.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{3. Integrated Practice Problem}
+                \begin{itemize}
+                    \item \textbf{What:} We will collaboratively solve a sample exam-style problem from start to finish.
+                    \item \textbf{Why:} This is where theory meets practice in a realistic, multi-step context.
+                \end{itemize}
+            \end{block}
+            
+            \vspace{1em}
+            
+            \begin{block}{4. Open Q\&A Session}
+                \begin{itemize}
+                    \item \textbf{What:} Your dedicated time to ask anything. No question is too simple or complex.
+                    \item \textbf{Why:} Your chance to clarify any lingering doubts before your final study push.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exam Logistics \& Topics Covered}
+
+    \begin{block}{Exam Format}
+        \begin{itemize}
+            \item \textbf{Where:} In-class, using Google Colab.
+            \item \textbf{When:} During our regular class time (90 minutes).
+            \item \textbf{Rules:} Open-note and open-course-materials.
+            \item \textbf{\alert{Important:}} This is \textbf{not} an open-internet exam. Using communication tools, Stack Overflow, or generative AI is strictly prohibited.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Topics Covered (Weeks 1-7)}
+        \begin{itemize}
+            \item Variables, Data Types, and Operators
+            \item Conditional Logic (if/elif/else)
+            \item Lists (creation, indexing, methods)
+            \item Iteration (for/while loops)
+            \item Functions (definition, parameters, return)
+            \item Problem-Solving \& Debugging
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exam Strategy: How to Succeed}
+
+    \begin{block}{A 4-Step Strategy for Success}
+        \begin{enumerate}
+            \item \textbf{Read All Questions First (2-3 mins)} \\
+            Quickly skim the entire exam to gauge difficulty and plan your approach. This helps you budget your time effectively.
+
+            \item \textbf{Solve Easiest Problems First} \\
+            Start with your "quick wins" to build confidence and secure points early. Don't leave easy points on the table.
+
+            \item \textbf{Don't Get Stuck (The 15-Minute Rule)} \\
+            If you make no progress on a problem after 10-15 minutes, leave a comment and move on. You can always come back later.
+
+            \item \textbf{Save Time to Review (5-10 mins)} \\
+            Finish early to review your work. Run all cells from the top, check for simple errors, and ensure you met all requirements.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts: Data \& Expressions - Part 1}
+    \framesubtitle{Variables \& Data Types}
+    
+    A review of the fundamental building blocks of any program. Variables act as named containers for storing data.
+    
+    \begin{block}{Common Data Types}
+        Different types of data require different variable types.
+        \begin{itemize}
+            \item \texttt{name = "Python"} \hfill \textit{(string: for text)}
+            \item \texttt{version = 3} \hfill \textit{(integer: for whole numbers)}
+            \item \texttt{pi\_approx = 3.14} \hfill \textit{(float: for decimal numbers)}
+            \item \texttt{is\_beginner = True} \hfill \textit{(boolean: for True/False)}
+        \end{itemize}
+    \end{block}
+    
+    Each variable holds a value of a specific type, which determines the operations you can perform on it.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts: Data \& Expressions - Part 2}
+    \framesubtitle{Operators \& User Input}
+    
+    Programs interact with users and process data using operators and functions.
+    
+    \begin{block}{Example: Calculating Age Next Year}
+    The \texttt{input()} function reads user data as a string. We must convert this string to a number for calculations—a process called \textbf{type casting}.
+    \begin{lstlisting}[language=Python]
+% Get user input (which is always a string)
+age_str = input("Enter your age: ")
+
+% Type cast the string to an integer for math
+age_int = int(age_str)
+
+% Perform calculation and print the result
+% Note: We must cast the number back to a string to join it
+print("Next year you will be: " + str(age_int + 1))
+    \end{lstlisting}
+    \end{block}
+    
+    \textbf{Key Steps:}
+    \begin{enumerate}
+        \item Get data from the user with \texttt{input()}.
+        \item Convert data type for calculation (\texttt{string} $\rightarrow$ \texttt{integer}).
+        \item Use an operator (\texttt{+}) to compute the new value.
+        \item Convert the result back to a string for printing with other text.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Control Flow Part 1: Conditionals}
+    Making decisions in your code with \texttt{if}, \texttt{elif}, and \texttt{else}. The program's path is determined by Boolean expressions.
+    \vspace{1em}
+
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item \textbf{\texttt{if}}: The entry point. Checks a condition. If \texttt{True}, its code block runs.
+                \vspace{0.5em}
+                \item \textbf{\texttt{elif}}: Optional. Checks a new condition \textit{only if} the previous \texttt{if}/\texttt{elif} was \texttt{False}.
+                \vspace{0.5em}
+                \item \textbf{\texttt{else}}: Optional. A "catch-all" that runs \textit{only if} all preceding conditions were \texttt{False}.
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Example:}
+            \begin{verbatim}
+score = 75
+
+if score >= 90:
+    print("Excellent!")
+elif score >= 60:
+    print("Satisfactory.")
+else:
+    print("Needs improvement.")
+            \end{verbatim}
+        \end{column}
+    \end{columns}
+
+    \begin{block}{Key Idea}
+        For any single \texttt{if-elif-else} chain, Python executes conditions top-to-bottom and runs \textbf{at most one} code block.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conditionals: Execution Walkthrough}
+    Let's trace the execution for \texttt{score = 75}. As soon as a condition is met, the rest of the chain is skipped.
+
+    \begin{block}{Example Trace: \texttt{score = 75}}
+        \begin{enumerate}
+            \item \textbf{Check the \texttt{if} condition:} \\
+            Is \texttt{75 >= 90}? \hfill \textbf{False}. \\
+            \textit{Action: Skip this block and move on.}
+            \begin{verbatim}
+if score >= 90:
+    print("Excellent!")
+            \end{verbatim}
+            
+            \item \textbf{Check the \texttt{elif} condition:} \\
+            Is \texttt{75 >= 60}? \hfill \textbf{True}. \\
+            \textit{Action: Execute this block. Prints "Satisfactory."}
+            \begin{verbatim}
+elif score >= 60:
+    print("Satisfactory.")
+            \end{verbatim}
+            
+            \item \textbf{Exit the chain:} \\
+            Because the \texttt{elif} was true, the \texttt{else} block is completely skipped.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conditionals: A Common Pitfall}
+    An \texttt{if-elif-else} chain is very different from a series of independent \texttt{if} statements.
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{\texttt{if-elif} Chain (Mutually Exclusive)}
+                Only \textbf{one} block can possibly run.
+\begin{verbatim}
+score = 95
+if score >= 90:
+    print("Excellent!")
+elif score >= 60:
+    print("Satisfactory.")
+\end{verbatim}
+                \textbf{Output:} \texttt{Excellent!}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Multiple \texttt{if}s (Independent Checks)}
+                \textbf{Each} \texttt{if} is tested separately. Multiple blocks could run.
+\begin{verbatim}
+score = 95
+if score >= 90:
+    print("Excellent!")
+if score >= 60:
+    print("Satisfactory.")
+\end{verbatim}
+                \textbf{Output:} Both messages print.
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{1em}
+    \textbf{Key Takeaway:} Use an \texttt{if-elif} chain when you want to choose exactly one option from a set of possibilities.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Control Flow Part 2: Iteration}
+    \framesubtitle{For Loops (Definite Iteration)}
+
+    Loops automate repetitive tasks, following the \textbf{DRY (Don't Repeat Yourself)} principle. Instead of writing code multiple times, we loop over it.
+
+    \begin{block}{For Loops: Iterating over a sequence}
+        Use a \texttt{for} loop when you know how many times you need to iterate, e.g., for every item in a collection. It's like going through a checklist.
+        \vspace{0.5em}
+        
+        \textbf{Example 1: Looping over a list}
+        \begin{verbatim}
+# The variable `num` takes on each value from the list
+numbers = [10, 20, 30]
+for num in numbers:
+    print(f"Current number is: {num}")
+        \end{verbatim}
+
+        \textbf{Example 2: Looping a fixed number of times}
+        \begin{verbatim}
+# range(3) generates a sequence: 0, 1, 2
+for i in range(3):
+    print("Hello!") # This line runs 3 times
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Control Flow Part 2: Iteration}
+    \framesubtitle{While Loops (Indefinite Iteration)}
+
+    \begin{block}{While Loops: Repeating until a condition is false}
+        Use a \texttt{while} loop when the number of repetitions is unknown and depends on a condition. The loop continues as long as the condition is \texttt{True}.
+        
+        \begin{enumerate}
+            \item \textbf{Initialization:} Set up a variable before the loop.
+            \item \textbf{Condition:} The expression checked before each iteration.
+            \item \textbf{Update:} A change inside the loop to eventually make the condition false.
+        \end{enumerate}
+        
+        \begin{verbatim}
+count = 5           # 1. Initialization
+while count > 0:    # 2. Condition
+    print(count)
+    count -= 1      # 3. Update Step
+print("Blastoff!")
+        \end{verbatim}
+    \end{block}
+
+    \begin{alertblock}{Critical Warning: Avoid Infinite Loops!}
+        If you forget the update step (\texttt{count -= 1}), the condition will always be true, and the loop will run forever! Always ensure something inside the loop works toward stopping it.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Structures: Lists (Part 1)}
+    \framesubtitle{Definition \& Creation}
+
+    A list is an \textbf{ordered} (maintains sequence) and \textbf{mutable} (changeable) collection of items, defined with square brackets \texttt{[]}.
+
+    \begin{block}{Creating and Inspecting a List}
+        \begin{verbatim}
+# A list of strings
+fruits = ["apple", "banana", "cherry"]
+
+# A list can hold different data types
+mixed_data = [10, "hello", 3.14, True]
+
+# Get the number of items in the list
+num_fruits = len(fruits) # Result is 3
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Structures: Lists (Part 2)}
+    \framesubtitle{Accessing \& Modifying Elements}
+
+    We use an item's \textbf{index} (its position) to work with it.
+    \begin{alertblock}{Key Point}
+        Python uses \textbf{zero-based indexing}, meaning the first item is at index \texttt{0}.
+    \end{alertblock}
+
+    \begin{block}{Index-Based Operations}
+        \begin{verbatim}
+#          index:  0        1         2
+fruits = ["apple", "banana", "cherry"]
+
+# --- Accessing ---
+# Get the first item (index 0)
+first_fruit = fruits[0]      # "apple"
+
+# Get the last item (negative indexing)
+last_fruit = fruits[-1]     # "cherry"
+
+# --- Modifying ---
+# Change the item at index 1
+fruits[1] = "blueberry" 
+# fruits is now: ["apple", "blueberry", "cherry"]
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Structures: Lists (Part 3)}
+    \framesubtitle{Common Methods \& Slicing}
+
+    \begin{block}{Common Methods: Changing List Size}
+        Methods are functions that belong to the list object, called with dot notation.
+        \begin{itemize}
+            \item \texttt{.append(item)}: Adds a single item to the \textbf{end} of the list.
+            \item \texttt{.pop(index)}: Removes the item at the specified index and \textbf{returns} it. If no index is given, it removes the last item.
+        \end{itemize}
+        \begin{verbatim}
+# Original: ["apple", "blueberry", "cherry"]
+fruits.append("orange")
+# Now: ["apple", "blueberry", "cherry", "orange"]
+
+removed_fruit = fruits.pop(1) # Removes "blueberry"
+# removed_fruit is now: "blueberry"
+        \end{verbatim}
+    \end{block}
+
+    \begin{block}{Slicing: Getting a Sub-List}
+        You can extract a portion of a list using the slice syntax \texttt{[start:stop]}. The slice includes the \texttt{start} index but \textbf{excludes} the \texttt{stop} index.
+        \begin{verbatim}
+#          index:    0         1        2        3
+all_items = ["pen", "paper", "stapler", "tape"]
+
+# Get items from index 1 up to (but not including) 3
+middle_items = all_items[1:3]  # ["paper", "stapler"]
+
+# Get the first two items (from start up to index 2)
+first_two = all_items[:2]      # ["pen", "paper"]
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modular Code: Functions}
+    
+    Functions are reusable, named blocks of code that perform a specific task. They are the primary way to structure code into logical, manageable units.
+    
+    \begin{block}{The DRY Principle: Don't Repeat Yourself}
+        By defining code in one place and calling it when needed, you avoid duplication. If the logic needs to change, you only have to update it in one location.
+    \end{block}
+    
+    \textbf{Why are functions essential?}
+    \begin{itemize}
+        \item \textbf{Organization:} Break down complex problems into smaller, logical pieces.
+        \item \textbf{Reusability:} Write code once and use it many times.
+        \item \textbf{Readability:} A well-named function like \texttt{calculate\_gross\_pay()} is much clearer than a block of raw calculations.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Anatomy of a Function}
+    
+    Let's break down the structure of a function definition and call.
+    
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{lstlisting}[language=Python]
+# A function to calculate the area of a circle
+def calculate_area(radius):  # Definition
+    pi = 3.14159
+    area = pi * (radius ** 2)
+    return area              # Output
+
+# Calling the function
+circle_area = calculate_area(5) # 5 is the argument
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Key Parts}
+                \begin{itemize}
+                    \item \texttt{def}: Keyword to \textbf{define} the function.
+                    \item \texttt{radius}: A \textbf{parameter} (the expected input).
+                    \item \texttt{return}: Keyword to send a value back (the \textbf{output}).
+                    \item \texttt{5}: An \textbf{argument} (the actual value passed to the parameter).
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \vspace{1em}
+    \textbf{Mental Model:} Think of a function as a machine: \\
+    \textbf{Input} (Parameters) $\rightarrow$ \textbf{Process} (Body) $\rightarrow$ \textbf{Output} (Return Value)
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Art of Problem-Solving \& Debugging}
+    The most critical skill is not just writing code, but solving problems systematically. The best programmers are systematic thinkers.
+    \vspace{1em}
+
+    \begin{block}{The Four-Step Process}
+        This framework turns any complex problem into a manageable, solvable task.
+        \begin{enumerate}
+            \item \textbf{Understand the Problem:} Clearly identify inputs, outputs, and constraints.
+            \item \textbf{Plan Your Algorithm:} Write down logical steps in pseudocode before touching the keyboard.
+            \item \textbf{Translate to Code:} Implement your planned steps in Python.
+            \item \textbf{Test \& Debug:} Run code with test cases. Use the traceback message to locate and fix errors.
+        \end{enumerate}
+    \end{block}
+
+    \vspace{1em}
+    \textit{We will explore these steps with an example: "Find the largest number in a list."}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Steps 1 \& 2: Understand and Plan}
+    \begin{block}{Example: Find the largest number in a list}
+        \textbf{1. Understand the Problem}
+        \begin{itemize}
+            \item \textbf{Inputs:} A list of numbers (e.g., \texttt{[10, 5, 25, 8]}).
+            \item \textbf{Outputs:} A single number, the maximum value (e.g., \texttt{25}).
+            \item \textbf{Constraints/Edge Cases:} What if the list is empty? A safe choice is to return \texttt{None}.
+        \end{itemize}
+        \vspace{1em}
+        \textbf{2. Plan Your Algorithm (Pseudocode)}
+        \begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single]
+FUNCTION find_max(numbers_list):
+  // Handle the edge case first
+  IF the list is empty:
+    RETURN None
+
+  // Assume the first number is the largest to start
+  SET max_so_far = the first item in the list
+
+  // Loop through the rest of the list
+  FOR each number from the second item onwards:
+    IF the current number > max_so_far:
+      UPDATE max_so_far = the current number
+
+  // Return the result
+  RETURN max_so_far
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Steps 3 \& 4: Code and Debug}
+    \textbf{3. Translate to Code}
+    \begin{lstlisting}[language=Python]
+def find_max(numbers_list):
+    # Handle the edge case from our plan
+    if not numbers_list:
+        return None
+
+    # Initialize max_so_far
+    max_so_far = numbers_list[0]
+
+    # Loop and compare (slice to start from the second item)
+    for number in numbers_list[1:]:
+        if number > max_so_far:
+            max_so_far = number
+
+    return max_so_far
+    \end{lstlisting}
+
+    \textbf{4. Test \& Debug} \\
+    A traceback message is your best friend. If we forget the empty list check, we get:
+    \begin{lstlisting}[language=bash, basicstyle=\ttfamily\tiny]
+Traceback (most recent call last):
+  File "main.py", line 6, in find_max
+    max_so_far = numbers_list[0]
+IndexError: list index out of range
+    \end{lstlisting}
+    This tells us exactly what (\texttt{IndexError}) and where (line 6) the problem is.
+
+    \begin{alertblock}{Key Takeaway}
+        \textbf{Slow down to speed up.} Time spent planning is paid back tenfold during coding and debugging.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrated Practice Problem: Problem \& Plan (1/3)}
+    Let's apply our problem-solving process to a sample exam-style question.
+
+    \begin{block}{1. Understand the Problem}
+        \begin{itemize}
+            \item \textbf{Inputs:} A list of strings (e.g., \texttt{['apple', 'banana', 'kiwi']}) and an integer \texttt{min\_length} (e.g., \texttt{5}).
+            \item \textbf{Output:} A \textbf{new list} containing only the words from the original that have a length greater than or equal to \texttt{min\_length}.
+            \item \textbf{Constraint:} Do not modify the original list.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{2. Plan (Pseudocode)}
+        \begin{itemize}
+            \item Define a function \texttt{filter\_long\_words} that accepts a list and a number.
+            \item Create a new, empty list called \texttt{result\_list}.
+            \item Loop through each \texttt{word} in the input list.
+            \item Inside the loop, check if \texttt{len(word) >= min\_length}.
+            \item If true, append the \texttt{word} to \texttt{result\_list}.
+            \item After the loop finishes, return \texttt{result\_list}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrated Practice Problem: Implementation (2/3)}
+
+    \begin{block}{3. Translate to Code (Python Implementation)}
+        Here's how our pseudocode translates directly into a Python function. Each comment links back to a step in our plan.
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, commentstyle=\color{gray}]
+def filter_long_words(word_list, min_length):
+    # Create a new, empty list
+    result_list = []
+    
+    # Loop through each word in the input list
+    for word in word_list:
+        # Inside the loop, check the condition
+        if len(word) >= min_length:
+            # If it is, append the word to our new list
+            result_list.append(word)
+            
+    # After the loop, return the new list
+    return result_list
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrated Practice Problem: Verification \& Review (3/3)}
+
+    \begin{block}{4. Test \& Verify}
+        We must test our function to ensure it works as expected.
+        \begin{itemize}
+            \item \textbf{Test Case 1: Standard Operation}
+            \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+words = ["python", "is", "fun", "and", "powerful"]
+long_words = filter_long_words(words, 5)
+print(long_words)
+# Expected Output: ['python', 'powerful']
+            \end{lstlisting}
+            \item \textbf{Test Case 2: Edge Case (No words are long enough)}
+            \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+long_words_edge = filter_long_words(words, 10)
+print(long_words_edge)
+# Expected Output: []
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Key Concepts Reviewed}
+        \begin{itemize}
+            \item \textbf{Function Definition:} \texttt{def}, parameters, and \texttt{return}.
+            \item \textbf{List Iteration:} Using a \texttt{for} loop.
+            \item \textbf{Conditional Logic:} Using an \texttt{if} statement.
+            \item \textbf{Built-in Functions:} Using \texttt{len()}.
+            \item \textbf{List Manipulation:} Creating lists (\texttt{[]}) and using \texttt{.append()}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Q\&A and Final Reminders - Open Discussion}
+    \begin{center}
+        \Large \textbf{What concepts are you still unsure about?}
+    \end{center}
+    \vspace{1em}
+    Let's discuss common sticking points. Do any of these spark a question?
+    \begin{itemize}
+        \item \textbf{Functions:} What is the difference between \texttt{print} and \texttt{return}?
+        \item \textbf{Mutability:} Why can we change lists but not strings?
+        \item \textbf{Looping Logic:} When to use a \texttt{for} loop vs. a \texttt{while} loop?
+        \item \textbf{Data Structures:} When is a dictionary better than a list?
+    \end{itemize}
+
+    \begin{block}{Key Difference: \texttt{print} vs. \texttt{return}}
+        \texttt{print()} displays a value for humans. The value cannot be used later. \\
+        \texttt{return} sends a value back from a function to be stored and reused.
+        \begin{lstlisting}[language=Python]
+% This function's result CAN be stored
+def return_sum(a, b):
+    return a + b
+
+result = return_sum(3, 5) # result is now 8
+print(result * 2)          # Prints 16. We can use the returned value!
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Q\&A and Final Reminders - How to Prepare}
+    \textbf{1. Redo Labs \& Assignments (Active Recall)}
+    \begin{itemize}
+        \item This is the most effective preparation. The exam is about problem-solving.
+        \item \textbf{Method:} Start with a blank file. Try to solve the problem from scratch without looking at your old solution. This forces you to recall the entire process.
+    \end{itemize}
+    \vspace{1em}
+    \textbf{2. Review Notes \& Readings (Synthesize Knowledge)}
+    \begin{itemize}
+        \item Connect ideas: How do loops, lists, and file I/O work together?
+        \item \textbf{Pro-Tip:} Create a one-page summary sheet of key syntax. The act of making it is a powerful study tool.
+    \end{itemize}
+    \vspace{1em}
+    \textbf{3. Use Course Resources}
+    \begin{itemize}
+        \item Don't study in isolation. Use the Q\&A forum (Ed/Piazza).
+        \item Ask specific questions with code examples for the best help.
+        \item Attend instructor and TA office hours.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Q\&A and Final Reminders - Final Advice}
+    Your mental state is as important as your knowledge.
+
+    \begin{block}{Before the Exam}
+        \textbf{Get a good night's sleep!} A well-rested brain is far more effective at problem-solving than a tired one. All-night cramming is counterproductive.
+    \end{block}
+    
+    \textbf{During the Exam:}
+    \begin{itemize}
+        \item Read every instruction carefully.
+        \item If you get stuck on a problem, move on and come back later.
+        \item It's better to get partial credit on all questions than a perfect score on one and leave others blank.
+        \item Write pseudocode or comments to explain your logic if you can't finish the code; this can often earn partial credit.
+    \end{itemize}
+    \vspace{1em}
+    You have put in the work and are well-prepared for this. Trust your preparation!
+    
+    \begin{center}
+        \Large\textbf{Good luck!}
+    \end{center}
+\end{frame}
+
+
+\end{document}

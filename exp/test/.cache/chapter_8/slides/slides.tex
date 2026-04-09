@@ -1,0 +1,971 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 8: Data Analysis with Pandas}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Data Analysis with Pandas}
+    \begin{block}{Overview of Pandas}
+        Pandas is an open-source data analysis and manipulation library for Python, widely used for data science tasks. It provides tools for working with structured data, making it easy to acquire, manipulate, and analyze large datasets efficiently.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Components of Pandas}
+    \begin{itemize}
+        \item \textbf{Data Structures:}
+        \begin{itemize}
+            \item \textbf{Series:} A one-dimensional labeled array.
+                \begin{itemize}
+                    \item Example: \texttt{s = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])}
+                \end{itemize}
+            \item \textbf{DataFrame:} A two-dimensional labeled data structure.
+                \begin{itemize}
+                    \item Example: \texttt{df = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})}
+                \end{itemize}
+        \end{itemize}
+        \item \textbf{Flexible Data Handling:} Easy handling of missing data, data alignment, and reshaping datasets.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Significance in Data Analysis}
+    \begin{itemize}
+        \item \textbf{Data Cleaning:} Handle missing data and outliers effectively.
+        \item \textbf{Data Manipulation:} Streamline data transformations and filtering.
+        \item \textbf{Data Aggregation:} Summarize datasets with grouping and pivoting functionalities.
+        \item \textbf{Time Series Analysis:} Tools for analyzing time-dependent trends.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Use Case}
+    Consider an e-commerce business analyzing its sales data:
+    \begin{itemize}
+        \item \textbf{Objective:} Determine the monthly sales trend.
+        \item \textbf{Pandas Process:}
+        \begin{enumerate}
+            \item \textbf{Read Data:} \texttt{pd.read\_csv('sales\_data.csv')}
+            \item \textbf{Data Exploration:} \texttt{df.head()} to review first few rows.
+            \item \textbf{Data Aggregation:} \texttt{df.resample('M').sum()} to group by month.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item Pandas enhances productivity in data analysis.
+        \item Understanding basic data structures (Series and DataFrame) is essential.
+        \item Mastering manipulation techniques is critical for aspiring data analysts or scientists.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet}
+    \begin{lstlisting}[language=Python]
+import pandas as pd
+
+# Sample DataFrame creation
+data = {'Product': ['A', 'B', 'C'], 'Sales': [120, 90, 160]}
+df = pd.DataFrame(data)
+
+# Basic operations
+print(df)             # Displays the DataFrame
+print(df.describe())  # Summary statistics
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Started with Pandas - Overview}
+    \begin{block}{Overview}
+        Pandas is an essential library in Python for data manipulation and analysis. 
+        This slide covers the steps to install and set up Pandas along with necessary libraries and environment configurations.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Started with Pandas - Installation Steps}
+    \begin{enumerate}
+        \item \textbf{Python Installation}: Ensure you have Python installed. 
+        Download it from \url{https://www.python.org/downloads/} (recommended version: 3.6 or later).
+        
+        \item \textbf{Environment Setup}: 
+        \begin{itemize}
+            \item \textbf{Using Anaconda}:
+            \begin{itemize}
+                \item Download from \url{https://www.anaconda.com/products/distribution}.
+                \item Use Anaconda Navigator or command line.
+            \end{itemize}
+            \item \textbf{Using pip}:
+            \begin{itemize}
+                \item Open CLI and run:
+                \begin{lstlisting}[language=bash]
+pip install pandas
+                \end{lstlisting}
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Started with Pandas - Importing and Required Libraries}
+    \begin{block}{Importing Pandas}
+        After installation, import it into your Python script or Jupyter Notebook:
+        \begin{lstlisting}[language=python]
+import pandas as pd
+        \end{lstlisting}
+        This "pd" alias is conventionally used for brevity.
+    \end{block}
+
+    \begin{block}{Required Libraries}
+        Pandas relies on several core libraries. Ensure they are installed:
+        \begin{itemize}
+            \item \textbf{NumPy}: Essential for numerical operations.
+            \item \textbf{Matplotlib}: Useful for data visualization (not mandatory).
+            \item \textbf{Openpyxl} and \textbf{xlrd}: For reading/writing Excel files.
+        \end{itemize}
+        Install them using:
+        \begin{lstlisting}[language=bash]
+pip install numpy matplotlib openpyxl xlrd
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting Started with Pandas - Environment Creation and Key Points}
+    \begin{block}{Example of Environment Creation (Optional)}
+        Using Anaconda for managing dependencies:
+        \begin{lstlisting}[language=bash]
+conda create --name data_analysis python=3.8
+conda activate data_analysis
+conda install pandas numpy matplotlib
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Pandas provides data structures like Series and DataFrame for efficient data manipulation.
+            \item Environment management tools (Anaconda, pip) simplify installation and package management.
+            \item Keep libraries updated to avoid compatibility issues:
+            \begin{lstlisting}[language=bash]
+pip install --upgrade pandas
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Conclusion}
+        Pandas is now installed and set up. You are ready to start analyzing and manipulating data efficiently. The next slide will introduce the core data structures in Pandas!
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - Introduction}
+    \begin{block}{Introduction to Pandas Data Structures}
+        Pandas, a powerful data manipulation library in Python, offers robust data structures to facilitate data analysis. The two primary data structures in Pandas are \textbf{Series} and \textbf{DataFrame}.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - Series}
+    \begin{itemize}
+        \item \textbf{Definition}: A Series is a one-dimensional labeled array that can hold any data type (integers, floats, strings, etc.).
+        
+        \item \textbf{Properties}:
+        \begin{itemize}
+            \item \textbf{Index}: Each element in a Series has an associated index (label), enabling easy access and manipulation.
+            \item \textbf{Homogeneous}: Contains data of the same type.
+        \end{itemize}
+        
+        \item \textbf{Usage}: Ideal for storing and manipulating one-dimensional data or simple lists. Commonly used for time series data due to its labeled index feature.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - Series Example}
+    \begin{block}{Creation Example}
+        \begin{lstlisting}[language=Python]
+import pandas as pd
+
+# Creating a Series from a list
+data = [10, 20, 30, 40]
+series = pd.Series(data, index=['a', 'b', 'c', 'd'])
+print(series)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+a    10
+b    20
+c    30
+d    40
+dtype: int64
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - DataFrame}
+    \begin{itemize}
+        \item \textbf{Definition}: A DataFrame is a two-dimensional labeled data structure with columns of potentially different types.
+        
+        \item \textbf{Properties}:
+        \begin{itemize}
+            \item \textbf{Index}: Rows and columns can be indexed, allowing for easy selection and slicing.
+            \item \textbf{Heterogeneous}: Can contain multiple data types (integers, strings, floats) across different columns.
+        \end{itemize}
+        
+        \item \textbf{Usage}: Suitable for complex data manipulation and analysis tasks, such as filtering, aggregating, and visualizing data.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - DataFrame Example}
+    \begin{block}{Creation Example}
+        \begin{lstlisting}[language=Python]
+import pandas as pd
+
+# Creating a DataFrame from a dictionary
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago'],
+}
+df = pd.DataFrame(data)
+print(df)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+     Name  Age         City
+0  Alice   25     New York
+1    Bob   30  Los Angeles
+2 Charlie   35      Chicago
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas Data Structures - Key Points}
+    \begin{itemize}
+        \item \textbf{Simplicity}: Both data structures are intuitive and designed for easy data access.
+        \item \textbf{Flexibility}: Ideal for a wide range of data processing tasks, from basic statistics to complex data analysis.
+        \item \textbf{Integration}: These structures integrate seamlessly with NumPy and other data science libraries, enhancing data manipulation capabilities.
+    \end{itemize}
+
+    \begin{block}{Conclusion}
+        By understanding the fundamentals of Series and DataFrames, you can effectively leverage the full power of Pandas for your data analysis tasks.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Importing Techniques}
+    \begin{block}{Overview}
+        Pandas is a powerful data analysis library in Python that allows you to easily import data from various file formats and databases. This presentation covers essential importing techniques for three common formats: CSV, Excel, and SQL databases.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importing Data from CSV Files}
+    
+    \begin{itemize}
+        \item **CSV (Comma-Separated Values)** is a widely used format for data storage.
+        \item \textbf{Key Function:} \texttt{pd.read\_csv()}
+        \item \textbf{Usage:} Read CSV files into a DataFrame.
+        \item \textbf{Syntax:}
+    \end{itemize}
+    
+    \begin{lstlisting}[language=Python]
+import pandas as pd
+
+df = pd.read_csv('file_path.csv')
+    \end{lstlisting}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+df = pd.read_csv('data.csv')
+print(df.head())
+        \end{lstlisting}
+        This loads the CSV file named \texttt{data.csv} and prints the first five rows.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importing Data from Excel Files}
+
+    \begin{itemize}
+        \item Excel files are commonly used for data manipulation and reporting.
+        \item \textbf{Key Function:} \texttt{pd.read\_excel()}
+        \item \textbf{Usage:} Read Excel files, optionally choosing specific sheets.
+        \item \textbf{Syntax:}
+    \end{itemize}
+    
+    \begin{lstlisting}[language=Python]
+df = pd.read_excel('file_path.xlsx', sheet_name='Sheet1')
+    \end{lstlisting}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+df = pd.read_excel('data.xlsx', sheet_name='SalesData')
+print(df.head())
+        \end{lstlisting}
+        This imports data from the "SalesData" sheet of \texttt{data.xlsx}.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importing Data from SQL Databases}
+
+    \begin{itemize}
+        \item Pandas can retrieve data directly from SQL databases.
+        \item \textbf{Key Function:} \texttt{pd.read\_sql\_query()}
+        \item \textbf{Usage:} Execute SQL queries and retrieve results as a DataFrame.
+        \item \textbf{Syntax:}
+    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+import sqlite3
+
+connection = sqlite3.connect('database.db')
+df = pd.read_sql_query('SELECT * FROM table_name', connection)
+    \end{lstlisting}
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+import sqlite3
+
+connection = sqlite3.connect('sales_data.db')
+df = pd.read_sql_query('SELECT * FROM sales', connection)
+print(df.head())
+        \end{lstlisting}
+        This fetches all records from the \texttt{sales} table in the \texttt{sales\_data.db} database.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item Pandas provides versatile methods for data importing suited for various formats.
+        \item Ensure correct file paths and format specifications to avoid errors.
+        \item Explore additional parameters in each function for customizing the import process:
+        \begin{itemize}
+            \item Handling headers
+            \item Specifying data types
+            \item Managing missing values
+        \end{itemize}
+    \end{itemize}
+    By mastering these techniques, you lay a solid foundation for effective data analysis using Pandas.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Manipulation Methods}
+    \begin{block}{Introduction}
+        Data manipulation is a critical step in data analysis, allowing us to clean, transform, and prepare data for insightful analysis. This section covers:
+        \begin{itemize}
+            \item Filtering Data
+            \item Sorting Data
+            \item Grouping Data
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{1. Filtering Data}
+    Filtering allows us to extract specific rows from a DataFrame based on certain conditions.
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'Age': [24, 30, 22, 35],
+    'Salary': [50000, 60000, 45000, 70000]
+}
+
+df = pd.DataFrame(data)
+
+# Filter rows where Age > 25
+filtered_df = df[df['Age'] > 25]
+print(filtered_df)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item Use Boolean indexing to filter DataFrames.
+            \item Combine multiple conditions using \& (and) or | (or).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{2. Sorting Data}
+    Sorting allows us to order the rows of a DataFrame based on column values.
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# Sort by Salary in descending order
+sorted_df = df.sort_values(by='Salary', ascending=False)
+print(sorted_df)
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item Use the \texttt{sort\_values()} method for sorting.
+            \item Sort by multiple columns by passing a list to the \texttt{by} parameter.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3. Grouping Data}
+    Grouping enables us to aggregate data based on one or more columns.
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# Group by 'Age' and calculate the average Salary
+grouped_df = df.groupby('Age')['Salary'].mean()
+print(grouped_df)
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item Use \texttt{groupby()} to specify which columns to group by.
+            \item Aggregate functions like \texttt{mean()}, \texttt{sum()}, and \texttt{count()} can be applied.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    Mastering data manipulation techniques—filtering, sorting, and grouping—forms the foundation for effective data analysis in Pandas. Practice these methods to gain proficiency and prepare for more complex data operations.
+
+    \begin{block}{Reminder}
+        These techniques are essential in preparing your data for further analysis and visualization!
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Handling Missing Data}
+    \begin{block}{Introduction to Missing Data}
+        In data analysis, missing data can significantly impact the quality of insights drawn from the dataset. 
+        It’s essential to detect and appropriately handle these missing values to ensure accurate analysis.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Handling Missing Data - Detecting Missing Data}
+    \begin{block}{1. Detecting Missing Data}
+        Detecting missing data can be done using Pandas functions that help identify which values are missing:
+    \end{block}
+    \begin{itemize}
+        \item \texttt{isnull()}: Returns a Boolean DataFrame indicating the presence of missing values.
+        \begin{lstlisting}[language=Python]
+import pandas as pd
+
+df = pd.DataFrame({
+    'A': [1, 2, None, 4],
+    'B': [None, 1, 2, 3]
+})
+
+missing_data = df.isnull()
+print(missing_data)
+        \end{lstlisting}
+
+        \item \texttt{sum()}: To summarize the total number of missing values in each column.
+        \begin{lstlisting}[language=Python]
+missing_count = df.isnull().sum()
+print(missing_count)
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Handling Missing Data - Strategies}
+    \begin{block}{2. Strategies for Handling Missing Data}
+        \begin{itemize}
+            \item \textbf{Removal of Missing Data:}
+            \begin{itemize}
+                \item \texttt{Drop Rows}: Use \texttt{dropna()} to remove rows with any missing data.
+                \begin{lstlisting}[language=Python]
+df_cleaned = df.dropna()
+                \end{lstlisting}
+                
+                \item \texttt{Drop Columns}: Eliminate entire columns containing missing values.
+                \begin{lstlisting}[language=Python]
+df_cleaned = df.dropna(axis=1)
+                \end{lstlisting}
+            \end{itemize}
+
+            \item \textbf{Imputation:}
+            \begin{itemize}
+                \item Fill in missing values with a statistic (mean, median, mode).
+                \begin{lstlisting}[language=Python]
+df['A'].fillna(df['A'].mean(), inplace=True)   # Fill with mean
+                \end{lstlisting}
+                
+                \item Use \texttt{ffill()} and \texttt{bfill()} for forward and backward filling.
+                \begin{lstlisting}[language=Python]
+df.fillna(method='ffill', inplace=True)  # Forward fill
+                \end{lstlisting}
+            \end{itemize}
+
+            \item \textbf{Categorization:}
+                Use a specific flag/category for entries with missing data (e.g., 'Unknown').
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Handling Missing Data - Key Points}
+    \begin{block}{3. Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Importance of Handling Missing Data}: Proper handling improves data integrity and analytical accuracy.
+            \item \textbf{Impact of Imputation}: Different strategies yield different outcomes; choose based on data context.
+            \item \textbf{Pandas Functions}: Familiarity with \texttt{isnull()}, \texttt{dropna()}, and \texttt{fillna()} is essential.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    \begin{block}{Conclusion}
+        Handling missing data is a fundamental step in data cleaning and preparation. 
+        By effectively detecting and addressing missing values, we enhance the reliability of our analytical results and insights.
+
+        By understanding and applying these strategies, students will be well-equipped to manage missing data effectively in their analysis with Pandas.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Aggregation and Group Operations - Overview}
+    \begin{itemize}
+        \item Data aggregation summarizes large datasets into meaningful insights.
+        \item The \texttt{groupby()} function in Pandas enables grouping by columns for analysis.
+        \item Key steps in group operations:
+        \begin{enumerate}
+            \item \textbf{Split}: Divide dataset into groups.
+            \item \textbf{Apply}: Execute functions on each group.
+            \item \textbf{Combine}: Merge results into a DataFrame.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Aggregation - Key Functions}
+    \begin{itemize}
+        \item Common aggregation functions:
+        \begin{itemize}
+            \item \texttt{sum()}: Total of values in each group.
+            \item \texttt{mean()}: Average of group values.
+            \item \texttt{size()}: Number of records per group.
+            \item \texttt{count()}: Count of non-null values.
+            \item \texttt{min()/max()}: Minimum and maximum values.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Sales Data Aggregation}
+    Consider the following DataFrame:
+    \begin{lstlisting}[language=Python]
+import pandas as pd
+
+data = {
+    'Product': ['A', 'B', 'A', 'B', 'C'],
+    'Region': ['North', 'South', 'South', 'North', 'East'],
+    'Revenue': [100, 150, 200, 100, 250]
+}
+sales_data = pd.DataFrame(data)
+
+# Grouping by Product and calculating total Revenue
+result = sales_data.groupby('Product')['Revenue'].sum()
+print(result)
+    \end{lstlisting}
+    
+    Output:
+    \begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        Product & Revenue \\
+        \hline
+        A & 300 \\
+        B & 250 \\
+        C & 250 \\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Multi-Column Grouping Example}
+    Extend the previous example to see total sales by \texttt{Product} and \texttt{Region}:
+    \begin{lstlisting}[language=Python]
+result_multi = sales_data.groupby(['Product', 'Region'])['Revenue'].sum().reset_index()
+print(result_multi)
+    \end{lstlisting}
+    
+    Output:
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Product & Region & Revenue \\
+        \hline
+        A & North & 100 \\
+        A & South & 200 \\
+        B & North & 100 \\
+        B & South & 150 \\
+        C & East & 250 \\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points & Summary}
+    \begin{itemize}
+        \item The \texttt{groupby()} function is versatile for grouping by columns or functions.
+        \item Custom aggregation is possible with \texttt{.agg()}.
+        \begin{lstlisting}[language=Python]
+custom_agg = sales_data.groupby('Product').agg({'Revenue': ['sum', 'mean', 'count']})
+        \end{lstlisting}
+        \item Grouping and aggregating are key for exploratory data analysis (EDA).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Visualization with Pandas}
+    \begin{block}{Understanding Data Visualization}
+        Data visualization is the graphical representation of information and data. It provides an accessible way to see and understand trends, outliers, and patterns in data through visual elements like charts, graphs, and maps.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Pandas and Visualization}
+    \begin{block}{Pandas Visualization}
+        Pandas, a powerful Python data analysis library, includes built-in plotting capabilities that leverage Matplotlib. This integration enables quick and efficient data exploration directly from DataFrames and Series.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Easy Integration:} Visualizations generated directly from DataFrames.
+        \item \textbf{Familiar Interface:} Works seamlessly with data manipulation techniques in Pandas.
+        \item \textbf{Customization:} Options for customizing plots (titles, labels, colors, etc.).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Plotting with Pandas}
+    You can use the \texttt{.plot()} method to create various types of charts:
+    
+    \begin{enumerate}
+        \item \textbf{Line Plot} (Default): Useful for trends over time.
+            \begin{lstlisting}[language=Python]
+df['column_name'].plot()
+            \end{lstlisting}
+            
+        \item \textbf{Bar Plot}: Great for comparing categorical data.
+            \begin{lstlisting}[language=Python]
+df['category'].value_counts().plot(kind='bar')
+            \end{lstlisting}
+            
+        \item \textbf{Histogram}: Visualizes the distribution of numerical data.
+            \begin{lstlisting}[language=Python]
+df['numeric_column'].plot(kind='hist', bins=10)
+            \end{lstlisting}
+            
+        \item \textbf{Box Plot}: Visualizes spread and identifies outliers.
+            \begin{lstlisting}[language=Python]
+df.boxplot(column='numeric_column', by='category_column')
+            \end{lstlisting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Visualizing Sales Data}
+    Here’s how to visualize sales data using a simple example:
+    \begin{lstlisting}[language=Python]
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample DataFrame
+data = {'Month': ['Jan', 'Feb', 'Mar', 'Apr'],
+        'Sales': [200, 300, 400, 350]}
+df = pd.DataFrame(data)
+
+# Creating a bar plot
+df.plot(x='Month', y='Sales', kind='bar', color='skyblue', title='Monthly Sales')
+plt.ylabel('Sales in USD')
+plt.show()
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Importance of Visualization:} Helps communicate insights quickly and effectively.
+        \item \textbf{Experimentation:} Encourage experimenting with different plot types.
+        \item \textbf{Customization Options:} Tailor visual representations to user needs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    By effectively utilizing Pandas' built-in plotting capabilities, you can gain valuable insights from your data while enhancing your ability to communicate findings visually. Embrace these tools to facilitate better decision-making and storytelling through data!
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications of Pandas - Introduction}
+    \begin{block}{Introduction to Pandas}
+        Pandas is a powerful data manipulation and analysis library in Python. 
+        It is widely used in various industries for data-centric tasks, providing:
+        \begin{itemize}
+            \item Easy-to-use data structures
+            \item Robust data analysis tools
+        \end{itemize}
+        Ideal for handling structured data.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications of Pandas - Key Fields}
+    \begin{block}{Applications of Pandas in Real-World Scenarios}
+        \begin{enumerate}
+            \item Finance
+            \item Healthcare
+            \item Retail
+            \item Transportation
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications of Pandas - Finance and Healthcare}
+    \begin{block}{1. Finance: Stock Market Analysis}
+        \begin{itemize}
+            \item Financial analysts use Pandas for:
+            \begin{itemize}
+                \item Analyzing historical stock prices
+                \item Computing moving averages
+                \item Visualizing trends
+                \item \textbf{Code Snippet:}
+                \begin{lstlisting}[language=Python]
+import pandas as pd
+import numpy as np
+data = pd.read_csv('stock_prices.csv')
+data['MA50'] = data['Close'].rolling(window=50).mean()  # 50-day moving average
+                \end{lstlisting}
+            \end{itemize}
+            \item Key Points: 
+            \begin{itemize}
+                \item Powerful time series analysis
+                \item Efficient handling of large datasets
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{2. Healthcare: Patient Data Management}
+        \begin{itemize}
+            \item Medical researchers analyze patient data for:
+            \begin{itemize}
+                \item Tracking disease outbreaks
+                \item Deriving insights for treatment plans
+            \end{itemize}
+            \item Key Points:
+            \begin{itemize}
+                \item Data cleaning and manipulation
+                \item Merging datasets from various sources
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications of Pandas - Retail and Transportation}
+    \begin{block}{3. Retail: Sales Data Analysis}
+        \begin{itemize}
+            \item Retail businesses utilize Pandas for:
+            \begin{itemize}
+                \item Analyzing sales data
+                \item Understanding customer preferences
+                \item \textbf{Code Snippet:}
+                \begin{lstlisting}[language=Python]
+sales_data = pd.read_csv('sales_data.csv')
+total_sales = sales_data.groupby('Product')['Sales'].sum()
+                \end{lstlisting}
+            \end{itemize}
+            \item Key Points:
+            \begin{itemize}
+                \item Understanding purchasing trends
+                \item Aiding inventory management
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{4. Transportation: Traffic Data Analysis}
+        \begin{itemize}
+            \item Transport departments analyze traffic data to evaluate:
+            \begin{itemize}
+                \item Road safety
+                \item Congestion levels
+            \end{itemize}
+            \item Key Points:
+            \begin{itemize}
+                \item Real-time data processing
+                \item Insights for urban planning
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications of Pandas - Conclusion and Key Takeaways}
+    \begin{block}{Conclusion}
+        Pandas is indispensable across various sectors, enabling efficient data analysis and informed decision-making. Its versatility and powerful functions make it a preferred tool among data scientists and analysts.
+    \end{block}
+    
+    \begin{block}{Key Takeaways}
+        \begin{itemize}
+            \item Pandas excels in handling large datasets with ease.
+            \item Essential tools for data manipulation, visualization, and analysis.
+            \item Diverse applications in finance, healthcare, retail, and transportation sectors.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion - Key Takeaways}
+    In this chapter, we explored the powerful data analysis capabilities of the Pandas library in Python. Here are the key takeaways to remember:
+    
+    \begin{enumerate}
+        \item \textbf{Data Structures}
+        \begin{itemize}
+            \item \textbf{Series}: A one-dimensional labeled array that can hold any data type.
+            \item \textbf{DataFrame}: A two-dimensional labeled data structure, similar to a spreadsheet or SQL table.
+        \end{itemize}
+        
+        \item \textbf{Data Manipulation}
+        \begin{itemize}
+            \item \textbf{Selecting Data}: Use \texttt{.loc[]} and \texttt{.iloc[]} for label and position-based indexing.
+            \item \textbf{Filtering}: Apply conditions to filter data efficiently.
+            \item \textbf{Aggregation}: Use methods like \texttt{.mean()}, \texttt{.sum()}, and \texttt{.groupby()}.
+        \end{itemize}
+        
+        \item \textbf{Data Cleaning}: Tools for handling missing data with \texttt{.fillna()} and \texttt{.dropna()}.
+        
+        \item \textbf{Visualization}: Basic plotting with \texttt{.plot()} and combined use with Matplotlib and Seaborn.
+        
+        \item \textbf{Integration with Other Libraries}: Works seamlessly with libraries such as NumPy, Matplotlib, and SciPy.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion - Code Examples}
+    Here are some examples demonstrating the concepts discussed:
+    
+    \begin{block}{Creating Series and DataFrame}
+    \begin{lstlisting}[language=Python]
+    import pandas as pd
+    
+    # Creating a Series
+    my_series = pd.Series([1, 2, 3], index=['A', 'B', 'C'])
+
+    # Creating a DataFrame
+    my_data = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}
+    my_dataframe = pd.DataFrame(my_data)
+    \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Selecting and Filtering Data}
+    \begin{lstlisting}[language=Python]
+    # Selecting a column
+    ages = my_dataframe['Age']
+
+    # Filtering
+    adults = my_dataframe[my_dataframe['Age'] > 18]
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Further Resources}
+    To deepen your knowledge of Pandas, consider the following resources:
+    
+    \begin{enumerate}
+        \item \textbf{Books}
+        \begin{itemize}
+            \item \textit{Python for Data Analysis} by Wes McKinney
+            \item \textit{Pandas Cookbook} by Ted Petrou
+        \end{itemize}
+        
+        \item \textbf{Online Courses}
+        \begin{itemize}
+            \item \url{https://www.coursera.org/learn/data-analysis-python} (Coursera: Data Analysis with Python by IBM)
+            \item \url{https://www.datacamp.com/courses/pandas-foundations} (DataCamp: Introduction to Pandas)
+        \end{itemize}
+        
+        \item \textbf{Documentation and Tutorials}
+        \begin{itemize}
+            \item \url{https://pandas.pydata.org/pandas-docs/stable/} (Pandas Official Documentation)
+            \item \url{https://realpython.com/tutorials/pandas/} (Real Python's Pandas Articles)
+        \end{itemize}
+        
+        \item \textbf{Community and Support}
+        \begin{itemize}
+            \item Stack Overflow for discussions and problem-solving.
+            \item GitHub for accessing real-world projects and code samples.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+
+\end{document}

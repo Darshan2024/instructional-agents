@@ -1,0 +1,821 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 2: Syntax, Variables, and Data Types}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Introduction to Chapter 2}
+    Overview of syntax, variables, and data types in Python.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction to Chapter 2 - Overview}
+    \begin{itemize}
+        \item In this chapter, we will explore three fundamental concepts in programming with Python: 
+        \begin{itemize}
+            \item \textbf{Syntax}
+            \item \textbf{Variables}
+            \item \textbf{Data Types}
+        \end{itemize}
+        \item Understanding these concepts is essential for writing efficient and effective code.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{1. Syntax}
+    \begin{itemize}
+        \item \textbf{Definition}: The set of rules that defines correctly structured programs in a programming language.
+        \item \textbf{Importance}: 
+        \begin{itemize}
+            \item Ensures that the code can be executed without errors.
+            \item Similar to grammar in English, incorrect syntax leads to confusion and misinterpretation.
+        \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}
+        print("Hello, World!")
+        \end{lstlisting}
+        This line follows Python syntax and will print "Hello, World!" to the console.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{2. Variables}
+    \begin{itemize}
+        \item \textbf{Definition}: Containers used to store data values, essential for holding information that your program can manipulate.
+        \item \textbf{Creation}: Variables are created upon assignment of a value; no prior declaration is required.
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}
+        name = "Alice"
+        age = 30
+        \end{lstlisting}
+        Here, \texttt{name} holds a string and \texttt{age} holds an integer.
+    \end{block}
+    \begin{itemize}
+        \item \textbf{Key Point}: Variable names must start with a letter or an underscore and cannot contain spaces or special characters.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{3. Data Types}
+    \begin{itemize}
+        \item \textbf{Definition}: Specifies the type of data a variable can hold, determining what operations can be performed.
+        \item \textbf{Common Data Types in Python}:
+        \begin{itemize}
+            \item \texttt{int}: Integer values (e.g., 5, -10).
+            \item \texttt{float}: Floating-point numbers (e.g., 3.14, -0.001).
+            \item \texttt{str}: String values (e.g., "Hello").
+            \item \texttt{bool}: Boolean values (True or False).
+        \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}
+        number = 100      # int
+        pi = 3.14        # float
+        greeting = "Hi"   # str
+        is_valid = True   # bool
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    \begin{itemize}
+        \item Mastering syntax, variables, and data types lays a strong foundation for developing advanced programming skills in Python.
+        \item Next, we will discuss the role of syntax in program structure and execution in greater depth.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Syntax - Overview}
+    \begin{block}{Understanding the Role of Syntax}
+        Syntax refers to the set of rules that defines the combinations of symbols and expressions that constitute correctly structured statements in a programming language. 
+        In Python, following these rules is crucial for creating functional and efficient programs.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Syntax - Why It Matters}
+    \begin{enumerate}
+        \item \textbf{Code Clarity}
+        \begin{itemize}
+            \item Proper syntax enhances the readability of your code.
+            \item Well-structured code helps other developers understand your logic easily.
+        \end{itemize}
+        
+        \item \textbf{Error Prevention}
+        \begin{itemize}
+            \item Adhering to syntax rules helps prevent runtime errors and unanticipated behavior in programs.
+            \item Syntax errors are typically flagged by the interpreter before execution.
+        \end{itemize}
+        
+        \item \textbf{Program Execution}
+        \begin{itemize}
+            \item A program with incorrect syntax will not execute.
+            \item The interpreter checks syntax during compilation or execution, halting until resolved.
+        \end{itemize}
+        
+        \item \textbf{Language-Specific Rules}
+        \begin{itemize}
+            \item Each programming language has unique syntax rules, e.g., Python uses indentation, while others may use braces.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Syntax - Key Points and Conclusion}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item \textbf{Consistency is Key:} Develop a habit of writing code according to syntax rules to avoid errors and improve readability.
+            \item \textbf{Debugging Skills:} Understanding syntax allows for efficient identification and fixing of errors.
+            \item \textbf{Foundation for Advanced Concepts:} A strong grasp of syntax is essential for tackling more complex programming topics.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Conclusion}
+        Syntax may seem like rigid rules, but it shapes how we construct our programs. 
+        By understanding and adhering to syntax rules, we lay the groundwork for logical thinking, effective debugging, and successful programming outcomes.
+    \end{block}
+
+    \textbf{Next Up:} We will dive into the \textbf{Basic Syntax Rules} to further enhance our Python programming skills!
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Syntax Rules - Introduction}
+    \textbf{Key Rules for Writing Python Syntax Correctly:}
+    \begin{itemize}
+        \item Indentation
+        \item Comments
+        \item Statements and Expressions
+        \item Case Sensitivity
+        \item Using Keywords
+    \end{itemize}
+    \vspace{10pt}
+    \textbf{Key Points to Emphasize:}
+    \begin{itemize}
+        \item Always use consistent indentation (preferably four spaces).
+        \item Utilize comments liberally to explain your thought process.
+        \item Remember that Python is case-sensitive.
+        \item Avoid using keywords as variable names to prevent syntax errors.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Syntax Rules - Indentation}
+    \textbf{1. Indentation}
+    \begin{itemize}
+        \item \textbf{Definition}: Indentation defines the structure of blocks of code in Python.
+        \item \textbf{How it works}: Consistent indentation is crucial; use spaces or tabs consistently.
+    \end{itemize}
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+def greet(name):
+    print("Hello, " + name + "!")  # This print statement is inside the greet function
+
+greet("Alice")
+    \end{lstlisting}
+    \end{block}
+    \textbf{Key Point:} Choose either spaces or tabs and stick with it throughout your code.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Syntax Rules - Comments and Statements}
+    \textbf{2. Comments}
+    \begin{itemize}
+        \item \textbf{Purpose}: Document your code for clarity.
+        \item \textbf{How to write comments}:
+        \begin{itemize}
+            \item Single-line comments: start with \#.
+            \item Multi-line comments: use triple quotes (''' or """).
+        \end{itemize}
+    \end{itemize}
+    \begin{block}{Example}
+    \begin{lstlisting}[language=Python]
+# This function calculates the square of a number
+def square(num):
+    return num * num
+
+"""
+The following code calls the square function
+and prints the result for the number 5
+"""
+result = square(5)
+print(result)  # Output: 25
+    \end{lstlisting}
+    \end{block}
+
+    \textbf{3. Statements and Expressions}
+    \begin{itemize}
+        \item \textbf{Statement}: An instruction the Python interpreter can execute.
+        \begin{lstlisting}[language=Python]
+total = 5 + 3  # This is a statement
+        \end{lstlisting}
+        \item \textbf{Expression}: A combination of values and operators that yields a value.
+        \begin{lstlisting}[language=Python]
+result = 10 - 2  # This expression evaluates to 8
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Syntax Rules - Case Sensitivity and Keywords}
+    \textbf{4. Case Sensitivity}
+    \begin{itemize}
+        \item Python is case-sensitive. The identifiers `variable`, `Variable`, and `VARIABLE` are distinct.
+    \end{itemize}
+
+    \textbf{5. Using Keywords}
+    \begin{itemize}
+        \item Be aware of reserved words (keywords) which cannot be used as identifiers.
+        \item Examples include: \texttt{if}, \texttt{else}, \texttt{while}, \texttt{for}.
+    \end{itemize}
+
+    \textbf{Conclusion}
+    \begin{itemize}
+        \item Understanding and adhering to these basic syntax rules is vital for writing clean, functional Python code.
+        \item Remember to ask questions or request clarification on any of these points!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Variables? - Definition}
+    \begin{block}{Definition of Variables}
+        \textbf{Variables} are symbolic names assigned to data that allow you to store, retrieve, and manipulate values in a program. 
+        They act as containers for holding information which can be changed during program execution.
+    \end{block}
+    
+    \begin{block}{Role in Storing Data in Python}
+        Variables enable programs to handle data dynamically. Instead of hardcoding values, you can use variables to store them, making your program flexible and interactive.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Variables? - Key Functions}
+    \begin{enumerate}
+        \item \textbf{Data Storage}: Variables hold data values for later use.
+        \item \textbf{Data Manipulation}: You can perform operations on variables to modify their data.
+        \item \textbf{Improved Readability}: Code that uses descriptive variable names is easier to understand.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What are Variables? - Example and Summary}
+    \textbf{Example:} Consider the following Python code snippet:
+    
+    \begin{lstlisting}[language=Python]
+# Declaring a variable
+age = 25  # age is a variable that stores the integer value 25
+
+# Using the variable
+print("I am", age, "years old.")
+    \end{lstlisting}
+    
+    \textbf{Key Points to Emphasize:}
+    \begin{itemize}
+        \item \textbf{Variable Names}: They should be meaningful and descriptive (e.g., `student_name`, `total_price`).
+        \item \textbf{Python's Flexibility}: Variables in Python are dynamically typed; no need to specify data types upon declaration.
+    \end{itemize}
+    
+    \textbf{Dynamic typing example:}
+    \begin{lstlisting}[language=Python]
+# Dynamic typing example
+x = 10        # Initially, x holds an integer
+print(x)      # Output: 10
+
+x = "Hello"   # Now, x holds a string
+print(x)      # Output: Hello
+    \end{lstlisting}
+    
+    \textbf{Summary:} Variables are fundamental to programming, enhancing interactivity and code readability.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Declaring Variables}
+    \begin{block}{What is a Variable?}
+        A variable is a named location in memory that stores data. 
+        In Python, variables are used to hold values that can be changed or accessed later in the program.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Syntax for Declaring Variables in Python}
+    The basic syntax for declaring a variable is:
+    \begin{lstlisting}
+    variable_name = value
+    \end{lstlisting}
+    \begin{itemize}
+        \item \textbf{variable\_name:} This is the name of the variable that you choose to represent the value.
+        \item \textbf{=:} This is the assignment operator, which assigns the value on its right to the variable on its left.
+        \item \textbf{value:} This can be any data type, such as a number, string, or list.
+    \end{itemize}
+    \begin{block}{Example}
+        \begin{lstlisting}
+        age = 25          # Integer variable
+        name = "Alice"    # String variable
+        height = 5.6     # Float variable
+        is_student = True # Boolean variable
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Naming Conventions for Variables}
+    \begin{itemize}
+        \item \textbf{Valid Characters:} Variable names can include letters (a-z, A-Z), digits (0-9), and underscores (\_). They must not start with a digit.
+        \item \textbf{Case Sensitivity:} Variable names are case-sensitive.
+        \item \textbf{Avoiding Reserved Keywords:} Do not use Python’s reserved keywords as variable names.
+        \item \textbf{Descriptive Names:} Use meaningful names that describe the purpose of the variable, e.g., `total_price`, `user_age`, `is_logged_in`.
+    \end{itemize}
+    \begin{block}{Examples of Bad Variable Names}
+        \begin{itemize}
+            \item \textbf{Bad:} `x`, `data`, `tempVar` (These do not clearly convey the purpose of the variable)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item Simple assignment syntax: \texttt{variable\_name = value}
+        \item Follow naming conventions: descriptive, case-sensitive, and no reserved keywords
+        \item Good variable names enhance code readability and maintenance
+    \end{itemize}
+    \begin{block}{Next Steps}
+        After mastering variable declaration, we will explore Python's built-in data types and their significance in programming.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Data Types}
+    
+    \begin{block}{Overview of Data Types in Python}
+        In programming, \textbf{data types} are classifications that dictate what kind of value a variable can hold. Python provides several built-in data types, enabling developers to store and manipulate data effectively.
+    \end{block}
+    
+    \begin{block}{Importance of Data Types}
+        \begin{enumerate}
+            \item \textbf{Memory Management}: Different data types require different amounts of memory. Understanding data types helps in optimizing memory usage.
+            \item \textbf{Operations and Method Compatibility}: Certain operations can only be performed on specific data types. Identifying the correct type ensures compatibility with functions and methods.
+            \item \textbf{Data Integrity and Error Prevention}: Defining the correct data type helps in maintaining data integrity and avoids potential runtime errors in calculations and operations.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Built-in Data Types in Python}
+    
+    \begin{block}{1. Numeric Types}
+        \begin{itemize}
+            \item \textbf{Integer (\texttt{int})}: Whole numbers, e.g., 5, -23.
+            \item \textbf{Float (\texttt{float})}: Decimal numbers, e.g., 3.14, -0.001.
+            \item \textbf{Complex (\texttt{complex})}: Numbers with a real and imaginary part, e.g., 5 + 2j.
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+integer_number = 10
+float_number = 3.14
+complex_number = 2 + 3j
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{2. Sequence Types}
+        \begin{itemize}
+            \item \textbf{String (\texttt{str})}: A sequence of characters enclosed in quotes, e.g., "Hello, World!".
+            \item \textbf{List}: A mutable (changeable) ordered collection, e.g., [1, 2, 3].
+            \item \textbf{Tuple}: An immutable (unchangeable) ordered collection, e.g., (1, 2, 3).
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+my_string = "Hello, Python!"
+my_list = [1, 2, 3, "four"]
+my_tuple = (1, 2, 3)
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Built-in Data Types in Python (contd.)}
+    
+    \begin{block}{3. Boolean Type}
+        \begin{itemize}
+            \item \textbf{Boolean (\texttt{bool})}: Represents two values: \texttt{True} or \texttt{False}. Useful in conditional statements.
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+is_tall = True
+is_heavy = False
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Summary of Key Points}
+        \begin{itemize}
+            \item Data types are essential for defining how values behave within a program.
+            \item Understanding each built-in type helps you choose the right one for your data needs.
+            \item Familiarize yourself with numeric, sequence, and boolean types to handle data efficiently.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Transition to Next Slide}
+    
+    In the next slide, we will take a closer look at \textbf{Primitive Data Types}, examining integers, floats, strings, and booleans in more detail. Stay tuned to see how these types function and their practical uses in programming!
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Primitive Data Types}
+    In programming, \emph{primitive data types} are the basic building blocks of data. 
+    They represent single values and are not composed of other data types. 
+    In Python, the four main primitive data types are:
+    \begin{enumerate}
+        \item \textbf{Integer}
+        \item \textbf{Float}
+        \item \textbf{String}
+        \item \textbf{Boolean}
+    \end{enumerate}
+    Understanding these data types is vital for effective data handling and manipulation in programming.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{1. Integer}
+    \begin{block}{Definition}
+        An integer is a whole number, either positive, negative, or zero, without any decimal point.
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+age = 25          # an integer
+temperature = -5  # an integer
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item You can perform arithmetic operations: \( +, -, \times, \div \).
+        \item Python supports large integers beyond typical limits found in other languages.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{2. Float}
+    \begin{block}{Definition}
+        A float (floating-point number) is a number that has a decimal point, representing real numbers.
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+price = 19.99          # a float
+temperature = 36.5     # a float
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item Float can represent fractions, hence useful for precise calculations.
+        \item Note the distinction between integers and floats during operations.
+              For example: \( 1 \div 2 \) results in \( 0.5 \), not \( 0 \).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3. String}
+    \begin{block}{Definition}
+        A string is a sequence of characters enclosed in single, double, or triple quotes. 
+        Strings can contain letters, numbers, and symbols.
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+greeting = "Hello, World!"  # a string
+message = 'My score is 100'  # a string
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item Strings are immutable. Once created, they cannot be changed.
+        \item Various operations: concatenation (\(+\)), replication (\(*\)), slicing, and formatting.
+        \item They can include escape characters for special formatting (e.g., \texttt{\textbackslash n} for new line).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{4. Boolean}
+    \begin{block}{Definition}
+        A boolean data type represents one of two values: \texttt{True} or \texttt{False}. 
+        It is often used for conditional statements.
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+is_student = True       # a boolean
+has_passed = False      # a boolean
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item Boolean values drive decision-making in programming (control flow).
+        \item They can be the result of comparisons: \( 5 > 3 \) evaluates to \texttt{True}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Code Snippet Example}
+    Understanding primitive data types is essential as they form the foundation of data manipulation in Python.
+    Each type has unique attributes and use cases. Knowing when to use which type can greatly enhance your programming skills.
+    
+    \begin{block}{Code Snippet Example}
+        \begin{lstlisting}[language=Python]
+# Variable declarations
+age = 25                      # Integer
+price = 19.99                 # Float
+greeting = "Welcome"          # String
+is_enrolled = True            # Boolean
+
+# Outputs
+print(age)                   # Output: 25
+print(price)                 # Output: 19.99
+print(greeting)              # Output: Welcome
+print(is_enrolled)           # Output: True
+        \end{lstlisting}
+    \end{block}
+    
+    This snippet shows how to declare and utilize primitive data types seamlessly in Python.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Composite Data Types}
+    \begin{block}{Understanding Composite Data Types}
+        Composite data types are structures that allow us to combine multiple values into a single entity. 
+        They can hold elements of different data types and enable more complex data management. 
+        The main composite data types in Python include:
+    \end{block}
+    \begin{enumerate}
+        \item Lists
+        \item Tuples
+        \item Sets
+        \item Dictionaries
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Lists and Tuples}
+    \begin{block}{1. Lists}
+        \begin{itemize}
+            \item \textbf{Definition}: An ordered collection of items that can be changed (mutable).
+            \item \textbf{Syntax}: \texttt{list\_name = [item1, item2, item3, ...]}
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+fruits = ["apple", "banana", "orange"]
+            \end{lstlisting}
+            \item \textbf{Key Features}:
+            \begin{itemize}
+                \item Ordered: Elements maintain their position.
+                \item Indexable: Access elements via their index (0-based).
+                \item Mutable: Can modify, add, or remove elements.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{2. Tuples}
+        \begin{itemize}
+            \item \textbf{Definition}: An ordered collection of items that cannot be changed (immutable).
+            \item \textbf{Syntax}: \texttt{tuple\_name = (item1, item2, item3, ...)}
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+coordinates = (10, 20)
+            \end{lstlisting}
+            \item \textbf{Key Features}:
+            \begin{itemize}
+                \item Ordered: Elements maintain their position.
+                \item Indexable: Access elements via their index.
+                \item Immutable: Once created, cannot be altered.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sets and Dictionaries}
+    \begin{block}{3. Sets}
+        \begin{itemize}
+            \item \textbf{Definition}: An unordered collection of unique items; no duplicates allowed.
+            \item \textbf{Syntax}: \texttt{set\_name = \{item1, item2, item3, ...\}}
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+unique_numbers = {1, 2, 3, 4, 4}
+            \end{lstlisting}
+            % The code snippet above will result in:
+            \begin{itemize}
+                \item\texttt{unique\_numbers = \{1, 2, 3, 4\}}
+            \end{itemize}
+            \item \textbf{Key Features}:
+            \begin{itemize}
+                \item Unordered: No specific order of elements.
+                \item Unique: Automatically removes duplicate values.
+                \item Mutable: Can add or remove items after creation.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{4. Dictionaries}
+        \begin{itemize}
+            \item \textbf{Definition}: A collection of key-value pairs; keys are unique identifiers for corresponding values.
+            \item \textbf{Syntax}: \texttt{dict\_name = \{key1: value1, key2: value2, ...\}}
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+student = {"name": "John", "age": 21, "major": "Computer Science"}
+            \end{lstlisting}
+            \item \textbf{Key Features}:
+            \begin{itemize}
+                \item Unordered: Does not maintain the order of insertion (as of Python 3.7, dictionaries maintain insertion order).
+                \item Key-Value Pair: Each key maps to a value.
+                \item Mutable: Allows updating values or adding/removing key-value pairs.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Type Conversion - Introduction}
+    \begin{block}{Overview}
+        Type conversion, also known as type casting, is the process of converting one data type into another in Python. 
+        This is essential for:
+        \begin{itemize}
+            \item Ensuring data compatibility in operations.
+            \item Maintaining precision in mathematical calculations.
+            \item Handling user input effectively.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Type Conversion - Implicit vs. Explicit}
+    \begin{block}{Types of Type Conversion}
+        Type conversion in Python can be categorized into:
+        \begin{enumerate}
+            \item \textbf{Implicit Type Conversion (Automatic)}
+            \item \textbf{Explicit Type Conversion (Manual)}
+        \end{enumerate}
+    \end{block}
+
+    \begin{block}{Implicit Conversion Example}
+        \begin{lstlisting}[language=Python]
+int_num = 5          # Integer
+float_num = 2.0     # Float
+result = int_num + float_num  # Implicit conversion
+print(result)  # Output: 7.0
+        \end{lstlisting}
+        The integer is automatically converted to float during addition.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Type Conversion - Key Points}
+    \begin{block}{Explicit Type Conversion Functions}
+        - Use functions like \texttt{int()}, \texttt{float()}, and \texttt{str()} for manual conversion.
+        
+        \begin{lstlisting}[language=Python]
+# Convert string to integer
+num_str = "10"
+num_int = int(num_str)  # Output: 10
+
+# Convert float to integer
+float_value = 3.14
+int_value = int(float_value)  # Output: 3
+
+# Convert integer to string
+age = 25
+age_str = str(age)  # Output: "25"
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Considerations}
+        \begin{itemize}
+            \item Understand the difference between implicit and explicit conversion.
+            \item Be cautious of data loss, especially converting from float to int.
+            \item Use the \texttt{type()} function to check the data type.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion - Summary of Key Points}
+    \begin{enumerate}
+        \item \textbf{Understanding Syntax:}
+        \begin{itemize}
+            \item Rules defining correctly structured programs.
+            \item \textbf{Importance:} Avoiding errors and ensuring correct execution.
+        \end{itemize}
+
+        \item \textbf{Variables:}
+        \begin{itemize}
+            \item Storage location that can hold data.
+            \item \textbf{Importance:} Dynamic handling of data in programs.
+        \end{itemize}
+
+        \item \textbf{Data Types:}
+        \begin{itemize}
+            \item Definitions of the nature of data (integers, floats, strings, booleans).
+            \item \textbf{Importance:} Essential for effective use of operators and functions.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion - Code Examples}
+    \begin{block}{Syntax Example}
+        \begin{lstlisting}[language=Python]
+print("Hello, World!")  # Correct syntax
+print("Hello, World!)  # Incorrect syntax (missing quote)
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Variables Example}
+        \begin{lstlisting}[language=Python]
+age = 25  # Variable holding an integer
+name = "Alice"  # Variable holding a string
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Data Types Example}
+        \begin{lstlisting}[language=Python]
+number = 10         # Integer
+price = 9.99       # Float
+is_active = True    # Boolean
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion - Importance of Mastery}
+    \begin{itemize}
+        \item \textbf{Foundation for Advanced Topics:} 
+        \begin{itemize}
+            \item Critical for understanding functions, control structures, and data structures.
+        \end{itemize}
+
+        \item \textbf{Debugging Skills:} 
+        \begin{itemize}
+            \item Facilitates easier debugging and efficient coding practices.
+        \end{itemize}
+
+        \item \textbf{Code Readability and Maintenance:} 
+        \begin{itemize}
+            \item Proper syntax and thoughtful variable usage improve maintainability.
+        \end{itemize}
+    \end{itemize}
+
+    \textbf{Key Takeaways:}
+    \begin{itemize}
+        \item Master syntax to build a solid programming foundation.
+        \item Understand variables for effective data manipulation.
+        \item Familiarize with data types to optimize performance.
+    \end{itemize}
+    
+    \textbf{Remember:}
+    Mastering these concepts enhances problem-solving skills and coding efficiency.
+\end{frame}
+
+
+\end{document}

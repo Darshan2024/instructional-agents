@@ -1,0 +1,786 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single,
+  showstringspaces=false
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 4: Data Structures I: Lists}
+\author{Teaching Assistant}
+\institute{University Name}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 4: Data Structures I -- The Problem}
+
+    \begin{block}{The Challenge: Managing Multiple Related Values}
+        So far, we've used variables to store single pieces of information:
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+student_name = "Alice"
+final_score = 95
+        \end{lstlisting}
+        But what if we need to handle a collection of related data, like scores for an entire class?
+    \end{block}
+    
+    \pause
+
+    \begin{alertblock}{An Inefficient Approach}
+        Creating a separate variable for each value is problematic:
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+score1 = 88
+score2 = 92
+score3 = 77
+# ...what if we had 30 students? Or 100?
+        \end{lstlisting}
+    \end{alertblock}
+
+    \pause
+    
+    \begin{itemize}
+        \item \textbf{Inconvenient:} Tedious to create and manage many variables.
+        \item \textbf{Not Scalable:} Adding new data requires changing the code (adding new variables).
+        \item \textbf{Hard to Process:} How would you calculate the average? You'd need to name every single variable.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 4: Data Structures I -- The Solution: Lists}
+
+    \begin{block}{A Better Way: Using a Data Structure}
+        We need a way to group a collection of items into a \textbf{single variable}. This is the purpose of a \textbf{data structure}.
+        \medskip
+        The first and most common data structure we'll learn is the \textbf{List}.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Analogy: From a Single Box to a Shelf}
+        \begin{itemize}
+            \item \textbf{A Variable} is like a single, labeled box.
+            \begin{itemize}
+                \item It has one name (e.g., \texttt{score1}).
+                \item It holds one value (e.g., \texttt{88}).
+            \end{itemize}
+            \medskip
+            \item \textbf{A List} is like a shelf with many numbered compartments.
+            \begin{itemize}
+                \item The entire shelf has one name (e.g., \texttt{scores}).
+                \item It holds an entire collection of values, each in its own spot.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \pause
+    
+    \begin{center}
+        \Large \texttt{scores = [88, 92, 77, 95, 100]}
+    \end{center}
+
+    \vfill
+    This single \texttt{scores} variable gives us a powerful and organized way to manage our collection of data.
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a List? - Core Properties}
+    
+    A list is a container that holds a collection of items in a specific sequence. It is defined by three key characteristics:
+    
+    \vspace{1em}
+    
+    \begin{description}
+        \item[\textbf{Ordered}] 
+        Items have a defined sequence that doesn't change on its own. The first item you add stays the first item.
+        \begin{itemize}
+            \item \textit{Analogy: Like a numbered to-do list or people standing in a line.}
+        \end{itemize}
+        
+        \item[\textbf{Mutable}] 
+        "Mutable" means changeable. You can \textbf{add}, \textbf{remove}, or \textbf{change} items after the list has been created.
+        
+        \item[\textbf{Collection}] 
+        A list can hold multiple items in a single variable. These items can be of different data types (e.g., numbers, strings, etc.).
+    \end{description}
+    
+    \begin{alertblock}{Key Idea}
+        A list is your go-to tool for storing a flexible, ordered sequence of items.
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a List? - Syntax \& Examples}
+    
+    \textbf{Syntax}: A list is created with square brackets \texttt{[]}, with items inside separated by commas.
+    
+    \vspace{1em}
+    
+    \begin{block}{Examples}
+\begin{lstlisting}[language=Python]
+# A list of integers
+student_scores = [88, 92, 77, 95, 100]
+
+# A list of strings
+shopping_list = ["apples", "milk", "bread"]
+
+# A list can hold mixed data types
+# (string, integer, float, boolean)
+employee_data = ["John Doe", 45, 85500.75, True]
+
+# You can start with an empty list
+empty_list = []
+\end{lstlisting}
+    \end{block}
+    
+    \vfill
+    
+    \textbf{Takeaway}: Remember these three words: \textbf{Ordered, Mutable, Collection}. On the next slide, we will see how the "ordered" property lets us access any item we want.
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Elements: The Concept of Indexing}
+    
+    Since lists are an \textbf{ordered} collection, every item has a numbered position, called its \textbf{index}. We use the index to look up a specific item.
+    
+    \vspace{1em}
+    
+    \begin{alertblock}{The Golden Rule: Counting Starts at Zero}
+        Python lists are \textbf{zero-indexed}. This is a crucial concept.
+        \begin{itemize}
+            \item The \textbf{first} item is at index \texttt{0}.
+            \item The \textbf{second} item is at index \texttt{1}.
+            \item The \textbf{third} item is at index \texttt{2}, and so on.
+        \end{itemize}
+    \end{alertblock}
+    
+    \vspace{1em}
+    
+    \begin{block}{A Helpful Mental Model}
+        The index of an item is the number of items that come \textit{before} it.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Elements: Syntax \& Example}
+
+    \begin{block}{Access Syntax}
+        Use the list's name followed by the index in square brackets \texttt{[]}.
+        \begin{center}
+            \texttt{list\_name[index]}
+        \end{center}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Example Walkthrough}
+\begin{lstlisting}[language=Python]
+# 1. Define a list of student scores
+student_scores = [88, 92, 77, 95]
+
+# 2. Get the *first* score (at index 0)
+first_score = student_scores[0]
+# first_score is now 88
+
+# 3. Get the *third* score (at index 2)
+third_score = student_scores[2]
+# third_score is now 77
+\end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Elements: Visualization \& Common Pitfalls}
+    
+    \begin{block}{Visualizing Indices for \texttt{student\_scores}}
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|l|c|c|c|c|}
+            \hline
+            \textbf{Value} & \texttt{88} & \texttt{92} & \texttt{77} & \texttt{95} \\
+            \hline
+            \textbf{Index} & \texttt{0} & \texttt{1} & \texttt{2} & \texttt{3} \\
+            \hline
+        \end{tabular}
+    \end{block}
+    
+    \pause
+    
+    \begin{alertblock}{Common Pitfall: The "Off-By-One" Error}
+        New programmers often forget to start at zero.
+        \begin{itemize}
+            \item Trying to get the first item with \texttt{student\_scores[1]} will actually retrieve the \textbf{second} item (92).
+            \item \textbf{Always remember: First item = index 0.}
+        \end{itemize}
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visualizing Indices}
+    
+    Let's visualize our list, \texttt{student\_scores = [88, 92, 77, 95]}.
+    \vspace{0.5cm}
+    
+    Each value has a corresponding index that we use to access it.
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Value} & 88 & 92 & 77 & 95 \\
+        \hline
+        \textbf{Index} & 0 & 1 & 2 & 3 \\
+        \hline
+    \end{tabular}
+    \end{center}
+    
+    \pause
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{IndexError: Out of Bounds}
+        The valid indices for this list are 0, 1, 2, and 3. Trying to access any other index will result in an \texttt{IndexError}.
+    \end{alertblock}
+    
+    \begin{exampleblock}{Code Example: Causing an Error}
+\begin{lstlisting}[language=Python]
+# This list has 4 items, so the last index is 3.
+# Trying to access index 4 will fail.
+print(student_scores[4])
+
+# Output: IndexError: list index out of range
+\end{lstlisting}
+    \end{exampleblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visualizing Indices - Negative Indexing}
+    
+    Python offers a convenient shortcut: \textbf{negative indexing} to access items from the \textit{end} of the list.
+    
+    \begin{itemize}
+        \item \texttt{[-1]} refers to the \textbf{last} item.
+        \item \texttt{[-2]} refers to the \textbf{second-to-last} item, and so on.
+    \end{itemize}
+    
+    \pause
+    
+    Let's update our visualization to include negative indices:
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Value} & 88 & 92 & 77 & 95 \\
+        \hline
+        \textbf{Positive Index} & 0 & 1 & 2 & 3 \\
+        \hline
+        \textbf{Negative Index} & -4 & -3 & -2 & -1 \\
+        \hline
+    \end{tabular}
+    \end{center}
+    
+    \begin{exampleblock}{Code Example: Using Negative Indices}
+\begin{lstlisting}[language=Python]
+student_scores = [88, 92, 77, 95]
+
+# Access the last score
+last_score = student_scores[-1]
+print(f"Last score: {last_score}") # Output: Last score: 95
+
+# Access the second-to-last score
+second_last = student_scores[-2]
+print(f"Second to last: {second_last}") # Output: Second to last: 77
+\end{lstlisting}
+    \end{exampleblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying List Elements: The Concept}
+    
+    One of the most important features of a Python list is that it is \textbf{mutable}.
+    
+    \begin{itemize}
+        \item \textbf{Mutable}: The object can be changed \textit{after} it has been created.
+        \item This means you can change individual elements directly without creating a new list.
+    \end{itemize}
+    
+    \vfill
+    
+    \begin{block}{Syntax for Modification}
+        You change an item by accessing its index and assigning a new value.
+        \begin{center}
+            \texttt{list\_name[index] = new\_value}
+        \end{center}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying List Elements: An Example}
+    
+    Let's correct an item on our shopping list.
+    
+    \textbf{1. Initial List:}
+    \begin{lstlisting}[language=Python]
+shopping_list = ['milk', 'eggs', 'bread']
+    \end{lstlisting}
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Value} & \texttt{'milk'} & \texttt{'eggs'} & \texttt{'bread'} \\
+        \hline
+        \textbf{Index} & 0 & 1 & 2 \\
+        \hline
+    \end{tabular}
+    \end{center}
+    
+    \pause
+    
+    \vfill
+    
+    \textbf{2. Perform Modification:}
+    \begin{lstlisting}[language=Python]
+# Oops, we need whole wheat bread
+shopping_list[2] = 'whole wheat bread'
+    \end{lstlisting}
+    
+    \pause
+    
+    \textbf{3. Result (Modified In-Place):}
+    \begin{lstlisting}[language=Python]
+print(shopping_list)
+# Output: ['milk', 'eggs', 'whole wheat bread']
+    \end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modifying List Elements: Important Rules}
+    
+    \begin{enumerate}
+        \item \textbf{Modification is In-Place}: The change happens directly to the original list. No new list is created.
+        
+        \pause
+        
+        \item \textbf{Index Must Exist}: You can only assign a value to an index that is already in the list.
+    \end{enumerate}
+    
+    \begin{alertblock}{IndexError}
+        The following code will cause an \texttt{IndexError} because index 3 does not exist in a 3-element list (valid indices are 0, 1, 2).
+\begin{lstlisting}[language=Python]
+# THIS WILL CAUSE AN ERROR!
+shopping_list[3] = 'butter'
+\end{lstlisting}
+    \end{alertblock}
+    
+    \pause
+    
+    \begin{block}{Negative Indices Work Too!}
+        You can also use negative indices to modify elements from the end of the list.
+\begin{lstlisting}[language=Python]
+# Another way to change the last item
+shopping_list[-1] = 'sourdough bread'
+\end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting a Subset: Slicing (1/3) - The Concept}
+    
+    Slicing is a powerful technique to get a sub-list, or a 'slice', from an original list.
+    
+    \begin{itemize}
+        \item It allows you to access a range of elements at once.
+        \item \textbf{Important:} Slicing creates a \textit{new list}; the original list is not modified.
+    \end{itemize}
+    
+    \bigskip
+    
+    \textbf{Syntax}: \texttt{list\_name[start:stop]}
+    
+    \begin{alertblock}{The "Golden Rule" of Slicing}
+        The slice includes the element at the \texttt{start} index up to, but \textbf{not including}, the element at the \texttt{stop} index.
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting a Subset: Slicing (2/3) - A Visual Example}
+    
+    Let's see how the slice \texttt{letters[1:4]} works.
+    
+    \begin{block}{Our List and its Indices}
+\begin{lstlisting}[language=Python]
+# List:
+letters = ['a', 'b', 'c', 'd', 'e']
+# Index:    0    1    2    3    4 
+\end{lstlisting}
+    \end{block}
+    
+    \begin{exampleblock}{Applying the Rule: \texttt{letters[1:4]}}
+        \begin{enumerate}
+            \item \textbf{Start} at index \texttt{1} (element \texttt{'b'}).
+            \item \textbf{Continue} through indices \texttt{2} and \texttt{3}.
+            \item \textbf{Stop} \textit{before} reaching index \texttt{4}.
+        \end{enumerate}
+    \end{exampleblock}
+    
+    \textbf{Result}: A new list is returned.
+\begin{lstlisting}[language=Python]
+letters[1:4]  # Returns ['b', 'c', 'd']
+\end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Getting a Subset: Slicing (3/3) - Shortcuts}
+    
+    Python provides handy shortcuts by letting you omit the \texttt{start} or \texttt{stop} index.
+    
+    \begin{itemize}
+        \item \textbf{From the beginning:} \texttt{[:stop]}
+        \begin{itemize}
+            \item Omitting \texttt{start} defaults to the beginning (index 0).
+            \item \texttt{letters[:3]} \textit{\# Returns ['a', 'b', 'c']}
+        \end{itemize}
+        
+        \bigskip
+        
+        \item \textbf{To the end:} \texttt{[start:]}
+        \begin{itemize}
+            \item Omitting \texttt{stop} defaults to the end of the list.
+            \item \texttt{letters[2:]} \textit{\# Returns ['c', 'd', 'e']}
+        \end{itemize}
+        
+        \bigskip
+        
+        \item \textbf{Copy the whole list:} \texttt{[:]}
+        \begin{itemize}
+            \item A common idiom to create a \textbf{shallow copy} of a list.
+            \item \texttt{letters\_copy = letters[:]}
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Adding Elements to a List (1/2): Append}
+    
+    One of the most powerful features of Python lists is that they are \textbf{mutable}, meaning you can change them after they are created. Let's see how to grow a list.
+
+    \begin{block}{1. Append to the End: \texttt{.append()}}
+        The \texttt{.append()} method adds a single item to the very end of the list. It modifies the list in-place.
+        \begin{itemize}
+            \item \textbf{Purpose}: Add one item to the end.
+            \item \textbf{Syntax}: \texttt{list\_name.append(item\_to\_add)}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Code Example}
+\begin{lstlisting}[language=Python]
+# We start with a simple to-do list
+tasks = ['laundry']
+
+# Add 'dishes' to the end of the list
+tasks.append('dishes')
+
+# tasks is now ['laundry', 'dishes']
+\end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Adding Elements to a List (2/2): Insert}
+    
+    What if you need to add an item to the beginning or middle of a list? For precise control over placement, we use the \texttt{.insert()} method.
+
+    \begin{block}{2. Insert at a Specific Index: \texttt{.insert()}}
+        The \texttt{.insert()} method adds an item at a specific index, shifting all subsequent elements to the right.
+        \begin{itemize}
+            \item \textbf{Purpose}: Add one item at a specific position.
+            \item \textbf{Syntax}: \texttt{list\_name.insert(index, item\_to\_add)}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Code Example}
+\begin{lstlisting}[language=Python]
+# Continuing with our list from before:
+# tasks is ['laundry', 'dishes']
+
+# An urgent task comes up, add it to the beginning (index 0)
+tasks.insert(0, 'email boss')
+
+# tasks is now ['email boss', 'laundry', 'dishes']
+\end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Elements from a List (1/3): The \texttt{del} Statement}
+    
+    There are several ways to remove items, depending on what you know (the index or the value).
+    
+    \begin{block}{1. The \texttt{del} Statement}
+        Removes an item at a known index. The item is permanently deleted and cannot be accessed.
+        
+\begin{lstlisting}[language=Python]
+# Initial list
+tasks = ['email boss', 'laundry', 'dishes', 'call mom']
+
+# Remove the item at index 1
+del tasks[1]
+
+# tasks is now: ['email boss', 'dishes', 'call mom']
+\end{lstlisting}
+    \end{block}
+    
+    \begin{itemize}
+        \item Use \texttt{del} when you want to "delete and forget" an item at a specific position.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Elements from a List (2/3): Methods}
+    
+    \begin{block}{2. The \texttt{.pop()} Method}
+        Removes the item at a specific index and lets you \textbf{use it}. If no index is given, it removes the \textbf{last} item.
+\begin{lstlisting}[language=Python]
+# tasks = ['email boss', 'laundry', 'dishes', 'call mom']
+done_task = tasks.pop(0)
+
+# done_task is now: 'email boss'
+# tasks is now: ['laundry', 'dishes', 'call mom']
+\end{lstlisting}
+    \end{block}
+    
+    \pause
+    
+    \begin{block}{3. The \texttt{.remove()} Method}
+        Removes the \textbf{first occurrence} of a specific value. A \texttt{ValueError} occurs if the item is not found.
+\begin{lstlisting}[language=Python]
+# tasks = ['email boss', 'laundry', 'dishes', 'call mom']
+tasks.remove('dishes')
+
+# tasks is now: ['email boss', 'laundry', 'call mom']
+\end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Elements from a List (3/3): Summary}
+    
+    \begin{table}
+        \centering
+        \caption{Which removal method should you use?}
+        \begin{tabular}{l l p{6cm}}
+            \hline
+            \textbf{Goal} & \textbf{Syntax} & \textbf{Why?} \\
+            \hline \hline
+            Remove by index (discard) & \texttt{del my\_list[i]} & Simple and direct for removal by index. \\
+            \hline
+            Remove by index (and use) & \texttt{item = my\_list.pop(i)} & Returns the removed item for you to use. \\
+            \hline
+            Remove last item (and use) & \texttt{item = my\_list.pop()} & A common, useful default for the \texttt{.pop()} method. \\
+            \hline
+            Remove by value & \texttt{my\_list.remove('x')} & The only method that searches for an item by its value. \\
+            \hline
+        \end{tabular}
+    \end{table}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common List Functions and Operators - The len() Function}
+    
+    The \texttt{len()} function is a fundamental tool that returns the number of elements in a list. It simply inspects the list without modifying it.
+    
+    \begin{itemize}
+        \item \textbf{Purpose}: To determine the size or length of a list.
+        \item \textbf{Analogy}: Counting the number of items in your shopping cart.
+        \item \textbf{Syntax}: \texttt{len(your\_list)}
+    \end{itemize}
+    
+    \begin{block}{Example: Counting Tasks}
+\begin{lstlisting}[language=Python]
+# Example: Counting tasks
+tasks = ['wash car', 'buy groceries', 'pay bills']
+num_tasks = len(tasks)
+print(f"You have {num_tasks} tasks remaining.")
+
+# You can also check if a list is empty
+if len(tasks) == 0:
+    print("All done!")
+\end{lstlisting}
+    \vspace{2mm}
+    \textbf{Output:}
+\begin{verbatim}
+You have 3 tasks remaining.
+\end{verbatim}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common List Functions and Operators - Operators}
+
+    \begin{block}{1. Concatenation (+): Combining Lists}
+        The \texttt{+} operator joins two lists end-to-end to create a \textbf{new} list.
+        \begin{itemize}
+            \item \textbf{Key Point}: This operation is \textbf{non-destructive}; the original lists are not changed.
+        \end{itemize}
+\begin{lstlisting}[language=Python]
+morning_tasks = ['gym', 'check email']
+evening_tasks = ['cook dinner', 'read book']
+
+all_day_tasks = morning_tasks + evening_tasks
+print(f"All tasks: {all_day_tasks}")
+print(f"Morning tasks are still: {morning_tasks}")
+\end{lstlisting}
+    \textbf{Output:}
+\begin{verbatim}
+All tasks: ['gym', 'check email', 'cook dinner', 'read book']
+Morning tasks are still: ['gym', 'check email']
+\end{verbatim}
+    \end{block}
+
+    \pause
+
+    \begin{block}{2. Repetition (*): Repeating a List}
+        The \texttt{*} operator creates a \textbf{new} list by repeating its elements a specified number of times.
+        \begin{itemize}
+            \item \textbf{Use Case}: Excellent for initializing a list with a default value.
+        \end{itemize}
+\begin{lstlisting}[language=Python]
+# Example 1: A simple cheer
+cheer = ['Go!'] * 3
+print(cheer)
+
+# Example 2: Initializing a game board row
+row = ['_'] * 3
+print(f"Empty row: {row}")
+\end{lstlisting}
+    \textbf{Output:}
+\begin{verbatim}
+['Go!', 'Go!', 'Go!']
+Empty row: ['_', '_', '_']
+\end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary: Mastering Lists}
+    
+    This chapter gave us the tools to store, access, and manage collections of data.
+    
+    \begin{block}{1. The Anatomy of a List}
+        A container for holding multiple items in a specific sequence.
+        \begin{itemize}
+            \item \textbf{Ordered}: The position of each item is preserved.
+            \item \textbf{Mutable}: The list can be changed after it's created.
+            \item \textbf{Syntax}: Defined using square brackets \texttt{[]}.
+        \end{itemize}
+    \end{block}
+    
+    \pause
+    
+    \begin{block}{2. Accessing \& Modifying Data}
+        \begin{itemize}
+            \item \textbf{Indexing}: Get or change a \textit{single} element. Remember it starts at zero! \\ \texttt{my\_list[0] = 'new\_value'}
+            \item \textbf{Slicing}: Get a \textit{new sub-list} containing a range of elements. \\ \texttt{sub\_list = my\_list[0:2]}
+        \end{itemize}
+    \end{block}
+    
+    \pause
+    
+    \begin{block}{3. Managing Content with Methods}
+        \begin{itemize}
+            \item \textbf{Adding Elements}: \texttt{.append(item)}, \texttt{.insert(index, item)}
+            \item \textbf{Removing Elements}: \texttt{.pop(index)}, \texttt{.remove(value)}
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Next Steps: Putting Lists to Work}
+    
+    \begin{block}{The Challenge}
+        So far, we've interacted with lists one element at a time.
+        \vspace{0.5em}
+        
+        How do we perform an action on \textit{every single item} in a list of 1,000 participants without writing 1,000 lines of code?
+    \end{block}
+    
+    \pause
+    
+    \begin{alertblock}{The Solution: Loops}
+        In the next chapter, we will introduce \textbf{loops}. By combining lists and loops, you'll be able to:
+        \begin{itemize}
+            \item Iterate through every item in a list automatically.
+            \item Perform calculations on entire datasets.
+            \item Search for items that meet specific criteria.
+        \end{itemize}
+    \end{alertblock}
+    
+    \vspace{1em}
+    
+    \centering
+    \textit{This combination is the key to unlocking data processing and automation in Python.}
+    
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,992 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 3: Control Structures: Conditionals \& Loops}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Control Structures}
+
+    Control structures are fundamental building blocks in programming that determine the flow of execution in a program. In Python, the primary control structures include conditionals and loops. 
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Control Structures}
+
+    \begin{itemize}
+        \item \textbf{Conditional Statements}: Enable decision-making within code, allowing a program to execute different blocks of code based on specific conditions.
+            \begin{itemize}
+                \item Example: Choosing an action based on user input (e.g., if a user is logged in or not).
+            \end{itemize}
+        
+        \item \textbf{Loops}: Facilitate repetition of code execution, making it possible to automate tasks and manage collections of data efficiently.
+            \begin{itemize}
+                \item Example: Iterating through a list of items to compute totals or apply transformations.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet Example}
+
+    \begin{lstlisting}[language=Python]
+# Example of a Conditional Statement
+user_age = 18
+
+if user_age >= 18:
+    print("You are eligible to vote.")
+elif user_age > 0:
+    print("You are not eligible to vote yet.")
+else:
+    print("Invalid age.")
+
+# Example of a Loop
+for number in range(1, 6):
+    print(f"Current number: {number}")
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Conditionals - Introduction}
+    \begin{block}{What are Conditionals?}
+        Conditionals are fundamental programming constructs that allow a program to make decisions based on specific conditions. They enable a program to execute certain blocks of code based on whether a condition is true or false.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Conditionals - Key Components}
+    \begin{itemize}
+        \item \textbf{if} - Checks a specified condition. If true, executes the block of code.
+        \item \textbf{elif} - Allows checking multiple conditions. If any previous conditions are false, this checks the next condition.
+        \item \textbf{else} - Executed when none of the previous conditions are true, providing a final alternative.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Conditionals - Syntax and Example}
+    \begin{block}{Syntax}
+        \begin{lstlisting}[language=Python]
+if condition_1:
+    # Code block for condition_1
+elif condition_2:
+    # Code block for condition_2
+else:
+    # Code block for when no conditions are met
+        \end{lstlisting}
+    \end{block}
+
+    \begin{block}{Example Scenario}
+        \begin{lstlisting}[language=Python]
+score = 85
+
+if score >= 90:
+    grade = 'A'
+elif score >= 80:
+    grade = 'B'
+elif score >= 70:
+    grade = 'C'
+else:
+    grade = 'F'
+
+print("The student's grade is:", grade)
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Conditionals - Key Points}
+    \begin{itemize}
+        \item \textbf{Indentation} - Crucial in Python as it defines the scope of code blocks controlled by conditionals.
+        \item \textbf{True and False Evaluation} - Understanding how Python evaluates expressions (e.g., 0 is false, any non-zero number is true).
+        \item \textbf{Multiple Conditions} - Use logical operators like \texttt{and}, \texttt{or}, and \texttt{not} to combine multiple conditions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Conditionals - Conclusion}
+    \begin{block}{Conclusion}
+        Conditionals are vital for controlling the flow of a program based on dynamic conditions. Mastery of \texttt{if}, \texttt{elif}, and \texttt{else} statements is fundamental for implementing decision-making logic in Python programming.
+    \end{block}
+    \begin{block}{Next Steps}
+        In the next slide, we will delve into practical examples illustrating these concepts in action.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - Introduction}
+    \begin{itemize}
+        \item Conditional statements in Python enable code execution based on conditions.
+        \item Key types of conditional statements:
+        \begin{itemize}
+            \item \textbf{if statement}: Executes if the condition is true.
+            \item \textbf{elif statement}: Checks additional conditions.
+            \item \textbf{else statement}: Executes if all previous conditions are false.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - General Syntax}
+    \begin{block}{General Syntax}
+        \begin{lstlisting}[language=Python]
+if condition1:
+    # Code to execute if condition1 is True
+elif condition2:
+    # Code to execute if condition2 is True
+else:
+    # Code to execute if all previous conditions are False
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - Grading System}
+    \begin{block}{Example 1: Grading System}
+        \begin{lstlisting}[language=Python]
+score = 85
+
+if score >= 90:
+    grade = 'A'
+elif score >= 80:
+    grade = 'B'
+elif score >= 70:
+    grade = 'C'
+elif score >= 60:
+    grade = 'D'
+else:
+    grade = 'F'
+
+print("Your grade is:", grade)
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item The \texttt{if} statement checks for scores 90 or above.
+        \item \texttt{elif} checks other ranges for grades.
+        \item The \texttt{else} assigns an F for scores below 60.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - Age Verification}
+    \begin{block}{Example 2: Age Verification}
+        \begin{lstlisting}[language=Python]
+age = 20
+
+if age >= 18:
+    print("You are eligible to vote.")
+else:
+    print("You are not eligible to vote.")
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item Simple structure with \texttt{if} and \texttt{else}.
+        \item Checks if age is 18 or older for voting eligibility.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - Weather Comparison}
+    \begin{block}{Example 3: Weather Comparison}
+        \begin{lstlisting}[language=Python]
+weather = "rainy"
+
+if weather == "sunny":
+    activity = "Go for a picnic."
+elif weather == "cloudy":
+    activity = "Visit a museum."
+elif weather == "rainy":
+    activity = "Stay indoors and read a book."
+else:
+    activity = "Check the weather and plan accordingly."
+
+print("Suggested activity:", activity)
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item Multiple conditions checked using \texttt{elif}.
+        \item \texttt{else} handles unforeseen weather conditions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Examples of Conditionals - Conclusion}
+    \begin{itemize}
+        \item Conditional statements enhance flexibility and control flow in programs.
+        \item Useful for decision-making, validations, etc.
+        \item Promote code readability and maintainability.
+        \item Effective use allows management of complex logic in applications.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nested Conditionals}
+    \begin{itemize}
+        \item Nested conditionals are decision-making constructs used within another conditional.
+        \item In Python, this is achieved by placing an \texttt{if} statement inside another \texttt{if} statement.
+        \item Careless use can reduce code readability and increase complexity.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Nested Conditionals}
+    \begin{block}{Definition}
+        A nested conditional occurs when one conditional statement is placed inside another. The inner condition is only evaluated if the outer condition is true.
+    \end{block}
+    
+    \begin{block}{Syntax Example}
+    \begin{lstlisting}[language=Python]
+if condition1:
+    # Outer conditional
+    if condition2:
+        # Inner conditional
+        print("Both conditions are true.")
+    else:
+        print("Only the outer condition is true.")
+else:
+    print("Outer condition is false.")
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Scenario: Grading System}
+    Consider a scenario where a student’s grade is evaluated based on two conditions: their score and attendance rate.
+    
+    \begin{lstlisting}[language=Python]
+score = 85
+attendance = 90
+
+if score >= 70:
+    if attendance >= 75:
+        print("Student is passing with good standing.")
+    else:
+        print("Student is passing but has low attendance.")
+else:
+    print("Student is failing.")
+    \end{lstlisting}
+    
+    \begin{itemize}
+        \item The outer condition checks if the score is passing (70 or higher).
+        \item The inner condition checks if the attendance is adequate (75\% or higher).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Implications for Readability and Complexity}
+    \begin{block}{Key Points to Consider}
+        \begin{itemize}
+            \item \textbf{Readability:}
+                \begin{itemize}
+                    \item Excessive nesting can obscure code clarity and maintainability.
+                    \item Strive for clarity; each nested level should serve a specific purpose.
+                \end{itemize}
+            \item \textbf{Complexity:}
+                \begin{itemize}
+                    \item Each extra layer of nesting increases cognitive load.
+                    \item Simplify logic to improve maintainability.
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Best Practices}
+        \begin{itemize}
+            \item Limit nesting levels to 2-3 if possible.
+            \item Utilize logical operators (\texttt{and}, \texttt{or}) to simplify conditions.
+            \item Refactor complex structures into functions for clarity.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    Nested conditionals are useful tools in programming that enable detailed decision-making. However, it is crucial to use them judiciously. 
+    \begin{itemize}
+        \item Strive for clarity and simplicity.
+        \item Ensuring code remains readable and maintainable is essential for long-term software development.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Loops - Overview}
+    \begin{itemize}
+        \item Loops are control structures for executing a block of code repeatedly.
+        \item In Python, there are two primary types:
+        \begin{itemize}
+            \item \textbf{For loops}
+            \item \textbf{While loops}
+        \end{itemize}
+        \item They help automate repetitive tasks, enhance efficiency, and reduce redundancy.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Loops - For Loops}
+    \begin{block}{For Loops}
+        \begin{itemize}
+            \item \textbf{Purpose}: To iterate over a sequence (e.g., list, tuple).
+            \item \textbf{Syntax}:
+            \begin{lstlisting}
+for variable in sequence:
+    # Code to execute
+            \end{lstlisting}
+            \item \textbf{Example}:
+            \begin{lstlisting}
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+            \end{lstlisting}
+            \item \textbf{Output}:
+            \begin{lstlisting}
+apple
+banana
+cherry
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Loops - While Loops}
+    \begin{block}{While Loops}
+        \begin{itemize}
+            \item \textbf{Purpose}: Repeats a block of code while a condition is true.
+            \item \textbf{Syntax}:
+            \begin{lstlisting}
+while condition:
+    # Code to execute
+            \end{lstlisting}
+            \item \textbf{Example}:
+            \begin{lstlisting}
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+            \end{lstlisting}
+            \item \textbf{Output}:
+            \begin{lstlisting}
+0
+1
+2
+3
+4
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Use Cases and Key Points}
+    \begin{block}{Use Cases}
+        \begin{itemize}
+            \item \textbf{For Loops}:
+            \begin{itemize}
+                \item Iterating through collections and strings.
+                \item Performing operations a set number of times.
+            \end{itemize}
+            \item \textbf{While Loops}:
+            \begin{itemize}
+                \item Repeating tasks until a condition changes.
+                \item Implementing indefinite algorithms.
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Key Points}
+        \begin{itemize}
+            \item Use \textbf{for loops} when iterations are known.
+            \item Use \textbf{while loops} for unspecified iterations.
+            \item Beware of infinite loops, ensure conditions become false.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Introduction}
+    \begin{itemize}
+        \item A \textbf{for loop} in Python allows iterating over sequences (lists, tuples, strings).
+        \item Simplifies tasks involving repeated operations based on collections.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Syntax}
+    \begin{block}{Syntax}
+        The general syntax of a for loop is as follows:
+        \begin{lstlisting}[language=Python]
+for item in iterable:
+    # Code block to execute
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item \texttt{item}: A variable representing each element in the iterable.
+        \item \texttt{iterable}: A collection (list, tuple, string) of items to iterate over.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Examples}
+    \begin{block}{Example 1: Iterating Over a List}
+        \begin{lstlisting}[language=Python]
+fruits = ['apple', 'banana', 'cherry']
+for fruit in fruits:
+    print(fruit)
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{verbatim}
+apple
+banana
+cherry
+        \end{verbatim}
+    \end{block}
+    
+    \begin{block}{Example 2: Iterating Over a Tuple}
+        \begin{lstlisting}[language=Python]
+colors = ('red', 'green', 'blue')
+for color in colors:
+    print(color)
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{verbatim}
+red
+green
+blue
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - More Examples}
+    \begin{block}{Example 3: Iterating Over a String}
+        \begin{lstlisting}[language=Python]
+message = "Hello"
+for char in message:
+    print(char)
+        \end{lstlisting}
+        \textbf{Output:}
+        \begin{verbatim}
+H
+e
+l
+l
+o
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Key Points}
+    \begin{itemize}
+        \item \textbf{Flexibility}: Works with any iterable data type.
+        \item \textbf{Readability}: Intuitive and enhances code readability.
+        \item \textbf{Efficiency}: Eliminates manual index management.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Common Use Cases}
+    \begin{enumerate}
+        \item Processing \textbf{elements} in a collection.
+        \item Modifying element \textbf{values} in lists/tuples.
+        \item \textbf{Generating} new sequences based on existing data.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{For Loops - Conclusion}
+    \begin{itemize}
+        \item For loops streamline repetitive tasks in Python programming.
+        \item Understanding their syntax and use cases leads to more efficient and readable code.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{While Loops - Overview}
+    \begin{itemize}
+        \item A \textbf{while loop} repeats a block of code while a specified condition is true.
+        \item Useful for dynamic repetition when the number of iterations is unknown.
+        \item \textbf{Syntax:}
+        \begin{lstlisting}[language=Python]
+while condition:
+    # block of code to be executed
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{While Loops - Mechanics}
+    \begin{enumerate}
+        \item \textbf{Condition Evaluation}:
+            \begin{itemize}
+                \item Before each iteration, the condition is checked.
+                \item If \textbf{true}, the code block executes.
+                \item If \textbf{false}, the loop terminates.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{While Loops - Example}
+    \begin{block}{Example Code}
+        \begin{lstlisting}[language=Python]
+# Initialize a counter variable
+counter = 0
+
+# Start a while loop
+while counter < 5:
+    print("Counter is:", counter)
+    counter += 1  # Increment the counter
+        \end{lstlisting}
+    \end{block}
+    \begin{block}{Output}
+        \begin{lstlisting}
+Counter is: 0
+Counter is: 1
+Counter is: 2
+Counter is: 3
+Counter is: 4
+        \end{lstlisting}
+    \end{block}
+    \begin{itemize}
+        \item This loop continues until \texttt{counter} reaches 5.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements}
+    \begin{itemize}
+        \item \textbf{Control Statements} manage flow in loops: \texttt{break} and \texttt{continue}.
+    \end{itemize}
+    
+    \begin{block}{1. Break Statement}
+        \begin{itemize}
+            \item Exits the loop immediately, even if the condition is true.
+            \item Useful for ending the loop under specific conditions.
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+counter = 0
+
+while True:  # Infinite loop
+    if counter == 3:
+        break  # Exit the loop when counter is 3
+    print("Counter is:", counter)
+    counter += 1
+        \end{lstlisting}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements - Continue}
+    \begin{block}{2. Continue Statement}
+        \begin{itemize}
+            \item Skips the current iteration and moves to the next one.
+            \item Useful to avoid executing remaining code in certain conditions.
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+counter = 0
+
+while counter < 5:
+    counter += 1
+    if counter == 3:
+        continue  # Skip the print statement when counter is 3
+    print("Counter is:", counter)
+        \end{lstlisting}
+    \end{block}
+    \begin{block}{Output}
+        \begin{lstlisting}
+Counter is: 1
+Counter is: 2
+Counter is: 4
+Counter is: 5
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item Ensure the condition will eventually become false to avoid infinite loops.
+        \item Use \texttt{break} and \texttt{continue} to control loop flow efficiently.
+        \item Practical use cases include reading inputs until a sentinel value is received.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements - Overview}
+    \begin{itemize}
+        \item Loop control statements are essential for managing the flow of execution within loops.
+        \item Focus on three key statements:
+            \begin{itemize}
+                \item \texttt{break}
+                \item \texttt{continue}
+                \item \texttt{pass}
+            \end{itemize}
+        \item Understanding these statements improves loop efficiency and exit condition management.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements - \texttt{break} Statement}
+    \begin{block}{Explanation}
+        The \texttt{break} statement is used to terminate a loop prematurely. Control transfers to the next statement following the loop.
+    \end{block}
+    
+    \begin{block}{Use Cases}
+        \begin{itemize}
+            \item Exiting a loop when a certain condition is met (e.g., user input).
+            \item Finding a target value.
+        \end{itemize}
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+for i in range(10):
+    if i == 5:
+        break  # Exit the loop when i equals 5
+    print(i)
+    \end{lstlisting}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+0
+1
+2
+3
+4
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements - \texttt{continue} and \texttt{pass}}
+    \begin{block}{\texttt{continue} Statement}
+        The \texttt{continue} statement skips the current iteration and proceeds to the next iteration of the loop.
+    \end{block}
+    
+    \begin{block}{Use Cases}
+        \begin{itemize}
+            \item Skipping iterations based on specific conditions (e.g., ignoring negative numbers).
+        \end{itemize}
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+for i in range(10):
+    if i % 2 == 0:
+        continue  # Skip even numbers
+    print(i)
+    \end{lstlisting}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+1
+3
+5
+7
+9
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Loop Control Statements - \texttt{pass} Statement}
+    \begin{block}{Explanation}
+        The \texttt{pass} statement is used as a placeholder; it does nothing but allows for syntactically correct code.
+    \end{block}
+    
+    \begin{block}{Use Cases}
+        \begin{itemize}
+            \item Serves as a placeholder during development for future code implementation.
+        \end{itemize}
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+for i in range(5):
+    if i < 3:
+        pass  # Placeholder for future code
+    else:
+        print(i)
+    \end{lstlisting}
+    
+    \begin{block}{Output}
+        \begin{verbatim}
+3
+4
+        \end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{break}: Exits the loop entirely.
+        \item \textbf{continue}: Skips the current iteration and continues with the next one.
+        \item \textbf{pass}: Acts as a placeholder for future implementations.
+    \end{itemize}
+    
+    Understanding and effectively using these control statements allows programmers to implement flexible and efficient loop logic, enhancing code design and clarity.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Combining Conditionals and Loops}
+    \begin{itemize}
+        \item Powerful programming technique for decision-making and repetition
+        \item Used to solve complex real-world problems dynamically
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Concept Overview}
+    \begin{itemize}
+        \item \textbf{Conditionals}:
+            \begin{itemize}
+                \item Execute different sections of code based on conditions
+                \item Common statements: \texttt{if}, \texttt{else if}, \texttt{else}
+            \end{itemize}
+        \item \textbf{Loops}:
+            \begin{itemize}
+                \item Repeat a block of code multiple times
+                \item Common types: \texttt{for} loops and \texttt{while} loops
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example 1: User Login System}
+    \begin{lstlisting}[language=Python]
+correct_password = "securePassword123"
+attempts = 3
+
+while attempts > 0:
+    user_input = input("Enter your password: ")
+    if user_input == correct_password:
+        print("Login successful!")
+        break
+    else:
+        attempts -= 1
+        print(f"Incorrect password. You have {attempts} attempts left.")
+
+if attempts == 0:
+    print("Access denied.")
+    \end{lstlisting}
+    \begin{block}{Explanation}
+        The loop continues until the user enters the correct password 
+        or runs out of attempts. Conditionals check the password's 
+        correctness, providing feedback accordingly.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example 2: Grade Feedback System}
+    \begin{lstlisting}[language=Python]
+scores = [85, 92, 58, 75, 99]
+feedback = []
+
+for score in scores:
+    if score >= 90:
+        feedback.append("Excellent")
+    elif score >= 75:
+        feedback.append("Good")
+    else:
+        feedback.append("Needs Improvement")
+
+print(feedback)
+    \end{lstlisting}
+    \begin{block}{Explanation}
+        The loop iterates through a list of scores. Conditionals categorize 
+        these scores into feedback labels, constructing a list of feedback.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Key Points to Emphasize}
+    \begin{enumerate}
+        \item \textbf{Flexibility in Programming}:
+            \begin{itemize}
+                \item Allows handling various scenarios dynamically
+            \end{itemize}
+        \item \textbf{Efficiency}:
+            \begin{itemize}
+                \item Reduces redundancy in code through loops
+            \end{itemize}
+        \item \textbf{User Interaction}:
+            \begin{itemize}
+                \item Essential for interactive programs responding to user actions
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Best Practices}
+    \begin{itemize}
+        \item \textbf{Always Validate Input}:
+            \begin{itemize}
+                \item Ensure graceful handling of invalid inputs in loops
+            \end{itemize}
+        \item \textbf{Limit Loop Iterations}:
+            \begin{itemize}
+                \item Provide a clear exit condition to avoid infinite loops
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Control Structures}
+    \begin{enumerate}
+        \item \textbf{Keep it Simple and Clear}
+        \begin{itemize}
+            \item Aim for readable and understandable code.
+            \item Prefer simple conditional checks over complex nested conditions.
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+if user_age >= 18:
+    print("You are an adult.")
+            \end{lstlisting}
+        \end{itemize}
+
+        \item \textbf{Use Meaningful Names}
+        \begin{itemize}
+            \item Use descriptive variable and function names to convey their purpose.
+            \item \textbf{Example}: Instead of \(x\), use \(user\_age\).
+        \end{itemize}
+
+        \item \textbf{Avoid Deep Nesting}
+        \begin{itemize}
+            \item Keep control structures flat to enhance readability.
+            \item Consider using \texttt{elif} instead of multiple nested \texttt{if} statements.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+if condition1:
+    # do something
+elif condition2:
+    # do something else
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Control Structures (Contd.)}
+    \begin{enumerate}[resume]
+        \item \textbf{Minimize Side Effects}
+        \begin{itemize}
+            \item Ensure conditionals do not change the state of variables unintentionally.
+            \item Use functions to encapsulate behavior with clear inputs and outputs.
+        \end{itemize}
+
+        \item \textbf{Document Your Code}
+        \begin{itemize}
+            \item Include comments to explain non-obvious logic or decisions.
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+# Check if user is a minor
+if user_age < 18:
+    print("You are a minor.")
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Mistakes to Avoid}
+    \begin{enumerate}
+        \item \textbf{Incorrect Condition Evaluation}
+        \begin{itemize}
+            \item Be cautious with equality and relational operators; mixing them up can create logic errors.
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+# Incorrect: 
+if user_age = 18: # assignment instead of equality check
+    print("You are exactly 18.")
+            \end{lstlisting}
+        \end{itemize}
+
+        \item \textbf{Neglecting Edge Cases}
+        \begin{itemize}
+            \item Account for all possible input values, including unusual cases.
+            \item \textbf{Example}: Not checking for invalid inputs (e.g., negative ages).
+        \end{itemize}
+
+        \item \textbf{Overusing Global Variables}
+        \begin{itemize}
+            \item Minimize global variable usage to prevent unpredictable behaviors.
+            \item Instead, pass variables as parameters or use class attributes for state.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Mistakes to Avoid (Contd.)}
+    \begin{enumerate}[resume]
+        \item \textbf{Failing to Break Loops Appropriately}
+        \begin{itemize}
+            \item Ensure exit conditions are included in loops to avoid infinite loops.
+            \item \textbf{Example}:
+            \begin{lstlisting}
+while True:
+    if some_condition:
+        break  # Ensure this condition is met to exit the loop
+            \end{lstlisting}
+        \end{itemize}
+
+        \item \textbf{Lack of Consistent Indentation and Formatting}
+        \begin{itemize}
+            \item Consistent formatting aids readability and helps identify structures.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item Strive for readability and maintainability in control structures.
+        \item Use clear naming, minimize nesting, and avoid unintended side effects.
+        \item Double-check conditions, handle edge cases, and ensure loop exits are accounted for.
+        \item Comment your code thoughtfully to aid understanding and future revisions.
+    \end{itemize}
+\end{frame}
+
+
+\end{document}

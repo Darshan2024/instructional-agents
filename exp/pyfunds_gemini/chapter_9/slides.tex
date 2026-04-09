@@ -1,0 +1,755 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 9: Data Structures II: Dictionaries}
+\author{Teaching Assistant}
+\institute{University Name}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 9: Data Structures II: Dictionaries}
+    
+    \begin{center}
+        \huge{\textbf{Chapter 9: Data Structures II: Dictionaries}}
+        \vspace{1em}
+        
+        \large{\textit{Beyond the Index: Modeling Data with Key-Value Pairs}}
+    \end{center}
+    
+    \vfill
+    
+    \begin{block}{The Core Question}
+        We've used lists to store ordered data, accessed by a numeric index (0, 1, 2, ...).
+        \vspace{0.5em}
+        
+        \textbf{Problem:} How do we efficiently find a student's grade by their \textit{name} instead of their position in a list?
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Challenge: Finding Data Efficiently}
+
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{1. The "Old Way" with Lists}
+                We must iterate through the entire list to find a match. This is slow and cumbersome.
+                
+                \begin{lstlisting}[language=Python]
+% The "old way" with lists
+student_grades = [['Alice', 95], 
+                  ['Bob', 87], 
+                  ['Charlie', 92]]
+
+# To find Charlie's grade, we must search:
+charlie_grade = 0
+for student in student_grades:
+    if student[0] == 'Charlie':
+        charlie_grade = student[1]
+        break
+% Inefficient for large datasets!
+                \end{lstlisting}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{2. The Solution: Dictionaries!}
+                A dictionary stores data in \textbf{key-value pairs}. We use a unique key for an instant lookup.
+                
+                \begin{lstlisting}[language=Python]
+% The "new way" with dictionaries
+grades_dict = {'Alice': 95, 
+               'Bob': 87, 
+               'Charlie': 92}
+
+# Instant lookup using the key:
+charlie_grade = grades_dict['Charlie']
+# Returns 92
+
+% Fast, readable, and efficient!
+                \end{lstlisting}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What You'll Learn in This Chapter}
+
+    \begin{center}
+        \large\textbf{Our Roadmap for Mastering Dictionaries}
+    \end{center}
+    \vfill
+
+    \begin{itemize}
+        \item \textbf{Core Concepts:} Understand the key-value model and when to choose a dictionary over a list.
+        \vspace{1em}
+        
+        \item \textbf{Fundamental Operations:} Learn how to create, access, add, update, and remove items from dictionaries.
+        \vspace{1em}
+        
+        \item \textbf{Iteration \& Methods:} Discover powerful techniques for looping through dictionaries and using their built-in methods.
+        \vspace{1em}
+        
+        \item \textbf{Practical Applications:} Model real-world data like JSON, user profiles, and application settings.
+    \end{itemize}
+    
+    \vfill
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Dictionary? The Key-Value Pair}
+    \begin{block}{The Core Concept: Mappings, Not Sequences}
+        A \textbf{dictionary} is a fundamental data structure that stores a collection of items.
+        \begin{itemize}
+            \item Unlike a list, which is an \textit{ordered sequence} accessed by a numerical index (0, 1, 2, ...), a dictionary is an \textit{unordered collection}.
+            \item It stores data as \textbf{key-value pairs}.
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Key and Value}
+        \begin{itemize}
+            \item \textbf{Key:} A unique identifier used to look up data.
+            \item \textbf{Value:} The data associated with a key.
+        \end{itemize}
+        The primary purpose is to retrieve a value quickly when you know its key.
+    \end{alertblock}
+
+    \begin{exampleblock}{The Dictionary Analogy}
+        Think of a real dictionary: you use a \textbf{word (the key)} to instantly find its \textbf{definition (the value)}. You don't read the whole book to find it!
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Dictionary? -- Key Rules \& Characteristics}
+    Dictionaries have a few simple but important rules:
+
+    \begin{enumerate}
+        \item \textbf{Keys Must Be Unique}
+        \begin{itemize}
+            \item Every key in a dictionary must be unique. You cannot have two identical keys.
+            \item If you add a key that already exists, you will simply \textbf{update} the value associated with it.
+            \item \textit{Analogy: A phonebook doesn't have two separate entries for the exact same person.}
+        \end{itemize}
+        \vspace{0.5cm}
+
+        \item \textbf{Values Can Be Duplicated}
+        \begin{itemize}
+            \item You can have multiple different keys that point to the same value.
+            \item \textit{Example: Two different student IDs (keys) could both map to the name "Alex" (value).}
+        \end{itemize}
+    \end{enumerate}
+
+    \begin{block}{Fast and Efficient Lookups}
+        Dictionaries are highly optimized for data retrieval. Accessing a value using its key is extremely fast, regardless of the dictionary's size.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is a Dictionary? -- Real-World Analogies}
+    Here are other ways to visualize key-value pairs in action:
+
+    \begin{block}{Phonebook}
+        \begin{itemize}
+            \item \textbf{Key}: Person's Name
+            \item \textbf{Value}: Phone Number
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Student Records}
+        \begin{itemize}
+            \item \textbf{Key}: Student ID (e.g., \texttt{900123456})
+            \item \textbf{Value}: All Student Information (Name, Major, GPA, etc.)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Website User Profile}
+        A dictionary is perfect for storing structured data like a user profile:
+        \begin{itemize}
+            \item \textbf{Key}: \texttt{'username'} $\rightarrow$ \textbf{Value}: \texttt{'alex\_c'}
+            \item \textbf{Key}: \texttt{'user\_id'} $\rightarrow$ \textbf{Value}: \texttt{101}
+            \item \textbf{Key}: \texttt{'is\_active'} $\rightarrow$ \textbf{Value}: \texttt{True}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Syntax: Creating a Dictionary - The Basics}
+    Dictionaries are created using curly braces \texttt{\{\}} with key-value pairs separated by colons \texttt{:}.
+
+    \begin{block}{Core Syntax Elements}
+        \begin{itemize}
+            \item \textbf{Curly Braces \texttt{\{\}}}: Mark the beginning and end of the dictionary.
+            \item \textbf{Colons \texttt{:}}: Separate a key from its value.
+            \item \textbf{Commas \texttt{,}}: Separate individual key-value pairs.
+        \end{itemize}
+    \end{block}
+
+    \vfill
+
+    \textbf{General Structure:}
+    \begin{verbatim}
+{ 'key1': value1, 'key2': value2, ... }
+    \end{verbatim}
+
+    \textbf{Creating an Empty Dictionary:}
+    \begin{verbatim}
+empty_dict = {}
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Syntax: Creating a Dictionary - Code Example}
+    Let's create a dictionary to represent a user profile, storing different types of information.
+
+    \begin{block}{Example: \texttt{user\_profile}}
+\begin{verbatim}
+# A dictionary mapping string keys to various values
+user_profile = {
+    'username': 'alex_c',
+    'user_id': 101,
+    'is_active': True,
+    'topics': ['python', 'data', 'design']
+}
+\end{verbatim}
+    \end{block}
+
+    \begin{itemize}
+        \item \texttt{'username': 'alex\_c'} \hfill (String key, String value)
+        \item \texttt{'user\_id': 101} \hfill (String key, Integer value)
+        \item \texttt{'is\_active': True} \hfill (String key, Boolean value)
+        \item \texttt{'topics': [...]} \hfill (String key, List value)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Syntax: Creating a Dictionary - Key Rules}
+    There are two fundamental rules regarding keys and values.
+
+    \begin{block}{Rule 1: Keys Must Be Immutable}
+        Keys must be of a data type that cannot be changed. This ensures that a key remains a constant reference.
+        \begin{itemize}
+            \item \textbf{Allowed Key Types:} Strings, Numbers, Tuples.
+            \item \textbf{Not Allowed:} Lists, other Dictionaries (because they are mutable).
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Rule 2: Values Can Be Anything}
+        A value can be of any data type, which makes dictionaries extremely flexible.
+        \begin{itemize}
+            \item You can store strings, numbers, booleans, lists, tuples, and even nest other dictionaries as values.
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Best Practice: Readability}
+        For dictionaries with multiple pairs, writing each key-value pair on a new line (as in the \texttt{user\_profile} example) greatly improves code readability.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Values - Part 1}
+
+    You can retrieve a value from a dictionary by providing its key inside square brackets \texttt{[]}. This is similar to indexing a list, but you use a key instead of a numerical index.
+
+    \begin{itemize}
+        \item \textbf{Syntax:} \texttt{dictionary\_name[key]}
+        \item \textbf{Analogy:}
+        \begin{itemize}
+            \item List: \texttt{grades[0]} $\rightarrow$ "What is at position 0?"
+            \item Dictionary: \texttt{user\_profile['username']} $\rightarrow$ "What is the value for the key 'username'?"
+        \end{itemize}
+    \end{itemize}
+
+    \textbf{Code Example:}
+    \begin{lstlisting}[language=Python]
+# Assume user_profile is defined:
+user_profile = {
+    'username': 'alex_c',
+    'user_id': 101,
+    'is_active': True,
+    'topics': ['python', 'data', 'design']
+}
+
+# Get the value associated with the key 'username'
+name = user_profile['username']
+print(f"Username: {name}")
+
+# Get the list of topics
+user_topics = user_profile['topics']
+print(f"Topics: {user_topics}")
+    \end{lstlisting}
+    \textbf{Output:}
+    \begin{verbatim}
+Username: alex_c
+Topics: ['python', 'data', 'design']
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Accessing Values - Part 2: The KeyError Exception}
+
+    One of the most common errors when working with dictionaries is the \texttt{KeyError}.
+
+    \begin{block}{What is a KeyError?}
+        Python raises a \texttt{KeyError} when you try to access a key that does \textbf{not} exist in the dictionary. It's Python's way of saying, "I looked for that key, but I couldn't find it!"
+        \vspace{0.5em}
+        
+        This is a helpful feature, as it prevents your program from silently failing or using incorrect data.
+    \end{block}
+
+    \textbf{Example of what NOT to do:}
+    The \texttt{user\_profile} dictionary does not have an \texttt{'email'} key. Attempting to access it will crash the program.
+
+    \begin{lstlisting}[language=Python]
+# This line will raise a KeyError!
+print(user_profile['email'])
+    \end{lstlisting}
+
+    \textbf{Resulting Traceback:}
+    \begin{verbatim}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'email'
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Adding and Updating Items}
+    \subtitle{The "Upsert" Operation}
+    
+    You can add new key-value pairs or update existing ones using the same square bracket assignment syntax.
+    
+    \begin{block}{The Core Principle: One Syntax for Two Jobs}
+        The assignment syntax \texttt{dictionary[key] = value} automatically handles both adding and updating.
+    \end{block}
+    
+    \vfill
+    
+    \textbf{How Python Decides:}
+    \begin{itemize}
+        \item \textbf{If the key exists:} The existing value is replaced.
+        \begin{itemize}
+            \item This is an \textbf{Update}.
+        \end{itemize}
+        \item \textbf{If the key does not exist:} A new key-value pair is created.
+        \begin{itemize}
+            \item This is an \textbf{Add} (or Insert).
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Adding and Updating Items - Example}
+
+    \textbf{Code Example:}
+    \begin{verbatim}
+# Assume this is our initial dictionary
+user_profile = {
+    'username': 'alex_c', 'user_id': 101, 
+    'is_active': True, 'topics': ['Python', 'Data Science']
+}
+
+# Add a new key-value pair
+# The key 'email' does not exist, so it is created.
+user_profile['email'] = 'alex@example.com'
+
+# Update an existing value
+# The key 'is_active' exists, so its value is replaced.
+user_profile['is_active'] = False
+
+print(user_profile)
+# {'username': 'alex_c', 'user_id': 101, 'is_active': False, 
+# 'topics': [...], 'email': 'alex@example.com'}
+    \end{verbatim}
+    
+    \begin{block}{Key Takeaways}
+        \begin{itemize}
+            \item \textbf{Dictionaries are Mutable}: You can freely add, update, and remove items after creation.
+            \item \textbf{One Syntax for Two Jobs}: The \texttt{dict[key] = value} assignment is an all-in-one tool.
+            \item \textbf{No \texttt{KeyError} on Assignment}: Unlike accessing, assigning to a non-existent key is a valid operation that creates it.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Items}
+    \framesubtitle{Using the \texttt{del} Keyword}
+
+    To remove a key-value pair from a dictionary, you can use the \texttt{del} keyword. This action is permanent and modifies the dictionary in-place.
+
+    \begin{itemize}
+        \item \textbf{Purpose:} To remove a specific entry from a dictionary using its key.
+        \item \textbf{Mechanism:} \texttt{del} is a general Python statement that deletes objects.
+        \item \textbf{Syntax:} \texttt{del dictionary\_name['key\_to\_remove']}
+    \end{itemize}
+
+    \begin{block}{Code Example}
+\begin{verbatim}
+user_profile = {
+    'username': 'alex_c', 'user_id': 101, 
+    'is_active': False, 
+    'topics': ['python', 'data science', 'ai']
+}
+
+# Let's remove the user_id
+del user_profile['user_id']
+
+print(user_profile)
+# {'username': 'alex_c', 'is_active': False, 
+#  'topics': ['python', 'data science', 'ai']}
+\end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Removing Items - Errors \& Alternatives}
+
+    \begin{block}{Caution: The \texttt{KeyError}}
+        Attempting to \texttt{del} a key that does not exist will raise a \texttt{KeyError}, crashing your program if not handled.
+\begin{verbatim}
+# The key 'last_login' does not exist
+del user_profile['last_login']
+
+# Raises: KeyError: 'last_login'
+\end{verbatim}
+        \textbf{Key Takeaway:} Always ensure a key exists before trying to delete it (e.g., \texttt{if 'key' in my\_dict:}).
+    \end{block}
+
+    \begin{block}{Alternative: The \texttt{.pop()} Method}
+        The \texttt{.pop()} method is another way to remove an item. Its key advantage is that it \textbf{removes the item and returns its value}.
+\begin{verbatim}
+# Remove email and store it in a variable
+removed_email = user_profile.pop('email')
+
+print(f"Removed email: {removed_email}")
+# > Removed email: alex@example.com
+
+print(user_profile)
+# {'username': 'alex_c', 'is_active': False, 
+#  'topics': [...]}
+\end{verbatim}
+        \texttt{.pop()} can also take a default value (e.g., \texttt{.pop('key', None)}) to avoid a \texttt{KeyError}, making it a safer choice.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Iterating Through a Dictionary}
+    \framesubtitle{Method 1: Iterating Through Keys (Default)}
+
+    Just like lists, you can use a \texttt{for} loop to process the contents of a dictionary. By default, a \texttt{for} loop over a dictionary iterates through its keys.
+
+    \begin{block}{Example: Looping Through Keys}
+\begin{lstlisting}[language=Python]
+user_profile = {
+    'username': 'alex_c', 
+    'is_active': True, 
+    'topics': ['Python', 'AI', 'Data Science']
+}
+
+# You can use the key to access its value inside the loop
+print("--- Profile Details ---")
+for key in user_profile:
+    value = user_profile[key]
+    print(f"The value for '{key}' is: {value}")
+\end{lstlisting}
+    \end{block}
+    
+    \begin{block}{Output}
+\begin{verbatim}
+--- Profile Details ---
+The value for 'username' is: alex_c
+The value for 'is_active' is: True
+The value for 'topics' is: ['Python', 'AI', 'Data Science']
+\end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Iterating Through a Dictionary}
+    \framesubtitle{Method 2: Key-Value Pairs with \texttt{.items()}}
+
+    The most useful and expressive way to loop is with the \texttt{.items()} method. It returns key-value pairs that can be "unpacked" into two variables directly in the \texttt{for} loop. This is the most common pattern.
+
+    \begin{block}{Code: Using \texttt{.items()}}
+\begin{lstlisting}[language=Python]
+# The .items() method is efficient and clear
+print("--- Full Profile using .items() ---")
+for key, value in user_profile.items():
+    print(f"{key.capitalize()}: {value}")
+\end{lstlisting}
+    \end{block}
+
+    \begin{block}{Output}
+\begin{verbatim}
+--- Full Profile using .items() ---
+Username: alex_c
+Is_active: True
+Topics: ['Python', 'AI', 'Data Science']
+\end{verbatim}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Dictionary Iteration: Summary}
+
+    Here are the three primary ways to iterate through a dictionary:
+
+    \begin{itemize}
+        \item \textbf{Loop over Keys (Default):} Use when you only need the keys.
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+for key in my_dict:
+    # ... use key
+        \end{lstlisting}
+
+        \item \textbf{Loop over Values:} Use when you only need the values, not the keys.
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+for value in my_dict.values():
+    # ... use value
+        \end{lstlisting}
+
+        \item \textbf{Loop over Both (Recommended):} The most powerful and readable pattern.
+        \begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+for key, value in my_dict.items():
+    # ... use both key and value
+        \end{lstlisting}
+    \end{itemize}
+
+    \begin{block}{Key Takeaway}
+    Always use \texttt{my\_dict.items()} when you need both the key and the value. It is more efficient and makes your code easier to understand.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Checking for Keys - The \texttt{KeyError} Trap}
+
+    When working with dictionaries, one of the most common errors is the \texttt{KeyError}.
+    \begin{itemize}
+        \item It occurs when you try to access a key that \textbf{does not exist}.
+        \item This error will immediately \textbf{halt the execution} of your program.
+    \end{itemize}
+
+    \begin{block}{Example of what causes a \texttt{KeyError}}
+        \begin{lstlisting}[language=Python]
+% Define a simple user profile
+user_profile = {'username': 'jdoe', 'id': 101}
+
+# Trying to access the 'email' key, which doesn't exist.
+# This line will immediately cause a KeyError!
+print(user_profile['email'])
+        \end{lstlisting}
+    \end{block}
+    \vspace{1em}
+    \textbf{Goal:} Write robust code that anticipates missing keys and handles them gracefully.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Checking for Keys - The \texttt{in} Keyword Solution}
+    To avoid a \texttt{KeyError}, we can practice "defensive programming" by first checking if a key exists using the \texttt{in} keyword.
+
+    \begin{itemize}
+        \item The expression \texttt{key in dictionary} returns a boolean:
+        \begin{itemize}
+            \item \texttt{True} if the key is present.
+            \item \texttt{False} if the key is not present.
+        \end{itemize}
+        \item You can also use \texttt{key not in dictionary} to check for a key's absence.
+        \item \textbf{Important:} The \texttt{in} operator checks for membership in the dictionary's \textbf{keys}, not its values.
+    \end{itemize}
+
+    \begin{block}{Code Example: Safe Key Access}
+        \begin{lstlisting}[language=Python]
+if 'email' in user_profile:
+    print(f"Email found: {user_profile['email']}")
+else:
+    print("Email key does not exist.")
+
+# Check for a non-existent key
+if 'last_login' not in user_profile:
+    print("User has not logged in yet.")
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{When to Use a Dictionary vs. a List}
+\framesubtitle{Choosing the Right Tool for the Job}
+
+Choosing the right data structure is crucial for writing efficient and readable code. Your choice depends on how you need to store and access your data.
+
+\vspace{0.5em}
+
+\begin{columns}[T] % The 'T' option aligns the tops of the columns
+
+%=============== COLUMN 1: LIST ===============
+\begin{column}{0.5\textwidth}
+    \begin{block}{Use a List when...}
+    \begin{itemize}
+        \item \textbf{Order Matters}: You have a collection of items where the sequence is important.
+        \item \textbf{Access by Position}: You need to get elements by their numerical index (0, 1, 2, ...).
+        \item \textbf{Mental Model}: Think of a numbered list, a queue, or a sequence of steps.
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Example: Steps in a Recipe}
+\begin{verbatim}
+recipe_steps = [
+    "Preheat oven to 350 F",
+    "Mix dry ingredients",
+    "Combine and pour into pan"
+]
+
+# Get the second step (index 1)
+second_step = recipe_steps[1]
+print(second_step)
+# Output: Mix dry ingredients
+\end{verbatim}
+    \end{block}
+\end{column}
+
+%=============== COLUMN 2: DICTIONARY ===============
+\begin{column}{0.5\textwidth}
+    \begin{block}{Use a Dictionary when...}
+    \begin{itemize}
+        \item \textbf{Labels Matter}: You need to store data as key-value pairs, where each item has a unique name (key).
+        \item \textbf{Access by Identifier}: You need to look up a value based on its key, not its position.
+        \item \textbf{Mental Model}: Think of a phone book, a real dictionary, or a user profile.
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Example: Application Settings}
+\begin{verbatim}
+app_settings = {
+    "theme": "dark",
+    "font_size": 14,
+    "notifications_enabled": True
+}
+
+# Get the theme by its key
+current_theme = app_settings["theme"]
+print(current_theme)
+# Output: dark
+\end{verbatim}
+    \end{block}
+\end{column}
+
+\end{columns}
+
+\vspace{1em}
+
+\begin{alertblock}{Key Question to Ask Yourself}
+"Do I need to know the \textbf{order} of my items (use a \textbf{List}), or do I need to look up items by a specific \textbf{name} or \textbf{ID} (use a \textbf{Dictionary})?"
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary - Core Concepts}
+
+    \begin{block}{1. The Key-Value Pair}
+        The fundamental concept that defines a dictionary. It's an \textbf{unordered} collection where each value is associated with a unique identifier (the key).
+        \begin{itemize}
+            \item \textbf{Keys are Unique:} No two keys can be the same in a single dictionary.
+            \item \textbf{Keys are Immutable:} Must be a data type that cannot change (e.g., string, number, tuple).
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{2. Creation Syntax: \texttt{\{\}}}
+        We use curly braces to create dictionaries and a colon to separate a key from its value.
+        \begin{lstlisting}[language=Python]
+% A dictionary representing a student record
+student = {
+    'student_id': 93451,
+    'name': 'Maria Garcia',
+    'major': 'Physics',
+    'gpa': 3.7
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter Summary - Operations \& Use Cases}
+    \begin{block}{3. Core Operations}
+        All major operations use the key to identify the item.
+        \begin{columns}[T]
+            \begin{column}{0.4\textwidth}
+                \begin{itemize}
+                    \item \textbf{Access}: \texttt{student['name']}
+                    \item \textbf{Add / Update}: \\ \texttt{student['gpa'] = 3.8}
+                    \item \textbf{Delete}: \texttt{del student['major']}
+                \end{itemize}
+            \end{column}
+            \begin{column}{0.6\textwidth}
+                \begin{lstlisting}[language=Python]
+# Accessing a value
+student_name = student['name']
+
+# Updating a value
+student['gpa'] = 3.8
+
+# Adding a new pair
+student['grad_year'] = 2025
+
+# Deleting a pair
+del student['major']
+                \end{lstlisting}
+            \end{column}
+        \end{columns}
+    \end{block}
+
+    \begin{block}{4. When to Use Dictionaries}
+        Use a dictionary whenever your data has inherent labels or identifiers you need to look up.
+        \begin{itemize}
+            \item \textbf{User Profiles:} Look up user data by \texttt{'username'} or \texttt{'user\_id'}.
+            \item \textbf{Configuration Settings:} Store and retrieve settings by name, e.g., \texttt{'theme'}.
+            \item \textbf{Records:} Model any real-world object like a product, car, or database entry.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,855 @@
+\documentclass{beamer}
+
+% --- PREAMBLE ---
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings for Python
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=Python
+}
+\lstset{style=pythonstyle}
+
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% --- DOCUMENT INFORMATION ---
+\title{Chapter 1: Introduction to Programming \& Python}
+\subtitle{Python Fundamentals}
+\author{Your Name (Teaching Assistant)}
+\institute{Your Institution}
+\date{\today}
+
+% --- DOCUMENT START ---
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 1: Introduction to Programming \& Python}
+    \note{
+        "Welcome, everyone, to Python Fundamentals! This is the very beginning of your journey into programming, and it's an exciting place to be. Think of this chapter as our launchpad. We're not just going to learn to code; we're going to learn how to think logically and solve problems in a structured way.
+
+        By the end of this first chapter, you will have accomplished several key milestones: you'll understand the fundamental concepts of what a program and an algorithm are, you'll have your own Python environment set up and ready to go, and most importantly, you will have written and successfully run your very first line of code. Let's get started!"
+    }
+
+    \begin{block}{Welcome to Your Programming Journey!}
+        This course will take you from an absolute beginner to someone who can confidently write Python code to solve problems. Programming is the art of telling a computer what to do, and Python is a fantastic language for beginners.
+    \end{block}
+
+    \vspace{1em}
+
+    \begin{block}{Chapter 1 Learning Objectives}
+        Here is our roadmap for what you will be able to do:
+        \begin{enumerate}
+            \item \textbf{Understand the "Big Ideas"}
+            \begin{itemize}
+                \item \textbf{What is Programming?} The process of creating instructions for a computer.
+                \item \textbf{What is an Algorithm?} A logical, step-by-step plan for solving a problem.
+            \end{itemize}
+            \item \textbf{Set Up Your Environment}
+            \begin{itemize}
+                \item We will install Python and a code editor---the essential tools for any programmer.
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 1: Your First Steps in Code}
+    \note{
+        "Now for the exciting, hands-on part of our roadmap. You will experience the classic 'Hello, World!' moment. This is a rite of passage for every programmer and it confirms that your setup is working correctly. As you can see, the code is very simple: just one command, \texttt{print}, tells the computer to display a message.
+
+        After that, we'll introduce one of the most fundamental concepts in programming: variables. Think of them as labeled boxes where you can store and retrieve information. Our main goal here is to remove the mystery from coding and show you that it's a logical and accessible skill that you can absolutely master."
+    }
+
+    \begin{block}{Chapter 1 Learning Objectives (Continued)}
+        \begin{enumerate}
+            \setcounter{enumi}{2} % Continue numbering from the previous slide
+            \item \textbf{Write Your First Line of Code}
+            \begin{itemize}
+                \item Experience the classic "Hello, World!" moment, proving your setup is working.
+                \item Your first program will look as simple as this:
+            \end{itemize}
+            \begin{lstlisting}[language=Python]
+print("Hello, Python World!")
+            \end{lstlisting}
+            \item \textbf{Learn to Store Basic Information}
+            \begin{itemize}
+                \item We will introduce \textbf{variables}---the primary way programs remember information like a name, number, or score.
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+
+    \begin{alertblock}{Key Goal for this Chapter}
+        To demystify programming. You will see that coding is not magic; it's a logical and accessible skill. You will write a program, run it, and see it work. \textbf{No prior experience is necessary!}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts: The Algorithm}
+    \framesubtitle{The Blueprint for a Solution}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{What is an Algorithm?}
+                \begin{itemize}
+                    \item A clear, step-by-step set of instructions or rules to solve a specific problem.
+                    \item It's the \textbf{“how-to” plan} or the core logic.
+                    \item It is \textbf{language-independent}; it’s the idea that matters.
+                \end{itemize}
+            \end{block}
+            
+            \begin{block}{Key Characteristics}
+                \begin{itemize}
+                    \item \textbf{Finite:} It must have a clear end.
+                    \item \textbf{Unambiguous:} Each step is precise.
+                    \item \textbf{Effective:} It must solve the problem.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Analogy: The Morning Coffee Routine}
+                \textbf{Problem:} I need a cup of coffee.
+                \vspace{0.5em}
+                
+                \textbf{Algorithm (The Plan):}
+                \begin{enumerate}
+                    \item Add water to the coffee machine.
+                    \item Place a filter in the basket.
+                    \item Add coffee grounds to the filter.
+                    \item Place the carafe on the warmer.
+                    \item Press the 'Start' button.
+                    \item Wait until brewing is complete.
+                \end{enumerate}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts: The Program}
+    \framesubtitle{The Executable Implementation}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{What is a Program?}
+                \begin{itemize}
+                    \item An algorithm translated into a language a computer can understand (e.g., Python).
+                    \item A sequence of instructions a computer can \textbf{execute}.
+                    \item The final, detailed recipe written for the "chef" (the computer).
+                \end{itemize}
+            \end{block}
+            
+            \begin{block}{Key Characteristics}
+                \begin{itemize}
+                    \item \textbf{Language-Specific:} Written in Python, Java, C++, etc.
+                    \item \textbf{Executable:} Can be run by a computer.
+                    \item \textbf{Syntax-Dependent:} Must follow strict grammatical rules.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Analogy: The Coffee Machine's Code}
+                \begin{lstlisting}[language=Python, caption={A program based on our coffee algorithm (pseudo-code).}, label=lst:coffee]
+function make_coffee():
+    check_for_water()
+    check_for_filter()
+    check_for_grounds()
+    if machine_is_ready():
+        start_brewing_cycle()
+        heat_plate(ON)
+    wait_until(brewing_complete)
+    alert_user("Coffee is ready!")
+                \end{lstlisting}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts: From Idea to Action}
+    \framesubtitle{The Relationship Between Algorithm and Program}
+    
+    \begin{beamercolorbox}[sep=1em,center]{titlelike}
+        \Large \textbf{Problem $\rightarrow$ Algorithm (The Plan) $\rightarrow$ Program (The Code)}
+    \end{beamercolorbox}
+    
+    \vspace{1em}
+    
+    \begin{block}{Example: Find the average of three numbers}
+        \begin{itemize}
+            \item \textbf{Problem:} "I need to find the average of three numbers."
+            \item \textbf{Algorithm (The Plan):}
+            \begin{enumerate}
+                \item Get the three numbers.
+                \item Add them all together.
+                \item Divide the sum by 3.
+            \end{enumerate}
+            \item \textbf{Program (The Python Code):}
+            \begin{lstlisting}[language=Python]
+num1 = 10
+num2 = 20
+num3 = 30
+total_sum = num1 + num2 + num3
+average = total_sum / 3
+# The 'average' variable now holds the result
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Key Takeaway}
+        \centering
+        \textbf{First, you think (Algorithm). Then, you write (Program).}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Our Toolkit: Python and Google Colab}
+    \framesubtitle{Introduction}
+    
+    We will use two key tools to bring our algorithms to life in this course:
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item<1-> \textbf{Python:} A powerful, human-readable programming language. It's famous for its simple syntax, making it perfect for beginners.
+        
+        \vspace{1em}
+        
+        \item<2-> \textbf{Google Colab:} A free, cloud-based environment that lets us write and run Python code directly in our web browser. No installation required!
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \begin{block}<3->{In short...}
+        \textbf{Python} is the \textit{what}---the language we write. \\
+        \textbf{Google Colab} is the \textit{where}---the place we run it.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Our Toolkit: Why Python?}
+    \framesubtitle{Our Programming Language}
+    
+    We chose Python for three key reasons:
+    \begin{enumerate}
+        \item<1-> \textbf{Extremely Readable Syntax:} Its clean syntax is close to plain English, which simplifies learning.
+        
+        \item<2-> \textbf{Versatile and Powerful:} Used professionally by Google, Netflix, and NASA for data science, web development, and more.
+        
+        \item<3-> \textbf{Massive Community \& Ecosystem:} It's easy to find help, tutorials, and pre-built code libraries for almost any task.
+    \end{enumerate}
+    
+    \begin{block}<1->{Example: "Hello, World!" Comparison}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Python} (Simple \& direct)
+\begin{lstlisting}[language=Python]
+print("Hello, World!")
+\end{lstlisting}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Java} (Requires more boilerplate)
+\begin{lstlisting}[language=Java]
+public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+\end{lstlisting}
+        \end{column}
+    \end{columns}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Our Toolkit: Why Google Colab?}
+    \framesubtitle{Our Digital Workspace}
+    
+    \begin{block}{Key Analogy}
+        Think of Google Colab like \textbf{Google Docs, but for code}. You can create, edit, and share your work easily, and it's all saved in the cloud.
+    \end{block}
+    
+    Key advantages for this course:
+    \begin{itemize}
+        \item<1-> \textbf{Zero Installation:} The biggest benefit! No need to install any software on your computer. All you need is a web browser and a Google account.
+        
+        \item<2-> \textbf{All-in-One Environment:} Colab notebooks let you mix executable code cells with rich text, so you can write notes right alongside your code.
+        
+        \item<3-> \textbf{Access to Powerful Hardware:} Your code runs on Google's cloud servers, giving you free access to powerful computers for complex tasks.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Navigating Google Colab: The Notebook}
+    
+    Welcome to your digital workspace! Think of a Google Colab Notebook as an interactive lab report.
+    
+    \vspace{1em}
+    
+    \begin{itemize}
+        \item \textbf{What is a Notebook?} A single, interactive document where you can combine:
+        \begin{itemize}
+            \item Live, executable Python code
+            \item The output from your code (like text, numbers, or plots)
+            \item Formatted text, images, and links to explain your work
+        \end{itemize}
+        
+        \item \textbf{Building Blocks:} A notebook is built from individual units called \textbf{cells}.
+    \end{itemize}
+
+    \begin{block}{The Core Idea}
+        A notebook allows you to write code and explain it in the same place, creating a complete and understandable story.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Navigating Google Colab: Code vs. Text Cells}
+    
+    A notebook has two fundamental types of cells:
+    
+    \begin{columns}[T] % T option aligns tops
+        \begin{column}{0.5\textwidth}
+            \textbf{1. Code Cells}
+            \begin{itemize}
+                \item Where you write and run your Python code.
+                \item Have a grey background and a `[ ]` icon on the left.
+            \end{itemize}
+            \begin{lstlisting}[language=Python]
+# This is a code cell
+course_name = "Intro to Python"
+chapter_number = 1
+            \end{lstlisting}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{2. Text Cells}
+            \begin{itemize}
+                \item Where you write notes, headings, and explanations.
+                \item Uses a simple formatting language called \textbf{Markdown}.
+            \end{itemize}
+            \begin{block}{Example Markdown}
+            You can make text \textbf{bold}, \textit{italic}, or create:
+            \begin{itemize}
+                \item Bulleted lists
+                \item Numbered lists
+            \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Navigating Google Colab: Running Cells}
+    
+    Writing code is just the first step. To see the result, you must \textbf{execute} (or "run") the cell.
+    
+    \vspace{1em}
+    
+    \textbf{How to Run a Cell:}
+    \begin{enumerate}
+        \item \textbf{The 'Play' Button:} Click the \(\blacktriangleright\) icon to the left of the cell. This is great for beginners.
+        
+        \item \textbf{The Keyboard Shortcut (Pro Tip):} Press \texttt{Shift + Enter}.
+        \begin{itemize}
+            \item This is the most common and efficient method.
+            \item It runs the current cell and automatically moves to the next one.
+        \end{itemize}
+    \end{enumerate}
+    
+    \vspace{1em}
+    
+    \begin{block}{Key Takeaway: The Core Workflow}
+        The process you'll use constantly is a simple cycle:
+        \begin{enumerate}
+            \item \textbf{Write} code or text in a cell.
+            \item \textbf{Run} the cell with \texttt{Shift + Enter}.
+            \item \textbf{Observe} the result and repeat.
+        \end{enumerate}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Your First Program: "Hello, World!"}
+    
+    \begin{block}{A Programmer's Tradition}
+        The first program many people write is one that displays ``Hello, World!'' on the screen.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Why?} It's a simple, universal test to confirm your setup is working.
+        \item \textbf{How?} We use Python's built-in \texttt{print()} function to display output.
+    \end{itemize}
+    
+    \vspace{1em}
+    
+    \textbf{Example Code:}
+    \begin{lstlisting}[language=Python]
+print("Hello, World!")
+    \end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Your First Program: "Hello, World!" - Anatomy of the Code}
+    
+    Let's break down our first line of code: \texttt{print("Hello, World!")}
+    
+    \begin{itemize}
+        \item \texttt{print}: The \textbf{function name}. It tells Python which action to perform.
+        \begin{itemize}
+            \item Note: Function names are case-sensitive! \texttt{print} is not the same as \texttt{Print}.
+        \end{itemize}
+        
+        \item \texttt{( )}: The \textbf{parentheses}. They hold the information, or \textbf{argument(s)}, that the function will use.
+        
+        \item \texttt{"Hello, World!"}: The \textbf{argument}. In this case, it's a piece of text.
+    \end{itemize}
+    
+    \begin{block}{Strings: Data as Text}
+        In programming, a piece of text is called a \textbf{string}. Strings must be enclosed in quotation marks (\texttt{"..."} or \texttt{'...'}). This tells Python to treat the content as literal text, not as a command.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Your First Program: "Hello, World!" - Execution \& Takeaways}
+    
+    When you run the code, Python executes the instruction.
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Input Code:}
+            \begin{lstlisting}[language=Python]
+print("Hello, World!")
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{Resulting Output:}
+            \begin{verbatim}
+Hello, World!
+            \end{verbatim}
+        \end{column}
+    \end{columns}
+    
+    \begin{alertblock}{Key Takeaways}
+        \begin{itemize}
+            \item The \texttt{print()} function is the standard way to display output.
+            \item Text data is called a \textbf{string} and must be in quotes (\texttt{""} or \texttt{''}).
+            \item Data passed into a function's parentheses is an \textbf{argument}.
+        \end{itemize}
+    \end{alertblock}
+    
+    \textbf{Your Turn:} Try running this code! Then, change the string to print a different message.
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Storing Information: Variables - What is a Variable?}
+    
+    In programming, a \textbf{variable} is a container for storing a piece of data. It gives the data a memorable name so we can use it later.
+    
+    \vspace{1em}
+    
+    \begin{block}{The "Labeled Box" Analogy}
+        \begin{itemize}
+            \item Think of a variable as a labeled box.
+            \item The \textbf{variable name} is the label on the box (e.g., \texttt{student\_name}).
+            \item The \textbf{value} is the information you put inside the box (e.g., \texttt{"Alice"}).
+        \end{itemize}
+    \end{block}
+    
+    \vspace{1em}
+    
+    \centering
+    Instead of remembering the specific data, you only need to remember the label on the box.
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Storing Information: Variables - The Assignment Statement}
+    
+    We use an \textbf{assignment statement} to create a variable and give it a value. This uses the assignment operator (\texttt{=}).
+    
+    \vspace{1em}
+    
+    \begin{block}{Important: Assignment vs. Equality}
+        The \texttt{=} operator in programming means \textbf{assign}. It takes the value on the right and stores it in the variable on the left.
+        \begin{center}
+        \texttt{variable\_name = value}
+        \end{center}
+        \textit{Read this as: "The variable `variable_name` gets the value `value`."}
+    \end{block}
+    
+    \textbf{Example:}
+    \begin{lstlisting}[language=Python]
+# 1. Assign a string to the variable `message`
+message = "Welcome to class!"
+
+# 2. Print the value stored in `message`
+print(message)
+    \end{lstlisting}
+    
+    \textbf{Output:}
+    \begin{lstlisting}
+Welcome to class!
+    \end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Storing Information: Variables - They Can Change!}
+    
+    The value stored in a variable can be updated. This is why they are called "variables" -- their content can vary.
+    
+    \vspace{1em}
+    
+    \textbf{Example: Tracking a Score}
+    \begin{lstlisting}[language=Python]
+# Store a player's score at the start
+player_score = 0
+print("Starting score:", player_score)
+
+# The player finds treasure! Update the score.
+player_score = 100
+print("Score after finding treasure:", player_score)
+    \end{lstlisting}
+    
+    \textbf{Output:}
+    \begin{lstlisting}
+Starting score: 0
+Score after finding treasure: 100
+    \end{lstlisting}
+    
+    \begin{block}{Key Takeaways}
+        \begin{itemize}
+            \item \textbf{Purpose:} Variables label and store data in memory.
+            \item \textbf{Assignment:} The \texttt{=} operator assigns a value.
+            \item \textbf{Flexibility:} The value of a variable can be changed.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 1: Strings (str) - Definition \& Creation}
+    
+    A string is a sequence of characters used to represent text. In Python, the technical name for this data type is \texttt{str}.
+    
+    \begin{itemize}
+        \item \textbf{Purpose:} Essential for storing textual data like names, messages, or file paths.
+        
+        \item \textbf{Creation:} Enclose text in matching single (\texttt{'}) or double (\texttt{"}) quotes.
+        
+        \item \textbf{Example:}
+        \begin{lstlisting}[language=Python]
+% Using double quotes
+student_name = "Ada Lovelace"
+
+% Using single quotes
+course_code = 'CS101'
+        \end{lstlisting}
+    \end{itemize}
+    
+    \begin{block}{Analogy}
+        Imagine a word as a "string" of beads, where each bead is a character. The order of the beads is crucial.
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 1: Strings (str) - Key Features}
+    
+    \begin{block}{Quote Flexibility}
+        Use opposite quotes to easily include one type of quote inside a string.
+        \begin{itemize}
+            \item To include a single quote (\texttt{'}), use double quotes (\texttt{"}) for the string.
+            \item To include a double quote (\texttt{"}), use single quotes (\texttt{'}).
+        \end{itemize}
+        \begin{lstlisting}[language=Python]
+% A string containing an apostrophe (single quote)
+quote = "It's a beautiful day for coding."
+
+% A string containing double quotes
+response = 'She replied, "I agree!"'
+        \end{lstlisting}
+    \end{block}
+    
+    \begin{block}{String Concatenation (+)}
+        The \texttt{+} operator joins strings together end-to-end.
+        \begin{lstlisting}[language=Python]
+first_name = "Grace"
+last_name = "Hopper"
+
+# Add a space in between to separate the names
+full_name = first_name + " " + last_name
+
+print(full_name)
+        \end{lstlisting}
+        \textbf{Output:} \texttt{Grace Hopper}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 2: Integers (int) - Definition \& Purpose}
+    
+    An \textbf{integer} (\texttt{int}) is a whole number with no fractional part. It can be positive, negative, or zero.
+    
+    \begin{block}{When to Use Integers}
+        You'll use integers to represent precise, discrete quantities.
+        \begin{itemize}
+            \item \textbf{Counting:} Number of students, items in a cart, likes on a post.
+            \item \textbf{Ages \& Years:} A person's age or a calendar year.
+            \item \textbf{Scores \& Points:} Points in a game or test scores.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+# Used for counting things
+student_count = 35
+
+# Used for representing a specific year
+current_year = 2024
+
+# Used for game scores
+high_score = 12500
+        \end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 2: Integers (int) - Characteristics \& Operations}
+
+    \begin{block}{Key Characteristics}
+        \begin{itemize}
+            \item \textbf{Whole Numbers Only:} Can be positive (`99`), negative (`-42`), or zero (`0`).
+            \item \textbf{Foundation of Arithmetic:} Used for addition, subtraction, etc.
+            \item \textbf{Unlimited Precision in Python:} Integers can be arbitrarily large, limited only by your computer's memory.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Basic Arithmetic}
+        You can perform standard mathematical operations with integers.
+        \begin{lstlisting}[language=Python]
+# Variable assignments
+a = 10
+b = 3
+
+# Addition, Subtraction, Multiplication
+print(a + b)  # Output: 13
+print(a - b)  # Output: 7
+print(a * b)  # Output: 30
+        \end{lstlisting}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 2: Integers (int) - Division \& Remainder}
+
+    With integers, there are three important division-related operators:
+    \begin{itemize}
+        \item \textbf{Float Division (/):} Always results in a decimal number (\texttt{float}).
+        \item \textbf{Integer Division (//):} Divides and \textit{discards} the fractional part/remainder.
+        \item \textbf{Modulo (\%):} Gives \textit{only} the remainder of a division.
+    \end{itemize}
+
+    \begin{block}{Example}
+        \begin{lstlisting}[language=Python]
+a = 10
+b = 3
+
+# 1. Float Division (/) -> always results in a float
+print(a / b)  # Output: 3.333...
+
+# 2. Integer Division (//) -> result is an int
+print(a // b) # Output: 3 (the .333 is discarded)
+
+# 3. Modulo (%) -> gives the remainder
+# (10 divided by 3 is 3 with a remainder of 1)
+print(a % b)  # Output: 1
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Type 3: Floats (float)}
+    
+    A float, or 'floating-point number,' is a number that contains a decimal point.
+    
+    \begin{itemize}
+        \item \textbf{Purpose:} Representing measurements, prices, GPA, or any other value that requires fractional precision.
+        
+        \item \textbf{Example:}
+        \begin{lstlisting}
+gpa = 3.8
+price = 19.99
+        \end{lstlisting}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 1: Recap and Next Steps}
+    
+    \begin{block}{Congratulations on Completing Chapter 1!}
+        You've taken the most important step: getting started. Let's review the foundational concepts you've mastered and see where we're headed next.
+    \end{block}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{alertblock}{What You've Learned}
+                \begin{itemize}
+                    \item Programs \& Algorithms
+                    \item The \texttt{print()} Function
+                    \item Variables for Storing Data
+                    \item Core Data Types:
+                    \begin{itemize}
+                        \item Strings (\texttt{str})
+                        \item Integers (\texttt{int})
+                        \item Floats (\texttt{float})
+                    \end{itemize}
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{The Road Ahead 🚀}
+                \begin{itemize}
+                    \item Perform calculations with operators (+, -, *, /).
+                    \item Make programs interactive by getting user input.
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 1 Review: Core Concepts}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Programs \& Algorithms}
+                \begin{itemize}
+                    \item \textbf{Algorithm:} The logical plan or set of steps to solve a problem (the "recipe").
+                    \item \textbf{Program:} The implementation of that algorithm in a specific language.
+                \end{itemize}
+            \end{block}
+            
+            \begin{block}{The \texttt{print()} Function}
+                Our tool for displaying output to the user.
+\begin{lstlisting}[language=Python]
+print("Programming is powerful!")
+\end{lstlisting}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Variables \& Data Types}
+                Named containers for storing different kinds of data.
+                \begin{itemize}
+                    \item \textbf{String (\texttt{str}):} Text in quotes.
+                    \begin{lstlisting}[language=Python]
+course_id = "CS101"
+                    \end{lstlisting}
+                    \item \textbf{Integer (\texttt{int}):} Whole numbers.
+                    \begin{lstlisting}[language=Python]
+student_count = 35
+                    \end{lstlisting}
+                    \item \textbf{Float (\texttt{float}):} Decimal numbers.
+                    \begin{lstlisting}[language=Python]
+gpa = 3.85
+                    \end{lstlisting}
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Chapter 1 Review: Putting It All Together}
+    
+    \begin{block}{Example: A Mini-Program}
+        This script combines all concepts to store and display product information.
+\begin{lstlisting}[language=Python]
+# 1. Store data in variables of different types
+product_name = "Coffee Mug"     # String
+inventory = 50                  # Integer
+price = 14.99                   # Float
+
+# 2. Use print() to display a formatted summary
+print("--- Product Details ---")
+print("Item:", product_name)
+print("In Stock:", inventory)
+print("Price: $", price)
+\end{lstlisting}
+    \end{block}
+    
+    \begin{alertblock}{What's Next: Making Programs Dynamic}
+        \begin{itemize}
+            \item \textbf{Calculations with Operators:} We'll use Python as a powerful calculator with operators like \texttt{+}, \texttt{-}, \texttt{*}, and \texttt{/}.
+            \item \textbf{Getting User Input:} We'll learn how to ask the user for information and use their input in our program.
+        \end{itemize}
+    \end{alertblock}
+    
+\end{frame}
+
+
+\end{document}
