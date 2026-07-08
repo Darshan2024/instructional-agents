@@ -1,0 +1,682 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 2: Software Engineering \& SDLC Overview}
+\author{}
+\institute{}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Software Engineering \& SDLC}
+    \begin{itemize}
+        \item Software Engineering: a disciplined, systematic approach to developing, operating, and maintaining software, applying engineering principles to ensure efficiency, reliability, and maintainability.
+        \item Think of it as the craftsmanship of creating complex software, similar to constructing bridges with standards.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why is Software Engineering Important?}
+    \begin{itemize}
+        \item Ensures high-quality software that meets user needs.
+        \item Reduces development time, cost, and risks.
+        \item Facilitates teamwork among diverse professionals.
+        \item Manages changes and enables scalability for the future.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Overview of the SDLC}
+    \begin{itemize}
+        \item The Software Development Lifecycle (SDLC) is a structured process guiding all phases of a software project.
+        \item Acts as a roadmap to ensure systematic completion from concept to maintenance.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Phases of SDLC}
+    \begin{enumerate}
+        \item \textbf{Requirement Analysis}: Understand and document user needs.
+        \item \textbf{Design}: Develop architecture and detailed specifications.
+        \item \textbf{Development}: Implement the code based on design.
+        \item \textbf{Testing}: Verify functionality, fix bugs, assure quality.
+        \item \textbf{Deployment}: Launch the software for users.
+        \item \textbf{Maintenance}: Support, update, and evolve the system.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Mobile Banking App}
+    \begin{itemize}
+        \item \textbf{Requirement Analysis}: Secure login, fund transfers, transaction history.
+        \item \textbf{Design}: User interface layout, backend system architecture.
+        \item \textbf{Development}: Coding features, security, functionality.
+        \item \textbf{Testing}: Ensuring login security and transaction accuracy.
+        \item \textbf{Deployment}: Releasing the app to customers.
+        \item \textbf{Maintenance}: Security patches, new features.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary of Key Points}
+    \begin{itemize}
+        \item Software Engineering creates a disciplined framework for reliable development.
+        \item SDLC provides a systematic process ensuring quality and organization.
+        \item Following SDLC phases reduces errors and manages complexity.
+        \item Various SDLC models exist to adapt to project needs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Fundamental SDLC Models}
+  \textbf{Overview:} \\
+  The Software Development Life Cycle (SDLC) offers structured workflows guiding software projects through phases such as planning, design, implementation, testing, deployment, and maintenance. 
+  \\
+  Today, we focus on three core models: \textbf{Waterfall}, \textbf{Agile}, and \textbf{Spiral}, exploring their definitions, key traits, and workflows.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Waterfall Model}
+  \textbf{Definition:} \\
+  A linear, sequential approach where each phase is completed before moving to the next, resembling a cascading waterfall.
+  \\
+  \textbf{Characteristics:}
+  \begin{itemize}
+    \item Sequential phases: Requirements $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Testing $\rightarrow$ Deployment $\rightarrow$ Maintenance.
+    \item Clear milestones with distinct deliverables.
+    \item Emphasizes comprehensive documentation at each stage.
+  \end{itemize}
+  \textbf{Workflow:}
+  \begin{enumerate}
+    \item Gather and analyze requirements
+    \item Design system architecture
+    \item Develop (code) the software
+    \item Test thoroughly
+    \item Deploy
+    \item Maintain and update
+  \end{enumerate}
+  \textbf{Example:} Developing a payroll system with fixed, well-understood requirements.
+  \textbf{Key Point:} Best for projects with stable, well-defined specs; limited flexibility to changes.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Agile Model}
+  \textbf{Definition:} \\
+  An iterative and incremental approach prioritizing flexibility, collaboration, and customer feedback, delivering small workable parts (increments) frequently.
+  \\
+  \textbf{Characteristics:}
+  \begin{itemize}
+    \item Iterative cycles called "sprints" (2-4 weeks)
+    \item Frequent reassessment and adaptation
+    \item Close stakeholder collaboration
+    \item Working software as key progress indicator
+  \end{itemize}
+  \textbf{Workflow:}
+  \begin{enumerate}
+    \item Plan a sprint
+    \item Develop features during the sprint
+    \item Review and gather feedback
+    \item Refine requirements and plan next sprint
+    \item Repeat until goals achieved
+  \end{enumerate}
+  \textbf{Example:} Building an e-commerce site with user feedback shaping development.
+  \textbf{Key Point:} Ideal for evolving or unclear requirements; requires disciplined team management.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Spiral Model}
+  \textbf{Definition:} \\
+  Combines iterative development with risk management, emphasizing repeated cycles ("spirals") to refine the system through planning, risk analysis, engineering, and evaluation.
+  \\
+  \textbf{Characteristics:}
+  \begin{itemize}
+    \item Risk-driven: identify and mitigate risks early
+    \item Iterative: each loop involves planning, analysis, design, testing
+    \item Flexible to changing needs and challenges
+  \end{itemize}
+  \textbf{Workflow:}
+  \begin{enumerate}
+    \item Identify objectives, alternatives, constraints
+    \item Conduct risk assessment and develop prototypes
+    \item Plan next steps based on insights
+    \item Develop and test system segments
+    \item Repeat for refinement
+  \end{enumerate}
+  \textbf{Example:} Aerospace control systems needing thorough risk analysis.
+  \textbf{Key Point:} Suitable for complex, high-risk projects; more costly due to iterative risk assessments.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Summary Table of SDLC Models}
+  \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Model} & \textbf{Approach} & \textbf{Key Features} & \textbf{Best For} \\
+    \hline
+    Waterfall & Linear, Sequential & Clear milestones, strict phases & Stable, well-defined projects \\
+    \hline
+    Agile & Iterative, Flexible & Customer feedback, quick releases & Evolving or dynamic projects \\
+    \hline
+    Spiral & Risk-driven, Iterative & Risk management focus, prototyping & Complex, high-risk projects \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Waterfall Model}
+    \begin{itemize}
+        \item The Waterfall Model is an early, straightforward SDLC approach that follows a linear, sequential process.
+        \item Each phase must be completed before moving to the next, flowing downhill like a waterfall.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sequential Phases of the Waterfall Model}
+    \begin{enumerate}
+        \item \textbf{Requirement Analysis} -- Gather and document requirements from stakeholders.
+        \item \textbf{System Design} -- Create architecture, data structures, and interface designs.
+        \item \textbf{Implementation} -- Develop the software according to the design.
+        \item \textbf{Integration \& Testing} -- Combine modules and verify functionality.
+        \item \textbf{Deployment} -- Launch the complete system into the user environment.
+        \item \textbf{Maintenance} -- Provide support, updates, and bug fixes post-deployment.
+    \end{enumerate}
+    \vspace{0.5cm}
+    % Optional: Insert diagram as a flowchart
+    % \includegraphics[width=\linewidth]{path_to_flowchart_image}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Advantages of the Waterfall Model}
+    \begin{itemize}
+        \item \textbf{Simplicity \& Clarity} -- Easy to understand and manage due to its structured nature.
+        \item \textbf{Structured Approach} -- Well-defined stages and clear deliverables.
+        \item \textbf{Documentation Driven} -- Extensive documentation aids maintenance.
+        \item \textbf{Early Planning} -- Requirements are defined upfront, reducing ambiguity.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Limitations of the Waterfall Model}
+    \begin{itemize}
+        \item \textbf{Inflexibility} -- Difficult to accommodate changes after a phase is completed.
+        \item \textbf{Late Testing} -- Testing occurs late, risking costly fixes if issues are found.
+        \item \textbf{Requires Clear Requirements} -- Works best when requirements are stable and well-understood.
+        \item \textbf{Poor for Dynamic Projects} -- Not suitable for evolving or feedback-driven projects.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Typical Use Cases}
+    Projects where requirements are well-understood and unlikely to change:
+    \begin{itemize}
+        \item Embedded systems
+        \item Hardware development
+        \item Small or straightforward applications
+        \item Regulatory environments demanding thorough documentation
+    \end{itemize}
+    \vspace{0.5cm}
+    \textbf{Key takeaway:} Suitable for projects with stable, clearly defined requirements.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary of the Waterfall Model}
+    \begin{itemize}
+        \item Emphasizes a sequential, disciplined approach to SDLC.
+        \item Best for projects with clear, unchanging requirements.
+        \item Its rigidity may limit adaptability in fast-changing environments.
+        \item Often contrasted with more iterative models like Agile.
+        \item While historically significant, modern projects may prefer flexible methodologies.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Agile Model}
+  \begin{itemize}
+    \item An approach to software development emphasizing \textbf{iterative, incremental progress}, \textbf{flexibility}, and \textbf{stakeholder involvement}.
+    \item Designed to respond quickly to changing requirements and ensure continuous delivery of valuable software.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Key Concepts of the Agile Model}
+  \begin{itemize}
+    \item \textbf{Iterative Development}: Break projects into small units called \textbf{sprints} (1-4 weeks), with each producing a functional piece of software. \\
+    \textbf{Example}: Planning a new feature, developing it in a sprint, then demoing it to stakeholders.
+    \item \textbf{Flexibility and Adaptability}: Regular reassessment of priorities allows teams to adapt swiftly to changes in requirements or market.
+    \item \textbf{Stakeholder Involvement}: Continuous engagement through meetings and demos ensures alignment with stakeholder needs.
+    \item \textbf{Continuous Feedback}: After each sprint, teams review progress, gather feedback, and refine for next cycles.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{How Agile Works}
+  \begin{enumerate}
+    \item \textbf{Planning}: Prioritize features for the upcoming sprint.
+    \item \textbf{Development}: Design, code, and test features within the sprint period.
+    \item \textbf{Review}: Demonstrate new functionalities to stakeholders at sprint end.
+    \item \textbf{Retrospective}: Reflect on the process to identify improvements.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Spiral Model}
+    \begin{itemize}
+        \item A risk-driven, iterative software development process designed for complex and high-risk projects.
+        \item Emphasizes repeated cycles of planning, risk analysis, engineering, and evaluation.
+        \item Each iteration helps reduce uncertainties, refine features, and mitigate risks early.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Concepts of the Spiral Model}
+    \begin{enumerate}
+        \item \textbf{Risk-Driven Process}: Identify and address potential risks, such as technical feasibility or schedule delays, at each cycle.
+        \item \textbf{Iterative Refinement}: Progress through multiple spiral loops, refining plans and prototypes with each iteration.
+        \item \textbf{Phases of a Spiral:}
+        \begin{itemize}
+            \item \textbf{Planning}: Set objectives, alternatives, constraints.
+            \item \textbf{Risk Analysis}: Evaluate potential problems.
+            \item \textbf{Prototyping/Engineering}: Develop system parts or prototypes.
+            \item \textbf{Evaluation}: Review progress and plan next steps.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visualizing and Applying the Spiral}
+    \begin{block}{Visual Representation}
+        Imagine a series of loops expanding outward from the center, where each loop represents an iteration that adds more features, refinements, and risk mitigation.
+    \end{block}
+    \vspace{0.5cm}
+    \textbf{Example}:
+    \begin{itemize}
+        \item Developing an aerospace control system with new hardware:
+        \begin{itemize}
+            \item \textbf{First spiral:} Prototype core algorithms and assess hardware.
+            \item \textbf{Next spirals:} Refine prototypes, manage technical risks, add features.
+            \item \textbf{Later spirals:} Enhance reliability, usability, regulatory compliance.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comparing SDLC Models}
+  
+  \begin{itemize}
+    \item Compares Waterfall, Agile, and Spiral models across key dimensions: flexibility, risk management, user involvement, and project suitability.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Waterfall Model}
+  
+  \begin{itemize}
+    \item \textbf{Description}: Linear, sequential process: requirements $\rightarrow$ design $\rightarrow$ implementation $\rightarrow$ testing $\rightarrow$ deployment.
+    \item \textbf{Flexibility}: \textit{Low}. Changes are difficult after a phase is completed; modifications need revisiting previous stages.
+    \item \textbf{Risk Management}: \textit{Limited}. Risks identified early, but late issues are costly to fix.
+    \item \textbf{User Involvement}: \textit{Minimal} after initial requirements and acceptance testing.
+    \item \textbf{Project Suitability}: Best for projects with well-defined, stable requirements, e.g., embedded systems with fixed specs.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Agile Model}
+  
+  \begin{itemize}
+    \item \textbf{Description}: Iterative, incremental approach emphasizing flexibility, customer collaboration, and continuous delivery.
+    \item \textbf{Flexibility}: \textit{High}. Requirements evolve through short cycles called sprints.
+    \item \textbf{Risk Management}: \textit{Proactive}. Regular testing, feedback, and adaptation reduce risks early.
+    \item \textbf{User Involvement}: \textit{High}. Frequent demonstrations and stakeholder interactions steer development.
+    \item \textbf{Project Suitability}: Ideal for projects with changing requirements, such as web apps or startups.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Spiral Model}
+  
+  \begin{itemize}
+    \item \textbf{Description}: Combines iterative development with risk-driven planning: each cycle involves planning, risk analysis, engineering, and evaluation.
+    \item \textbf{Flexibility}: \textit{Very high}. Emphasizes incremental refinement across multiple cycles.
+    \item \textbf{Risk Management}: \textit{Central}. Continuous risk assessment and mitigation at each spiral.
+    \item \textbf{User Involvement}: \textit{Moderate to high}. Feedback occurs during specific cycles.
+    \item \textbf{Project Suitability}: Suitable for large, complex, high-risk projects, e.g., aerospace or defense systems.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Summary and Visualization}
+  
+  \begin{itemize}
+    \item Waterfall is simple but inflexible; best for clear requirements.
+    \item Agile prioritizes adaptability and user collaboration for rapid changes.
+    \item Spiral emphasizes risk management in complex, high-stakes projects.
+  \end{itemize}
+  
+  \begin{block}{Visualization}
+    \begin{center}
+      \begin{tabular}{c c c}
+        Waterfall & \textbf{---} & Spiral \textbf{---} & Agile \\
+        (Least flexible) && (High risk management) && (Most flexible)
+      \end{tabular}
+    \end{center}
+  \end{block}
+  
+  \smallskip
+  \textit{Choosing the right SDLC depends on project complexity, risk, and stakeholder flexibility.}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Choosing the Right SDLC Model}
+  \textbf{Overview:} Selecting an appropriate Software Development Life Cycle (SDLC) model is vital for project success. The choice depends on project scope, requirements stability, team size, complexity, stakeholder involvement, and risk factors.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Understanding Your Project and Requirements}
+  \begin{itemize}
+    \item \textbf{Well-defined & Stable Requirements} \\
+    \quad - \textbf{Best Fit:} Waterfall model \\
+    \quad - \textbf{Example:} Simple billing system \\
+    \item \textbf{Evolving & Uncertain Requirements} \\
+    \quad - \textbf{Best Fit:} Agile methodology \\
+    \quad - \textbf{Example:} Mobile app with frequent updates
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Team Size and Structure Considerations}
+  \begin{itemize}
+    \item \textbf{Small, Cross-Functional Teams:} \\
+    \quad Emphasize communication; Agile works well. \\
+    \item \textbf{Large, Distributed Teams:} \\
+    \quad Need structured processes like Waterfall or V-Model for coordination.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Assessing Project Complexity and Risk}
+  \begin{itemize}
+    \item \textbf{High-Risk Projects:} \\
+    \quad \textbf{Best Choice:} Spiral model \\
+    \quad \textbf{Example:} Aerospace or medical device software \\
+    \item \textbf{Lower Complexity Projects:} \\
+    \quad Suitable for Waterfall or Agile, depending on context.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Stakeholder Involvement and Delivery Needs}
+  \begin{itemize}
+    \item \textbf{High User Engagement:} \\
+    \quad Prefer Agile for ongoing feedback. \\
+    \item \textbf{Limited User Interaction:} \\
+    \quad Waterfall may be preferable when involvement is minimal past initial requirements.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comparison of SDLC Models}
+  \begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Model} & \textbf{Flexibility} & \textbf{Predictability} & \textbf{Best For} \\
+    \hline
+    Waterfall & Low & High & Fixed, well-understood scope \\
+    \hline
+    Agile & High & Less predictable & Dynamic, evolving needs \\
+    \hline
+    Spiral & Moderate to high & Moderate & High-risk, complex projects \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Additional Considerations}
+  \begin{itemize}
+    \item \textbf{Time to Market:} Agile delivers early and often. \\
+    \item \textbf{Budget Constraints:} Fixed budgets favor Waterfall for predictability. \\
+    \item \textbf{Regulations:} Strict documentation and validation favor Waterfall.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Key Takeaways}
+  \begin{itemize}
+    \item Match SDLC models to project characteristics for efficiency. \\
+    \item Use Waterfall for stable, well-defined projects. \\
+    \item Choose Agile for dynamic, rapid-changing environments. \\
+    \item Spiral suits high-risk, complex projects with iterative risk management.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Application of SDLC Models}
+  \textbf{Brief Summary:} Understanding which SDLC model to choose depends on project requirements, risk level, and industry context. Different models suit different scenarios, from highly structured development for safety-critical systems to flexible approaches for evolving, customer-driven projects.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Waterfall Model}
+  \begin{itemize}
+    \item \textbf{Scenario:} Developing military or aerospace applications with fixed, well-defined requirements.
+    \item \textbf{Example:} Building a spacecraft control system where specifications are set upfront and changes are costly.
+    \item \textbf{Why suitable:} Ensures thorough documentation, strict regulatory compliance, and clear deliverables.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Iterative and Incremental Model}
+  \begin{itemize}
+    \item \textbf{Scenario:} Developing a banking system with evolving features.
+    \item \textbf{Example:} Creating an online banking platform, adding modules like mobile banking in phases.
+    \item \textbf{Why suitable:} Flexibility to add features iteratively, gather user feedback early, adapt easily.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{V-Model}
+  \begin{itemize}
+    \item \textbf{Scenario:} Developing medical devices requiring rigorous validation.
+    \item \textbf{Example:} Medical imaging systems where each development phase aligns with specific testing.
+    \item \textbf{Why suitable:} Emphasizes verification and validation, essential for safety-critical compliance.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Spiral Model}
+  \begin{itemize}
+    \item \textbf{Scenario:} Large enterprise software with high risks and changing requirements.
+    \item \textbf{Example:} Building a custom ERP system for a multinational, involving risk analysis and prototypes.
+    \item \textbf{Why suitable:} Combines risk management with iterative development; ideal for complex, high-stakes projects.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Agile Methods}
+  \begin{itemize}
+    \item \textbf{Scenario:} Developing a mobile app in a startup setting.
+    \item \textbf{Example:} E-commerce mobile app where customer feedback directly influences development.
+    \item \textbf{Why suitable:} High flexibility, continuous involvement, quick iterations, adaptability.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 1}
+    \textbf{Recap of Main Points on SDLC Models}
+    
+    \begin{itemize}
+        \item \textbf{SDLC} offers a structured approach to high-quality software development.
+        \item Multiple models exist, each suited for different project types and requirements.
+    \end{itemize}
+    
+    \textbf{Major SDLC Models:}
+    \begin{itemize}
+        \item \textbf{Waterfall:}
+        \begin{itemize}
+            \item Sequential phases: Requirements $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Testing $\rightarrow$ Deployment $\rightarrow$ Maintenance.
+            \item Suitable for stable, well-understood requirements (e.g., government projects).
+            \item Pros: Clear, manageable.
+            \item Cons: Rigid, late testing.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 2}
+    \textbf{Major SDLC Models (cont.):}
+    \begin{itemize}
+        \item \textbf{V-Model:}
+        \begin{itemize}
+            \item Extends Waterfall with focus on testing at each stage.
+            \item Ideal for safety-critical systems (medical, aerospace).
+            \item Emphasizes quality assurance.
+        \end{itemize}
+        \item \textbf{Iterative \& Incremental:}
+        \begin{itemize}
+            \item Develops in cycles, adding functionality each time.
+            \item Suitable for evolving requirements and early deployment (web, mobile apps).
+            \item Pros: Flexibility, customer feedback.
+        \end{itemize}
+        \item \textbf{Spiral:}
+        \begin{itemize}
+            \item Combines iteration with risk assessment.
+            \item Fits large, complex, high-risk projects (defense, enterprise).
+            \item Focus: Risk mitigation and adaptability.
+        \end{itemize}
+        \item \textbf{Agile (Scrum, Kanban):}
+        \begin{itemize}
+            \item Focuses on adaptability, fast delivery, collaboration.
+            \item Best for dynamic projects (startups, apps).
+            \item Pros: Highly flexible, customer involved.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 3}
+    \textbf{Strategic Model Selection}
+    
+    \begin{itemize}
+        \item Choose \textbf{Waterfall} for stable, well-defined requirements.
+        \item Use \textbf{Iterative} or \textbf{Agile} when requirements may change or rapid delivery is needed.
+        \item Pick \textbf{Spiral} for high-risk, complex, high-stakes projects.
+        \item The \textbf{V-Model} is suited for safety-critical, verification-heavy systems.
+    \end{itemize}
+    
+    \textbf{Example:} 
+    \begin{itemize}
+        \item Healthcare system with strict regulations might follow \textbf{V-Model}.
+        \item A startup social media app may adopt \textbf{Agile}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 4}
+    \textbf{Final notes:}
+    \begin{itemize}
+        \item No one-size-fits-all: selection depends on project scope, complexity, and risk.
+        \item Understanding strengths/weaknesses enables better process design.
+        \item Strategic SDLC choice enhances resource use, quality, and stakeholder satisfaction.
+    \end{itemize}
+    
+    \textbf{Remember:} Proper model selection is key to project success—balancing risk, flexibility, and control.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questions \& Discussion - Part 1}
+  \begin{itemize}
+    \item Invite questions, clarifications, and discussion to deepen understanding of SDLC concepts and model selection.
+    \item Reflect on how choosing the right SDLC model impacts project success.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questions \& Discussion - Part 2}
+  \begin{block}{Key Concepts to Reinforce}
+    \begin{itemize}
+      \item \textbf{Why questions matter:} Help in selecting suitable SDLC models, influencing project outcomes.
+      \item \textbf{Clarification areas:}
+        \begin{itemize}
+          \item Differences between SDLC models, e.g., Waterfall vs. Agile.
+          \item Model selection criteria: project size, requirements, team, client, deadlines.
+          \item Trade-offs: flexibility vs. predictability, cost, risk.
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questions \& Discussion - Part 3}
+  \begin{block}{Discussion Examples}
+    \begin{itemize}
+      \item \textbf{Healthcare System Development:}\
+      \textit{Scenario:} Developing hospital management with strict regulations. \\
+      \textit{Discussion:} Is Waterfall suitable for thorough documentation or can iterative approaches adapt to evolving rules?
+      
+      \item \textbf{E-commerce Launch:}\
+      \textit{Scenario:} Rapid rollout of a shopping platform with changing features. \\
+      \textit{Discussion:} How does Agile support quick deployment and adaptability?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questions \& Discussion - Part 4}
+  \begin{itemize}
+    \item Emphasize aligning SDLC models with project goals. Mistakes can cause delays and increased costs.
+    \item Balance flexibility (iterative) versus control (linear).
+    \item Engage stakeholders early for continuous feedback, especially with Agile.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questions \& Discussion - Part 5}
+  \begin{itemize}
+    \item \textbf{Discussion Prompts:} 
+    \begin{itemize}
+      \item "What challenges might arise with a rigid SDLC in a dynamic project?"
+      \item "Share experiences where SDLC model choice affected a project’s success or failure."
+    \end{itemize}
+    \item Remember: The goal is to connect theory with real-world project decisions.
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

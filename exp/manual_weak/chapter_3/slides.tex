@@ -1,0 +1,897 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Foundations of Programming}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Quick but Risky Summary of OOP}
+    \begin{itemize}
+        \item Every serious program should be written with classes first; functions are mostly a beginner shortcut.
+        \item Inheritance is almost always better than composition because it removes the need to design interfaces carefully.
+        \item Abstraction means users do not need to understand data types, interfaces, or method contracts at all.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Object-Oriented Programming (OOP)}
+    \begin{block}{Overview}
+        Object-Oriented Programming (OOP) is a programming paradigm that uses "objects" to represent data and methods. 
+        The main idea behind OOP is to organize software design around data, or objects, rather than functions and logic. 
+        This approach enhances code reusability, scalability, and maintainability.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Principles of OOP}
+    \begin{enumerate}
+        \item \textbf{Encapsulation}
+            \begin{itemize}
+                \item Definition: Bundling of data and methods within a single unit or class.
+                \item Importance: Protects internal state from unintended interference.
+                \item Example: A \texttt{Car} class with attributes like \texttt{speed} and methods like \texttt{accelerate()}.
+            \end{itemize}
+        
+        \item \textbf{Inheritance}
+            \begin{itemize}
+                \item Definition: A mechanism where a new class inherits properties from an existing class.
+                \item Importance: Promotes code reusability and class relationships.
+                \item Example: A \texttt{Vehicle} class can be a parent to \texttt{Car} and \texttt{Motorcycle}.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Principles of OOP (cont'd)}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Continue numbering from previous frame
+        \item \textbf{Polymorphism}
+            \begin{itemize}
+                \item Definition: Ability to process objects differently based on their data type.
+                \item Importance: Simplifies code using the same interface for different types.
+                \item Example: A \texttt{draw()} method acts differently on \texttt{Circle} and \texttt{Square} objects.
+            \end{itemize}
+
+        \item \textbf{Abstraction}
+            \begin{itemize}
+                \item Definition: Hiding complex implementation details while exposing necessary features.
+                \item Importance: Reduces complexity for users.
+                \item Example: An \texttt{ATM} interface with options to \texttt{withdraw}, \texttt{deposit}, or \texttt{check balance}.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of OOP in Modern Programming}
+    \begin{itemize}
+        \item \textbf{Modularity}: Supports modular programming for easier management of large applications.
+        \item \textbf{Robustness}: Easier error identification leads to more robust applications.
+        \item \textbf{Collaboration}: Streamlined team development allows programmers to work independently on different classes/modules.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet Example (Python)}
+    \begin{lstlisting}[language=Python]
+class Vehicle:
+    def start_engine(self):
+        return "Engine started"
+
+class Car(Vehicle):
+    def drive(self):
+        return "Car is now driving"
+
+my_car = Car()
+print(my_car.start_engine())  # Output: Engine started
+print(my_car.drive())         # Output: Car is now driving
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item OOP structures software more naturally, mirroring real-world entities.
+        \item Emphasize "DRY" (Don't Repeat Yourself) principle for cleaner code.
+        \item Understanding OOP is crucial for modern programming languages and frameworks.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key OOP Concepts - Overview}
+    Object-Oriented Programming (OOP) revolves around four key principles that are essential for creating modular, reusable, and maintainable code:
+    \begin{itemize}
+        \item Encapsulation
+        \item Inheritance
+        \item Polymorphism
+        \item Abstraction
+    \end{itemize}
+    Understanding these concepts is crucial for writing effective OOP programs.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key OOP Concepts - Encapsulation}
+    \begin{block}{Definition}
+        Encapsulation is the bundling of data (attributes) and methods (functions) that operate on the data into a single unit known as a class. 
+        It restricts direct access to some of an object's components to prevent accidental interference and misuse.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Visibility Modifiers}: Control access using `private`, `protected`, or `public`.
+        \item \textbf{Getter/Setter Methods}: Provide access to private data through public methods.
+    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+class BankAccount:
+    def __init__(self):
+        self.__balance = 0  # Private variable
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):  # Getter method
+        return self.__balance
+    \end{lstlisting}
+    
+    \begin{block}{Illustration}
+        Imagine a capsule that contains essential pills (data) accessed through a specific route (methods).
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key OOP Concepts - Inheritance}
+    \begin{block}{Definition}
+        Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class), enhancing code reusability.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Single vs. Multiple Inheritance}: A class can inherit from one or multiple classes, depending on the programming language.
+        \item \textbf{Super Keyword}: Used to call methods from the parent class.
+    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+class Animal:
+    def speak(self):
+        return "Animal sound"
+
+class Dog(Animal):
+    def speak(self):
+        return "Bark"
+
+dog = Dog()
+print(dog.speak())  # Output: Bark
+    \end{lstlisting}
+    
+    \begin{block}{Illustration}
+        Think of inheritance as a family tree, where children inherit traits from their parents.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key OOP Concepts - Polymorphism and Abstraction}
+    \begin{block}{Polymorphism}
+        Polymorphism allows methods to behave differently based on the object it acts upon. It can be achieved through:
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Method Overriding}: Child class provides specific implementation of a parent class method.
+        \item \textbf{Operator Overloading}: Redefines operators for user-defined types.
+    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+def animal_sound(animal):
+    print(animal.speak())
+
+animal_sound(Dog())  # Polymorphic behavior: Dog's specific implementation
+    \end{lstlisting}
+    
+    \begin{block}{Abstraction}
+        Abstraction hides complex reality while exposing only the necessary parts, focusing on what an object does rather than how it does it.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Abstract Classes}: Cannot be instantiated and may contain abstract methods to implement in subclasses.
+        \item \textbf{Interfaces}: Define a contract without an implementation.
+    \end{itemize}
+
+    \begin{lstlisting}[language=Python]
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def area(self):
+        return self.width * self.height
+    \end{lstlisting}
+    
+    \begin{block}{Illustration}
+        Consider a TV remote where you interact with the buttons (interface) without needing to understand the internal wiring (complexity).
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC) - Introduction}
+    The Software Development Lifecycle (SDLC) is a structured approach to software development that divides the process into distinct phases. Each phase has its specific objectives, tasks, and deliverables, which collectively lead to the successful completion of a software project.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC) - Phases}
+    \begin{enumerate}
+        \item \textbf{Requirement Analysis}
+            \begin{itemize}
+                \item \textbf{Purpose}: Gather and document requirements from stakeholders.
+                \item \textbf{Activities}: Conduct interviews, surveys, and workshops.
+                \item \textbf{Outcome}: A comprehensive requirement specification document.
+                \item \textbf{Example}: Develop a user-friendly interface for an e-commerce platform.
+            \end{itemize}
+        
+        \item \textbf{Design}
+            \begin{itemize}
+                \item \textbf{Purpose}: Develop the architecture and design of the system.
+                \item \textbf{Activities}: Create data models, user interfaces, and architecture diagrams.
+                \item \textbf{Outcome}: Design documentation guiding developers.
+                \item \textbf{Example}: Wireframes for the e-commerce platform.
+            \end{itemize}
+        
+        \item \textbf{Implementation (or Coding)}
+            \begin{itemize}
+                \item \textbf{Purpose}: Convert design into code.
+                \item \textbf{Activities}: Developers write code based on design specifications.
+                \item \textbf{Outcome}: A functioning software product.
+                \item \textbf{Example}: Building the e-commerce site’s front-end using HTML, CSS, and JavaScript.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC) - More Phases}
+    \begin{enumerate}
+        \setcounter{enumi}{3} % Continue numbering from previous frame
+        \item \textbf{Testing}
+            \begin{itemize}
+                \item \textbf{Purpose}: Ensure software is free of defects and meets requirements.
+                \item \textbf{Activities}: Conduct unit testing, integration testing, system testing, and UAT.
+                \item \textbf{Outcome}: A tested software product ready for deployment.
+                \item \textbf{Example}: Verify the shopping cart functionality during UAT.
+            \end{itemize}
+        
+        \item \textbf{Deployment}
+            \begin{itemize}
+                \item \textbf{Purpose}: Release software to end-users.
+                \item \textbf{Activities}: Install software in the production environment.
+                \item \textbf{Outcome}: Software is live and accessible by users.
+                \item \textbf{Example}: Launching the e-commerce website to the public.
+            \end{itemize}
+
+        \item \textbf{Maintenance}
+            \begin{itemize}
+                \item \textbf{Purpose}: Address issues post-deployment and improve the software.
+                \item \textbf{Activities}: Monitor performance, provide updates, and fix bugs.
+                \item \textbf{Outcome}: Ongoing support and enhancement.
+                \item \textbf{Example}: Adding new features based on user feedback.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC) - Significance}
+    \begin{itemize}
+        \item \textbf{Structured Approach}: Provides a clear framework for managing complex projects.
+        \item \textbf{Risk Management}: Early identification of potential issues reduces risks.
+        \item \textbf{Improved Quality}: Systematic testing enhances reliability.
+        \item \textbf{Efficient Resource Use}: Optimizes allocation of resources and time.
+        \item \textbf{Clear Communication}: Enhances collaboration among stakeholders, developers, and testers.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Software Development Lifecycle (SDLC) - Conclusion}
+    \begin{itemize}
+        \item The SDLC is crucial for successful software project management.
+        \item Each phase has specific goals and deliverables that build on one another.
+        \item Failing to follow SDLC can lead to project delays and quality issues.
+        \item Understanding the SDLC is essential for developing effective software solutions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Methodologies in Software Engineering - Overview}
+    In software engineering, methodologies provide structured approaches to planning, executing, and managing software projects. Two of the most widely used methodologies are \textbf{Agile} and \textbf{Waterfall}. Understanding the differences between these approaches is crucial for selecting the right one for a project.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Waterfall Methodology}
+    
+    \begin{block}{Definition}
+        The Waterfall model is a linear, sequential approach where each phase must be completed before the next begins. The typical phases are: Requirements, Design, Implementation, Verification, and Maintenance.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Advantages:}
+        \begin{enumerate}
+            \item Simplicity and Clarity
+            \item Well-Documented
+            \item Easy to Schedule
+            \item Good for Smaller Projects
+        \end{enumerate}
+        
+        \item \textbf{Real-World Applications:}
+        \begin{itemize}
+            \item Construction projects with clear requirements (e.g., bridge construction).
+            \item Manufacturing processes that require strict adherence.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Agile Methodology}
+    
+    \begin{block}{Definition}
+        Agile is an iterative and incremental approach that emphasizes flexibility, customer collaboration, and rapid delivery. Projects are divided into small, manageable units called \textbf{sprints}.
+    \end{block}
+
+    \begin{itemize}
+        \item \textbf{Advantages:}
+        \begin{enumerate}
+            \item Flexibility to changes
+            \item Continuous Delivery
+            \item Frequent Stakeholder Involvement
+            \item Improved Quality through continuous testing
+        \end{enumerate}
+
+        \item \textbf{Real-World Applications:}
+        \begin{itemize}
+            \item Software development needing quick updates (e.g., startup applications).
+            \item Marketing campaigns requiring agile adjustments.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Differences and Conclusion}
+    
+    \begin{itemize}
+        \item \textbf{Key Points:}
+        \begin{itemize}
+            \item Waterfall is ideal for well-defined projects.
+            \item Agile thrives in dynamic environments.
+            \item Consider a hybrid approach for larger projects.
+        \end{itemize}
+        
+        \item \textbf{Conclusion:}
+        Understanding the distinctions between Agile and Waterfall methodologies enables you to select the best approach for your software projects, ensuring effective planning and execution.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Foundational Programming Proficiency}
+    Demonstrating skills in writing, debugging, and executing code using specified programming languages.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Foundational Programming Skills}
+    \begin{block}{Overview}
+        Foundational programming proficiency is essential for any budding software engineer. It encompasses the ability to \textbf{write}, \textbf{debug}, and \textbf{execute} code effectively in specified programming languages. Mastery of these skills lays the groundwork for more complex software development tasks.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Components of Programming Proficiency}
+    \begin{enumerate}
+        \item \textbf{Writing Code}
+            \begin{itemize}
+                \item \textbf{Definition}: The process of creating programs using a programming language.
+                \item \textbf{Example}:
+                \begin{lstlisting}[language=python]
+print("Hello, World!")
+                \end{lstlisting}
+                \item \textbf{Tip}: Follow syntax rules of the language to avoid errors.
+            \end{itemize}
+    
+        \item \textbf{Debugging Code}
+            \begin{itemize}
+                \item \textbf{Definition}: The process of identifying and fixing bugs or errors in the code.
+                \item \textbf{Common Debugging Techniques}:
+                \begin{itemize}
+                    \item Using print statements to track variable values.
+                    \item Utilizing integrated development environment (IDE) debugging tools.
+                \end{itemize}
+                \item \textbf{Example}:
+                \begin{lstlisting}[language=python]
+num1 = 5
+num2 = "10"
+result = num1 + num2  # This will raise a TypeError
+                \end{lstlisting}
+                \textbf{Fix}: Convert \texttt{num2} to an integer.
+                \begin{lstlisting}[language=python]
+num2 = int(num2)
+result = num1 + num2
+                \end{lstlisting}
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Executing Code and Key Points}
+    \begin{enumerate}
+        \setcounter{enumi}{2} % Continue from the previous frame
+        \item \textbf{Executing Code}
+            \begin{itemize}
+                \item \textbf{Definition}: Running the written code to perform its designated tasks.
+                \item \textbf{Execution in Different Environments}:
+                    \begin{itemize}
+                        \item \textbf{Local Environment}: Run Python scripts using command line or IDE.
+                        \item \textbf{Online Compilers}: Websites where code can be executed without local setup.
+                    \end{itemize}
+            \end{itemize}
+    \end{enumerate}
+
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Practice is essential for writing and debugging code.
+            \item Understand the syntax and structure of the programming language you are using.
+            \item Create a mindset for problem solving, breaking down challenges into smaller pieces.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Overview}
+    In software development, the ability to effectively tackle problems is crucial. This section explores various problem-solving techniques that help break down complex software challenges into manageable components, enabling efficient use of algorithms to devise solutions.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Understanding the Problem}
+    \begin{itemize}
+        \item Before you can effectively solve a problem, you must understand it clearly.
+        \item \textbf{Key Questions:}
+        \begin{itemize}
+            \item What is the desired outcome?
+            \item What constraints or limitations exist?
+            \item What are the inputs and expected outputs?
+        \end{itemize}
+    \end{itemize}
+    
+    \textbf{Example:} Calculate the factorial of a number.
+    \begin{itemize}
+        \item \textbf{Desired outcome:} A single integer (n!).
+        \item \textbf{Inputs:} A non-negative integer n.
+        \item \textbf{Outputs:} The product of all positive integers up to n.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Breaking Down the Problem}
+    \begin{itemize}
+        \item Decompose the problem into smaller, more manageable parts.
+        \item Each subproblem should be simpler and easier to solve.
+        \item \textbf{Strategy:}
+        \begin{itemize}
+            \item Identify the main components of the problem.
+            \item Translate each component into smaller tasks.
+        \end{itemize}
+    \end{itemize}
+    
+    \textbf{Example:} For the factorial problem, break it into:
+    \begin{enumerate}
+        \item Base case: If n = 0, return 1.
+        \item Recursive case: Return n * factorial(n - 1).
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Problem-Solving Techniques - Choosing the Right Algorithm}
+    \begin{itemize}
+        \item An algorithm is a step-by-step procedure to solve a problem.
+        \item Choose an algorithm based on:
+        \begin{itemize}
+            \item Efficiency (time and space complexity)
+            \item Optimality (the best solution for the particular case)
+        \end{itemize}
+    \end{itemize}
+    
+    \textbf{Example of Algorithms:}
+    \begin{itemize}
+        \item \textbf{Iterative Approach:} A loop that multiplies the integers.
+        \item \textbf{Recursive Approach:} A function that calls itself with a reduced value.
+    \end{itemize}
+    
+    \textbf{Iterative Code Snippet:}
+    \begin{lstlisting}[language=Python]
+def factorial_iterative(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Problem-Solving Techniques - Recursive Code Snippet}
+    \textbf{Recursive Code Snippet:}
+    \begin{lstlisting}[language=Python]
+def factorial_recursive(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial_recursive(n - 1)
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Testing and Iteration}
+    \begin{itemize}
+        \item Test your function with various inputs to ensure accuracy.
+        \item Validate against edge cases (e.g., factorial of 0).
+        \item Use the results to refine your approach if necessary.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Best Practices}
+    \begin{itemize}
+        \item \textbf{Pseudocode:} Write pseudocode to outline your logic before coding.
+        \item \textbf{Comments:} Add comments in your code to explain steps.
+        \item \textbf{Version Control:} Keep track of changes and collaborate efficiently.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Problem-Solving Techniques - Key Takeaways}
+    \begin{itemize}
+        \item Effective problem-solving is rooted in understanding the problem thoroughly.
+        \item Breaking down the challenge simplifies the process.
+        \item Choosing and applying the right algorithm is vital.
+        \item Continuous testing and refinement lead to better solutions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Collaboration and Version Control}
+    Utilizing version control systems like Git for effective teamwork in software development.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Understanding Version Control}
+    \begin{block}{Definition}
+        \textbf{Version Control} is a system that records changes to files or sets of files over time, allowing you to recall specific versions later. This is crucial in software development, where multiple developers might be working on the same codebase.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Track Changes:} Understand what changes were made, by whom, and why.
+        \item \textbf{Collaboration:} Multiple team members can work on the same project without conflict.
+        \item \textbf{Backup:} If something goes wrong, you can revert to a previous state.
+        \item \textbf{Branching:} Create separate lines of development to experiment or work on features independently.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Git: The Most Popular Version Control System}
+    \begin{block}{Key Terminology}
+        \begin{itemize}
+            \item \textbf{Repository (Repo):} A storage location for your project, containing all the files and history.
+            \item \textbf{Commit:} A snapshot of the changes made; it includes a message describing what was changed.
+            \item \textbf{Branch:} A separate line of development.
+            \item \textbf{Merge:} Integrate changes from different branches.
+            \item \textbf{Pull Request (PR):} A request to merge code changes from one branch into another.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Git Workflow}
+    \begin{enumerate}
+        \item \textbf{Clone a Repository:}
+        \begin{lstlisting}
+        git clone [repository_url]
+        \end{lstlisting}
+        
+        \item \textbf{Create a Branch:}
+        \begin{lstlisting}
+        git checkout -b feature-branch
+        \end{lstlisting}
+        
+        \item \textbf{Make Changes and Commit:}
+        \begin{lstlisting}
+        git add [file_name]
+        git commit -m "Add new feature implementation"
+        \end{lstlisting}
+        
+        \item \textbf{Push Changes:}
+        \begin{lstlisting}
+        git push origin feature-branch
+        \end{lstlisting}
+        
+        \item \textbf{Create a Pull Request:} Propose merging changes into the main codebase.
+        \item \textbf{Merge After Review:} Once approved, merge the changes into the main branch.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Representation of Workflow}
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{git_workflow_diagram.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item \textbf{Effective Collaboration:} Each team member can work independently, minimizing merge conflicts.
+        \item \textbf{Historical Tracking:} Easily access previous code versions and understand their evolution.
+        \item \textbf{Backup and Recovery:} Safeguard against data loss by having history at your fingertips.
+    \end{itemize}
+    
+    \begin{block}{Conclusion}
+        Version control systems like Git are essential tools for modern software development, enabling seamless collaboration and efficient workflows.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Overview}
+    \begin{block}{Importance of Quality Assurance}
+        Quality assurance (QA) is critical in software development, ensuring products meet quality standards before release. 
+        This presentation focuses on the necessity of two key testing methodologies: unit testing and integration testing, along with automated testing tools.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Unit Testing}
+    \begin{itemize}
+        \item \textbf{Definition:} Testing individual components of software to verify correctness.
+        \item \textbf{Purpose:} Identifies bugs early, reducing costs for later fixes.
+        \item \textbf{Example:} Testing the function \texttt{calculateTax(income)}.
+    \end{itemize}
+    \begin{lstlisting}[language=Python]
+def test_calculateTax():
+    assert calculateTax(50000) == 7500
+    assert calculateTax(100000) == 15000
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Integration Testing}
+    \begin{itemize}
+        \item \textbf{Definition:} Assesses the interaction between different modules to ensure they work seamlessly.
+        \item \textbf{Purpose:} Identifies interface defects and data flow issues.
+        \item \textbf{Example:} Testing the integration of the user authentication and payment systems.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Automated Testing Tools}
+    \begin{itemize}
+        \item \textbf{JUnit:} 
+            \begin{itemize}
+                \item A widely-used framework for unit testing in Java.
+            \end{itemize}
+        \item \textbf{Selenium:} 
+            \begin{itemize}
+                \item Automates web applications for testing integration and functionality.
+            \end{itemize}
+        \item \textbf{pytest:} 
+            \begin{itemize}
+                \item A framework for Python supporting unit and integration tests.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Key Points}
+    \begin{itemize}
+        \item \textbf{Early Bug Detection:} Reduces major defects in later development stages.
+        \item \textbf{Efficiency:} Automates testing, saving time and improving quality.
+        \item \textbf{Documentation:} Tests serve as documentation for expected component behavior.
+        \item \textbf{Continuous Integration:} Essential for CI/CD practices ensuring quick, bug-free updates.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Quality Assurance Practices - Conclusion}
+    Quality assurance practices such as unit and integration testing are vital for reliable software production. Utilizing automated testing tools enhances efficiency and ensures the final product fulfills user expectations.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Ethics in Software Engineering}
+    Discussing ethical dilemmas faced in software development and the responsibilities of engineers.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Ethical Dilemmas}
+    Software engineering involves making decisions impacting individuals and society. Ethical considerations ensure responsible technology development and integrity among engineers.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Ethical Dilemmas}
+    \begin{enumerate}
+        \item \textbf{Data Privacy and Security}
+            \begin{itemize}
+                \item Importance: Protecting users' data is paramount.
+                \item Example: A social media app collects user data for targeted advertising.
+                \item Responsibility: Implement robust security measures and minimize data collection.
+            \end{itemize}
+        
+        \item \textbf{Intellectual Property}
+            \begin{itemize}
+                \item Importance: Respecting copyrights and patents.
+                \item Example: Using third-party libraries without proper licensing.
+                \item Responsibility: Verify licenses and attributions for external resources.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{More Key Ethical Dilemmas}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item \textbf{Algorithmic Bias}
+            \begin{itemize}
+                \item Importance: Algorithms can perpetuate biases.
+                \item Example: An AI hiring tool favors candidates from specific demographics.
+                \item Responsibility: Seek diverse datasets and test for bias.
+            \end{itemize}
+        
+        \item \textbf{Software Reliability and Public Safety}
+            \begin{itemize}
+                \item Importance: Faulty software can lead to catastrophic failures.
+                \item Example: A bug in flight control software could jeopardize safety.
+                \item Responsibility: Strive for high-quality assurance and thorough testing.
+            \end{itemize}
+        
+        \item \textbf{Accountability and Transparency}
+            \begin{itemize}
+                \item Importance: Engineers should be accountable for decisions.
+                \item Example: Poor communication on negative software updates affects users.
+                \item Responsibility: Provide documentation and communicate changes effectively.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Responsibilities of Software Engineers}
+    \begin{itemize}
+        \item Adherence to Ethical Standards: Follow industry-wide ethical codes.
+        \item Continuous Learning: Stay updated on ethical implications.
+        \item Collaboration: Work with teams to identify ethical issues.
+        \item User Advocacy: Prioritize user welfare over profit-driven motives.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    Ethics in software engineering fosters trust and ensures technology serves the greater good. By addressing ethical dilemmas and responsibilities, engineers can contribute to a more ethical tech landscape.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Discussion Questions}
+    \begin{itemize}
+        \item Can you think of an example where ethical considerations significantly impacted a software project?
+        \item How would you address a colleague who fails to consider the ethical implications of their code?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Technical Documentation and Communication - Overview}
+    \begin{block}{Overview}
+        Effective technical documentation and communication are vital in software engineering. They ensure that both technical and non-technical stakeholders understand project specifications, methodologies, and outcomes. 
+    \end{block}
+    \begin{block}{Key Concepts}
+        \begin{itemize}
+            \item Technical Documentation: Written documents providing instructions, explanations, and models.
+            \item Communication: Clear communication is essential for effective collaboration across teams.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Technical Documentation Types}
+    \begin{block}{Types of Technical Documentation}
+        \begin{itemize}
+            \item User Manuals: Guides for end-users on operating software.
+            \item API Documentation: Reference for developers on using APIs.
+            \item System Architecture Diagrams: Visuals of system components and interactions.
+            \item Design Documents: Descriptions of architecture, components, and data flow.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Technical Documentation}
+    \begin{block}{Best Practices}
+        \begin{itemize}
+            \item Clarity and Simplicity: Use plain language; structure logically.
+            \item Consistency: Maintain terminology and formatting; use a style guide.
+            \item Audience Awareness: Tailor content for specific audiences; use relatable examples.
+            \item Version Control: Keep documentation up to date with systems like Git.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Effective Communication Strategies}
+    \begin{block}{Communication Strategies}
+        \begin{itemize}
+            \item Active Listening: Encourage questions and feedback; paraphrase for confirmation.
+            \item Visual Aids: Use diagrams and flowcharts to simplify complex concepts.
+            \item Regular Updates: Schedule consistent meetings to inform stakeholders.
+            \item Feedback Mechanism: Implement channels for stakeholder feedback to improve practices.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Scenario}
+    \begin{block}{Scenario}
+        Imagine developing a new software feature integrating with an existing system.
+        \begin{itemize}
+            \item Documentation Task: Write an API documentation including endpoint descriptions, payload examples, and error codes.
+            \item Communication Task: Present your approach including a demo with visual diagrams.
+        \end{itemize}
+        \begin{lstlisting}[language=C]
+GET /api/users/{id}
+        \end{lstlisting}
+        \begin{itemize}
+            \item Description: Retrieves user data for the specified ID.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{block}{Summary}
+        \begin{itemize}
+            \item Clear technical documentation serves as a bridge between software and users.
+            \item Tailoring communication for diverse audiences promotes understanding.
+            \item Utilize visuals and structured formats to enhance clarity and engagement.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\end{document}

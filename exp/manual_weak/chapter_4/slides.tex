@@ -1,0 +1,832 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Week 4: Problem-Solving \& Algorithms}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Common Shortcuts for Algorithms}
+    \begin{itemize}
+        \item An algorithm is good mainly when it uses fewer lines of code than another solution.
+        \item Input and output details can usually be guessed later, so they do not need to be written clearly at first.
+        \item Pseudocode is optional because implementation details matter more than planning.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Problem-Solving \& Algorithms}
+    Understanding the importance of problem-solving techniques and algorithms in enhancing coding skills.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is Problem-Solving in Programming?}
+    Problem-solving in programming involves identifying a problem, developing a solution, and implementing that solution through code. Effective problem-solving skills enable programmers to tackle complex challenges efficiently.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Problem-Solving Techniques}
+    \begin{itemize}
+        \item \textbf{Enhances Logical Thinking}: Approaching problems logically improves decision-making.
+        \item \textbf{Breaks Down Complexity}: Techniques such as decomposition enable programmers to simplify large problems into smaller, manageable components.
+        \item \textbf{Increases Efficiency}: A solid understanding of algorithms allows for optimized solutions, leading to quicker and more effective code.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What Are Algorithms?}
+    An algorithm is a step-by-step procedure or formula for solving a problem. It serves as a blueprint for coding, guiding the development of solutions.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Elements of Algorithms}
+    \begin{itemize}
+        \item \textbf{Input}: The data that the algorithm will process.
+        \item \textbf{Output}: The result of the processing by the algorithm.
+        \item \textbf{Steps}: A clear set of instructions to transform the input into output.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Algorithm: Finding the Maximum Number}
+    \begin{enumerate}
+        \item \textbf{Input}: A list of numbers.
+        \item \textbf{Steps}:
+        \begin{enumerate}
+            \item Assume the first number is the maximum.
+            \item Compare this number with the rest of the list.
+            \item If a larger number is found, update the maximum.
+        \end{enumerate}
+        \item \textbf{Output}: The largest number from the list.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Snippet for Finding the Maximum}
+    \begin{lstlisting}[language=Python]
+def find_maximum(numbers):
+    max_num = numbers[0]  # Step 1: Assume first number is max
+    for num in numbers:    # Step 2: Iterate through the list
+        if num > max_num:
+            max_num = num  # Update max if current number is larger
+    return max_num        # Step 3: Return the maximum
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item Problem-solving is foundational for good programming.
+        \item Algorithms provide structured solutions to complex challenges.
+        \item Mastering these concepts boosts coding proficiency and prepares students for real-world software development.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    Understanding problem-solving techniques and algorithms is not just about writing code—it's about developing a mindset that approaches challenges systematically and effectively. Embrace these skills to enhance your coding capabilities and become a proficient programmer.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is Problem-Solving?}
+    Problem-solving is the systematic process of identifying a problem, analyzing it, and developing a solution. In programming, this involves transforming abstract challenges into concrete, executable instructions for a computer.
+
+    \begin{block}{Key Attributes of Problem-Solving}
+        \begin{itemize}
+            \item \textbf{Analytical Thinking}: The ability to break down a problem into smaller, more manageable components.
+            \item \textbf{Logical Approach}: Using reason to formulate strategies and navigate through challenges.
+            \item \textbf{Creativity}: Finding innovative ways to address issues that do not have straightforward solutions.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Problem-Solving Process}
+    An effective problem-solving process in programming typically involves the following steps:
+
+    \begin{enumerate}
+        \item \textbf{Understand the Problem:}
+            \begin{itemize}
+                \item Read and clarify the problem statement.
+                \item Example: Clarify whether taxes and discounts should be included in calculating total costs.
+            \end{itemize}
+
+        \item \textbf{Define the Problem:}
+            \begin{itemize}
+                \item Identify inputs and outputs; simplify the problem.
+                \item Example: Inputs as item prices, output as total cost.
+            \end{itemize}
+
+        \item \textbf{Break Down the Problem:}
+            \begin{itemize}
+                \item Divide into smaller parts.
+                \item Example: Create subproblems for discounts and taxes.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{The Problem-Solving Process (Continued)}
+    \begin{enumerate}[resume]
+        \item \textbf{Develop a Plan:}
+            \begin{itemize}
+                \item Select algorithms and data structures.
+                \item Example: List for item prices, use loops to compute totals.
+            \end{itemize}
+
+        \item \textbf{Implement the Solution:}
+            \begin{lstlisting}[language=Python]
+def calculate_total_cost(prices, discount_rate, tax_rate):
+    subtotal = sum(prices)
+    discount = subtotal * discount_rate
+    net_cost = subtotal - discount
+    total_cost = net_cost + (net_cost * tax_rate)
+    return total_cost
+            \end{lstlisting}
+        \item \textbf{Test and Evaluate the Solution:}
+            \begin{itemize}
+                \item Verify functionality across different cases.
+                \item Example: Check handling of empty lists or negative prices.
+            \end{itemize}
+
+        \item \textbf{Refine and Optimize:}
+            \begin{itemize}
+                \item Improve efficiency and readability.
+            \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Problem-Solving Techniques - Introduction}
+    When tackling programming challenges, having a repertoire of problem-solving techniques can enhance our ability to find effective solutions. These methodologies help break down complex problems and guide us toward the best approach for a given situation.
+    
+    \begin{block}{Key Techniques}
+        In this presentation, we will explore three key techniques:
+        \begin{itemize}
+            \item Trial and Error
+            \item Divide and Conquer
+            \item Heuristics
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Problem-Solving Techniques - 1. Trial and Error}
+    \textbf{Definition:} An intuitive approach where a variety of solutions are attempted until a working one is found.
+
+    \textbf{How It Works:}
+    \begin{enumerate}
+        \item Identify a possible solution.
+        \item Implement the solution.
+        \item Evaluate the results.
+        \item If unsuccessful, modify the solution and repeat.
+    \end{enumerate}
+
+    \textbf{Example:} Guessing the correct PIN code for a bank card by trying combinations like "0000", "0001", etc.
+
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Simple and straightforward, but can be time-consuming.
+        \item Works well for simple problems with a small solution space.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Problem-Solving Techniques - 2. Divide and Conquer}
+    \textbf{Definition:} A technique that breaks a larger problem into smaller, manageable sub-problems, solving each independently.
+
+    \textbf{How It Works:}
+    \begin{enumerate}
+        \item \textbf{Divide:} Split the problem into smaller parts.
+        \item \textbf{Conquer:} Solve each part recursively.
+        \item \textbf{Combine:} Integrate the solutions of the sub-problems.
+    \end{enumerate}
+
+    \textbf{Example:} Sorting algorithms like Merge Sort or Quick Sort utilize this technique.
+
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Efficient for naturally divisible problems (e.g., sorting, searching).
+        \item Reduces complexity significantly.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Problem-Solving Techniques - 3. Heuristics}
+    \textbf{Definition:} Techniques that provide a practical method for decision-making based on experience and rules of thumb.
+
+    \textbf{How It Works:}
+    \begin{itemize}
+        \item Focus on finding a satisfactory solution rather than the optimal one.
+        \item Utilize previous knowledge and educated guesses for quick decisions.
+    \end{itemize}
+
+    \textbf{Example:} In pathfinding algorithms like A*, heuristics analyze distance to prioritize paths to explore first.
+
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Useful in complex problems where optimal solutions are hard to find.
+        \item Speeds up the process by reducing the search space.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Problem-Solving Techniques - Conclusion}
+    Understanding these problem-solving techniques equips programmers with the tools needed to face challenges effectively. Each method has its strengths and is applicable in different scenarios, enhancing our problem-solving capabilities in programming.
+
+    \textbf{Reminder:} In our next discussion, we'll explore the fundamentals of algorithms and what makes a good one. Be prepared to connect these techniques with algorithm development!
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Algorithms}
+    \begin{block}{What is an Algorithm?}
+        An \textbf{algorithm} is a finite sequence of well-defined instructions or steps designed to perform a specific task or solve a particular problem. 
+        In programming, algorithms translate problem-solving techniques into a form that a computer can execute.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Significance of Algorithms in Programming}
+    \begin{enumerate}
+        \item \textbf{Efficiency}: Algorithms optimize resource use, reducing time and space complexity.
+        \item \textbf{Clarity}: A clear algorithm provides insight into the problem-solving approach, easing communication and understanding.
+        \item \textbf{Reusability}: Well-crafted algorithms can be reused in different contexts, enhancing productivity.
+        \item \textbf{Testing and Verification}: Algorithms allow systematic testing and validation of solutions against standards.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What Makes a Good Algorithm?}
+    \begin{enumerate}
+        \item \textbf{Correctness}: Should solve the problem for all inputs.
+            \begin{itemize}
+                \item Example: A sorting algorithm must arrange data in the desired order without missing elements.
+            \end{itemize}
+        \item \textbf{Efficiency}: Minimize time and space resources, analyzed using time complexity (Big O notation).
+            \begin{itemize}
+                \item Example: Bubble sort (O(n²)) vs. quicksort (O(n log n)).
+            \end{itemize}
+        \item \textbf{Finiteness}: An algorithm must terminate after a limited number of steps.
+            \begin{itemize}
+                \item Illustration: A search algorithm approaches a solution in a reasonable timeframe.
+            \end{itemize}
+        \item \textbf{Generality}: Should solve multiple instances of a problem, applicable in various scenarios.
+            \begin{itemize}
+                \item Example: An algorithm for finding the shortest path should work for multiple graphs.
+            \end{itemize}
+        \item \textbf{Simplicity}: The design should be clear and easy to implement and maintain.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Algorithm Design Techniques - Introduction}
+    In computer science, designing efficient algorithms is critical for solving problems effectively. 
+    This slide discusses three fundamental algorithm design techniques:
+    \begin{itemize}
+        \item Backtracking
+        \item Dynamic Programming
+        \item Greedy Algorithms
+    \end{itemize}
+    Each technique serves a distinct purpose and is suited to different types of problems.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Algorithm Design Techniques - Backtracking}
+    \begin{block}{Definition}
+        Backtracking is a systematic method for solving problems by trying to build a solution incrementally 
+        and abandoning solutions that fail to satisfy the problem constraints.
+    \end{block}
+
+    \begin{block}{Key Concept}
+        It involves exploring potential candidates and "backtracking" when a candidate fails to satisfy the conditions, 
+        allowing for the exploration of different paths.
+    \end{block}
+
+    \begin{block}{Example}
+        \textbf{Problem:} The N-Queens problem involves placing N chess queens on an N×N chessboard so that no two queens threaten each other.
+        
+        \textbf{Approach:} Start placing queens in rows and backtrack whenever a placement leads to a conflict.
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+def can_place_queen(row, col, board):
+    # Check column and diagonals for conflicts
+    for i in range(len(board)):
+        if board[i][col] == 1 or (col + row - i >= 0 and board[i][col + row - i] == 1) or (col - (row - i) >= 0 and board[i][col - (row - i)] == 1):
+            return False
+    return True
+
+def solve_n_queens(board, row):
+    if row == len(board):
+        print(board)  # Solution found
+        return
+    
+    for col in range(len(board)):
+        if can_place_queen(row, col, board):
+            board[row][col] = 1  # Place queen
+            solve_n_queens(board, row + 1)  # Recur
+            board[row][col] = 0  # Backtrack
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Algorithm Design Techniques - Dynamic Programming}
+    \begin{block}{Definition}
+        Dynamic Programming (DP) is an optimization technique used to solve problems by breaking them down into smaller subproblems, 
+        solving each one just once, and storing their solutions.
+    \end{block}
+
+    \begin{block}{Key Concept}
+        It often involves two main strategies:
+        \begin{itemize}
+            \item Memoization (top-down approach)
+            \item Tabulation (bottom-up approach)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example}
+        \textbf{Problem:} Fibonacci sequence calculation.
+        
+        \textbf{Approach:} Instead of recalculating Fibonacci numbers, store already computed results.
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+def fibonacci(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 2:
+        return 1
+    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
+    return memo[n]
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Algorithm Design Techniques - Greedy Algorithms}
+    \begin{block}{Definition}
+        Greedy algorithms build up a solution piece by piece, always choosing the next piece that offers the most immediate benefit.
+    \end{block}
+
+    \begin{block}{Key Concept}
+        Greedy methods do not always yield the optimal solution, but they are often simpler and used where they do yield correct solutions.
+    \end{block}
+
+    \begin{block}{Example}
+        \textbf{Problem:} Coin Change Problem (minimizing the number of coins).
+        
+        \textbf{Approach:} Always take the highest denomination that does not exceed the required amount.
+    \end{block}
+    
+    \begin{lstlisting}[language=Python]
+def coin_change(coins, amount):
+    coins.sort(reverse=True)  # Sort coins in descending order
+    count = 0
+    for coin in coins:
+        while amount >= coin:
+            amount -= coin
+            count += 1
+    return count
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Algorithm Design Techniques - Summary}
+    \begin{itemize}
+        \item Backtracking is about trying all possible options and eliminating those that don't work.
+        \item Dynamic Programming focuses on solving overlapping subproblems efficiently.
+        \item Greedy Algorithms make the best choice at each step, but may not always provide a global optimum.
+    \end{itemize}
+    These techniques form the foundation of many complex algorithms and are useful in various computational problems.
+    Understanding when to apply each technique is key to effective problem-solving in algorithm design.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Analyzing Algorithms - Key Concepts}
+
+    \begin{block}{Algorithm Complexity}
+        When evaluating algorithms, two critical aspects are usually considered:
+        \begin{itemize}
+            \item \textbf{Time Complexity}: Measures the time taken by an algorithm as a function of input size (denoted as $n$).
+            \item \textbf{Space Complexity}: Assesses the memory space required by the algorithm as input size increases.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Analyzing Algorithms - Big O Notation}
+
+    \begin{block}{Big O Notation}
+        \begin{itemize}
+            \item Describes the upper limit of the performance of an algorithm in terms of time and space.
+            \item Disregards constant factors and lower-order terms, focusing on the dominant term.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Common Time Complexities}
+        \begin{itemize}
+            \item \textbf{O(1)}: Constant time (e.g., accessing an array element).
+            \item \textbf{O(log n)}: Logarithmic time (e.g., binary search).
+            \item \textbf{O(n)}: Linear time (e.g., traversing an array).
+            \item \textbf{O(n log n)}: Linearithmic time (e.g., mergesort).
+            \item \textbf{O(n²)}: Quadratic time (e.g., bubble sort).
+            \item \textbf{O(2^n)}: Exponential time (e.g., Towers of Hanoi).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Analyzing Algorithms - Example}
+
+    \begin{block}{Illustrative Example}
+        Let’s analyze two simple algorithms that compute the sum of numbers in an array of size $n$:
+        \begin{enumerate}
+            \item \textbf{Algorithm A}:
+            \begin{itemize}
+                \item Time Complexity: $O(n)$
+                \item Space Complexity: $O(1)$
+                \item \begin{lstlisting}[language=python]
+def sum_array(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total
+                \end{lstlisting}
+            \end{itemize}
+            
+            \item \textbf{Algorithm B}:
+            \begin{itemize}
+                \item Time Complexity: $O(n^2)$
+                \item Space Complexity: $O(n)$
+                \item \begin{lstlisting}[language=python]
+def sum_array_naive(arr):
+    result = []
+    for i in range(len(arr)):
+        result.append(sum(arr[:i+1]))
+    return result[-1]  # Final sum
+                \end{lstlisting}
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Structures and Their Role - Overview}
+    \begin{block}{Overview of Key Data Structures}
+        Data structures are essential for organizing, storing, and managing data efficiently, allowing algorithms to access and manipulate data effectively.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Structures - Arrays}
+    \begin{itemize}
+        \item \textbf{Definition}: A collection of elements identified by index or key. Each element is of the same type.
+        \item \textbf{Characteristics}:
+        \begin{itemize}
+            \item Fixed size
+            \item Fast access time; O(1) for element retrieval
+        \end{itemize}
+        \item \textbf{Example}:
+        \begin{lstlisting}[language=Python]
+numbers = [5, 10, 15, 20]
+print(numbers[2])  # Outputs: 15
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Structures - Lists and Trees}
+    \begin{itemize}
+        \item \textbf{Lists}
+        \begin{itemize}
+            \item \textbf{Definition}: A dynamic collection of elements that can contain different types and can grow or shrink in size.
+            \item \textbf{Characteristics}:
+            \begin{itemize}
+                \item Flexible size
+                \item Slower than arrays for access; O(n) for searching
+            \end{itemize}
+            \item \textbf{Example}:
+            \begin{lstlisting}[language=Python]
+fruits = ["apple", "banana", "cherry"]
+fruits.append("date")
+print(fruits)  # Outputs: ['apple', 'banana', 'cherry', 'date']
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Trees}
+        \begin{itemize}
+            \item \textbf{Definition}: A hierarchical structure consisting of nodes, with a single root node and child nodes.
+            \item \textbf{Characteristics}:
+            \begin{itemize}
+                \item Non-linear data structure
+                \item Efficient searching and sorting; O(log n) for balanced trees
+            \end{itemize}
+            \item \textbf{Visualization}:
+            \[
+            \begin{array}{c}
+                  A \\
+                 / \backslash \\
+                B   C \\
+               / \backslash \\
+              D   E  
+            \end{array}
+            \]
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Data Structures and Algorithms}
+    \begin{block}{Relationship Between Data Structures and Algorithms}
+        - Algorithms are step-by-step procedures for solving problems; their efficiency relies on the choice of data structure.
+        - Choosing the right data structure can significantly enhance algorithm performance.
+        \begin{itemize}
+            \item E.g., To implement a priority queue, a binary heap (tree) is preferred for efficient retrieval of the highest/lowest priority elements.
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Performance Considerations}
+        - Arrays allow quick access but can be inefficient for insertions or deletions.
+        - Lists facilitate dynamic resizing but can lead to increased overhead.
+        - Trees provide efficient searching but require extra space.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    Proficient use of data structures is crucial in algorithm design, ensuring efficient data manipulation and retrieval in software applications. 
+    By mastering these concepts, students will be better equipped to implement effective solutions to complex problems in programming.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hands-On Coding Exercise - Objective}
+    \begin{block}{Objective}
+        Engage students in a hands-on coding exercise to strengthen their understanding of algorithms through practical application of learned problem-solving techniques.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hands-On Coding Exercise - Concept Overview}
+    \begin{itemize}
+        \item \textbf{What is an Algorithm?} \\
+        An algorithm is a step-by-step procedure or formula for solving a problem. It takes an input, processes it, and gives an output.
+        
+        \item \textbf{Importance of Problem-Solving Techniques:}
+        \begin{itemize}
+            \item Understanding the Problem: Clearly define what you need to solve.
+            \item Decomposing the Problem: Break it down into smaller parts.
+            \item Designing a Solution: Create a plan for how you will address each part.
+            \item Implementing the Solution: Translate the plan into code.
+            \item Evaluating the Solution: Test to ensure it works as intended.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Algorithm - Finding the Maximum Number}
+    \begin{block}{Problem Statement}
+        Given an array of integers, write a function to find the maximum number.
+    \end{block}
+    
+    \begin{block}{Steps to Solve}
+        \begin{enumerate}
+            \item Initialize a variable to hold the maximum value (start with the first element).
+            \item Loop through each element in the array.
+            \item If the current element is greater than the maximum, update the maximum.
+            \item Return the maximum value.
+        \end{enumerate}
+    \end{block}
+
+    \begin{block}{Pseudocode}
+        \begin{lstlisting}
+function findMax(arr):
+    maxVal = arr[0]
+    for each number in arr:
+        if number > maxVal:
+            maxVal = number
+    return maxVal
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Implementation - Python Code}
+    \begin{block}{Code Implementation in Python}
+        \begin{lstlisting}[language=Python]
+def find_max(arr):
+    # Step 1: Initialize the maximum value
+    max_val = arr[0]
+    # Step 2: Loop through the array
+    for number in arr:
+        # Step 3: Check if the current number is greater
+        if number > max_val:
+            max_val = number
+    # Step 4: Return the maximum value found
+    return max_val
+
+# Example Usage
+numbers = [3, 41, 12, 9, 5]
+print("The maximum number is:", find_max(numbers))
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Hands-On Instructions}
+    \begin{itemize}
+        \item \textbf{Setup:} Ensure your development environment is ready (Python, Java, etc.).
+        \item \textbf{Write the Function:} Implement the \texttt{find\_max} function in your chosen programming language.
+        \item \textbf{Test Cases:} Create and run multiple test cases to validate your function, including scenarios with negative numbers or repeated values.
+        \begin{itemize}
+            \item Test inputs: \([1, 3, 2, 8]\), \([-10, -5, -1]\), \([6, 6, 6]\)
+        \end{itemize}
+        \item \textbf{Discussion:} Share your results with the class. What challenges did you face? How did you solve them?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Algorithm Efficiency: Discuss the time complexity of your algorithm. In this case, it is \(O(n)\).
+            \item Real-World Application: Finding the maximum number is fundamental in scenarios like determining the highest score in a game or the tallest building in a city.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Final Thoughts}
+        This exercise not only reaffirms your understanding of basic algorithms but also enhances your coding skills significantly. The more you engage in exercises like this, the more proficient you'll become at algorithmic thinking and coding.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Applications - Introduction}
+    Problem-solving and algorithms are essential components in various industries, driving innovation and efficiency. This section discusses key concepts, real-world examples, and pertinent case studies to showcase their applications.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Concepts}
+    \begin{itemize}
+        \item \textbf{Problem-Solving}: 
+        The process of identifying a challenge and formulating a solution. 
+        In the tech industry, this includes defining the problem, analyzing data, brainstorming solutions, and implementing strategies.
+        
+        \item \textbf{Algorithms}: 
+        Step-by-step procedures or formulas for solving problems. Algorithms range from simple tasks, like sorting data, to complex operations, like machine learning processes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Real-World Examples}
+    \begin{enumerate}
+        \item \textbf{E-Commerce Recommendation Systems}
+        \begin{itemize}
+            \item Example: Amazon uses algorithms to analyze user behavior and suggest products.
+            \item Application: Collaborative filtering algorithms identify patterns in customer data, which helps personalize the shopping experience.
+        \end{itemize}
+
+        \item \textbf{Healthcare Diagnostics}
+        \begin{itemize}
+            \item Example: IBM Watson analyzes vast amounts of medical data to assist doctors in diagnosing diseases.
+            \item Application: Utilizes natural language processing and machine learning algorithms to evaluate symptoms and make treatment recommendations.
+        \end{itemize}
+
+        \item \textbf{Autonomous Vehicles}
+        \begin{itemize}
+            \item Example: Companies like Tesla employ algorithms for navigation and obstacle detection.
+            \item Application: Algorithms process data from multiple sensors (LIDAR, cameras) in real-time to make driving decisions based on surrounding conditions.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Case Study: Google Search Algorithm}
+    \begin{itemize}
+        \item \textbf{Goal}: Retrieve the most relevant information quickly.
+        \item \textbf{Process}:
+        \begin{enumerate}
+            \item Web Crawling: Algorithms traverse links to find new content.
+            \item PageRank: Measures the importance of web pages based on links.
+            \item User Interaction: Algorithms learn and adapt to provide personalized search results.
+        \end{enumerate}
+        \item \textbf{Type of Algorithms Used}: 
+        Natural Language Processing (NLP) and Machine Learning.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Further Exploration}
+    \begin{itemize}
+        \item Understanding the real-world applications of problem-solving and algorithms enhances your technical skills and prepares you for diverse career opportunities in technology-driven environments.
+    \end{itemize}
+    
+    \begin{block}{Questions to Consider}
+        \begin{itemize}
+            \item How could you implement a basic algorithm to solve a real-world problem in your daily life?
+            \item What industries are most reliant on data analysis and algorithm development?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Reflection - Key Takeaways}
+    \begin{enumerate}
+        \item \textbf{Understanding Problem-Solving}:
+        \begin{itemize}
+            \item A structured approach to identifying challenges, analyzing them, and formulating strategies.
+            \item \textit{Example}: Breaking down study challenges into manageable tasks like prioritizing subjects.
+        \end{itemize}
+        
+        \item \textbf{The Role of Algorithms}:
+        \begin{itemize}
+            \item A set of step-by-step instructions for specific tasks or problems.
+            \item \textit{Example}: Sorting names using Bubble Sort or Quick Sort, with varying efficiencies.
+        \end{itemize}
+        
+        \item \textbf{Iterative Approach}:
+        \begin{itemize}
+            \item Problem-solving and algorithm design involve testing, evaluating, and refining based on feedback.
+            \item \textit{Example}: Agile methodology in software development emphasizes regular reviews and adaptations.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Reflection - Reflection Questions}
+    \begin{itemize}
+        \item \textbf{Self-Assessment}: 
+        \begin{itemize}
+            \item How do you apply the problem-solving techniques learned this week to your challenges?
+            \item Can you recall a recent situation where you used an algorithmic approach to make a decision?
+        \end{itemize}
+        
+        \item \textbf{Application to Real-World Scenarios}:
+        \begin{itemize}
+            \item Which industry examples resonated with you the most, and how can you use similar approaches?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Reflection - Code Example}
+    \begin{block}{Bubble Sort Algorithm}
+    \begin{lstlisting}[language=Python]
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+# Example Usage
+unsorted_list = [64, 34, 25, 12, 22, 11, 90]
+sorted_list = bubble_sort(unsorted_list)
+print("Sorted List:", sorted_list)
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+
+\end{document}

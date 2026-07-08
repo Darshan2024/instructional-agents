@@ -1,0 +1,692 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 4: Requirements Modeling \& Visual Tools}
+\author{}
+\institute{}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Requirements Modeling \& Visual Tools}
+    \begin{itemize}
+        \item Requirements modeling creates abstract representations of system functionalities, constraints, and interactions.
+        \item Enables clearer communication and guides development.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What Are Visual Modeling Tools?}
+    \begin{itemize}
+        \item Use diagrams and graphics to depict system aspects.
+        \item Transform complex textual requirements into understandable visuals.
+        \item Facilitate analysis, validation, and communication.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Focus on UML and Other Visual Tools}
+    \begin{itemize}
+        \item \textbf{UML:} Standardized diagrams for structure, behavior, and interaction.
+        \item \textbf{Other Tools:} Flowcharts, Data Flow Diagrams (DFDs), Entity-Relationship Diagrams (ERDs), Wireframes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of UML \& Visual Tools in Requirements Modeling}
+    \begin{itemize}
+        \item \textbf{Clarify Requirements:} Use Case Diagrams show user interactions and functions.
+        \item \textbf{Identify Gaps \& Conflicts:} Visuals reveal missing features or inconsistencies early.
+        \item \textbf{Enhance Communication:} Non-technical stakeholders better understand system functions.
+        \item \textbf{Guide Design \& Implementation:} Clear models assist system architecture, database design, and coding.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Online Shopping System}
+    \begin{itemize}
+        \item Actors: Customers, Administrators.
+        \item Use Cases: \textbf{'Place Order'}, \textbf{'Process Payment'}, \textbf{'Manage Inventory'}.
+        \item Visual map aids understanding of core functionalities and interactions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item Visual tools bridge technical and non-technical understanding.
+        \item UML offers a standardized language for diverse system aspects.
+        \item Early modeling reduces misunderstandings and rework.
+        \item Incorporating visuals early enhances clarity and stakeholder alignment.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Requirements Modeling - Part 1}
+    \begin{itemize}
+        \item Requirements modeling is essential for clear communication between stakeholders and development teams.
+        \item Visual tools like diagrams and charts provide a shared understanding of system functions and constraints.
+        \item Reduces misinterpretations, ensuring everyone agrees on what the system should do.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Requirements Modeling - Part 2}
+    \begin{itemize}
+        \item Supports proper system design by organizing complex requirements into manageable parts.
+        \item Facilitates flexibility: models can be updated easily as requirements evolve.
+        \item Aids in planning by identifying gaps, conflicts, and estimating resources and schedule.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Requirements Modeling - Part 3}
+    \begin{itemize}
+        \item Leads to higher stakeholder satisfaction when needs are accurately captured and implemented.
+        \item Prevents costly errors by early detection of issues through modeling.
+        \item \textbf{Key takeaway:} Good requirements modeling enhances communication, design clarity, and project success.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{UML Overview}
+    \textbf{Introduction to UML (Unified Modeling Language):} \\
+    UML is a standardized graphical language used to visualize, specify, construct, and document a software system's components. It enables clear communication among developers, analysts, and stakeholders about ideas, requirements, and designs.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Purpose of UML}
+    \begin{itemize}
+        \item \textbf{Standardization:} Provides a universal notation for consistent modeling across teams and projects.
+        \item \textbf{Visual Clarity:} Simplifies complex system structures through diagrams for better understanding and communication.
+        \item \textbf{Support for Requirements \& Design:} Helps capture requirements, define architecture, and specify component interactions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key UML Diagram Types for Requirements Modeling}
+    \begin{enumerate}
+        \item \textbf{Use Case Diagrams}: Show system functionalities from the user’s perspective; illustrate actors and their interactions.
+        \item \textbf{Class Diagrams}: Depict data structures and relationships; include classes, attributes, and methods.
+        \item \textbf{Sequence Diagrams}: Model message flows over time between objects during scenarios.
+        \item \textbf{Activity Diagrams}: Illustrate workflows, decision points, and parallel processes.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item UML acts as a visual bridge between requirements and design.
+        \item Different diagram types serve specific purposes—from understanding (Use Cases) to implementation detail (Class, Sequence).
+        \item Mastery of UML enhances communication, reduces misunderstandings, and supports effective development.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary}
+    \begin{itemize}
+        \item UML is essential for creating clear, standardized visual representations of a system.
+        \item It supports better planning, communication, and implementation in software projects.
+        \item Proficiency in UML diagrams improves collaboration among team members and stakeholders.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common UML Diagrams}
+    \textbf{Overview:}  
+    UML provides a standardized way to visualize system requirements and design, focusing on four main diagram types:
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{1. Use Case Diagrams}
+    \textbf{Purpose:} Show interactions between users (actors) and the system to capture \textit{functional requirements}. \\
+    \textbf{Key Concepts:}
+    \begin{itemize}
+        \item \textbf{Actors:} Users or external systems (e.g., Customer, Admin).
+        \item \textbf{Use Cases:} Functions/services (e.g., "Place Order", "Login").
+        \item \textbf{Relationships:} Associations, include, extend.
+    \end{itemize}
+    \textbf{Example:} Online shopping system:
+    \begin{itemize}
+        \item Actors: Customer, Payment Processor.
+        \item Use Cases: Browse Products, Add to Cart, Checkout, Make Payment.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{2. Class Diagrams}
+    \textbf{Purpose:} Describe the static structure of the system, including classes, attributes, methods, and relationships.
+    \textbf{Key Concepts:}
+    \begin{itemize}
+        \item \textbf{Classes:} Blueprints for objects (e.g., \texttt{Customer}, \texttt{Order}).
+        \item \textbf{Attributes:} Data elements like \texttt{name}, \texttt{price}.
+        \item \textbf{Methods:} Functions such as \texttt{register()}, \texttt{calculateTotal()}.
+        \item \textbf{Relationships:} Associations, inheritance, aggregation.
+    \end{itemize}
+    \textbf{Example:} 
+    \begin{itemize}
+        \item \texttt{Customer} class with attributes \texttt{name}, \texttt{email}, and method \texttt{register()}.
+        \item \texttt{Order} linked to \texttt{Customer} with a list of \texttt{Products}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{3. Sequence Diagrams}
+    \textbf{Purpose:} Illustrate object interactions over time, modeling dynamic behavior for specific scenarios.
+    \textbf{Key Concepts:}
+    \begin{itemize}
+        \item Show sequence of messages exchanged.
+        \item Objects depicted as vertical lifelines; messages as arrows.
+    \end{itemize}
+    \textbf{Example:} Login process:
+    \begin{itemize}
+        \item Client sends \texttt{login()} request to Authentication Service.
+        \item Service verifies credentials and responds with success or failure.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{4. Activity Diagrams}
+    \textbf{Purpose:} Model workflows, showing activity flow within the system.
+    \textbf{Key Concepts:}
+    \begin{itemize}
+        \item \textbf{Activities:} Tasks/actions (e.g., "Validate Payment").
+        \item \textbf{Flow:} Arrows indicating sequence.
+        \item \textbf{Decisions:} Branch points (e.g., "Payment Successful?").
+        \item \textbf{Start/End:} Process initiation and termination.
+    \end{itemize}
+    \textbf{Example:} Order fulfillment
+    \begin{itemize}
+        \item Start \(\rightarrow\) Receive Order \(\rightarrow\) Process Payment \(\rightarrow\) (Decision) Payment Approved? \(\rightarrow\) Yes: Ship Order \(\rightarrow\) End; No: Notify Customer \(\rightarrow\) End.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary of Key Points}
+    \begin{itemize}
+        \item UML diagrams provide different perspectives: static structure (\textit{Class}), interactions (\textit{Sequence}), workflows (\textit{Activity}), and requirements (\textit{Use Case}).
+        \item These tools assist in clarifying and communicating system design.
+        \item Mastery of UML diagrams supports better system analysis and collaboration.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Other Visual Modeling Tools}
+    \begin{itemize}
+        \item Explore alternative or complementary modeling tools beyond UML
+        \item Include Entity-Relationship Diagrams, Data Flow Diagrams, and Architecture diagrams
+        \item Help stakeholders understand data, system flow, and architecture clearly
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Entity-Relationship Diagrams (ERDs)}
+    \begin{itemize}
+        \item \textbf{Purpose}: Model data and relationships, aiding database design
+        \item \textbf{Key Concepts}:
+        \begin{itemize}
+            \item \textbf{Entities}: Objects like Customer, Product
+            \item \textbf{Attributes}: Data about entities (e.g., Customer Name)
+            \item \textbf{Relationships}: Connections like Customer \textit{places} Order
+        \end{itemize}
+        \item \textbf{Example}: 
+        \begin{itemize}
+            \item Entities: \textit{Customer}, \textit{Order}, \textit{Book}
+            \item Relationships: \textit{places} (Customer—Order), \textit{contains} (Order—Book)
+        \end{itemize}
+        \item \textbf{Diagram notes}: Rectangles (Entities), ovals (Attributes), diamonds (Relationships)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Data Flow Diagrams (DFDs)}
+    \begin{itemize}
+        \item \textbf{Purpose}: Visualize data movement within a system
+        \item \textbf{Key Concepts}:
+        \begin{itemize}
+            \item \textbf{Processes}: Functions like “Process Payment”
+            \item \textbf{Data Stores}: Storage locations like “Customer Database”
+            \item \textbf{Data Flows}: Arrows indicating data transfer
+            \item \textbf{External Entities}: Outside systems/users (e.g., Customer, Bank)
+        \end{itemize}
+        \item \textbf{Levels of DFD}:
+        \begin{itemize}
+            \item \textbf{Level 0}: Overall system overview
+            \item \textbf{Level 1+}: Breakdown of detailed processes
+        \end{itemize}
+        \item \textbf{Example}: 
+        \begin{itemize}
+            \item Customer $\rightarrow$ Order Data $\rightarrow$ System $\rightarrow$ Confirmation $\rightarrow$ Customer
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Architecture Diagrams}
+    \begin{itemize}
+        \item \textbf{Purpose}: Show high-level system structure and component interactions
+        \item \textbf{Types}:
+        \begin{itemize}
+            \item \textbf{Component Diagrams}: System parts and interfaces (e.g., Web Server, Database)
+            \item \textbf{Deployment Diagrams}: Physical topology (servers, hardware)
+            \item \textbf{System Architecture Diagrams}: Combine components, data flows, deployment
+        \end{itemize}
+        \item \textbf{Example}: 
+        \begin{itemize}
+            \item Web Front-End $\rightarrow$ Application Server $\rightarrow$ Database Server
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary of Key Points}
+    \begin{itemize}
+        \item These tools complement UML by providing different system perspectives
+        \item Clear visualizations improve communication and understanding
+        \item Choose the appropriate diagram based on the modeling focus
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modeling Requirements Effectively - Part 1}
+    \begin{itemize}
+        \item Effective requirements modeling ensures clarity, completeness, and stakeholder understanding.
+        \item Visual tools like diagrams and models help communicate complex requirements clearly.
+        \item Use visual models to facilitate validation and guide system design.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Best Practices for Modeling Requirements}
+    \begin{enumerate}
+        \item \textbf{Elicit Clear and Concise Requirements}
+        \begin{itemize}
+            \item Conduct structured interviews, workshops, and brainstorming.
+            \item Use visual models, e.g., use case diagrams (e.g., "Customer places order").
+        \end{itemize}
+        \item \textbf{Choose Appropriate Visual Tools}
+        \begin{itemize}
+            \item Use Use Case Diagrams for interactions.
+            \item Use Data Flow Diagrams (DFD) for data movement.
+            \item Use Entity-Relationship Diagrams for data structure.
+        \end{itemize}
+        \item \textbf{Analyze Requirements for Completeness and Consistency}
+        \begin{itemize}
+            \item Ensure all stakeholder needs are represented.
+            \item Check for logical consistency, e.g., validate input processes.
+        \end{itemize}
+        \item \textbf{Document Requirements Clearly and Precisely}
+        \begin{itemize}
+            \item Use standardized notation and terminology.
+            \item Add textual notes for clarity where needed.
+        \end{itemize}
+        \item \textbf{Involve Stakeholders Throughout}
+        \begin{itemize}
+            \item Use models in reviews and discussions.
+            \item Gather feedback via walkthroughs to refine requirements.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tips for Effective Visual Modeling}
+    \begin{itemize}
+        \item Keep diagrams simple for clarity.
+        \item Iterate and refine as understanding improves.
+        \item Maintain consistent conventions and notation (e.g., UML standards).
+        \item Use standard modeling tools for universal understanding.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary}
+    \begin{itemize}
+        \item Visual modeling enhances clarity and stakeholder communication.
+        \item Key practices include eliciting clear requirements, selecting suitable tools, analyzing for completeness, documenting precisely, and involving stakeholders actively.
+        \item Well-modeled requirements form a solid foundation for successful system development.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Integrating Visual Tools into the SDLC}
+    \textbf{Overview:} \\
+    Modeling diagrams support the entire Software Development Life Cycle (SDLC) by clarifying requirements, aiding design, and enhancing communication among stakeholders. They help visualize system aspects, reduce errors, and improve project success.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Tools in Requirements Gathering}
+    \textbf{Purpose:} Capture and understand stakeholder needs effectively. \\
+    \textbf{Tools Used:} Use case diagrams, stakeholder diagrams, process flows. \\
+    \textbf{Support:} Illustrate user interactions, visualize functionalities, identify missing requirements early. \\
+    \textbf{Example:} An e-commerce use case diagram showing login, search, and checkout functions clarifies system scope.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Tools in Requirements Analysis}
+    \textbf{Purpose:} Analyze and refine requirements for completeness and consistency. \\
+    \textbf{Tools Used:} Data flow diagrams (DFDs), activity diagrams, textual models. \\
+    \textbf{Support:} Depict data movement, system processes, and decision points to confirm understanding. \\
+    \textbf{Example:} A DFD for an online booking system highlighting data inputs, processing steps, and outputs.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Tools in System Design}
+    \textbf{Purpose:} Define architecture, components, and detailed system structure. \\
+    \textbf{Tools Used:} Class diagrams, sequence diagrams, component diagrams. \\
+    \textbf{Support:} Provide blueprints showing class interactions or component communication over time. \\
+    \textbf{Example:} A class diagram illustrating User, Product, and Order classes for database design.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Visual Tools in Implementation & Testing}
+    \textbf{Purpose:} Guide coding and validate design adherence. \\
+    \textbf{Tools Used:} State diagrams, activity diagrams. \\
+    \textbf{Support:} Help understand system states and workflows, ensuring proper implementation and testing. \\
+    \textbf{Example:} An activity diagram for order fulfillment to assist in writing tests.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points for Using Visual Tools in SDLC}
+    \begin{itemize}
+        \item Visual models improve communication between technical teams and stakeholders.
+        \item Early diagramming reduces misunderstandings and rework.
+        \item Iterative diagram refinement supports agile development.
+        \item Diagrams evolve from high-level overviews to detailed blueprints, aligning with SDLC stages.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Case Study: Requirements Modeling}
+    \begin{itemize}
+        \item Highlights the use of UML diagrams to model system requirements.
+        \item Demonstrates how visual tools assist in understanding and communicating system functionalities.
+        \item Uses an Online Bookstore System as an example scenario.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Requirements Modeling}
+    \begin{itemize}
+        \item Requirements modeling helps stakeholders visualize desired system functionalities.
+        \item UML (Unified Modeling Language) provides a standardized way to create these visual representations.
+        \item Benefits include clearer communication, early error detection, and better documentation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Scenario Overview}
+    \begin{itemize}
+        \item Developing an Online Bookstore System where users can:
+        \begin{itemize}
+            \item Browse books
+            \item Add books to a shopping cart
+            \item Place orders
+        \end{itemize}
+        \item Visual requirement understanding supports effective planning and design.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Step 1: Identify Actors and Use Cases}
+    \begin{itemize}
+        \item Actors:
+        \begin{itemize}
+            \item Customer
+            \item Administrator
+        \end{itemize}
+        \item Use Cases:
+        \begin{itemize}
+            \item Browse Books
+            \item Add to Cart
+            \item Place Order
+            \item Manage Inventory
+            \item Process Payments
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Step 2: Use Case Diagram Example}
+    \begin{itemize}
+        \item Interaction overview:
+        \begin{itemize}
+            \item Customer interacts to browse, add items, and purchase
+            \item Administrator manages inventory
+        \end{itemize}
+        \item Diagram illustrates these interactions:
+\end{itemize}
+\begin{lstlisting}
+Customer ——> [Browse Books]
+          ——> [Add to Cart]
+          ——> [Place Order]
+Administrator ——> [Manage Inventory]
+Customer ——> [Make Payment]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Step 3: Class Diagram Development}
+    \begin{itemize}
+        \item Key classes identified:
+        \begin{itemize}
+            \item Book: ISBN, Title, Author, Price
+            \item Cart: List of Books, TotalPrice
+            \item Order: OrderID, Date, Status
+            \item User: UserID, Name, ContactInfo
+        \end{itemize}
+        \item Shows relationships and core attributes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Step 4: Sequence Diagram Example}
+    \begin{itemize}
+        \item Illustrates the flow for placing an order:
+        \begin{enumerate}
+            \item Customer selects books, system adds to Cart
+            \item Customer confirms purchase, system creates Order
+            \item Payment is processed, Order status updates
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Benefits of UML in Requirements Modeling}
+    \begin{itemize}
+        \item Provides visual clarity and concrete understanding.
+        \item Facilitates stakeholder communication.
+        \item Detects inconsistencies early.
+        \item Creates documentation for future reference.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item UML diagrams help visualize and clarify system requirements.
+        \item Different UML diagrams serve different purposes:
+        \begin{itemize}
+            \item Use case diagrams for scope
+            \item Class diagrams for data structure
+            \item Sequence diagrams for interactions
+        \end{itemize}
+        \item Standardized modeling improves coordination and reduces misunderstandings.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Challenges and Tips - Overview}
+\begin{itemize}
+    \item Discusses common challenges in requirements modeling and visual tools.
+    \item Offers practical tips for effective diagramming, communication, and model maintenance.
+    \item Emphasizes clarity, consistency, stakeholder engagement, and traceability.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Common Challenges in Requirements Modeling}
+\begin{enumerate}
+    \item \textbf{Ambiguity and Misinterpretation}
+    \begin{itemize}
+        \item Requirements may be unclear, leading to different stakeholder interpretations.
+        \item \textit{Example:} Using vague terms like \textit{"fast"} versus specific metrics such as \textit{"response time under 2 seconds."}
+    \end{itemize}
+    \item \textbf{Complexity and Overload}
+    \begin{itemize}
+        \item Large models can become complex, making diagrams hard to read.
+        \item \textit{Tip:} Break down into manageable sub-models focusing on core requirements.
+    \end{itemize}
+    \item \textbf{Inconsistency and Lack of Traceability}
+    \begin{itemize}
+        \item Models can become inconsistent as they evolve, hindering change tracking.
+        \item \textit{Solution:} Use version control and document links between requirements and diagrams.
+    \end{itemize}
+    \item \textbf{Stakeholder Communication Gaps}
+    \begin{itemize}
+        \item Different technical backgrounds cause communication barriers.
+        \item \textit{Example:} Using complex UML diagrams without explanations.
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Tips for Effective Diagramming and Communication}
+\begin{itemize}
+    \item \textbf{Keep Diagrams Clear and Focused}
+    \begin{itemize}
+        \item Use standardized symbols consistently.
+        \item Limit scope; create multiple diagrams if needed.
+        \item Annotate complex parts for clarity.
+    \end{itemize}
+    \item \textbf{Use Simple and Consistent Notation}
+    \begin{itemize}
+        \item Follow modeling standards (e.g., UML).
+        \item Example: Use UML use case diagrams to clarify high-level interactions.
+    \end{itemize}
+    \item \textbf{Validate and Review Models Regularly}
+    \begin{itemize}
+        \item Involve stakeholders early and often.
+        \item Conduct walkthroughs for feedback and accuracy.
+    \end{itemize}
+    \item \textbf{Maintain Traceability and Version Control}
+    \begin{itemize}
+        \item Link requirements to design elements.
+        \item Track changes to ensure consistency.
+    \end{itemize}
+    \item \textbf{Communicate Effectively}
+    \begin{itemize}
+        \item Combine visual models with natural language explanations.
+        \item Encourage questions to clarify understanding.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Practical Example: Modeling an Online Shopping System}
+\begin{itemize}
+    \item Create a high-level UML use case diagram with "Browse Products," "Add to Cart," "Checkout," and "Make Payment."
+    \item Clearly show actors such as "Customer" and "Payment Gateway."
+    \item Keep the diagram uncluttered: separate complex parts like "Payment Processing."
+    \item Review with stakeholders, incorporate feedback, and refine for clarity.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Key Takeaways}
+\begin{itemize}
+    \item Address challenges early for clear, consistent, and useful models.
+    \item Follow best practices in diagramming and communication.
+    \item Regular review and maintenance help reflect evolving requirements and maintain traceability.
+    \item Clear and well-maintained requirement models are essential for project success.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 1}
+    \begin{itemize}
+        \item Requirements modeling helps stakeholders understand and specify system needs.
+        \item Effective models reduce ambiguity, validate requirements, and guide the project.
+        \item Visual tools improve communication and serve as blueprints.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 2}
+    \begin{block}{Key Diagram Types}
+        \begin{itemize}
+            \item \textbf{Use Case Diagrams}: Show user interactions with system functions.
+            \item \textbf{Data Flow Diagrams (DFD)}: Illustrate data movement and transformation.
+            \item \textbf{Class Diagrams}: Depict data structures and relationships.
+            \item \textbf{State Diagrams}: Describe object lifecycle and transitions.
+            \item \textbf{Sequence Diagrams}: Capture interactions over time.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 3}
+    \begin{block}{Best Practices}
+        \begin{itemize}
+            \item Use clarity and simplicity in diagrams.
+            \item Maintain consistent notation and symbols.
+            \item Tailor diagrams to stakeholder needs.
+            \item Iterate and refine diagrams regularly.
+            \item Use layered modeling to manage complexity.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary & Key Takeaways - Part 4}
+    \begin{itemize}
+        \item Good visual requirements enhance communication and reduce errors.
+        \item Different diagrams serve different purposes; choose wisely.
+        \item Clarity, consistency, and stakeholder engagement are essential.
+        \item Visual models are iterative tools that evolve with understanding.
+        \item Practice creating visual models to improve skills.
+    \end{itemize}
+\end{frame}
+
+
+\end{document}

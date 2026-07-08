@@ -1,0 +1,717 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % Change theme here if desired
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Chapter 3: Requirements Engineering}
+\author{}
+\institute{}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Requirements Engineering}
+    \textbf{Overview:} Requirements Engineering (RE) is a vital phase in the software development lifecycle focused on defining what a system should do. Its goal is to elicit, analyze, and document clear requirements to ensure project success.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is Requirements Engineering?}
+    \begin{itemize}
+        \item Identifies, understands, and specifies system functionalities.
+        \item Involves gathering detailed info from stakeholders.
+        \item Documents needs for system design and implementation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Importance of Requirements Engineering}
+    \begin{itemize}
+        \item \textbf{Foundation for Success}: Serves as a blueprint, reducing errors.
+        \item \textbf{Improves Communication}: Clarifies goals among developers and stakeholders.
+        \item \textbf{Reduces Costs and Time}: Prevents scope creep and rework.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Activities in Requirements Engineering}
+    \begin{enumerate}
+        \item \textbf{Elicitation}: Gathering requirements via interviews, surveys, workshops.
+        \item \textbf{Analysis}: Checking for conflicts, completeness, feasibility; prioritization.
+        \item \textbf{Documentation}: Recording requirements in use cases, user stories, specs.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example: Mobile Banking App}
+    \begin{itemize}
+        \item \textbf{Elicitation}: Stakeholders specify features like balance check, transfers, history.
+        \item \textbf{Analysis}: Confirming needs are feasible and necessary.
+        \item \textbf{Documentation}: Detailing features for developers.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Remember}
+    \begin{itemize}
+        \item Requirements should be complete, unambiguous, consistent, testable.
+        \item Effective RE improves software quality and user satisfaction.
+        \item RE is an ongoing process: needs revisit and refinement over time.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary}
+    \begin{itemize}
+        \item Requirements Engineering is essential for project success.
+        \item Systematic elicitation, analysis, and documentation clarify project goals.
+        \item Proper RE ensures smooth development and stakeholder satisfaction.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Importance of Requirements Engineering}
+  \begin{itemize}
+    \item Requirements engineering provides the blueprint for a successful project, reducing misunderstandings and rework.
+    \item Well-defined requirements early in development lower costs by catching errors before deployment.
+    \item Promotes clear communication among stakeholders through techniques like interviews and workshops.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Industry-Standard Requirements Gathering Techniques}
+  \begin{itemize}
+    \item \textbf{Interviews}: One-on-one discussions to uncover detailed needs.
+    \item \textbf{Questionnaires}: Surveys to gather broad input efficiently.
+    \item \textbf{Workshops}: Facilitated group sessions to collaboratively define requirements.
+    \item \textbf{Observation}: Watching users in their environment to understand workflows.
+    \item \textbf{User Stories}: Short descriptions from the user's perspective, e.g., "As a customer, I want to save my payment info..."
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Key Takeaways}
+  \begin{itemize}
+    \item Well-established requirements reduce project risks and costs.
+    \item Clear requirements improve communication and stakeholder engagement.
+    \item Industry-standard techniques ensure comprehensive and accurate requirements gathering.
+  \end{itemize}
+  \vspace{0.5cm}
+  \textit{Visual analogy:} requirements engineering is like laying a solid foundation—if it's well done, the entire project is more stable and aligned with expectations.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Requirements Elicitation Techniques}
+  \textbf{Effective requirements gathering} involves engaging stakeholders to uncover needs, expectations, and constraints. Common techniques include interviews, questionnaires, workshops, observations, and user stories. These approaches help ensure a comprehensive understanding of system requirements, leading to better project outcomes.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Interviews}
+  \begin{itemize}
+    \item \textbf{Description:} Conduct one-on-one or group interviews to gather detailed insights.
+    \item \textbf{How it works:} Use prepared questions, but remain flexible.
+    \item \textbf{Example:} Interviewing a hospital administrator on patient registration workflows.
+    \item \textbf{Key points:}
+      \begin{itemize}
+        \item Allows deep understanding.
+        \item Useful for complex or sensitive needs.
+        \item Record responses for analysis.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Questionnaires \& Surveys}
+  \begin{itemize}
+    \item \textbf{Description:} Distribute structured forms to large stakeholder groups.
+    \item \textbf{How it works:} Designed for quantitative and qualitative data collection.
+    \item \textbf{Example:} Sending a survey to teachers about e-learning features.
+    \item \textbf{Key points:}
+      \begin{itemize}
+        \item Efficient for large groups.
+        \item Requires clear, concise questions.
+        \item Data can be statistically analyzed.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Workshops}
+  \begin{itemize}
+    \item \textbf{Description:} Facilitated sessions with multiple stakeholders collaborating.
+    \item \textbf{How it works:} Brainstorming, discussions, prioritization exercises.
+    \item \textbf{Example:} Co-developing feature lists for a mobile app.
+    \item \textbf{Key points:}
+      \begin{itemize}
+        \item Promotes shared understanding.
+        \item Encourages stakeholder engagement.
+        \item Helps resolve conflicting needs.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Observations}
+  \begin{itemize}
+    \item \textbf{Description:} Watch users perform tasks in their actual environment.
+    \item \textbf{How it works:} Note workflows, pain points, workarounds.
+    \item \textbf{Example:} Observing warehouse staff to understand logistics.
+    \item \textbf{Key points:}
+      \begin{itemize}
+        \item Reveals tacit or unspoken needs.
+        \item Useful when users cannot articulate requirements.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{User Stories}
+  \begin{itemize}
+    \item \textbf{Description:} Short statements capturing user goals and benefits.
+    \item \textbf{Format:} "\textit{As a [user], I want [goal], so that [benefit].}"
+    \item \textbf{Example:} \textit{As a customer, I want to save my payment details for quicker checkout.}
+    \item \textbf{Key points:}
+      \begin{itemize}
+        \item Promotes focus on user needs.
+        \item Easy to prioritize and refine.
+        \item Facilitates collaboration.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Summary of Techniques}
+  \begin{block}{Comparison Table}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      Technique & Purpose & Strengths & Example \\
+      \hline
+      Interviews & Deep dive & Detailed, flexible & Stakeholder interviews \\
+      Questionnaires & Broad input & Efficient & Customer surveys \\
+      Workshops & Collaborative & Shared understanding & Feature prioritization \\
+      Observations & Understand work & Reveals hidden needs & Observing users \\
+      User Stories & User-focused & Manageable, prioritized & Password reset requests \\
+      \hline
+    \end{tabular}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Analyzing and Modeling Requirements}
+    \begin{itemize}
+        \item Focuses on understanding, prioritizing, and validating stakeholder needs.
+        \item Uses visual tools like UML diagrams for clear communication.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Requirement Analysis}
+    \begin{itemize}
+        \item \textbf{Definition}: Examining stakeholder needs to ensure clarity, completeness, consistency, feasibility, and unambiguity.
+        \item \textbf{Purpose}: To convert raw stakeholder inputs into well-understood requirements.
+        \item \textbf{Key Activities}:
+        \begin{itemize}
+            \item \textbf{Refinement}: Clarify vague statements, ask "what does this mean?"
+            \item \textbf{Consistency Checking}: Find contradictions or overlaps.
+            \item \textbf{Feasibility Analysis}: Assess if requirements are technically, operationally, and economically feasible.
+            \item \textbf{Traceability}: Link each requirement back to stakeholder needs.
+        \end{itemize}
+        \item \textbf{Example}:  
+        \newline
+        From: "The system should load quickly."  
+        To: \textit{"Load dashboard within 3 seconds under typical conditions."}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Requirement Prioritization}
+    \begin{itemize}
+        \item \textbf{Definition}: Assign importance to requirements based on stakeholder needs and project constraints.
+        \item \textbf{Methods}:
+        \begin{itemize}
+            \item \textbf{MoSCoW}: Must have, Should have, Could have, Won’t have.
+            \item \textbf{Kano Model}: Basic needs, performance, exciters.
+            \item \textbf{Ranking}: Systematic importance comparison.
+        \end{itemize}
+        \item \textbf{Example}:  
+        \newline
+        \textbf{Critical}: User login security (\textbf{Must have})  
+        \textbf{Less critical}: Custom themes (\textbf{Could have})
+        \item \textbf{Key point}: Focuses effort on high-value features within limited resources.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Requirement Validation}
+    \begin{itemize}
+        \item \textbf{Definition}: Confirm requirements are correct, complete, feasible, and aligned with stakeholder intent.
+        \item \textbf{Methods}:
+        \begin{itemize}
+            \item \textbf{Reviews and Inspections}: Stakeholders verify documented requirements.
+            \item \textbf{Prototyping}: Early demonstrations for feedback.
+            \item \textbf{Test Cases}: Develop scenarios to verify correctness.
+        \end{itemize}
+        \item \textbf{Example}:  
+        \newline
+        Requirement: "Supports at least 100 concurrent users."  
+        \newline
+        Validate: Through load testing.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Modeling Requirements Using UML Diagrams}
+    \begin{itemize}
+        \item Visual tools illustrate and clarify requirements:
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Use Case Diagrams}
+    \begin{itemize}
+        \item Show system functions from the user’s perspective.
+        \item \textbf{Components}: Actors (users or other systems) and Use Cases (functions).
+        \item \textbf{Example}: ATM system with actors \textit{Customer} and \textit{Bank Server}; use cases include \textit{Withdraw Cash} and \textit{Check Balance}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Activity Diagrams}
+    \begin{itemize}
+        \item Represent workflows or processes, illustrating sequences, decisions, and concurrency.
+        \item \textbf{Example}: Login process with steps—\textit{Enter Credentials} → \textit{Verify} → \textit{Grant Access} or \textit{Show Error}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Class Diagrams}
+    \begin{itemize}
+        \item Model data structure: classes, attributes, methods, relationships.
+        \item Clarify system data entities and their interactions.
+        \item \textbf{Example}: \textit{Customer} class with \textit{Name}, \textit{AccountNumber} attributes related to \textit{Account} class.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item Requirement analysis transforms stakeholder input into formal requirements.
+        \item Prioritization directs focus to most valuable features.
+        \item Validation ensures requirements meet stakeholder intentions.
+        \item UML diagrams effectively visualize and communicate requirements.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Documenting Requirements}
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Effective documentation clarifies project goals, reducing misunderstandings.
+        \item Combines methods like specification documents, user stories, and prototypes for clarity and completeness.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Requirement Specification Documents}
+    \begin{itemize}
+        \item \textbf{Definition:} Formal, comprehensive document detailing system requirements.
+        \item \textbf{Purpose:} Acts as a contractual agreement between stakeholders and developers.
+        \item \textbf{Components:}
+        \begin{itemize}
+            \item Introduction and scope
+            \item Stakeholder needs
+            \item Functional and non-functional requirements
+            \item Constraints, assumptions, acceptance criteria
+        \end{itemize}
+    \end{itemize}
+    \vspace{1em}
+    \textbf{Example:} \\
+    "The system shall allow users to transfer funds between accounts within 10 seconds."
+    
+    \vspace{0.5em}
+    \textbf{Key Point:} Use clear, precise language; follow standards like IEEE 830.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{User Stories}
+    \begin{itemize}
+        \item \textbf{Definition:} Short, user-centric descriptions of features; format: \\
+        \textbf{As a [user], I want [feature], so that [benefit].}
+        \item \textbf{Purpose:} Facilitate stakeholder communication, especially in Agile.
+        \item \textbf{Advantages:} Lightweight, flexible, collaborative.
+    \end{itemize}
+    \vspace{1em}
+    \textbf{Example:} \\
+    "As a customer, I want to view my account balance online, so I can manage my finances conveniently."
+    
+    \vspace{0.5em}
+    \textbf{Key Point:} Prioritize clarity and focus on delivering value.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Prototypes}
+    \begin{itemize}
+        \item \textbf{Definition:} Visual, often interactive models of the system or UI.
+        \item \textbf{Purpose:} Clarify requirements via visual feedback; uncover misunderstandings early.
+        \item \textbf{Types:}
+        \begin{itemize}
+            \item Low-fidelity: sketches, wireframes.
+            \item High-fidelity: detailed, interactive simulations.
+        \end{itemize}
+    \end{itemize}
+    \vspace{1em}
+    \textbf{Example:} Creating a wireframe for an online checkout page for stakeholder review.
+    
+    \textbf{Key Point:} Use prototypes to validate, refine, and ensure completeness of requirements.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Ensuring Clarity and Completeness}
+    \begin{itemize}
+        \item Use standardized formats and precise language.
+        \item Involve stakeholders throughout for validation.
+        \item Combine methods (e.g., user stories + prototypes).
+        \item Maintain traceability linking requirements to design and testing.
+    \end{itemize}
+    \vspace{1em}
+    \textbf{Summary:} Clear documentation minimizes misunderstandings, manages scope, and supports validation.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Techniques for Clear and Complete Requirements - Part 1}
+    \begin{itemize}
+        \item Ensuring requirements are clear and comprehensive is essential for successful development.
+        \item Key techniques: IEEE standards, SMART criteria, and traceability matrices.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{IEEE Standards}
+    \begin{itemize}
+        \item IEEE (Institute of Electrical and Electronics Engineers) provides guidelines like IEEE 830 for Requirements Specification.
+        \item Standards emphasize clarity, consistency, and traceability in documentation.
+        \item \textbf{Example:} Vague requirement: \textit{"The system shall load data quickly."}
+        \item Improved, measurable requirement: \textit{"The system shall load user data within 2 seconds under typical conditions."}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{SMART Criteria}
+    \begin{itemize}
+        \item Ensures requirements are \textbf{Specific, Measurable, Achievable, Relevant,} and \textbf{Time-bound}.
+        \item \textbf{Breakdown:} \\
+        \begin{itemize}
+            \item \textbf{Specific:} Clearly define expectations.
+            \item \textbf{Measurable:} Quantify success.
+            \item \textbf{Achievable:} Feasible within resources.
+            \item \textbf{Relevant:} Aligns with project goals.
+            \item \textbf{Time-bound:} Has a deadline.
+        \end{itemize}
+        \item \textbf{Example:} \\
+        Instead of "\textit{Improve system security}," use: \\
+        "\textit{Implement user authentication with two-factor authentication (2FA) for all users within 3 months.}"
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Traceability Matrices}
+    \begin{itemize}
+        \item Map requirements to design elements, tests, and implementation tasks.
+        \item Ensures all requirements are addressed and simplifies impact analysis.
+        \item \textbf{Example:}
+        \begin{tabular}{|c|l|l|l|}
+            \hline
+            Requirement ID & Description & Design Element & Test Case \\
+            \hline
+            R1 & Validate login data & Login Module & TC1 \\
+            R2 & Store passwords securely & Security Module & TC2 \\
+            \hline
+        \end{tabular}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary}
+    \begin{itemize}
+        \item Use IEEE standards to guide formal documentation practices.
+        \item Apply SMART criteria to craft precise, actionable requirements.
+        \item Develop traceability matrices early to verify requirement coverage and facilitate validation.
+        \item Combining these techniques promotes requirements that are clear, measurable, and aligned with project goals.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Documenting Requirements with Industry Tools}
+    Effective documentation of requirements is essential for successful system development. Using specialized industry tools helps ensure clarity, traceability, and collaboration.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Tools for Documenting Requirements}
+    \begin{itemize}
+        \item \textbf{UML Modeling Software}
+        \begin{itemize}
+            \item Visual language to specify, visualize, and document system components.
+            \item Includes diagrams such as:
+            \begin{itemize}
+                \item \textbf{Use Case Diagrams}: Show actors and system functions.
+                \item \textbf{Class Diagrams}: Define data structures and relationships.
+                \item \textbf{Sequence Diagrams}: Illustrate interactions over time.
+            \end{itemize}
+            \item \textbf{Benefits}: Enhances understanding and validation among developers and stakeholders.
+        \end{itemize}
+        \item \textbf{Requirements Management Software}
+        \begin{itemize}
+            \item Examples: IBM Rational DOORS, Jira.
+            \item Features include:
+            \begin{itemize}
+                \item Central repository for requirements.
+                \item Traceability links and version control.
+                \item Stakeholder collaboration.
+            \end{itemize}
+            \item \textbf{Benefits}: Keeps requirements organized, current, and accessible.
+        \end{itemize}
+        \item \textbf{Version Control Systems}
+        \begin{itemize}
+            \item Examples: Git, SVN.
+            \item Supports collaborative editing and change tracking.
+            \item Benefits:
+            \begin{itemize}
+                \item Maintains history of changes.
+                \item Enables rollback and conflict management.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Summary and Best Practices}
+    \begin{itemize}
+        \item Combining UML, requirements management, and version control tools improves documentation accuracy.
+        \item These tools facilitate clear communication, change management, and stakeholder involvement.
+        \item Proper utilization reduces misunderstandings and supports smooth project progress.
+    \end{itemize}
+    \vspace{0.5cm}
+    \textbf{Key Points:}
+    \begin{itemize}
+        \item Use UML diagrams for visual clarity.
+        \item Use requirements tools for organization and traceability.
+        \item Leverage version control for collaborative updates.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Challenges and Best Practices in Requirements Engineering}
+    \textbf{Overview:} Requirements engineering is vital for aligning stakeholder needs with project execution. Common challenges include scope creep, ambiguous requirements, and stakeholder communication gaps. Addressing these issues through best practices improves project success.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenge: Scope Creep}
+    \begin{itemize}
+        \item \textbf{Definition}: Uncontrolled expansion of project scope without adjusting resources.
+        \item \textbf{Example}: Stakeholders keep adding features beyond initial specs.
+        \item \textbf{Impact}: Delays, increased costs, reduced control.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Challenge: Ambiguous Requirements}
+    \begin{itemize}
+        \item \textbf{Definition}: Requirements that lack clarity or specific detail.
+        \item \textbf{Example}: "The system should be user-friendly" — what does that mean exactly?
+        \item \textbf{Impact}: Misunderstandings, rework, features not matching user needs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \begin{itemize}
+        \frametitle{Challenge: Stakeholder Communication Gaps}
+        \item \textbf{Definition}: Ineffective channels between stakeholders and developers.
+        \item \textbf{Example}: Requirements misinterpreted due to lack of clarification.
+        \item \textbf{Impact}: Requirements misaligned, costly corrections later.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \textbf{Best Practices to Address Challenges}
+\begin{itemize}
+    \item \textbf{1. Document Clearly}: Use UML, user stories, dedicated tools (e.g., Jira).
+    \item \textbf{2. Engage Regularly}: Conduct frequent meetings and reviews.
+    \item \textbf{3. Use Elicitation Techniques}: Interviews, prototyping, surveys to gather requirements.
+    \item \textbf{4. Prioritize Requirements}: Identify critical features using MoSCoW.
+    \item \textbf{5. Manage Changes}: Formal change control process to prevent scope creep.
+    \item \textbf{6. Validate Requirements}: Use unambiguous language; verify with stakeholders.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \textbf{Additional Tips}
+    \begin{itemize}
+        \item Regularly revisit and revise requirements as needed.
+        \item Use version control to track updates.
+        \item Foster open communication to clarify concerns early.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \textbf{Summary}
+    \begin{itemize}
+        \item Proactive documentation and stakeholder engagement are key.
+        \item Effective change control reduces scope creep.
+        \item Clear requirements enhance overall project outcomes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \textbf{Visual Aid Suggestion}:
+    \begin{itemize}
+        \item A flowchart illustrating the cycle of requirements elicitation, documentation, validation, and change management.
+        \item Emphasizes where challenges occur and how best practices intervene.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Case Study: Requirements Engineering in Practice}
+  This real-world example illustrates how an organization develops a CRM system by applying requirements engineering techniques from elicitation to documentation, emphasizing industry-standard tools and practices.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Elicitation Phase}
+  \textbf{Objective:} Gather comprehensive requirements from stakeholders.
+  \begin{itemize}
+    \item \textbf{Stakeholders involved:} Sales team, Customer service reps, IT department, end-users.
+    \item \textbf{Techniques Used:}
+    \begin{itemize}
+      \item \textit{Interviews:} Conduct structured sessions to understand needs.
+      \item \textit{Workshops:} Facilitate collaborative requirement building.
+      \item \textit{Questionnaires:} Distribute surveys to capture broad input.
+      \item \textit{Observation:} Shadow users to uncover undocumented needs.
+    \end{itemize}
+    \item \textbf{Tools:} Microsoft Teams, draw.io, Google Forms.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Analysis and Negotiation}
+  \textbf{Objective:} Clarify, categorize, and prioritize requirements.
+  \begin{itemize}
+    \item Resolve conflicts and ambiguities.
+    \item Categorize into:
+    \begin{itemize}
+      \item \textbf{Functional:} e.g., "Allow users to add contacts."
+      \item \textbf{Non-functional:} e.g., "Response time under 2 seconds."
+    \end{itemize}
+    \item Prioritize using techniques like MoSCoW:
+    \begin{itemize}
+      \item \textbf{Must have}
+      \item \textbf{Should have}
+      \item \textbf{Could have}
+      \item \textbf{Won't have}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Documentation}
+  \textbf{Objective:} Create clear and precise requirement specifications.
+  \begin{itemize}
+    \item \textbf{Deliverables:}
+    \begin{itemize}
+      \item \textbf{Requirements Specification Document (RSD):} Detailed functional/non-functional requirements.
+      \item \textbf{Use Case Diagrams:} Visualize interactions (e.g., UML tools like Enterprise Architect).
+      \item \textbf{User Stories:} Short statements like "As a sales rep, I want to view customer history."
+    \end{itemize}
+    \item \textbf{Standards:} Follow IEEE 830-1998 for documentation format.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Validation and Verification}
+  \textbf{Objective:} Ensure requirements are accurate and feasible.
+  \begin{itemize}
+    \item Conduct stakeholder reviews.
+    \item Use prototypes/mock-ups for validation.
+    \item Manage tasks/feedback with tools like JIRA or Trello.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Key Points to Remember}
+  \begin{itemize}
+    \item \textbf{Techniques Matter:} Interviews, workshops, and observations lead to comprehensive requirements.
+    \item \textbf{Clarity in Documentation:} Use diagrams, user stories, and structured formats.
+    \item \textbf{Iterative Process:} Regular validation keeps requirements clear and current.
+    \item \textbf{Tools Support:} Industry-standard tools facilitate collaboration and documentation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Summary and Key Takeaways – Requirements Engineering}
+  \begin{itemize}
+    \item Requirements engineering (RE) is essential for defining, analyzing, and documenting system needs.
+    \item Clear requirements guide development, reduce misunderstandings, and support stakeholder communication.
+    \item Key techniques include elicitation, analysis, specification, validation, and verification.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Core Techniques and Practices}
+  \begin{itemize}
+    \item \textbf{Elicitation:} Gathering stakeholder needs via interviews, workshops, and observations. \\
+    \quad \textit{Example:} Interviewing users to identify daily challenges.
+    \item \textbf{Analysis \& Negotiation:} Clarifying and prioritizing requirements, resolving conflicts using use cases or user stories.
+    \item \textbf{Specification:} Documenting requirements unambiguously with natural language, diagrams, or UML.
+    \item \textbf{Validation \& Verification:} Ensuring requirements are complete and feasible through reviews and prototypes.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Effective Practices and Key Points}
+  \begin{itemize}
+    \item Adopt an iterative approach to refine requirements continually.
+    \item Engage stakeholders regularly to ensure alignment.
+    \item Maintain traceability links between requirements and implementation.
+    \item Clear, thorough specifications reduce risks like scope creep and delays.
+    \item Good RE involves ongoing communication, documentation, and validation.
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

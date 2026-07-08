@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Chapter 1: Introduction & Course Orientation",
+    "description": "An overview of the course structure, objectives, resources, and tools, along with an initial assessment of students' prior knowledge."
+  },
+  {
+    "title": "Chapter 2: Software Engineering & SDLC Overview",
+    "description": "Discussion of fundamental software development lifecycle (SDLC) models such as Waterfall, Agile, and Spiral, including their applications and suitability."
+  },
+  {
+    "title": "Chapter 3: Requirements Engineering",
+    "description": "Introduction to eliciting, analyzing, and documenting software requirements using industry-standard techniques to ensure clear and thorough specifications."
+  },
+  {
+    "title": "Chapter 4: Requirements Modeling & Visual Tools",
+    "description": "Utilizing UML and other visual modeling tools to represent requirements effectively through diagrams and models."
+  },
+  {
+    "title": "Chapter 5: Software Architecture & Design Principles",
+    "description": "Designing modular, scalable software architectures using established design principles and patterns."
+  },
+  {
+    "title": "Chapter 6: Design Patterns in Practice",
+    "description": "Analyzing and applying common design patterns to solve software design problems and improve maintainability."
+  },
+  {
+    "title": "Chapter 7: Development Environments & Version Control",
+    "description": "Using integrated development environments (IDEs) and version control systems like Git to facilitate efficient development workflows."
+  },
+  {
+    "title": "Chapter 8: Implementation Techniques & Debugging",
+    "description": "Developing quality code with best practices and utilizing debugging tools to identify and resolve issues effectively."
+  },
+  {
+    "title": "Chapter 9: Testing Methodologies: Unit, Integration, System",
+    "description": "Planning and executing various levels of testing to ensure software quality using frameworks such as JUnit and pytest."
+  },
+  {
+    "title": "Chapter 10: Automation & Test Management Tools",
+    "description": "Leveraging automation tools like Jenkins and Selenium to streamline testing processes and manage test executions."
+  },
+  {
+    "title": "Chapter 11: Team Collaboration & Agile Practices",
+    "description": "Collaborating effectively within teams using Agile methodologies and tools such as Jira and Trello."
+  },
+  {
+    "title": "Chapter 12: Project Management & Effective Communication",
+    "description": "Managing project scope, risks, and documentation while communicating progress clearly within development teams."
+  },
+  {
+    "title": "Chapter 13: Professional Ethics & Standards",
+    "description": "Analyzing ethical considerations and applying ACM/IEEE codes of ethics to real-world scenarios in software engineering."
+  },
+  {
+    "title": "Chapter 14: Course Project Presentations & Wrap-up",
+    "description": "Presenting final group projects, synthesizing learning outcomes, and receiving feedback from peers and instructors."
+  }
+]

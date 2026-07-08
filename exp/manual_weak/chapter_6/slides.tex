@@ -1,0 +1,848 @@
+\documentclass{beamer}
+
+% Theme choice
+\usetheme{Madrid} % You can change to e.g., Warsaw, Berlin, CambridgeUS, etc.
+
+% Encoding and font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Graphics and tables
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+frame=single
+}
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Colors
+\usepackage{xcolor}
+
+% TikZ and PGFPlots
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Title information
+\title{Week 6: Version Control Systems}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+    \frametitle{Unsafe Habits in Version Control}
+    \begin{itemize}
+        \item Version control mainly keeps the latest copy of a project, so detailed history is rarely important.
+        \item Large commits are preferred because they reduce the number of messages a team has to read.
+        \item Developers should avoid branches whenever possible and push directly to the main branch to stay synchronized.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Overconfident Workflow}
+    \begin{itemize}
+        \item Merge conflicts are usually fixed automatically, so teams do not need a merge strategy.
+        \item Commit messages are optional because the diff already explains the intent.
+        \item Rewriting shared history is harmless if it makes the log look cleaner.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introduction to Version Control Systems}
+    \begin{block}{Overview}
+        Version Control Systems (VCS) are tools that help developers manage changes to source code over time. They keep track of every modification to the code and allow for multiple versions to coexist and be accessed easily.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Why Use Version Control?}
+    \begin{enumerate}
+        \item \textbf{Collaboration}: Supports multiple developers working on the same codebase without conflicts, allowing them to merge changes smoothly.
+        \item \textbf{History Tracking}: Maintains a complete history of changes, showing who changed what and when, crucial for debugging and understanding project evolution.
+        \item \textbf{Backup and Recovery}: Provides a safety net to recover previous versions of the code in case of errors or data loss.
+        \item \textbf{Branching and Merging}: Allows developers to work on features in isolation (branches) before merging them into the main codebase, making experimentation risk-free.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Version Control Systems}
+    \begin{itemize}
+        \item \textbf{Local Version Control}: Keeps all changes made to files on a local machine. Example: Simple backup systems.
+        \item \textbf{Centralized Version Control}: A central server holds all versions of the code, and clients check out files from this central place. Example: Subversion (SVN).
+        \item \textbf{Distributed Version Control}: Every contributor has a complete copy of the repository on their system, allowing for full access to history. Example: Git.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Terms in Version Control}
+    \begin{itemize}
+        \item \textbf{Repository}: A storage area for your project including the history.
+        \item \textbf{Commit}: A snapshot of changes saved to the repository along with a descriptive message.
+        \item \textbf{Branch}: A parallel version of the code, allowing feature development without affecting the main codebase.
+        \item \textbf{Merge}: The process of combining changes from one branch into another.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Example Illustration}
+    \begin{block}{Without Version Control}
+        If Developer A updates a function in a file, and Developer B also modifies the same function simultaneously, they run the risk of overwriting each other's work.
+    \end{block}
+    \begin{block}{With Version Control}
+        Both developers can make changes in separate branches and merge them automatically, resolving conflicts more effectively, ensuring no work is lost.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Important Notes}
+    \begin{itemize}
+        \item Choosing the right version control system is critical for team efficiency and project success.
+        \item Git, as a leading distributed version control system, allows for powerful features like branching and pull requests, supporting modern software development practices.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{What is Git?}
+    Git is a \textbf{distributed version control system} designed to handle everything from small to large projects with speed and efficiency. Unlike centralized version control systems, Git allows every contributor to have their own local copy of the entire repository, including its history.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Core Features of Git}
+    \begin{enumerate}
+        \item \textbf{Distributed Architecture}:
+        \begin{itemize}
+            \item Each user has a full-fledged copy of the repository, enabling offline access.
+        \end{itemize}
+
+        \item \textbf{Branching and Merging}:
+        \begin{itemize}
+            \item Users can create branches for different features.
+            \item Merging integrates different lines of development back into the main project.
+            \begin{block}{Example}
+                You can create a branch for a new feature with:
+                \begin{lstlisting}
+git branch new-feature
+                \end{lstlisting}
+            \end{block}
+        \end{itemize}
+
+        \item \textbf{Data Integrity}:
+        \begin{itemize}
+            \item Git uses SHA-1 hashing to create a unique checksum for every commit.
+        \end{itemize}
+
+        \item \textbf{Staging Area}:
+        \begin{itemize}
+            \item Commits can be prepared in a staging area for better composition.
+            \begin{block}{Illustration}
+                \begin{lstlisting}
+git add <file>
+git commit -m "Commit message"
+                \end{lstlisting}
+            \end{block}
+        \end{itemize}
+
+        \item \textbf{Efficient Handling of Large Projects}:
+        \begin{itemize}
+            \item Git is optimized for performance, minimizing storage space.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Key Points to Emphasize}
+    \begin{itemize}
+        \item \textbf{Git is a Must-Have Tool for Developers}: Fundamental in modern software development.
+        \item \textbf{Collaboration Made Easy}: Simplifies teamwork across different environments.
+        \item \textbf{Learn to Use Git Effectively}: Basic commands enhance productivity and better code management.
+    \end{itemize}
+
+    \begin{block}{Example Commands}
+        - Initializing a new Git repository:
+        \begin{lstlisting}
+git init
+        \end{lstlisting}
+        
+        - Cloning an existing repository:
+        \begin{lstlisting}
+git clone <repository-url>
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion}
+    In summary, Git revolutionizes the way developers manage code changes, increasing collaboration and enhancing the overall development process. Understanding Git's core functionalities will empower you to work efficiently on both individual and team projects.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 1}
+    \begin{block}{Introduction to Git Components}
+        Git is an essential tool for version control, enabling developers to manage changes to source code over time. 
+        Understanding its fundamental concepts helps in using it effectively.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 2}
+    \section*{Key Concepts}
+
+    \begin{itemize}
+        \item \textbf{Repositories}
+        \begin{itemize}
+            \item \textbf{Definition:} A Git repository (repo) is a storage space for your project, which can be local (on your computer) or remote (on a server).
+            \item \textbf{Functionality:} It tracks changes, maintains the history of versions, and allows collaboration among multiple users.
+            \item \textbf{Example:} A directory called \texttt{my\_project} containing all source files and a \texttt{.git} folder.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 3}
+    \begin{itemize}
+        \item \textbf{Commands:} 
+        \begin{lstlisting}
+# To create a new repository
+git init my_project
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 4}
+    \begin{itemize}
+        \item \textbf{Commits}
+        \begin{itemize}
+            \item \textbf{Definition:} A commit is a snapshot of changes made to the files in the repository at a specific point in time.
+            \item \textbf{Functionality:} Commits record the history of your project including a message describing the changes made.
+        \end{itemize}
+        \item \textbf{Example:}
+        \begin{lstlisting}
+git add .
+git commit -m "Add new feature to enhance user experience"
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 5}
+    \begin{itemize}
+        \item \textbf{Branches}
+        \begin{itemize}
+            \item \textbf{Definition:} A branch is a parallel version of the repository to work on features, fixes, or experiments.
+            \item \textbf{Example:} Creating a new branch:
+        \end{itemize}
+        \begin{lstlisting}
+git checkout -b new-feature
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 6}
+    \begin{itemize}
+        \item \textbf{Merges}
+        \begin{itemize}
+            \item \textbf{Definition:} Merging combines changes from different branches into a single branch.
+            \item \textbf{Example:} Merging back into \texttt{main}:
+        \end{itemize}
+        \begin{lstlisting}
+git checkout main
+git merge new-feature
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Fundamental Concepts of Git - Part 7}
+    \begin{block}{Key Points to Emphasize}
+        \begin{itemize}
+            \item Repositories serve as foundational units for storage and collaboration.
+            \item Commits act like time-stamps of your project's history.
+            \item Branches allow safe experimentation and collaboration on features.
+            \item Merging is crucial for collaborative work and integrates diverse changes.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Setting Up Git - Overview}
+    \begin{block}{Overview}
+        Git is a powerful version control system that helps manage code changes and collaboration in software development. Proper installation and configuration are crucial for effective use. 
+    \end{block}
+    This guide outlines the steps to install Git and configure your user settings.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Setting Up Git - Installation Steps}
+    \begin{enumerate}
+        \item \textbf{Install Git}
+        \begin{itemize}
+            \item \textbf{Windows:}
+            \begin{itemize}
+                \item Download Git from the \href{https://git-scm.com/download/win}{official Git website}.
+                \item Run the installer and follow the prompts, keeping default settings unless specific customizations are needed.
+            \end{itemize}
+            \item \textbf{macOS:}
+            \begin{itemize}
+                \item Open Terminal and install using Homebrew by typing \texttt{brew install git}.
+                \item Alternatively, download from the \href{https://git-scm.com/download/mac}{official Git website}.
+            \end{itemize}
+            \item \textbf{Linux:}
+            \begin{itemize}
+                \item For Debian-based systems (like Ubuntu):
+                \begin{lstlisting}
+                sudo apt-get update
+                sudo apt-get install git
+                \end{lstlisting}
+                \item For Red Hat-based systems:
+                \begin{lstlisting}
+                sudo yum install git
+                \end{lstlisting}
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Setting Up Git - Configuration}
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+        \item \textbf{Verify Installation}
+        \begin{lstlisting}
+        git --version
+        \end{lstlisting}
+        
+        \item \textbf{Configure User Settings}
+        \begin{itemize}
+            \item Set Your Username:
+            \begin{lstlisting}
+            git config --global user.name "Your Name"
+            \end{lstlisting}
+            \item Set Your Email:
+            \begin{lstlisting}
+            git config --global user.email "your.email@example.com"
+            \end{lstlisting}
+            \item Note: The \texttt{--global} flag applies these settings across all repositories. Omit it for repository-specific settings.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Setting Up Git - Additional Configurations}
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item \textbf{Additional Recommended Configurations}
+        \begin{itemize}
+            \item Set Default Text Editor (optional):
+            \begin{lstlisting}
+            git config --global core.editor "code --wait"
+            \end{lstlisting}
+            \item Check Your Configuration:
+            \begin{lstlisting}
+            git config --list
+            \end{lstlisting}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Git Commands - Overview}
+    In this slide, we will explore some of the most commonly used Git commands that form the backbone of version control workflows. 
+    Understanding these commands is crucial for effectively managing code changes and collaborating with others.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Git Commands - git clone}
+    \begin{itemize}
+        \item \textbf{Purpose}: Create a local copy of a remote repository.
+        \item \textbf{Command Syntax}: 
+        \begin{lstlisting}
+git clone <repository-url>
+        \end{lstlisting}
+        \item \textbf{Example}: 
+        \begin{lstlisting}
+git clone https://github.com/user/repo.git
+        \end{lstlisting}
+        \item \textbf{Key Point}: 
+        This command initializes a new Git repository and pulls down all the data and history from the specified remote repository.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Git Commands - git add, git commit}
+    \begin{itemize}
+        \item \textbf{git add}
+        \begin{itemize}
+            \item \textbf{Purpose}: Stage changes for the next commit.
+            \item \textbf{Command Syntax}: 
+            \begin{lstlisting}
+git add <file1> <file2> ... <fileN>
+            \end{lstlisting}
+            \item To add all changed files:
+            \begin{lstlisting}
+git add .
+            \end{lstlisting}
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+git add index.html styles.css
+            \end{lstlisting}
+            \item \textbf{Key Point}: 
+            Remember, \texttt{git add} only stages changes; it does not commit them.
+        \end{itemize}
+        
+        \item \textbf{git commit}
+        \begin{itemize}
+            \item \textbf{Purpose}: Save the staged changes to the repository with a message.
+            \item \textbf{Command Syntax}: 
+            \begin{lstlisting}
+git commit -m "<commit message>"
+            \end{lstlisting}
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+git commit -m "Added new styling to the homepage"
+            \end{lstlisting}
+            \item \textbf{Key Point}: 
+            Commit messages should be clear and descriptive to communicate what changes were made.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Git Commands - git push, git pull}
+    \begin{itemize}
+        \item \textbf{git push}
+        \begin{itemize}
+            \item \textbf{Purpose}: Upload local commits to the remote repository.
+            \item \textbf{Command Syntax}: 
+            \begin{lstlisting}
+git push <remote-name> <branch-name>
+            \end{lstlisting}
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+git push origin main
+            \end{lstlisting}
+            \item \textbf{Key Point}: 
+            Use \texttt{git push} to share your local changes and make them available to collaborators.
+        \end{itemize}
+        
+        \item \textbf{git pull}
+        \begin{itemize}
+            \item \textbf{Purpose}: Fetch changes from the remote repository and merge them into the current branch.
+            \item \textbf{Command Syntax}: 
+            \begin{lstlisting}
+git pull <remote-name> <branch-name>
+            \end{lstlisting}
+            \item \textbf{Example}: 
+            \begin{lstlisting}
+git pull origin main
+            \end{lstlisting}
+            \item \textbf{Key Point}: 
+            This command combines \texttt{git fetch} and \texttt{git merge}, allowing you to update your local repository quickly with the latest changes.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Common Git Commands - Summary}
+    \begin{itemize}
+        \item The commands \texttt{git clone}, \texttt{git add}, \texttt{git commit}, \texttt{git push}, and \texttt{git pull} are essential for any collaborative software development process.
+        \item Mastering these commands will facilitate smoother collaboration and more effective version control of projects.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 1}
+
+    \begin{block}{Understanding Branching in Git}
+        \begin{itemize}
+            \item **Definition**: Branching allows developers to create independent lines of development.
+            \item **Main Branches**: Default branch is typically named `main` or `master` for stable code.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 2}
+
+    \begin{block}{Why Use Branches?}
+        \begin{itemize}
+            \item **Isolation**: Develop new features or fixes while keeping the main code stable.
+            \item **Collaboration**: Multiple team members can work simultaneously without conflicts.
+            \item **Experimentation**: Test new ideas without risking the existing codebase.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 3}
+
+    \begin{block}{Strategies for Creating Branches}
+        \begin{itemize}
+            \item **Feature Branching**: For each new feature.
+                \begin{itemize}
+                    \item Example: \texttt{git checkout -b feature/login}
+                \end{itemize}
+            \item **Hotfix Branching**: For urgent fixes.
+                \begin{itemize}
+                    \item Example: \texttt{git checkout -b hotfix/issue-123}
+                \end{itemize}
+            \item **Release Branching**: For new releases.
+                \begin{itemize}
+                    \item Example: \texttt{git checkout -b release/v1.0}
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 4}
+
+    \begin{block}{Merging Branches}
+        \begin{itemize}
+            \item **Purpose**: Integrates changes from one branch into another.
+            \item \textbf{Types of Merge}:
+                \begin{itemize}
+                    \item **Fast-Forward Merge**:
+                        \begin{lstlisting}
+git checkout main
+git merge feature/login
+                        \end{lstlisting}
+                    \item **Three-Way Merge**:
+                        \begin{lstlisting}
+git checkout main
+git merge feature/login
+                        \end{lstlisting}
+                \end{itemize}
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 5}
+
+    \begin{block}{Best Practices for Merging}
+        \begin{itemize}
+            \item **Stay Updated**: Regularly pull changes from the main branch.
+            \item **Use Pull Requests**: Collaborate and review before merging on platforms like GitHub.
+            \item **Test After Merging**: Always run tests to ensure stability.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Branching and Merging - Part 6}
+
+    \begin{block}{Conclusion}
+        \begin{itemize}
+            \item Effective branching and merging strategies improve project management.
+            \item They enhance teamwork and maintain code integrity.
+        \end{itemize}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Managing Merge Conflicts - Part 1}
+
+    \textbf{Understanding Merge Conflicts} \\
+    When working with Git, merge conflicts occur when changes in different branches overlap. This happens when:
+    \begin{itemize}
+        \item Multiple contributors modify the same line of code.
+        \item One contributor deletes a file that another is modifying.
+    \end{itemize}
+
+    \textbf{Example Scenario} \\
+    Developers Alice and Bob are working on a feature in different branches:
+    \begin{itemize}
+        \item \textbf{Alice} changes `file.txt` in \texttt{feature-branch}.
+        \item \textbf{Bob} modifies the same line in \texttt{develop}.
+    \end{itemize}
+
+    When merging, Git identifies the conflict that needs resolution.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Managing Merge Conflicts - Part 2}
+
+    \textbf{Techniques for Resolving Merge Conflicts}
+    \begin{enumerate}
+        \item \textbf{Automatic Merging}:
+            Git attempts to auto-merge; if no conflicts, the merge proceeds seamlessly.
+        
+        \item \textbf{Conflict Markers}:
+            If conflicts are present, Git adds markers in the file:
+            \begin{lstlisting}
+            <<<<<<< HEAD
+            Changes made by Alice
+            =======
+            Changes made by Bob
+            >>>>>>> feature-branch
+            \end{lstlisting}
+        
+        \item \textbf{Manual Resolution}:
+            \begin{itemize}
+                \item Edit the file, integrate changes, and remove markers.
+                \item Test the resolved code.
+            \end{itemize}
+        
+        \item \textbf{Use of Merge Tools}:
+            Visual tools like KDiff3, Meld, and Beyond Compare assist in conflict resolution.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Managing Merge Conflicts - Part 3}
+
+    \textbf{Maintaining Code Integrity}
+    \begin{itemize}
+        \item \textbf{Commit Changes}:
+            After resolving conflicts, commit the changes:
+            \begin{lstlisting}
+            git add file.txt
+            git commit -m "Resolved merge conflict in file.txt"
+            \end{lstlisting}
+
+        \item \textbf{Communication}:
+            Discuss changes and resolutions with collaborators to stay aligned.
+
+        \item \textbf{Code Reviews}:
+            Implement a review process after conflict resolution for quality assurance.
+    \end{itemize}
+
+    \textbf{Key Points to Remember}:
+    \begin{itemize}
+        \item Merge conflicts are common; handle them efficiently.
+        \item Use version control effectively by regularly pushing and pulling.
+        \item Maintain clear communication within the team.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Collaborative Workflows with Git - Introduction}
+    \begin{block}{Importance of Collaborative Workflows}
+        Git is a powerful version control system that simplifies collaboration among software developers. 
+        It enables multiple contributors to work concurrently on the same codebase, avoiding chaos and preserving individual contributions. 
+        This capability is crucial for software projects of all scales, where team collaboration is vital for efficiency and quality.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Collaborative Workflows with Git - Key Concepts}
+    \begin{enumerate}
+        \item \textbf{Branches:}
+        \begin{itemize}
+            \item Isolated environments for concurrent development.
+            \item Example: A developer creates a branch named \texttt{feature-login} for a new feature.
+        \end{itemize}
+
+        \item \textbf{Pull Requests (PRs):}
+        \begin{itemize}
+            \item Propose changes to a project and encourage discussion.
+            \item Example: A developer initiates a PR on GitHub for their \texttt{feature-login} changes.
+        \end{itemize}
+
+        \item \textbf{Merging:}
+        \begin{itemize}
+            \item Integrates changes from one branch into another.
+            \item Example: Merging \texttt{feature-login} into the \texttt{main} branch.
+        \end{itemize}
+        
+        \item \textbf{Forking:}
+        \begin{itemize}
+            \item Creates a personal copy of a project for changes without affecting the original.
+            \item Example: Forking a repository to add features and submit a PR.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Collaborative Workflows with Git - Integration with GitHub}
+    \begin{block}{GitHub Features}
+        GitHub hosts Git repositories and provides tools for easy collaboration:
+        \begin{itemize}
+            \item \textbf{Code Review Tools}: Enhances team discussions and feedback.
+            \item \textbf{Issue Tracking}: Manages tasks, bugs, and feature requests.
+            \item \textbf{Continuous Integration (CI)}: Automates testing and ensures stability before updates.
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Conclusion}
+        Collaborative workflows powered by Git and GitHub are essential for modern software development, enhancing productivity and driving innovation.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Overview}
+    Git is a powerful version control system that helps developers track changes in their codebase. Following best practices ensures a clean commit history, maintains collaboration efficiency, and reduces the risk of conflicts.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Commit Often, Commit Small}
+    \begin{itemize}
+        \item \textbf{Description:} Make small, frequent commits that capture specific changes. This simplifies understanding project history and allows for easy reverts.
+        \item \textbf{Example:}
+        \begin{lstlisting}
+        git commit -m "Add user login UI"
+        git commit -m "Implement login backend logic"
+        git commit -m "Add tests for user login"
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Meaningful Commit Messages}
+    \begin{itemize}
+        \item \textbf{Description:} Craft clear and descriptive commit messages that explain the "what" and "why" of the changes.
+        \item \textbf{Format:}
+        \begin{lstlisting}
+        [TYPE] Short summary (50 characters or less)
+        [Optional: Longer description (72 characters wrap)]
+        \end{lstlisting}
+        \item \textbf{Examples:}
+        \begin{itemize}
+            \item \texttt{Fix:} Fix bug in user authentication logic.
+            \item \texttt{Feature:} Add ability for users to reset their passwords.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Use Branches Effectively}
+    \begin{itemize}
+        \item \textbf{Description:} Utilize branches for new features, bug fixes, or experiments without affecting the main codebase.
+        \item \textbf{Best Practice:} Create descriptive branch names.
+        \item \textbf{Example:}
+        \begin{lstlisting}
+        git checkout -b feature/user-registration
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Keep Your Main Branch Clean}
+    \begin{itemize}
+        \item \textbf{Description:} The main branch should always contain stable, tested code.
+        \item \textbf{How To:} Use pull requests (PRs) for merging branches to allow code reviews and testing.
+        \item \textbf{Example of Merging:}
+        \begin{lstlisting}
+        git checkout main
+        git merge feature/user-registration
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Avoid Sensitive Information}
+    \begin{itemize}
+        \item \textbf{Description:} Never commit sensitive data like passwords or API keys.
+        \item \textbf{Prevention:} Use a \texttt{.gitignore} file to exclude unwanted files/directories.
+        \item \textbf{Example:}
+        \begin{lstlisting}
+        # .gitignore
+        .env
+        secrets.txt
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Rebase Instead of Merging (Caution)}
+    \begin{itemize}
+        \item \textbf{Description:} Use \texttt{git rebase} to maintain a linear commit history but be cautious as it rewrites commit history.
+        \item \textbf{Example Command:}
+        \begin{lstlisting}
+        git checkout feature/user-registration
+        git rebase main
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Best Practices for Using Git - Summary}
+    Adopting these best practices will help maintain an organized code repository and streamline collaboration. Always commit with intention and clarity, and foster a collaborative development environment.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Part 1}
+    \begin{block}{Key Takeaways from Week 6: Version Control Systems}
+        \begin{enumerate}
+            \item \textbf{Understanding Version Control}
+                \begin{itemize}
+                    \item Version control systems (VCS) are essential tools for tracking changes in files and managing project history.
+                    \item Git is a distributed version control system, where every developer holds a full copy of the repository, including its entire history.
+                \end{itemize}
+            \item \textbf{Basic Git Commands}
+                \begin{itemize}
+                    \item \texttt{git init}: Initializes a new Git repository.
+                    \item \texttt{git clone <repository>}: Creates a copy of an existing repository.
+                    \item \texttt{git add <file>}: Stages changes to be committed.
+                    \item \texttt{git commit -m "message"}: Commits staged changes with a descriptive message.
+                    \item \texttt{git push}: Pushes local changes to a remote repository.
+                    \item \texttt{git pull}: Fetches and merges changes from a remote repository.
+                \end{itemize}
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Part 2}
+    \begin{block}{Key Takeaways from Week 6: Version Control Systems (cont.)}
+        \begin{enumerate}[resume]
+            \item \textbf{Branching and Merging}
+                \begin{itemize}
+                    \item Branching allows developers to work on features or fixes in isolated environments without affecting the main codebase.
+                    \item Merging is the process of combining changes from different branches to facilitate integration.
+                \end{itemize}
+            \item \textbf{Best Practices Highlighted}
+                \begin{itemize}
+                    \item Maintain a clean commit history by writing clear and concise commit messages.
+                    \item Regularly push changes to keep the central repository updated.
+                    \item Use branches effectively to manage features, bug fixes, and releases.
+                \end{itemize}
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conclusion and Resources - Part 3}
+    \begin{block}{Additional Resources for Further Learning}
+        \begin{itemize}
+            \item \textbf{Official Git Documentation:} \texttt{https://git-scm.com/doc}
+            \item \textbf{Online Interactive Platforms:}
+                \begin{itemize}
+                    \item Codecademy: \texttt{https://www.codecademy.com/learn/learn-git}
+                    \item Learn Git Branching: \texttt{https://learngitbranching.js.org/}
+                \end{itemize}
+            \item \textbf{Books:} \textit{Pro Git} by Scott Chacon and Ben Straub (available online for free).
+            \item \textbf{YouTube Channels:} The Net Ninja: Git \& GitHub Tutorial for Beginners, \texttt{https://www.youtube.com/watch?v=RGOj5yH7evk}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\end{document}
